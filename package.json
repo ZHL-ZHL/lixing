@@ -1,0 +1,20 @@
+{
+  "name": "miniprogram_lease",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "miniprogram-sm-crypto": "0.0.6",
+    "weui-miniprogram": "^0.1.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://zhanghl@39.100.104.156:15555/r/miniprogram_lease.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

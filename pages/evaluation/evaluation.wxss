@@ -1,0 +1,104 @@
+/* pages/collection/collection.wxss */
+.collection-img image{
+  display: block;
+  width: 94%;
+  box-sizing: border-box;
+  height: 280rpx;
+  border-radius: 8rpx; 
+  margin: 20rpx auto;
+}
+.detail-info-list{
+  width:100%;
+  padding-bottom: 20rpx;
+  background: #fff;
+}
+.detail-info{
+  text-align: left;
+  width: 100%;
+  padding:30rpx 30rpx 0rpx 30rpx;
+  box-sizing: border-box;
+}
+.detail-info-title{
+  display:inline-block;
+  width:50%;
+  margin-right:20rpx;
+  vertical-align: middle;
+  font-size: 28rpx;
+}
+button.evaluation-btn,button.evaluation-btn:hover,button.evaluation-btn:active{
+  background: rgb(0, 140, 255);
+  float: right;
+  margin: 30rpx;
+  font-size: 24rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+}
+.evaluation-do-box{
+  position: fixed;
+  height: 500rpx;
+  width: 100%;
+  background: #fcfbfa;
+  bottom: 0;
+  border-top: 1rpx solid #f0f0f0;
+}
+.close-icon{
+  position:absolute;
+  top:0;
+  bottom: 0;
+  margin:auto;
+  left:20rpx;
+  display: inline-block;
+  width: 34rpx;
+  height: 34rpx;
+}
+.evaluation-close{
+  box-sizing: border-box;
+  position: relative;
+  width: calc(100% - 40rpx);
+  margin: 0rpx 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 26rpx;
+}
+.stars{
+  padding:30rpx;
+  margin:0 auto;
+  box-sizing: border-box;
+  position: relative;
+  border-bottom: 1rpx solid #ececec;
+  /* background-color: #fff; */
+}
+.stars image{
+  width: 190rpx;
+  height: 190rpx;
+  border: 1rpx solid #000;
+  position: absolute;
+  top: 41rpx;
+  left: 36rpx;
+}
+.stars .stars-content view{
+  font-size: 32rpx;
+  color: #4a4a4a;
+  text-align: center;
+}
+.stars .stars-content>view:last-of-type{
+  height: 40rpx;
+}
+.stars .stars-content>view:last-of-type view{
+  /* float: left; */
+  display: inline-block;
+  width: 42rpx;
+  height: 42rpx;
+  margin-right: 40rpx;
+  background-size: 100% 100%;
+}
+.reviews textarea{
+  display: block;
+  margin: 20rpx auto;
+  border:1rpx solid #f0f0f0;
+  padding:20rpx;
+  font-size: 24rpx;
+  height: 150rpx;
+  color: #363636;
+}

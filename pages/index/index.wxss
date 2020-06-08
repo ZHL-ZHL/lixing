@@ -1,0 +1,36 @@
+/**index.wxss**/
+.banner,.banner image,swiper{
+  width: 100%;
+  height: 300rpx;
+  display: block;
+}
+.banner{
+  position: relative;
+}
+.nav-list-content-left{
+  float:left;
+}
+.nav-list-content-right{
+  border-left: 260rpx solid #fff;
+}
+.nav-list-content-image{
+  width:260rpx;
+  height:140rpx;
+  border-radius: 8rpx;
+}
+.nav-list-content-right{
+  font-size: 24rpx;
+  text-align: left;
+  margin-left:30rpx;
+  line-height: 32rpx;
+}
+.scroll-view-H ul li{
+  display: inline-block;
+}
+.scroll-view-item-H{
+  display: inline-block;
+  width:440rpx;
+  height:150rpx;
+  margin-right: 40rpx;
+  border-radius: 8rpx;
+}

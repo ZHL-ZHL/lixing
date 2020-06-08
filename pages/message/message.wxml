@@ -1,0 +1,5 @@
+<!--pages/message/message.wxml-->
+<view class="ellipsistext setMsgList">温馨提示:您预定的会议室时间2小时以后开始。</view>
+<view class="ellipsistext setMsgList">温馨提示:您预定的会议室时间2小时以后开始。</view>
+<view class="ellipsistext setMsgList">温馨提示:您预定的会议室时间2小时以后开始。</view>
+<view class="ellipsistext setMsgList">温馨提示:您预定的会议室时间2小时以后开始。</view>

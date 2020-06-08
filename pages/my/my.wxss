@@ -1,0 +1,90 @@
+/* pages/my/my.wxss */
+
+.container{
+  background: #fff;
+}
+.my-top-backg{
+  background: linear-gradient(to right, rgb(248, 90, 90) , rgba(255, 115, 0, 0.877));
+  width: 100%;
+  height:300rpx;
+  box-shadow: 0rpx 20rpx 20rpx rgb(255, 213, 213);
+  position: relative;
+}
+.my-nav-top{
+  height: 180rpx;
+  color:#fff;
+  padding:40rpx;
+}
+.my-image{
+  display: inline-block;
+  width: 130rpx;
+  height: 130rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.my-info-title{
+  line-height: 40rpx;
+  font-size:26rpx;
+  display: inline-block;
+  margin-left:60rpx;
+  vertical-align: middle;
+}
+.my-image-set{
+  display: inline-block;
+  width: 60rpx;
+  height: 60rpx;
+  float: right;
+  margin-top:30rpx;
+  border-radius: 50%;
+}
+.my-image-edit{
+  display: inline-block;
+  width:24rpx;
+  height: 24rpx;
+  vertical-align: middle;
+  margin-left:18rpx
+}
+.my-nav-top-musn{
+  position: absolute;
+  width:93%;
+  height: 180rpx;
+  background: #fff;
+  left:0;right:0;
+  margin:auto;
+  bottom:-90rpx;
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px #ccc;
+  text-align: center;
+  font-size: 26rpx;
+  color: #888;
+}
+.my-nav-top-musn image{
+  width: 60rpx;
+  height: 60rpx;
+  display: block;
+  margin: 46rpx auto 0px;
+}
+.my-content{
+  padding:120rpx 40rpx 20rpx;
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  color: #666;
+  font-size: 26rpx;
+}
+.my-content ul li{
+  width: 100%;
+  display: inline-block;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1px solid #f0f0f0;
+}
+.serv-phone{
+  font-size: 26rpx;
+  color:rgb(199, 63, 0);
+  position: fixed;
+  bottom: 40rpx;
+  width:100%;
+  text-align: center;
+}

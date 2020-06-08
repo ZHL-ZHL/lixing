@@ -1,0 +1,32 @@
+<!--lease.wxml-->
+<view class="container">
+  <view class="nav-content">
+    <view class="nav-mian">
+    <view style="margin:0px 10px 10px">
+    </view>
+      <view class="nav-mian">
+      <view class="nav-list">
+        <view class="nav-list-main"> 
+          <view wx:for="{{indexListData}}"  bindtap="onTapdetail" id="{{item.id}}"  wx:key="{{index}}" class="nav-list-content clearfix">
+            <view class="nav-list-content-left">
+              <image class="nav-list-content-image" src="{{baseUrl+item.leaseImage}}"></image>
+            </view> 
+            <view class="nav-list-content-right">
+              <view><span class="marginright25 ellipsistext widht70p">{{item.leaseName}}</span></view>
+              <view class="fontsixe10"><span class="marginright25 ellipsistext colorccc">{{item.leaseAddressName}}</span><span class="marginright25">{{item.leaseFloor}}层</span><span>{{item.leaseArea}}平方米</span></view>
+              <view class="fontsixe10 colorccc"><span>预约时间--{{item.appTime}}</span></view>
+               <view class="fontsixe10"><span class="fontsixe12">{{item.status=='2'?'待使用':'已使用'}}</span></view>
+            </view> 
+          </view> 
+        </view> 
+
+
+
+        <view class="button-wrapper"> 
+          <button class="loadbtn" type="default" size="default" wx:if="{{getMore}}" bindtap="setLoading">  查看更多  </button> 
+        </view>
+      </view>
+    </view>
+    </view>
+  </view>
+</view>

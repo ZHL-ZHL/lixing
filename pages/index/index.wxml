@@ -1,0 +1,65 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="banner">
+      <swiper indicator-dots="{{indicatorDots}}"  indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}"
+            autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">  
+            <block wx:for="{{banner}}" wx:key="{{index}}" >  
+                <swiper-item>  
+                  <navigator url="{{baseUrl+item.leaseImage}}" hover-class="navigator-hover">  
+                  <span style="position: absolute;bottom:8rpx;font-size: 24rpx;left:20rpx">{{item.leaseName}}</span>
+                    <image bindtap="onTapdetail" id="{{item.id}}" src="{{baseUrl+item.leaseImage}}" class="slide-image" mode="aspectFill"/>  
+                  </navigator>  
+                </swiper-item>  
+              </block>  
+      </swiper>
+  </view>
+  <view class="nav-content">
+    <view class="nav-title">
+        <span class="nav-line"></span>
+        <span class="nav-text">热 门 推 荐</span>
+        <span class="nav-line"></span>
+    </view>
+    <view class="nav-mian">
+      <view class="section section_gap">
+        <scroll-view class="scroll-view-H" scroll-x style="height:80px;padding:0px 10px  15px 10px;white-space: nowrap;">
+          <ul>
+            <li wx:for="{{hotListData}}" wx:key="{{index}}" bindtap="onTapdetail" id="{{item.id}}">
+              <image class="scroll-view-item-H" src="{{baseUrl+item.leaseImage}}"></image>
+            </li>
+          </ul>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+  <view class="nav-content">
+    <view class="nav-title">
+        <span class="nav-line"></span>
+        <span class="nav-text">会 议 室 推 荐</span>
+        <span class="nav-line"></span>
+    </view>
+    <view class="nav-mian">
+      <view class="nav-list">
+        <view class="nav-list-main"> 
+          <view wx:for="{{indexListData}}" wx:key="{{index}}" class="nav-list-content clearfix" bindtap="onTapdetail" id="{{item.id}}">
+            <view class="nav-list-content-left">
+              <image class="nav-list-content-image" src="{{baseUrl+item.leaseImage}}"></image>
+            </view> 
+            <view class="nav-list-content-right">
+              <view><span class="marginright25 ellipsistext widht70p">{{item.leaseName}}</span></view>
+              <view class="fontsixe10"><span class="marginright25 ellipsistext colorccc">{{item.leaseAddressName}}</span><span class="marginright25">{{item.leaseFloor}}层</span><span>{{item.leaseArea}}平方米</span></view>
+              <view class="fontsixe10 colorccc"><span>标签---{{item.leaseBq}}</span></view>
+               <view class="fontsixe10 colorred"><span class="fontsixe12">¥ {{item.leasePriceHours}}</span><span style="margin-left:6px;">元/每小时</span></view>
+            </view> 
+          </view> 
+        </view> 
+
+
+
+        <view class="button-wrapper"> 
+          <button class="loadbtn" type="default" size="default" wx:if="{{getMore}}" bindtap="setLoading">  查看更多  </button> 
+        </view>
+      </view>
+    </view>
+  </view>
+  
+</view>

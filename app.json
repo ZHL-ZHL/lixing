@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/my/my",
+    "pages/detail/detail",
+    "pages/lease/lease",
+    "pages/logs/logs",
+    "pages/message/message",
+    "pages/evaluation/evaluation",
+    "pages/collection/collection",
+    "pages/order/order"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#888",
+    "selectedColor": "#b11111",
+    "borderStyle": "black",
+    "list": [
+      {
+        "selectedIconPath": "images/icon/index_sel.png",
+        "iconPath": "images/icon/index.png",
+        "pagePath": "pages/index/index",
+        "text": "主页"
+      },
+      {
+        "selectedIconPath": "images/icon/lease_sel.png",
+        "iconPath": "images/icon/lease.png",
+        "pagePath": "pages/lease/lease",
+        "text": "租赁"
+      },
+      {
+        "selectedIconPath": "images/icon/my_sel.png",
+        "iconPath": "images/icon/my.png",
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ]
+  }
+}

@@ -47,7 +47,7 @@
     </view>
   </view>
   <view class="line"></view>
-  <view class="weui-cell">停车</view>
+  <view class="weui-cell">智慧停车</view>
   <!--  bindtap="toPark" -->
   <view class="ads">
     <navigator url="/pages/carNumber/carNumber" hover-class="none">

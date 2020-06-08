@@ -37,16 +37,17 @@ Page({
           url: "/pages/investment/investment",
           show: true
         },
-        {
-          icon: "/images/icon/7.png",
-          name: "维修服务",
-          url: "/pages/repair/repair",
-          show: true
-        },
+        
         {
           icon: "/images/icon/3.png",
           name: "会议室租赁",
           url: "/pages/meetingRoom/meetingRoom",
+          show: true
+        },
+        {
+          icon: "/images/icon/7.png",
+          name: "维修服务",
+          url: "/pages/repair/repair",
           show: true
         },
         {
@@ -59,14 +60,19 @@ Page({
           icon: "/images/icon/clgl.png",
           name: "车辆管理",
           url: "/pages/carIndex/carIndex",
-          show: true
+          show: false
         }, {
           icon: "/images/bus.png",
-          name: "班车服务",
+          name: "运单查询",
           url: "/pages/bus/bus?type=1",
           show: true
         },
-
+        {
+          icon: "/images/icon/2.png",
+          name: "访客预约",
+          url: "/pages/visitors/visitors",
+          show: true
+        },
         // {
         //   icon: "/images/icon/6.png",
         //   name: "金融服务",
@@ -82,10 +88,16 @@ Page({
       ],
       [
 
+        // {
+        //   icon: "/images/icon/2.png",
+        //   name: "访客预约",
+        //   url: "/pages/visitors/visitors",
+        //   show: true
+        // },
         {
-          icon: "/images/icon/2.png",
-          name: "访客预约",
-          url: "/pages/visitors/visitors",
+          icon: "/images/icon/8.png",
+          name: "企业服务",
+          url: "",
           show: true
         },
         {

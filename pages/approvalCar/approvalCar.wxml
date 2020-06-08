@@ -1,0 +1,112 @@
+<view class='ticket-container'>
+  <scroll-view scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <!--Tab布局-->
+    <view class='title'>
+      <view class="{{0 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='0'>
+        <text>公司用车</text>
+        <hr class="line-style" />
+      </view>
+      <view class="{{1 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='1'>
+        <text>私车公用</text>
+        <hr class="line-style" />
+      </view>
+    </view>
+
+    <!--内容布局-->
+    <swiper class='swiper' bindchange='pagechange' current='{{currentIndex}}'>
+      <swiper-item class='swiper'>
+        <view wx:for="{{companyCar}}" id="{{item.id}}" data-dstatus="{{item}}" wx:for-item="item" class='record-item'>
+          <view class='name' wx:if="{{(item.mileageStatus == 2||item.mileageStatus == 1)  && item.mileageDrivingStatus == 0}}">
+            <view class="informationbox">
+              <view class="information">
+                <span>{{item.brandName}}</span>
+                <span>{{item.plateCar}}</span>
+                <span>{{item.dictName}}</span>
+                <span wx:if="{{item.mileageStatus == 2  && item.mileageDrivingStatus == 0}}">待审核</span>
+                <span wx:if="{{item.mileageStatus == 1  && item.mileageDrivingStatus == 0}}">已拒绝</span>
+                <span wx:if="{{item.mileageStatus == 0  && item.mileageDrivingStatus == 0}}">已通过</span>
+                <span wx:if="{{item.mileageStatus == 0 && item.mileageDrivingStatus == 1}}">使用中</span>
+                <span wx:if="{{item.mileageStatus == 0 && item.mileageDrivingStatus == 2}}">已还车</span>
+              </view>
+              <view class="information">
+                <span>{{item.userStratTime}}</span>
+                <span>{{item.userEndTime1}}</span>
+              </view>
+              <view class="information">
+                <span>申请人：{{item.infoName}}</span>
+              </view>
+              <view class="information">
+                <span>申请单位：{{item.companyName}}</span>
+              </view>
+              <view class="information">
+                <span>起点：{{item.starting}}</span>
+              </view>
+              <view class="information" wx:for-item="list" wx:for="{{item.list}}">
+                <span>途径：{{list.address}}</span>
+              </view>
+              <view class="information">
+                <span>终点：{{item.end}}</span>
+              </view>
+              <view class="information">
+                <span>事由：{{item.reason}}</span>
+              </view>
+              <view class="information" wx:if="{{item.remark}}">
+                <span>备注：{{item.remark}}</span>
+              </view>
+            </view>
+            <view class="btnUseCar" id="{{item.id}}" bindtap="passCar">审 核</view>
+          </view>
+        </view>
+      </swiper-item>
+      <swiper-item class='swiper' class='swiper'>
+        <view wx:for="{{private}}" wx:for-item="item" class='record-item'>
+          <view class='name1' data-dstatus="{{item}}" wx:if="{{(item.mileageStatus == 2||item.mileageStatus == 1)  && item.mileageDrivingStatus == 0}}" data-name='{{item.state}}'>
+            <view class="utility">
+              <span>{{item.userStratTime}}</span>
+              <span>{{item.userEndTime1}}</span>
+              <span wx:if="{{item.mileageStatus == 2  && item.mileageDrivingStatus == 0}}">待审核</span>
+              <span wx:if="{{item.mileageStatus == 1  && item.mileageDrivingStatus == 0}}">已拒绝</span>
+              <span wx:if="{{item.mileageStatus == 0  && item.mileageDrivingStatus == 0}}">已通过</span>
+              <span wx:if="{{item.mileageStatus == 0 && item.mileageDrivingStatus == 1}}">使用中</span>
+              <!-- <span wx:if="{{item.mileageStatus == 0 && item.mileageDrivingStatus == 2}}">待结算</span> -->
+              <span wx:if="{{item.mileageStatus == 0 && item.mileageDrivingStatus == 2}}">已还车</span>
+            </view>
+            <view class="information">
+              <span>申请人：{{item.infoName}}</span>
+            </view>
+            <view class="information">
+              <span>车主：{{item.ownerName}}</span>
+            </view>
+            <view class="information">
+              <span>申请单位：{{item.companyName}}</span>
+            </view>
+            <view class="utility">
+              <span>起点：{{item.starting}}</span>
+            </view>
+            <view class="information" wx:for-item="list" wx:for="{{item.list}}">
+              <span>途径：{{list.address}}</span>
+            </view>
+            <view class="utility">
+              <span>终点：{{item.end}}</span>
+            </view>
+            <view class="information">
+              <span>事由：{{item.reason}}</span>
+            </view>
+            <view class="information" wx:if="{{item.remark}}">
+              <span>备注：{{item.remark}}</span>
+            </view>
+            <view class="btnUseCar" id="{{item.id}}" bindtap="passCar">审 核</view>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </scroll-view>
+
+  <van-dialog use-slot title="审核" show="{{ show }}" bind:close="onClose" bind:confirm="getpass" show-cancel-button>
+    <van-radio-group value="{{ radio }}" bind:change="onChange">
+      <van-radio name="0">通过</van-radio>
+      <van-radio name="1">拒绝</van-radio>
+    </van-radio-group>
+    <textarea name="passPurpose" value="{{remark}}" bindinput="changeRemark"></textarea>
+  </van-dialog>
+</view>

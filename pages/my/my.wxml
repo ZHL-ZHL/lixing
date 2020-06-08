@@ -1,43 +1,58 @@
-<!--lease.wxml-->
+<!--pages/my/my.wxml-->
 <view class="container">
-<view class="my-top-backg">
-  <view class="my-nav-top">
-    <image class="my-image" src="../../images/mylogo.jpeg"></image>
-    <view class="my-info-title">
-        <view>{{loginName}}<image class="my-image-edit" src="../../images/icon/edit.png"></image></view>
-        <!-- <view>ID:569342424</view> -->
+  <view class="bgblue"></view>
+  <navigator class="userINfo weui-cell" wx:if="{{userInfo}}" hover-class="none" url="/pages/myInfo/myInfo?id={{userInfo.id}}">
+    <view class="weui-cell__hd">
+      <view class="avatar">
+        <image src="{{userInfo.picture}}"></image>
+      </view>
     </view>
-    <image bindtap="onTapChangeUser" class="my-image-set" src="../../images/icon/setting.png"></image>
-  </view>
-  <view class="my-nav-top-musn">
-      <view style="width:33%;float:left" bindtap="onTapOrder">
-        <image src="../../images/icon/musn_set.png"></image>
-        <view>已预约</view>
-      </view>
-      <view style="width:33%;float:left" bindtap="onTapOrdering">
-        <image src="../../images/icon/car.png"></image>
-        <view>待使用</view>
-      </view>
-      <view style="width:33%;float:left" bindtap="onTapOrdered">
-        <image src="../../images/icon/usedd.png"></image>
-        <view>已使用</view>
-      </view>
-  </view>
-</view>
-  <view class="my-content">
-    <ul>
-      <!-- <li>我的收藏</li> -->
-    </ul>
-  </view>
-  <view class="serv-phone">客服电话：0351—5255655 <view>手 机 号：13453107152</view> </view>
-
-  <mp-dialog mask-closable="{{false}}" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
-    <view>
-      <mp-form id="form" rules="{{rules}}" models="{{formData}}">
-        <mp-cell prop="mobile" ext-class=" weui-cell_vcode">
-          <input bindinput="formInputChange" data-field="mobile" class="weui-input" value="{{formData.mobile}}" placeholder="请输入手机号"/>
-                </mp-cell>
-      </mp-form>
+    <view class="weui-cell__bd">
+      <view class="nickname">{{userInfo.nickName}}</view>
+      <view class="phone" wx:if="{{userInfo.phone}}">{{userInfo.phone}}</view>
     </view>
-</mp-dialog>
+    <view class="weui-cell__ft">
+      <image src="/images/icon/r_jt.png" class="r_jt"></image>
+    </view>
+  </navigator>
+  <button class="noLogin weui-cell" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="GotUserInfo" wx:else>
+    <view class="weui-cell__hd">
+      <image src="/images/my/nologin.png"></image>
+    </view>
+    <view class="weui-cell__bd txLeft">登录</view>
+  </button>
+  <view class="order">
+    <view class="weui-cell allOrder">
+      <view class="weui-cell__bd">我的订单</view>
+      <view class="weui-cell__ft">
+        <button size="default" hover-class="none" open-type="getUserInfo" bindgetuserinfo="toAllOrder">全部订单</button>
+      </view>
+    </view>
+    <view class="weui-cell orderList">
+      <button class="weui-cell__bd" wx:for="{{orderList}}" wx:key="index" hover-class="none" open-type="getUserInfo" bindgetuserinfo="toAllOrderOne" data-id="{{item.id}}">
+        <image class="orderIcon" src="{{item.icon}}"></image>
+        <text> {{item.name}}</text>
+      </button>
+    </view>
+    <view class="line"></view>
+    <view class="list">
+      <button class="weui-cell listItem" wx:for="{{navList}}" wx:key="index" hover-class="none" data-url="{{item.url}}" data-index="{{index}}" open-type="getUserInfo" bindgetuserinfo="routeTo"  data-name="{{item.name}}">
+        <view class="weui-cell__hd">
+          <image src="{{item.icon}}" class="navIcon"></image>
+        </view>
+        <view class="weui-cell__bd">{{item.name}}</view>
+        <view class="weui-cell__ft">
+          <image src="/images/icon/r_jt.png" class="r_jt"></image>
+        </view>
+      </button>
+    </view>
+  </view>
+  <view class="btn" bindtap="loginOutBtn">
+    退出登录
+  </view>
+  <view class='maskk' wx:if='{{tan}}'></view>
+    <view class='tanBd' style='' wx:if='{{tan}}'>
+        <view class='tanBdCon'>为方便您使用小程序，请允许获取您微信绑定的手机号</view>
+          <button  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">确定</button>
+    </view>
 </view>

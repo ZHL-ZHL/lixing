@@ -1,0 +1,62 @@
+<view class="container">
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="list">
+      <view class="weui-cell">
+        <view class="weui-cell__hd">姓名</view>
+        <view class="weui-cell__bd">
+          <input placeholder="输入真实姓名" name="infoName" value="{{infoName}}"></input>
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">身份证号</view>
+        <view class="weui-cell__bd">
+          <input placeholder="输入身份证号" name="cardNo" value="{{cardNo}}"></input>
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">联系方式</view>
+        <view class="weui-cell__bd">
+          <input placeholder="输入联系电话" name="phone" value="{{phone}}"></input>
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">身份证</view>
+        <view class="weui-cell__bd">
+          <text class="titlePositionz">正面上传</text>
+          <text class="titlePositionf">反面上传</text>
+          <image name="cardPic" src="{{onlineurl+cardPic}}" bindtap="chooseImage1" class="imgCard"></image>
+          <image name="cardPicReverse" src="{{onlineurl+cardPicReverse}}" bindtap="chooseImage2" class="imgCard"></image>
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">行车证</view>
+        <view class="weui-cell__bd">
+          <text class="titlePositionz">正面上传</text>
+          <text class="titlePositionf">反面上传</text>
+          <image name="paperPic" src="{{onlineurl+paperPic}}" id="1" bindtap="chooseImage3" class="imgCard"></image>
+          <image name="paperPicReverse" src="{{onlineurl+paperPicReverse}}" id="2" bindtap="chooseImage4" class="imgCard"></image>
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">驾驶证</view>
+        <view class="weui-cell__bd">
+          <text class="titlePositionz">正面上传</text>
+          <text class="titlePositionf">反面上传</text>
+          <image name="driverPic" src="{{onlineurl+driverPic}}" id="1" bindtap="chooseImage5" class="imgCard"></image>
+          <image name="driverPicReverse" src="{{onlineurl+driverPicReverse}}" id="2" bindtap="chooseImage6" class="imgCard"></image>
+        </view>
+      </view>
+      <view class="weui-cell submit">
+        <view class="weui-cell__bd">
+          <button class="btn cencel" formType="reset" name="Submit">清空</button>
+        </view>
+        <view class="weui-cell__bd" wx:if="{{showSub}}">
+          <button class="btn save" id="showSub" form-type="submit" name="Submit">提交</button>
+        </view>
+        <view class="weui-cell__bd" wx:if="{{showSave}}">
+          <button class="btn save" id="showSave" form-type="submit" name="Submit">修改</button>
+        </view>
+      </view>
+    </view>
+  </form>
+</view>

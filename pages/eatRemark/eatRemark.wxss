@@ -1,0 +1,15 @@
+/* pages/eatRemark/eatRemark.wxss */
+textarea{
+  width: 690rpx;
+  height: 300rpx;
+  background: #f4f5f5;
+  margin: 10px auto;
+  border: 1rpx solid #e1e1e1;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.btn{
+  background: #4D7AD2;
+  color: #fff;
+  border: none;
+}

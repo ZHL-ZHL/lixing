@@ -1,0 +1,30 @@
+<!--pages/shop/shop.wxml-->
+<view class="container">
+   <view class="weui-cell nav">
+     <view wx:for="{{nav}}" wx:key="index" class="weui-cell__bd navItem {{index==current?'active':''}}" bindtap="selNav" data-idx="{{index}}">
+      {{item}}
+    </view>
+   </view>
+   <view class="kang" style="margin:10px auto" wx:for="{{list}}" wx:key="index">
+      <view bindtap="toDetail" data-item="{{item}}">
+        <view class="weui-cell" wx:if="{{item.contractType==0}}">
+            <view class="weui-cell__hd" >入驻合同编号：</view>
+            <view class="weui-cell__bd">{{item.contractId}}</view>
+        </view>
+        <view class="weui-cell"  wx:if="{{item.contractType==1}}">
+            <view class="weui-cell__hd">入驻合同编号：</view>
+            <view class="weui-cell__bd">{{item.feeId}}</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__hd">退租合同编号：</view>
+            <view class="weui-cell__bd">{{item.surrenderId}}</view>
+        </view>
+        <view class="kangItem">
+          <view>申请商户：{{item.companyName}}</view>
+          <view>申请时间：{{item.createTime}} </view>
+          <!-- <view class="status">杨二丫审核中</view> -->
+        </view>
+      </view>
+   </view>
+   <image src="/images/no_content.png" class="queS" hidden="{{noContent}}"></image>
+</view>

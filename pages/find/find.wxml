@@ -1,0 +1,27 @@
+<!--pages/find/find.wxml-->
+<view class="container">
+  <view class="weui-cell group" bindtap="toAdvDeatil">
+    <view class="weui-cell__hd">
+      <image src="{{zlinfo.picture}}" class="thumb"></image>
+    </view>
+    <view class="weui-cell__bd caption">
+      <view class="groupName">{{zlinfo.name}}</view>
+      <view class="groupInfo">{{zlinfo.detail}}</view>
+    </view>
+  </view>
+  <view class="divider">
+    <text>热门推荐</text>
+  </view>
+  <view class="meetingList">
+    <view class="weui-cell meetingListItem" wx:for="{{meetingRoom}}"   hover-class="none" wx:key="index">
+      <view class="weui-cell__hd" bindtap="goDetail" id="{{item.url}}">
+        <image class="thumb" src="{{item.picture}}" mode="aspectFill"></image>
+      </view>
+      <view class="weui-cell__bd" bindtap="goDetail" id="{{item.url}}">
+        <view class="name">{{item.name}}</view>
+        <view class="adr">{{item.address}}</view>
+        <view class="price">￥{{item.price}}元/每小时</view>
+      </view>
+    </view>
+  </view>
+</view>

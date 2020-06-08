@@ -1,0 +1,91 @@
+/* pages/carNumberDetail/carNumberDetail.wxss */
+
+.carNumberDetail {
+  width: 100%;
+  height: 100%;
+}
+
+.imageBanner {
+  width: 100%;
+  height: 300rpx;
+}
+
+.carNumberTitle {
+  font-size: 40rpx;
+  margin-top: 30rpx;
+  text-align: center;
+}
+
+.carNumberTitlenext {
+  text-align: center;
+  font-size: 28rpx;
+  color: #787878;
+  margin-top: 10rpx;
+}
+
+.seeimage {
+  border: 1rpx solid #ccc;
+  color: #ccc;
+  font-size: 24rpx;
+  margin-left: 20rpx;
+  padding: 2rpx 20rpx;
+  vertical-align: middle;
+}
+
+.line {
+  height: 1rpx;
+  background: #f0f0f0;
+  width: calc(100% - 10%);
+  margin: 40rpx auto;
+}
+
+.needMoney {
+  padding: 0rpx 40rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.colorc {
+  margin-left: 20rpx;
+  color: rgb(255, 102, 0);
+}
+
+.needMoneybox {
+  font-weight: bold;
+  font-size: 30rpx;
+  margin-bottom: 28rpx;
+}
+
+.needMoneybox1 {
+  color: #787878;
+  font-size: 26rpx;
+  margin-bottom: 20rpx;
+}
+
+.textFloat {
+  float: right;
+}
+
+.payBtn {
+  text-align: center;
+  line-height: 120rpx;
+  height: 120rpx;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  box-shadow: 0rpx 0rpx 20rpx #ccc;
+}
+
+
+.wrapper1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.block1{
+  width: 120px;
+  height: 120px;
+  background-color: #fff;
+}

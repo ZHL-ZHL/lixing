@@ -1,0 +1,53 @@
+<!--pages/meetingRoom/meetingRoom.wxml-->
+<view class="container">
+    <view class="banner">
+       <swiper 
+          indicator-dots="{{indicatorDots}}"  
+          indicator-color="{{indicatorColor}}" 
+          indicator-active-color="{{indicatorActiveColor}}" 
+          autoplay="{{autoplay}}" 
+          interval="{{interval}}" 
+          duration="{{duration}}" 
+          circular="true">  
+          <block wx:for="{{banner}}" wx:key="{{index}}">  
+              <swiper-item>  
+                <view data-item="{{item}}" hover-class="none" bindtap="toAdvDeatil">  
+                  <image src="{{item.picture}}" class="slide-image" mode="aspectFill"/>  
+                </view>  
+              </swiper-item>  
+          </block>  
+        </swiper>
+    </view>
+    <view class="divider"><text>热门推荐</text></view>
+    <view>
+       <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%;">
+          <navigator id="demo1" class="scroll-view-item_H demo-text-1" wx:for="{{hot}}" wx:key="index" hover-class="none" url="/pages/meetingDetail/meetingDetail?id={{item.itemId}}">
+            <image src="{{item.picture}}" mode="aspectFill"></image>
+            <view class="name">{{item.name}}</view>
+          </navigator>
+        </scroll-view>
+    </view>
+    <view class="divider"><text>会议室推荐</text></view>
+    <view class="meetingList">
+       <navigator 
+        class="weui-cell meetingListItem" 
+        wx:for="{{meetingRoom}}"
+        url="/pages/meetingDetail/meetingDetail?id={{item.id}}"
+        hover-class="none"
+        wx:key="index" > 
+          <view class="weui-cell__hd">
+            <image class="thumb" src="{{onLine+item.leaseImage}}" mode="aspectFill"></image>
+          </view>
+          <view class="weui-cell__bd">
+             <view class="name">{{item.leaseName}}</view>
+             <!-- {{item.leaseAddress}} -->
+             <view class="adr">
+              {{item.leaseAddressName}}-{{item.leaseFloor}}层-{{item.leaseArea}}㎡
+             </view>
+             <view class="price">
+              ￥{{item.leasePriceHours}}/时   ￥{{item.leasePriceDay}}/天
+             </view>
+          </view>
+       </navigator>
+    </view>
+</view>

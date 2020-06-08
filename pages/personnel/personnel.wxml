@@ -1,0 +1,98 @@
+<!--pages/vehicle/vehicle.wxml-->
+<!--pages/visitors/visitors.wxml-->
+<view class="container">
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="list">
+      <view class="weui-cell">
+        <view class="weui-cell__hd">申请人</view>
+        <view class="weui-cell__bd">
+          <input placeholder="输入申请人姓名" name="passName"></input>
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">申请人电话</view>
+        <view class="weui-cell__bd">
+          <input placeholder="输入申请人电话" name="passPhone" type="number"></input>
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">身份证号</view>
+        <view class="weui-cell__bd">
+          <input placeholder="输入身份证号" name="passCard"></input>
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">申请人状态</view>
+        <view class="weui-cell__bd">
+          <van-radio-group value="{{ passType }}" bind:change="onChangeOutSide">
+            <van-radio name="0" class="van-radio-group-item">临时</van-radio>
+            <van-radio name="1" class="van-radio-group-item">固定</van-radio>
+          </van-radio-group>
+        </view>
+      </view>
+      <view class="weui-cell" wx:if="{{!showCompany}}">
+        <view class="weui-cell__hd">入园时间</view>
+        <view class="weui-cell__bd">
+          <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+            <view class="tui-picker-detail">
+              <input disabled="true" value="{{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}:{{dateTimeArray1[5][dateTime1[5]]}}" name="passEntranceTime"></input>
+            </view>
+          </picker>
+          <!-- <input placeholder="选择日期" name="beginTime" disabled></input> -->
+        </view>
+      </view>
+      <view class="weui-cell" wx:if="{{!showCompany}}">
+        <view class="weui-cell__hd">出园时间</view>
+        <view class="weui-cell__bd">
+          <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+            <view class="tui-picker-detail">
+              <input disabled="true" value="{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}:{{dateTimeArray[5][dateTime[5]]}}" name="passOutTime"></input>
+            </view>
+          </picker>
+          <!-- <input placeholder="选择日期" name="beginTime" disabled></input> -->
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">申请人单位</view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindPickerChange" value="{{columns[index].id}}" range-key="{{'company'}}" value="{{index}}" range="{{columns}}">
+            <view class="picker">
+              <input name="passCompanyId" disabled="true" value="{{columns[index].company}}"></input>
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-cell__hd">户籍地址</view>
+        <view class="weui-cell__bd">
+          <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+            <input name="passAddress" disabled="true" value="{{region[0]}} {{region[1]}} {{region[2]}}"></input>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">上传图片</view>
+      <view class="weui-cell__bd">
+        <button type="default" bindtap="chooseImage">+</button>
+      </view>
+    </view>
+    <view class="imageUrlbox" wx:for="{{pictureList}}" wx:for-item="item" wx:key="">
+      <van-icon name="close" class="delImage" bindtap="delImg" id="{{item.url}}" />
+      <image class="imageUrl" src="{{onLine+item.url}}"></image>
+    </view>
+    <view class="line"></view>
+    <view class="weui-cell">来访目的</view>
+    <textarea name="passPurpose"></textarea>
+    <view class="weui-cell submit">
+      <view class="weui-cell__bd">
+        <button class="btn cencel" formType="reset" name="Submit">清空</button>
+      </view>
+      <view class="weui-cell__bd">
+        <button class="btn save" form-type="submit" name="Submit">提交</button>
+      </view>
+    </view>
+  </form>
+</view>

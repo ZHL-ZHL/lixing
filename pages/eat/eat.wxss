@@ -1,0 +1,321 @@
+/* pages/eat/eat.wxss */
+
+.eatBg {
+  height: 350rpx;
+  width: 100%;
+}
+
+.eatBox {
+  height: 350rpx;
+  width: 100%;
+  position: relative;
+}
+
+.eatMark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgb(0, 0, 0, 0.5);
+}
+
+.logo {
+  width: 120rpx;
+  height: 120rpx;
+  display: block;
+  background: #fff;
+  border-radius: 5rpx;
+  box-sizing: border-box;
+  margin-right: 15px;
+}
+
+.canTDetail {
+  align-items: flex-start;
+}
+
+.cantInfo {
+  color: #e1e1e1;
+  font-size: 24rpx;
+  margin-top: 15rpx;
+}
+
+.canTName {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #fff;
+}
+
+.container .van-tabs__line {
+  background-color: #4d7ad2;
+}
+
+.menuBox {
+  display: flex;
+  display: -webkit-flex;
+  width: 100%;
+}
+
+.menuNav {
+  width: 80px;
+  background: #f4f5f5;
+  min-height: 400px;
+  text-align: center;
+}
+.menuNavBox{
+  width: 80px;
+  background: #f4f5f5;
+  min-height: 400px;
+  text-align: center;
+}
+.menuItem{
+  line-height: 80rpx;
+  font-size: 24rpx;
+}
+.menuList {
+  flex: 1;
+}
+.active{
+  background: #fff;
+  color: #000;
+  font-weight: 500;
+}
+.menulistItem .thumb{
+  width: 180rpx;
+  height: 180rpx;
+  display: block;
+  margin-right: 15px;
+  border-radius: 3px;
+}
+.menulistItem .caption{
+  height: 180rpx;
+  position: relative;
+}
+.menulistItem .foodName{
+  font-weight: 500;
+}
+.foodsales{
+  font-size:22rpx;
+  color: #999;
+  padding-top: 10rpx;
+}
+.foodPrice{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: #FF7800;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+.foodPrice1{
+  color: #FF7800;
+  font-size: 28rpx;
+  margin-right: 10px;
+}
+.foodNum{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.foodPrice label{
+  font-size: 24rpx;
+  font-weight: 400;
+}
+.footAdd{
+  width: 48rpx;
+  height: 48rpx;
+  vertical-align: middle;
+}
+.foodValue{
+  display: inline-block;
+  width: 48rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  vertical-align: middle;
+  text-align: center
+}
+.fixCar{
+  position: fixed;
+  bottom: 10px;
+  right: 0;
+  left: 0;
+  height: 100rpx;
+  background: #fff;
+  padding-left: 15px;
+  padding-right: 0;
+  margin: auto;
+  width: 680rpx;
+  box-sizing: border-box;
+  border-radius: 50rpx;
+  box-shadow: 0px 3rpx 21rpx 0px rgba(0, 0, 0, 0.11);
+  z-index: 999;
+}
+.fixCar .kf{
+  font-size: 22rpx;
+  width: 48rpx;
+  height: 48rpx;
+  position: relative;
+  margin-right: 25px;
+}
+.carNum{
+  position: absolute;
+  right: -10px;
+  top: -5rpx;
+  background: #FF7800;
+  color: #fff;
+  width: 15px;
+  line-height: 15px;
+  border-radius: 7px;
+  text-align: center;
+
+
+}
+
+.kfIcon{
+  width: 48rpx;
+  height: 48rpx;
+  display: block;
+  margin: 5rpx auto;
+}
+.kong{
+  height: 130rpx;
+}
+.jsBtn{
+  width: 200rpx;
+  color: #fff;
+  background: #4d7ad2;
+  line-height: 100rpx;
+  text-align: center;
+  border-radius:0 50rpx 50rpx 0 ;
+}
+.carIcon{
+  width: 64rpx;
+  height: 64rpx;
+  display: block;
+}
+.peiSp{
+  font-size: 24rpx;
+  color: #666;
+}
+.totalP{
+  font-size: 32rpx;
+  color: #FF7800;
+  font-weight: 500;
+}
+.totalP label{
+  font-size: 20rpx;
+  font-weight: normal;
+}
+.pos{
+  position: fixed;
+  top: 44px;
+  left: 0;
+}
+.evalList{
+  align-items:flex-start;
+}
+.evalList .avatar{
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 15px;
+}
+.time{
+  color: #999;
+  font-size: 24rpx;
+}
+.evalDetail{
+  font-size: 26rpx;
+  color: #666;
+}
+.orderList{
+  width: 100rpx;
+  height: 100rpx;
+  position: fixed;
+  right: 15px;
+  bottom: 150rpx;
+  z-index: 5;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0px 3rpx 21rpx 0px rgba(0, 0, 0, 0.11);
+  padding-top: 26rpx;
+  box-sizing: border-box;
+}
+.orderList .orderIcon{
+  width: 48rpx;
+  height: 48rpx;
+  display: block;
+  margin: 0 auto;
+}
+
+movable-area {
+  height: 100%;
+  width: 100%;  
+}
+ 
+movable-view { 
+  width: fit-content;
+  height: fit-content; 
+  position: fixed; 
+  z-index: 9999; 
+}
+.container{
+  min-height: 100vh;
+}
+.mark{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.51);
+  z-index: 99;
+}
+.cartList{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 600rpx;
+  background: #fff;
+  z-index: 100;
+}
+.assessImage{
+  width: 180rpx;
+  height: 180rpx;
+  margin: 0 5px;
+}
+.notice .swiper_container {
+  height:40rpx;
+}
+.notice{
+  /* color: # */
+  background: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.notice .swiper_item {
+ font-size: 24rpx;
+ overflow: hidden;
+ line-height: 45rpx;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+ font-weight: 400;
+ letter-spacing: 2px;
+ padding-left: 10rpx;
+ box-sizing: border-box;
+}
+.labaIcon{
+  width: 32rpx;
+  height: 32rpx;
+  display: block;
+  margin-right: 10px;
+}
+.ggIcon{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+}

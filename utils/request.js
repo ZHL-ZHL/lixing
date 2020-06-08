@@ -1,16 +1,17 @@
-var Fly = require("flyio.js")//引入路径根据自己放置的目录配置
+var Fly = require("flyio.js") //引入路径根据自己放置的目录配置
 var fly = new Fly;
 fly.interceptors.request.use((request) => {
   request.timeout = 30000;
   wx.showLoading({
     title: "加载中",
-    mask: true,
   });
-  if (wx.getStorageSync('token')) {//检查本地缓存是否有token存在没有则重新获取
-    request.headers = {//设置请求头
-      'content-type': 'application/json',
-      "Authorization": "Bearer "+wx.getStorageSync('token')
-    }
+  if (wx.getStorageSync('token')) { //检查本地缓存是否有token存在没有则重新获取
+    // request.headers = {//设置请求头
+    //   'content-type': 'application/json',
+    //   "Authorization": "Bearer "+wx.getStorageSync('token')
+    // }
+    const mark = request.url.indexOf('?') > -1 ? '&' : '?'
+    request.url = request.url + mark + 'token=' + wx.getStorageSync('token')
     return request;
   } else {
     // fly.lock();//锁住请求
@@ -35,8 +36,29 @@ fly.interceptors.request.use((request) => {
 
 fly.interceptors.response.use(
   (response) => {
-    wx.hideLoading();
-    return response.data;//请求成功之后将返回值返回
+    if (response.data.code == 401) { 
+      wx.showToast({
+        title: '未登录，请登录',
+        icon: 'none',
+        image: '',
+        mask: true,
+        success: function(res) {
+          wx.clearStorage()
+          wx.switchTab({
+            url: '/pages/my/my',
+          })
+          wx.hideLoading();
+
+        },
+        fail: function(res) {},
+        complete: function(res) {},
+      })
+      return
+    } else {
+      wx.hideLoading();
+      return response.data; //请求成功之后将返回值返回
+    }
+
   },
   (err) => {
     //请求出错，根据返回状态码判断出错原因
@@ -47,6 +69,7 @@ fly.interceptors.response.use(
     } else if (err.status == 1) {
       return "网络连接超时"
     } else if (err.status == 401) {
+
       wx.showToast({
         title: '未登录，请登录',
         icon: 'none',
@@ -54,12 +77,11 @@ fly.interceptors.response.use(
         mask: true,
         success: function(res) {
           wx.clearStorage()
-          wx.navigateTo({
-            url: '/pages/login/login',
-            success: function(res) {},
-            fail: function(res) {},
-            complete: function(res) {},
+          wx.switchTab({
+            url: '/pages/my/my',
           })
+          wx.hideLoading();
+
         },
         fail: function(res) {},
         complete: function(res) {},

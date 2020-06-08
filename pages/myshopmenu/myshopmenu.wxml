@@ -1,0 +1,40 @@
+<!--pages/eat/eat.wxml-->
+
+<view class="container">
+  <view>
+    <view class="menuBox">
+      <view class="menuNavBox">
+        <view class="menuNav {{isFixed?'pos':''}}">
+          <view class="menuItem {{current==idx?'active':''}}" wx:for="{{groupList}}" wx:for-index="idx" wx:key="idx" data-idx="{{idx}}" data-id="{{item.id}}" bindtap="selNav">
+            {{item.dictName}}
+          </view>
+        </view>
+      </view>
+      <view class="menuList">
+        <view class="weui-cell menulistItem" wx:for="{{groupList[current].children}}" wx:for-index="idx" wx:for-item="menuItem" wx:key="idx">
+          <view class="weui-cell__hd thumb">
+            <image src="{{ylink+menuItem.foodPic}}" class="thumb" mode="aspectFill"></image>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="caption">
+              <view class="foodName">{{menuItem.foodName}}</view>
+              <view class="foodsales">
+                菜品销量：{{menuItem.foodResidueCount}}
+              </view>
+              <view class="foodPrice1">
+                <label>￥</label>{{menuItem.foodPrice}}
+              </view>
+              <view class="foodNum">
+                <label class="footAdd" bindtap="toRecommendCencel" data-id="{{menuItem.id}}"  wx:if="{{menuItem.foodRecommend}}">取消推荐</label>
+                <label class="footAdd" bindtap="toRecommend" data-id="{{menuItem.id}}"  wx:else>推荐</label>
+                <label class="footAdd" wx:if="{{menuItem.foodShelf}}" data-id="{{menuItem.id}}" bindtap="toShelf" data-shelf="{{menuItem.foodShelf}}">下架</label>
+                <label class="footAdd" wx:else data-id="{{menuItem.id}}" data-shelf="{{menuItem.foodShelf}}" bindtap="toShelf">上架</label>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="kong"></view>
+      </view>
+    </view>
+  </view>
+</view>

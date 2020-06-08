@@ -1,0 +1,40 @@
+<!--pages/carFee/carFee.wxml-->
+<view class="container">
+   <view class="card ">
+    
+     <view class="weui-cell">
+        <view class="weui-cell__hd qian sqian">
+          <view class="smallCircle">
+             <image src="/images/circle.png" class="jfcircle"></image>
+             <view class="num">{{today}}</view>
+          </view>
+          <view class="zi">当日</view>
+        </view>
+        <view class="weui-cell__bd qian bqian">
+          <view class="bigCircle">
+             <image src="/images/circle.png" class="jfcircle"></image>
+              <view class="num">{{month}}</view>
+          </view>
+          <view class="zi">当月</view>
+        </view>
+     </view>
+      <view class="instructions">
+       截止到昨日停车收费统计
+     </view>
+   </view>
+   <view class="title"><label>当日({{todayData1}})</label></view> 
+   <view class="weui-cell" wx:for="{{todayData.res}}" wx:key="index">
+     <view class="weui-cell__bd">{{item.payType}}</view>
+     <view class="weui-cell__ft price">
+        +{{item.amount/100}}
+     </view>
+   </view>
+   <view class="line"></view>
+   <view class="title"><label>当月({{monthData.date}})</label></view> 
+   <view class="weui-cell" wx:for="{{monthData.res}}" wx:key="index">
+     <view class="weui-cell__bd">{{item.payType}}</view>
+     <view class="weui-cell__ft price">
+        +{{item.amount/100}}
+     </view>
+   </view>
+</view>

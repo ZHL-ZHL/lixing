@@ -1,0 +1,118 @@
+<!--pages/visitors/visitors.wxml-->
+<view class="container">
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="list">
+    <view class="weui-cell">
+      <view class="weui-cell__hd">被访人员</view>
+      <view class="weui-cell__bd">
+        <input placeholder="输入被访人姓名" name="intervieweeName"></input>
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">被访人电话</view>
+      <view class="weui-cell__bd">
+        <input placeholder="输入被访人电话" name="intervieweePhone" type="number"></input>
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">访问地点</view>
+      <view class="weui-cell__bd">
+        <input placeholder="被访人地址" name="address"></input>
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">访问时间</view>
+      <view class="weui-cell__bd">
+      <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+        <view class="tui-picker-detail">
+         <input value="{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}:{{dateTimeArray[5][dateTime[5]]}}" name="beginTime"></input>
+        </view>
+      </picker>
+        <!-- <input placeholder="选择日期" name="beginTime" disabled></input> -->
+      </view>
+    </view>
+  </view>
+  <view class="line"></view>
+  <view class="list">
+    <view class="weui-cell">
+      <view class="weui-cell__hd">来访人：</view>
+      <view class="weui-cell__bd">
+        <input placeholder="输入来访人姓名" name="visitorName"></input>
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">来访人电话</view>
+      <view class="weui-cell__bd">
+        <input placeholder="输入来访人手机号" name="visitorPhone"></input>
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">身份证号</view>
+      <view class="weui-cell__bd">
+        <input placeholder="输入来访人身份证号" name="visitorIdentity"></input>
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">单位</view>
+      <view class="weui-cell__bd">
+        <input placeholder="输入来访人单位" name="visitorCompany"></input>
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">车牌号</view>
+      <view class="weui-cell__bd">
+        <input placeholder="输入车牌号" name="visitorLicense"></input>
+      </view>
+    </view>
+  </view>
+  <view class="line"></view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">同行人员</view>
+    <view class="weui-cell__ft"> 
+        <view class="btn" bindtap="addperson">增加</view>
+    </view>
+  </view>
+  <view class="peerList">
+      <view class="weui-cell" wx:for="{{peerList}}" wx:key="index">
+        <view class="weui-cell__hd">{{item.companionName}}</view>
+        <view class="weui-cell__bd">{{item.companionIdentity}}</view>
+        <view class="weui-cell__ft"></view>
+      </view>
+  </view>
+  <view class="line"></view>
+  <view class="weui-cell">访客目的</view>
+  <textarea  name="remark"></textarea>
+  <view class="weui-cell submit">
+      <view class="weui-cell__bd">
+         <button class="btn cencel" formType="reset" name="Submit" >清空</button>
+      </view>
+      <view class="weui-cell__bd">
+         <button class="btn save" form-type="submit" name="Submit" >提交</button>
+      </view>
+  </view>
+  </form>
+  <view class="mark" hidden="{{show}}">
+     <view class="card">
+         <view class="weui-cell">
+            <view class="weui-cell__hd">同行人姓名：</view>
+            <view class="weui-cell__bd">
+              <input placeholder="输入姓名" bindinput="nameInput" value="{{name}}"></input>
+            </view>
+         </view>
+         <view class="weui-cell">
+            <view class="weui-cell__hd">身份证号：</view>
+            <view class="weui-cell__bd">
+              <input placeholder="输入身份证号" bindinput="sfnumInput" value="{{idcode}}"></input>
+            </view>
+         </view>
+         <view class="weui-cell">
+            <view class="weui-cell__bd">
+               <view class="btn" bindtap="cencelAdd">取消</view>
+            </view>
+            <view class="weui-cell__bd">
+               <view class="btn" bindtap="okAdd">确定</view>
+            </view>
+         </view>
+     </view>
+  </view>
+</view>

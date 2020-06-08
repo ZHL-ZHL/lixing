@@ -1,0 +1,21 @@
+<!--pages/mydiscount/mydiscount.wxml-->
+<view class="container">
+    <view class="weui-cell nav">
+       <view class="weui-cell__bd {{current==index?'active':''}}" wx:for="{{nav}}" wx:key="index" bindtap="selNav" data-idx="{{index}}">{{item}}</view>
+    </view>
+     <view wx:for="{{list}}" wx:key="index" class="weui-cell disItem">
+        <view class="weui-cell__hd price">
+          <text>￥</text>{{item.discountAmount}}
+        </view>
+        <view class="weui-cell__bd">
+          <view class="leaseName">{{item.leaseName}}专享红包</view>
+          <view class="time">限{{item.discountValidity}}使用</view>
+        </view>
+        <view class="weui-cell__ft">
+           <text wx:if="{{item.status==1}}" data-id="{{item.discountId}}" class="btn1" bindtap="getCard1">领取</text>
+           <text wx:if="{{item.status==2}}" class="btn1">使用</text>
+           <text wx:if="{{item.status==3}}" class="btn1">已使用</text>
+        </view>
+     </view>
+     <image src="/images/sheng/youhuiquan.png" class="queS" hidden="{{queS}}"></image>
+</view>

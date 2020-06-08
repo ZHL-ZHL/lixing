@@ -1,0 +1,5 @@
+/* pages/busDetail/busDetail.wxss */
+.map{
+  width: 100%;
+  height: 700rpx;
+}

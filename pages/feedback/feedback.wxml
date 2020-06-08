@@ -1,0 +1,11 @@
+<!--pages/feedback/feedback.wxml-->
+<view class="container">
+  <view class="title weui-cell">问题或意见</view>
+  <textarea 
+    class="content"
+    placeholder="请输入。。。"
+    bindinput="content"
+  >
+  </textarea>
+  <view class="btn" bindtap="submit">提交</view>
+</view>

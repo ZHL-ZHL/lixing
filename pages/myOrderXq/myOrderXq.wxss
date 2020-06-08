@@ -1,0 +1,63 @@
+/* pages/myOrderXq/myOrderXq.wxss */
+page{
+  background: #f4f4f5;
+}
+.address{
+  background: #fff;
+}
+.goodsInfo{
+  background: #fff;
+  margin-top: 10rpx;
+  align-items:start;
+}
+.thumb{
+  width: 180rpx;
+  height: 180rpx;
+  display: block;
+  margin-right: 10px;
+}
+.caption{
+  height: 180rpx;
+  position: relative;
+}
+.caption .info{
+  font-size: 22rpx;
+  margin-top: 8rpx;
+  color: #666;
+}
+.price{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: right;
+  color: #FF7E00;
+  right: 0;
+}
+.price text{
+  color: #333;
+  font-size: 24rpx;
+}
+.operation{
+  background: #fff;
+  border-top: 1rpx solid #e1e1e1;
+}
+.operation .btn{
+  width:159rpx;
+  background:rgba(255,255,255,1);
+  border:1rpx solid #666;
+  border-radius:30rpx;
+  text-align: center;
+  line-height: 50rpx;
+  margin: 0;
+  display: inline-block;
+  color: #666;
+  font-size: 26rpx;
+}
+.orderInfo{
+  background: #fff;
+  padding: 10px 15px;
+  line-height: 2;
+  font-size: 26rpx;
+  margin-top: 10rpx;
+  color: #666;
+}

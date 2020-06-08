@@ -1,0 +1,8 @@
+<!--pages/shapAgree/shapAgree.wxml-->
+<view class="container">
+  <view class="logo">
+     <image src="{{ ylink+rtShop.shopIcon}}"></image>
+  </view>
+  <view class="content">此用户将绑定为 <label>{{rtShop.name}}</label>的管理员，每个商家只可以绑定一位管理员，是否同意绑定为<label>{{rtShop.name}}</label>的管理员</view>
+  <view class="btn" bindtap="toAgree">同意</view>
+</view>

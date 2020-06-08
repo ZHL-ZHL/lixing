@@ -1,0 +1,63 @@
+<!--pages/eatOrder/eatOrder.wxml-->
+<view class="container">
+  
+  <view class="listItem" wx:for="{{list}}" wx:key="index">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">订单号：{{item.orderId}}</view>
+      <view class="weui-cell__ft txOrange">
+      <!-- orderPayState待付款 -->
+         <text wx:if="{{item.orderPayState==93&&item.orderUserStateName==null}}">待支付</text>
+         <text wx:else>{{item.orderUserStateName}}</text>
+      </view>
+    </view>
+    <navigator class="weui-cell orderDetail" 
+    hover-class="none"
+    url="/pages/eatOrderDetail/eatOrderDetail?type=1&id={{item.orderId}}">
+      <view class="weui-cell__hd">
+        <image class="thumb" src="{{ylink+item.shopIcon}}"></image>
+      </view>
+      <view class="weui-cell__bd">
+        <view>下单时间：{{item.createTime}}</view>
+        <view>订单总额：￥ 
+           <label wx:if="{{item.orderPayState==94}}">{{item.orderPrice}}</label>
+           <label wx:if="{{item.orderPayState==93}}">{{item.orderTotalPrice}}</label>
+        </view>
+      </view>
+    </navigator>
+    <view class="operation weui-cell">
+      <view class="weui-cell__bd"> </view>
+      <view class="weui-cell__hd">
+        <!-- <view class="opeatBtn grayBg" 
+        wx:if="{{item.orderShopState==6}}"> 再来一单</view> -->
+        <view class="opeatBtn grayBg" 
+        wx:if="{{(item.orderPayState==94&&item.orderUserState==10)||item.orderPayState==93&&item.orderUserState!=92||item.orderPayState==94&&item.orderUserState==11}}"
+        data-id="{{item.orderId}}"
+        bindtap="toCencel"
+        >取消订单</view>
+        <view class="opeatBtn blueBg" 
+        wx:if="{{item.orderShopState==6}}" 
+        bindtap="toEvaluate"
+        data-id="{{item.orderId}}"
+        >评价</view>
+        <view class="opeatBtn blueBg" 
+        wx:if="{{item.orderPayState==93&&item.orderUserState!=92}}" 
+        bindtap="toPay"
+        data-id="{{item.orderId}}"
+        >去支付</view>
+        <view class="opeatBtn blueBg" 
+        wx:if="{{item.orderShopState==5}}" 
+        bindtap="toEvaluate"
+        data-id="{{item.orderId}}"
+        >已送达</view>
+        <view class="opeatBtn grayBg" 
+        wx:if="{{item.orderShopState==8}}" 
+        bindtap="toLook"
+        data-id="{{item.orderId}}"
+        >退款进度</view>
+        <view class="opeatBtn grayBg" 
+        wx:if="{{item.orderUserState==92}}" 
+        >已完成</view>
+      </view>
+    </view>
+  </view>
+</view>

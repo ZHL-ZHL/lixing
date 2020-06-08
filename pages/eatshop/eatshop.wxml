@@ -1,0 +1,83 @@
+<!--pages/eat/eat.wxml-->
+
+
+<view class="container">
+  <van-tabs active="{{activetab}}" bind:change="onChange" sticky bind:scroll="onScroll">
+    <van-tab wx:for="{{navBar}}" wx:key="index" title="{{item.name}}">
+      <view class="listItem" wx:for="{{list}}" wx:key="index">
+        <view bindtap="toDetail" data-id="{{item.orderId}}">
+          <view class="weui-cell">
+            <view class="weui-cell__bd">
+              <view class="orderNum">
+                <view><label></label>{{item.orderNumber}}</view>
+                <view class="yyTime">
+                  预约时间：{{item.orderAppointmentTime}}
+                </view>
+              </view>
+            </view>
+            <view class="weui-cell__ft txOrange">
+              <text>{{item.orderShopStateName}}</text>
+            </view>
+          </view>
+          <view class="xLine"></view>
+          <view class="userInfo" >
+            <view class="weui-cell">
+              <view class="weui-cell__bd nickname">
+                <label wx:if="{{item.orderType==1}}">(自提){{item.orderUserName}}</label>
+                <label wx:if="{{item.orderType==2}}">(外卖){{item.addrName}}</label>
+                
+              </view>
+              <view class="weui-cell__hd" catchtap="toCall" data-phone="{{item.orderType==1?item.orderPhone:item.addrPhone}}">
+                <image src="/images/f-tel.png" class="telIcon"></image>
+              </view>
+            </view>
+            <view class="con">
+              <!-- <view class="">第3次订餐</view> -->
+              <view class="adr" wx:if="{{item.orderType==2}}">
+              {{item.addrArea}}{{item.companyName}}{{item.addrTotaladdr}}
+              </view>
+              <view class="adr" wx:if="{{item.orderType==1}}">
+              {{item.orderAddress}}
+              </view>
+               
+            </view>
+          </view>
+          <view class="xLine"></view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd nickname">{{item.foodCount}}件商品</view>
+            <view class="weui-cell__hd">
+              (预计收入
+            </view>
+            <view class="price txOrange nickname">
+              <label>￥</label>{{item.orderPrice}}</view>
+            <view>)</view>
+          </view>
+          <view class="remark con">
+            <label class="txOrange">备注：{{item.orderRemark}}</label>
+          </view>
+        </view>
+        <view class="xLine"></view>
+        <view class="weui-cell operation">
+          <view class="weui-cell__bd"></view>
+          <view class="weui-cell__hd">
+            <view class="operaBtn grayBg" wx:if="{{item.orderShopState==3}}" bindtap="toRefuse" data-id="{{item.orderId}}">拒绝</view>
+            <view class="operaBtn blueBg" wx:if="{{item.orderShopState==3}}" bindtap="toaccept" data-id="{{item.orderId}}">接单
+            </view>
+            <view class="operaBtn blueBg" wx:if="{{item.orderShopState==4&&item.orderType==2}}" bindtap="toDelivery" data-id="{{item.orderId}}">开始配送
+            </view>
+            <view class="operaBtn blueBg" wx:if="{{item.orderShopState==4&&item.orderType==1}}" bindtap="tofoodfinish" data-id="{{item.orderId}}">餐已备好
+            </view>
+            <view class="operaBtn blueBg" wx:if="{{item.orderShopState==5}}" bindtap="tofinish" data-id="{{item.orderId}}">已送达
+            </view>
+<view class="operaBtn blueBg" wx:if="{{item.orderShopState==99}}" bindtap="tofinish" data-id="{{item.orderId}}">已完成
+            </view>
+            <view class="operaBtn grayBg" wx:if="{{item.orderShopState==85}}" bindtap="toRefuseCancel" data-id="{{item.orderId}}">拒绝
+            </view>
+            <view class="operaBtn blueBg" wx:if="{{item.orderShopState==85}}" bindtap="toAgreeCancel" data-id="{{item.orderId}}">同意
+            </view>
+          </view>
+        </view>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>

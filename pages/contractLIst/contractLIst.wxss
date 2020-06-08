@@ -1,0 +1,47 @@
+/* pages/contractDetail/contractDetail.wxss */
+/* pages/shop/shop.wxss */
+/* @import "/pages/inventory/inventory.wxss"; */
+
+.nav{
+  padding:10px 0;
+  height: 60rpx;
+  text-align: center;
+  background: #4D7AD2;
+  color: #fff;
+}
+.kangItem{
+  padding:20rpx 30rpx;
+  color: #666;
+  font-size: 26rpx;
+  border-top: 1rpx solid #ededed;
+}
+.active{
+  color: #fff;
+  font-size: 28rpx;
+  position: relative; 
+}
+.active::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right:0;
+  margin: auto;
+  width: 40px;
+  height: 3px;
+  background: rgba(242, 242, 242, 1);
+  bottom: -5px;
+}
+.status{
+  padding-top: 5rpx;
+  color: #fc9a1b;
+}
+.status1{
+  padding-top: 5rpx;
+  color: #1ABC9C;
+}
+.queS{
+  width: 417rpx;
+  height: 324rpx;
+  display: block;
+  margin: 100rpx auto;
+}

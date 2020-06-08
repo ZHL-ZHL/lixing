@@ -1,0 +1,9 @@
+/* pages/advDetail/advDetail.wxss */
+.infoPicture{
+  width: 750rpx;
+  height: 420rpx;
+}
+.content{
+  padding: 10px 15px;
+  text-indent: 2em;
+}

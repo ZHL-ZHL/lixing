@@ -1,0 +1,32 @@
+<!--pages/myvisitorsDetail/myvisitorsDetail.wxml-->
+<view class="container">
+  <view class="info">
+    <view>被访人：{{info.intervieweeName}}</view>
+    <view>被访人电话：{{info.intervieweePhone}}</view>
+    <view>地点：{{info.address}}</view>
+    <view>车牌号：{{info.visitorLicense}}</view>
+    <view>预约时间：{{info.beginTime}}</view>
+  </view>
+  <view class="line"></view>
+  <view class="info">
+    <view>来访人：{{info.visitorName}}</view>
+    <view>身份证号：{{info.visitorIdentity}}</view>
+    <view>来访人电话：{{info.visitorPhone}}</view>
+    <view>单位：{{info.visitorCompany}}</view>
+  </view>
+  <view class="line"></view>
+  <view class="weui-cell">
+    <view class="weui-cell__hd">备注：</view>
+    <view class="weui-cell__bd">
+       <text wx:if="{{info.remark}}">{{info.remark}}</text>
+       <text wx:else>无</text>
+    </view>
+  </view>
+  <view class="line"></view>
+  <view class="info">
+     <view >同行人列表</view>
+     <view wx:for="{{info.list}}" wx:key="index">
+       <view>{{item.companionName}} <text style="padding-left:15px">{{item.companionIdentity}}</text></view>
+     </view>
+  </view>
+</view>

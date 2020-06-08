@@ -1,0 +1,116 @@
+/* pages/car/car.wxss */
+page{
+  background: #fff;
+  border-top: 1rpx solid #ddd;
+}
+.listItem{
+  background: #fff;
+  border-top: 0;
+}
+.weui-media-box__hd_in-appmsg {
+  width: 130rpx;
+  height: 130rpx;
+  display: block;
+}
+
+.listItem .weui-panel__bd {
+  background:#fff;
+  width: 100%;
+}
+.weui-media-box {
+  box-shadow:0px 2rpx 10rpx 0px rgba(0, 0, 0, 0.06);
+}
+.carList{
+  display:flex;
+  justify-content:space-between;
+  width:100%;
+  overflow:hidden;
+}
+.carListItem{
+  -webkit-transition:all 0.4s;
+  transition:all 0.4s;
+  -webkit-transform:translateX(120rpx);
+  transform:translateX(120rpx);
+  margin-left:-120rpx;
+  width: 100%
+}
+.delete {
+  -webkit-transform:translateX(120rpx);
+  transform:translateX(120rpx);
+  -webkit-transition:all 0.4s;
+  transition:all 0.4s;
+  padding: 10px 0;
+}
+.deL{
+  background:#FA6400;
+  height: 95px;
+  width:120rpx;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:30rpx;
+}
+.delete image{
+  width: 45rpx;
+  height: 50rpx;
+  vertical-align: middle;
+}
+.touch-move-active .carListItem,.touch-move-active .delete {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+.total{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 85rpx;
+  right: 0;background: #fff;
+  box-sizing: border-box;
+  line-height: 1;
+  color: #333;
+  font-size: 30rpx;
+  border-top: 1rpx solid #e1e1e1;
+}
+
+.total .jie{
+  color: #fff;
+  text-align: center;
+  width:120rpx;
+  line-height:50rpx;
+  background:rgba(250,100,0,1);
+  border-radius:5rpx;
+}
+
+.listItem .weui-media-box__thumb {
+  width:130rpx;
+  height:130rpx;
+  display:block;
+}
+.queS{
+  width: 375rpx;
+  height: 375rpx;
+  display: block;
+  margin: 0 auto;
+  margin-top: 120rpx;
+}
+.price{
+  padding: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.price .weui-cell__bd{
+  color: #FA6400;
+}
+.caption{
+  height: 130rpx; 
+  position: relative;
+}
+.totalPrice1{
+  color: #FA6400;
+  font-size: 24rpx;
+  padding-right: 20rpx;
+}

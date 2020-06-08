@@ -1,0 +1,124 @@
+<!--pages/eatOrderDetail/eatOrderDetail.wxml-->
+<view class="container">
+  <view class="weui-cell" wx:if="{{type==1}}">
+    <view class="orderUserStateName">
+      <text wx:if="{{detail.orderPayState==93&&detail.orderUserStateName==null}}">待支付 </text>
+      <text wx:else>{{detail.orderUserStateName}}</text>
+    </view>
+  </view>
+  <view class="weui-cell" wx:if="{{type==2}}">
+    <view class="orderUserStateName">{{detail.orderShopStateName}}</view>
+  </view>
+  <view class="card" wx:if="{{type==1}}">
+    <view class="operation weui-cell">
+      <view class="weui-cell__hd">
+        <!-- <view class="opeatBtn grayBg" 
+        wx:if="{{item.orderShopState==6}}"> 再来一单</view> -->
+        <view class="opeatBtn grayBg" wx:if="{{(detail.orderPayState==94&&detail.orderUserState==10)||detail.orderPayState==93&&detail.orderUserState!=92||detail.orderPayState==94&&detail.orderUserState==11}}" data-id="{{detail.orderId}}" bindtap="toCencel">取消订单</view>
+        <view class="opeatBtn blueBg" wx:if="{{detail.orderShopState==6}}" bindtap="toEvaluate" data-id="{{detail.orderId}}">评价</view>
+        <view class="opeatBtn blueBg" wx:if="{{detail.orderPayState==93&&detail.orderUserState!=92}}" bindtap="toPay" data-id="{{detail.orderId}}">去支付</view>
+        <view class="opeatBtn blueBg" wx:if="{{detail.orderShopState==5}}" bindtap="toEvaluate" data-id="{{detail.orderId}}">已送达</view>
+        <view class="opeatBtn grayBg" wx:if="{{detail.orderShopState==8}}" bindtap="toLook" data-id="{{detail.orderId}}">退款进度</view>
+        <view class="opeatBtn grayBg" wx:if="{{detail.orderUserState==92}}">已完成</view>
+      </view>
+    </view>
+  </view>
+  <view class="card" wx:if="{{type==2}}">
+    <view class="operation weui-cell">
+      <view class="weui-cell__hd">
+        <view class="opeatBtn grayBg" wx:if="{{detail.orderShopState==3}}" bindtap="toRefuse" data-id="{{detail.orderId}}">拒绝</view>
+        <view class="opeatBtn blueBg" wx:if="{{detail.orderShopState==3}}" bindtap="toaccept" data-id="{{detail.orderId}}">接单
+        </view>
+        <view class="opeatBtn blueBg" wx:if="{{detail.orderShopState==4&&detail.orderType==2}}" bindtap="toDelivery" data-id="{{detail.orderId}}">开始配送
+        </view>
+            <view class="opeatBtn blueBg" wx:if="{{detail.orderShopState==4&&detail.orderType==1}}" bindtap="tofoodfinish" data-id="{{detail.orderId}}">餐已备好
+            </view>
+
+        <view class="opeatBtn blueBg" wx:if="{{detail.orderShopState==5}}" bindtap="tofinish" data-id="{{detail.orderId}}">已送达
+        
+        </view>
+
+        <view class="opeatBtn grayBg" wx:if="{{detail.orderShopState==85}}" bindtap="toRefuseCancel" data-id="{{detail.orderId}}">拒绝
+        </view>
+        <view class="opeatBtn blueBg" wx:if="{{detail.orderShopState==85}}" bindtap="toAgreeCancel" data-id="{{detail.orderId}}">同意
+        </view>
+      </view>
+    </view>
+    
+  </view>
+  <view class="card">
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <view >备注：</view>
+        <view >{{detail.orderRemark}}</view>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">取餐号：{{detail.orderNumber}}</view>
+    </view>
+    <view class="line"></view>
+    <view class="weui-cell order " wx:for="{{detail.cartVoList}}" wx:key="index">
+      <view class="weui-cell__hd">
+        <image src="{{ylink+item.foodPic}}" class="thumb" mode="aspectFill"></image>
+      </view>
+      <view class="weui-cell__bd">
+        {{item.foodName}}
+      </view>
+      <view class="weui-cell__hd eatNum">x{{item.cartFoodCount}}</view>
+      <view class="weui-cell__hd price">
+        <label>￥</label>{{item.cartFoodPrice}}</view>
+    </view>
+    <view class="line"></view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">包装费</view>
+      <view class="weui-cell__hd">￥{{detail.orderPackagePrice}}</view>
+    </view>
+    <view class="weui-cell" wx:if="{{detail.orderType==2}}">
+      <view class="weui-cell__bd">配送费</view>
+      <view class="weui-cell__hd">￥{{detail.orderDeliverPrice}}</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd"></view>
+      <view class="weui-cell__hd">合计</view>
+      <view class="weui-cell__hd">
+        <label wx:if="{{detail.orderPayState==93}}">￥{{detail.orderTotalPrice}}</label>
+        <label wx:if="{{detail.orderPayState==94}}">￥{{detail.orderPrice}}</label>
+      </view>
+    </view>
+  </view>
+  <view class="peisInfo card">
+    <view class="weui-cell" wx:if="{{detail.orderType==2}}">
+      <view class="weui-cell__bd">配送骑手</view>
+      <view class="weui-cell__hd">{{detail.rtDeliverEntity.deliverName}}</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">期望时间</view>
+      <view class="weui-cell__hd">{{detail.orderAppointmentTime}}</view>
+    </view>
+    <view class="weui-cell" wx:if="{{detail.orderType==2}}">
+      <view class="weui-cell__bd">配送地址</view>
+      <view class="weui-cell__hd">{{detail.addressVo.addrArea}}{{detail.addressVo.companyName}}{{detail.addressVo.addrTotaladdr}}</view>
+    </view>
+    <view class="weui-cell" wx:if="{{detail.orderType==1}}">
+       <view class="weui-cell__bd">取餐人</view>
+       <view class="weui-cell__hd">{{detail.orderUserName}}</view>
+    </view>
+  </view>
+
+  <view class="orderInfo card">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">订单号：</view>
+      <view class="weui-cell__hd">{{detail.orderId}}</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">下单时间：</view>
+      <view class="weui-cell__hd">{{detail.createTime}}</view>
+    </view>
+    <view class="weui-cell" wx:if="{{detail.orderPayState==94}}">
+      <view class="weui-cell__bd">支付方式：</view>
+      <view class="weui-cell__hd">在线支付</view>
+    </view>
+  </view>
+
+</view>

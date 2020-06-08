@@ -1,0 +1,5 @@
+<!--pages/eatRemark/eatRemark.wxml-->
+<view class="container">
+   <textarea placeholder="填写您的备注信息..." bindinput="remarkValue"></textarea>
+   <view class="btn" bindtap="toOver">完成</view>
+</view>

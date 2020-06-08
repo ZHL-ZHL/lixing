@@ -1,0 +1,21 @@
+<!--pages/myvisitors/myvisitors.wxml-->
+<view class="container">
+  <navigator 
+    class="weui-cell" 
+    wx:for="{{list}}"
+    wx:key="index"
+    hover-class="none"
+    url="/pages/myvisitorsDetail/myvisitorsDetail?id={{item.appointmentId}}"
+  >
+    <view class="weui-cell__bd">
+       <view class="name">{{item.visitorName}} <text class="phone">{{item.visitorPhone}}</text></view>
+       <view class="caption">
+         <view class="">被访者：{{item.intervieweeName}}</view>
+         <view class="">到访时间：{{item.beginTime}}</view>
+       </view>
+    </view>
+    <view class="weui-cell__ft">
+       <view class="btn">查看</view>
+    </view>
+  </navigator>
+</view>

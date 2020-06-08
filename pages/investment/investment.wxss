@@ -1,0 +1,146 @@
+/* pages/investment/investment.wxss */
+
+/**index.wxss**/
+
+.header {
+  color: #fff;
+  background: #4d7ad2;
+  padding: 8px 15rpx;
+}
+
+.searchBar {
+  border: 1rpx solid #e1e1e1;
+  /* height: 60rpx; */
+  margin: 0 15rpx;
+  box-sizing: border-box;
+  padding: 8rpx 25rpx;
+  color: #999;
+  background: #fff;
+  border-radius: 30rpx;
+}
+
+.header .weui-cell__ft {
+  color: #fff;
+}
+
+.searchBar .weui-cell__ft {
+  color: #999;
+}
+
+.bannertop swiper, .bannertop .slide-image {
+  width: 750rpx;
+  height: 350rpx;
+  display: block;
+}
+.banner swiper, .banner .slide-image {
+  width: 750rpx;
+  height: 400rpx;
+  display: block;
+}
+
+.nav {
+  padding: 10px 0;
+}
+
+.nav swiper {
+  height: 350rpx;
+}
+
+.iconimage {
+  width: 62rpx;
+  height: 62rpx;
+  display: block;
+  margin: 10rpx auto;
+}
+
+.navItem {
+  width: 25%;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+.iconName {
+  font-size: 26rpx;
+  color: #333;
+}
+
+.circle {
+  text-align: center;
+  line-height: 1;
+}
+
+.cricleItem {
+  width: 50px;
+  height: 3px;
+  background: #e5e5e5;
+  display: inline-block;
+}
+
+.active {
+  background: #4d7ad2;
+}
+
+.ads image {
+  width: 690rpx;
+  height: 350rpx;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 15rpx;
+}
+
+.kong {
+  height: 52px;
+}
+
+.line {
+  width: 750rpx;
+  height: 10rpx;
+  background: #e5e5e5;
+}
+
+.email {
+  display: block;
+  width: 57rpx;
+  height: 57rpx;
+}
+
+.adr {
+  width: 48rpx;
+  height: 48rpx;
+  display: block;
+}
+
+.footer {
+  text-align: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-top: 1rpx solid #e1e1e1;
+  padding: 0;
+  line-height: 50rpx;
+}
+
+.fontCont {
+  font-size: 30rpx;
+  padding: 10px 15px;
+  color: #333;
+}
+
+.online {
+  display: inline-block;
+  width: 40%;
+  height: 100rpx;
+  background: #ef8e3d;
+  color: #fff;
+}
+
+.onlineCall {
+  display: inline-block;
+  width: 60%;
+  height: 100rpx;
+  background: #c3291f;
+  color: #fff;
+}

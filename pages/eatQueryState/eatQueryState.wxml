@@ -1,0 +1,21 @@
+<!--viewages/viewaySuccess/viewaySuccess.wxml-->
+<view class="container">
+  <view class="weui-msg">
+    <view class="weui-msg__icon-area">
+      <icon type="success" class="weui-icon-success weui-icon_msg" size="120" color="#4D7AD2" wx:if="{{data=='SUCCESS'}}"></icon>
+      <!-- {{data}} -->
+      <icon type="waiting" class="weui-icon-success weui-icon_msg" size="120" color="#4D7AD2" wx:if="{{data=='PROCESSING'}}"></icon>
+      <icon type="warn" class="weui-icon-success weui-icon_msg" size="120" color="#4D7AD2" wx:if="{{data=='FAIL'}}"></icon>
+    </view>
+    <view class="weui-msg__text-area">
+      <view class="weui-msg__title">{{msg}}</view>
+    </view>
+    <view class="weui-msg__oviewr-area">
+      <view class="weui-btn-area">
+        <button class="weui-btn weui-btn_viewrimary" color="#ccd63c" bindtap="goback">
+           我知道了
+        </button>
+      </view>
+    </view>
+  </view>
+</view>

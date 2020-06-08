@@ -1,0 +1,37 @@
+<!--pages/myOrderXq/myOrderXq.wxml-->
+<view class="container">
+   <view class="weui-cell address">
+      <view class="weui-cell__bd">
+         <view class="name">服务人：{{info.orderName}} <text></text></view>
+         <view class="addressInfo"> 电话：{{info.orderPhone}}</view>
+      </view>
+   </view>
+   <navigator class="weui-cell goodsInfo" hover-class="none" url="/pages/meetingDetail/meetingDetail?id={{info.itemId}}">
+      <view class="weui-cell__hd">
+          <image src="{{online}}+{{item.picture}}" class="thumb"></image>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="caption">
+          <view class="goodsname">{{info.itemName}}</view>
+          <view class="info">
+            <view>{{info.address}} {{info.area}}平米</view>
+          </view>
+          <view class="price">￥{{info.originalPrice}}</view>
+        </view>
+      </view>
+   </navigator>
+   <view class="weui-cell operation">
+     <view class="weui-cell__bd"></view>
+     <view class="weui-cell__ft">
+        <view class="btn">再来一单</view>
+     </view>
+   </view>
+   <view class="orderInfo">
+      <view>订单号：{{info.orderId}}</view>
+      <view>下单时间：{{info.createTime}}</view>
+      <view>支付方式：在线支付</view>
+      <view>开始时间：{{info.startTime}}</view>
+      <view>结束时间：{{info.endTime}}</view>
+      <view>备注：{{info.remark}}</view>                      
+   </view>
+</view>

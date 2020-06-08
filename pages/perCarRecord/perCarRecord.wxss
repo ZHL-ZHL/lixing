@@ -1,0 +1,33 @@
+/* pages/comCarRecord/comCarRecord.wxss */
+
+.mapBox {
+  width: calc(100% - 20rpx);
+  height: 600rpx;
+  margin: 10rpx;
+  background: #f0f0f0;
+}
+
+.detialBox {
+  width: calc(100% - 20rpx);
+  margin: 10rpx;
+  font-size: 30rpx;
+  color: #363636;
+}
+.detialBox text{
+  vertical-align: middle;
+  display: inline-block;
+}
+.detialBox .detialLable{
+  width: 180rpx;
+}
+.carFileImage{
+  display: inline-block;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 8rpx;
+  vertical-align: top;
+  border: 1rpx solid #ccc;
+}
+.vibox{
+  margin-bottom: 20rpx;
+}

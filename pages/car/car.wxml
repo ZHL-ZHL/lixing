@@ -1,0 +1,60 @@
+<!--pages/car/car.wxml-->
+<view class='container'>
+  <view class='carLIST'>
+    <view class="carList {{item.isTouchMove ? 'touch-move-active' : ''}}" bindtouchstart="touchstart" bindtouchmove="touchmove" data-index="{{index}}" wx:for="{{listItem}}" wx:key="{{index}}">
+      <view class='carListItem'>
+        <view class='weui-cell'>
+          <view class='weui-cell__hd' style='padding-right:20rpx;'>
+            <icon type="success" size="22" color="#FA6400" wx:if="{{item.selected}}" bindtap="selectList" data-index="{{index}}" />
+            <icon type="circle" size="22" color="#dddddd" bindtap="selectList" data-index="{{index}}" wx:else />
+          </view>
+          <view class='weui-cell__bd'>
+            <view class="list">
+              <view class="listItem">
+                <view class="weui-panel__bd">
+                  <view class="weui-media-box weui-media-box_appmsg">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                      <navigator url='/pages/repairDetail/repairDetail?id={{item.itemId}}'>
+                        <image class="weui-media-box__thumb" src="{{onLine+item.picture}}" />
+                      </navigator>
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg caption">
+                      <view class="goods_name">{{item.name}}</view>
+                      <view class="price weui-cell">
+                        <view class='weui-cell__bd'>￥{{item.itemPrice}}</view>
+                        <view class='weui-cell__ft'>
+                          <van-stepper value="{{item.num}}" data-index="{{index}}" bind:plus="plus" bind:change="change" bind:minus="minus"  />
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='delete'>
+        <view class='deL' bindtap='delCar' data-id="{{item.id}}" data-index="{{index}}">删除 </view>
+      </view>
+    </view>
+
+  </view>
+  <view style='height:100rpx;background:#fff'></view>
+  <view class='total weui-cell'>
+    <view class='weui-cell__hd duigou'>
+      <icon type="success" size="22" color="#FA6400" wx:if="{{selectAllStatus}}" bindtap="selectAll" data-index="{{index}}" />
+      <icon type="circle" size="22" color="#dddddd" bindtap="selectAll" data-index="{{index}}" wx:else />
+    </view>
+    <text class='totalPrice' style='padding-left:15rpx'>全选</text>
+    <view class='weui-cell__bd '></view>
+    
+    <view class='weui-cell__hd ' style='text-align:center;'>合计：
+      <text class="totalPrice1">￥{{totalPrice}}</text>
+    </view>
+    <view class='weui-cell__ft  jie' bindtap='calculateTotal'>
+      结算
+    </view>
+  </view>
+  <image src='/images/sheng/no_car@2x.png' class='queS' hidden='{{queS}}'></image>
+</view>

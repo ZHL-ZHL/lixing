@@ -1,0 +1,79 @@
+<!-- <import src="../model/model.wxml"/> -->
+<page>
+  <view class='container'>
+    <view class="top_line"></view>
+    <form bindsubmit='bindSave' report-submit="true" class='forms'>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="item_text">联系人：</view>
+          </view>
+          <view class="weui-cell__bd item_text">
+            <input class="item_input_1" placeholder="请输入联系人" value="{{addressInfo.name}}" name="name" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="item_text">联系方式：</view>
+          </view>
+          <view class="weui-cell__bd item_text">
+            <input class="item_input_1" placeholder="请输入手机号" value="{{addressInfo.phone}}" name="phone" type="number"/>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input" wx:if='{{type==2}}'>
+          <view class="weui-cell__hd">
+            <view class="item_text">园区：</view>
+          </view>
+          <view class="weui-cell__bd item_text">
+            <input class="item_input_1" placeholder="请输入园区" value="{{addressInfo.addrArea}}" name="addrArea" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input" wx:if='{{type==2}}'>
+          <view class="weui-cell__hd">
+            <view class="item_text">公司：</view>
+          </view>
+          <view class="weui-cell__bd item_text">
+
+            <picker bindchange="bindChangeCompany" value="{{columns[index].id}}" range-key="{{'company'}}" value="{{index}}" range="{{companyList}}">
+              <view class="picker">
+                <input name="addrCompanyId" disabled="true" value="{{companyList[index].company}}" placeholder="选择公司"></input>
+              </view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input" wx:if="{{type!=2}}">
+          <view class="weui-cell__hd">
+            <view class="item_text">所在地区：</view>
+          </view>
+          <view class="weui-cell__bd item_text">
+            <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+              <view class="picker">
+                {{region[0]}}-{{region[1]}}-{{region[2]}}
+              </view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="item_text">详细地址：</view>
+          </view>
+          <view class="weui-cell__bd item_text">
+            <input class="item_input_1" placeholder="请输入详细地址" value="{{addressInfo.address}}" name="address" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_switch" wx:if="{{type==1}}">
+          <view class="weui-cell__bd item_text">设为默认地址</view>
+          <view class="weui-cell__ft">
+            <switch bindchange="switchChange" color='#FD7600' wx:if="{{moren==1}}" checked='checked' size="mini" />
+            <switch bindchange="switchChange" color='#FC722E' wx:else size="mini" />
+          </view>
+        </view>
+      </view>
+      <view class="add_address">
+        <view class="add">
+          <button hover-class="none" formType="submit">保存地址</button>
+        </view>
+      </view>
+    </form>
+  </view>
+</page>

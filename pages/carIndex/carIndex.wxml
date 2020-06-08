@@ -1,0 +1,13 @@
+<!--pages/carIndex/carIndex.wxml-->
+<view class="nav">
+  <swiper bindchange="swiperChange">
+    <block wx:for="{{nav}}" wx:key="{{index}}">
+      <swiper-item> 
+        <view class="navItem" wx:for="{{item}}" wx:key-item="item" data-url="{{item.url}}" data-idx="{{idx}}" data-name="{{item.name}}" bindtap="routerTo" wx:key="idx" wx:if="{{item.show}}">
+          <image src="{{item.icon}}" class="iconimage" mode="aspectFill" />
+          <text class="iconName">{{item.name}}</text>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>

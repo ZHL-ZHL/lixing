@@ -1,0 +1,2 @@
+/* pages/eatAddress/eatAddress.wxss */
+@import "/pages/myAdr/myAdr.wxss"

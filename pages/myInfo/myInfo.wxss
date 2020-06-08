@@ -1,0 +1,24 @@
+/* pages/myInfo/myInfo.wxss */
+.avatar{
+  width:108rpx;
+  height:108rpx;
+  border:1rpx solid #4D7AD2;
+  border-radius:50%;
+  display: block;
+}
+.weui-cell::after{
+  height: 1rpx;
+  content: "";
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  bottom: 0;
+  border-bottom: 1rpx solid #e1e1e1;
+}
+.weui-cell__hd{
+  margin-right: 10px;
+  color: #666;
+}
+input{
+  text-align: right;
+}

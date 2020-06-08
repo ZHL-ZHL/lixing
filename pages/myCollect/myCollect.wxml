@@ -1,0 +1,15 @@
+<!--pages/myCollect/myCollect.wxml-->
+<view class="container">
+   <navigator class="weui-cell card" hover-class="none" url="/pages/myCollectList/myCollectList?type=1">
+      <view class="weui-cell__bd">会议室租赁</view>
+      <view class="weui-cell__ft">
+        <image src="/images/icon/r_jt.png" class="r_jt"></image>
+      </view>
+   </navigator>
+    <navigator class="weui-cell card" hover-class="none" url="/pages/myCollectList/myCollectList?type=2">
+      <view class="weui-cell__bd" hover-class="none">维修服务</view>
+      <view class="weui-cell__ft"> 
+        <image src="/images/icon/r_jt.png" class="r_jt"></image>
+      </view>
+   </navigator>
+</view>

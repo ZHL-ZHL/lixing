@@ -1,44 +1,136 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/my/my",
-    "pages/detail/detail",
-    "pages/lease/lease",
     "pages/logs/logs",
-    "pages/message/message",
-    "pages/evaluation/evaluation",
-    "pages/collection/collection",
-    "pages/order/order"
+    "pages/my/my",
+    "pages/find/find",
+    "pages/meetingRoom/meetingRoom",
+    "pages/meetingDetail/meetingDetail",
+    "pages/tjMeeting/tjMeeting",
+    "pages/myOrder/myOrder",
+    "pages/myOrderXq/myOrderXq",
+    "pages/myAdr/myAdr",
+    "pages/myadrAdd/myadrAdd",
+    "pages/repair/repair",
+    "pages/car/car",
+    "pages/repairDetail/repairDetail",
+    "pages/repairOrder/repairOrder",
+    "pages/myCollect/myCollect",
+    "pages/myCollectList/myCollectList",
+    "pages/myInfo/myInfo",
+    "pages/visitors/visitors",
+    "pages/myvisitors/myvisitors",
+    "pages/myvisitorsDetail/myvisitorsDetail",
+    "pages/mydiscount/mydiscount",
+    "pages/distributionOrder/distributionOrder",
+    "pages/feedback/feedback",
+    "pages/advDetail/advDetail",
+    "pages/contract/contract",
+    "pages/contractLIst/contractLIst",
+    "pages/contractDetail/contractDetail",
+    "pages/opinion/opinion",
+    "pages/personnel/personnel",  
+    "pages/investment/investment",
+    "pages/onlineMerchants/onlineMerchants",
+    "pages/eat/eat",
+    "pages/eatCar/eatCar",
+    "pages/eatSubmit/eatSubmit",
+    "pages/eatRemark/eatRemark",
+    "pages/eatOrder/eatOrder",
+    "pages/eatshop/eatshop",
+    "pages/carIndex/carIndex",
+    "pages/carList/carList",
+    "pages/carPersonnel/carPersonnel",
+    "pages/carApply/carApply",
+    "pages/management/management",
+    "pages/reviewPending/reviewPending",
+    "pages/beenCompleted/beenCompleted",
+    "pages/carRecord/carRecord",
+    "pages/carDetail/carDetail",
+    "pages/eatAddress/eatAddress",
+    "pages/evaluate/evaluate",
+    "pages/eatOrderDetail/eatOrderDetail",
+    "pages/comCarRecord/comCarRecord",
+    "pages/perCarRecord/perCarRecord",
+    "pages/myshopmenu/myshopmenu",
+    "pages/eatQueryState/eatQueryState",
+    "pages/myshop/myshop",
+    "pages/shapAgree/shapAgree",
+    "pages/paySuccess/paySuccess",
+    "pages/property/property",
+    "pages/carNumber/carNumber",
+    "pages/carNumberDetail/carNumberDetail",
+    "pages/announcement/announcement",
+    "pages/approvalCar/approvalCar",
+    "pages/bus/bus",
+    "pages/busDetail/busDetail",
+    "pages/busDriver/busDriver",
+    "pages/carFee/carFee"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#4D7AD2",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "white"
   },
-  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-search": "vant-weapp/search",
+    "van-icon": "vant-weapp/icon",
+    "van-row": "vant-weapp/row",
+    "van-col": "vant-weapp/col",
+    "van-cell": "vant-weapp/cell",
+    "van-progress": "vant-weapp/progress",
+    "van-tab": "vant-weapp/tab",
+    "van-tabs": "vant-weapp/tabs",
+    "van-stepper": "vant-weapp/stepper",
+    "van-button": "vant-weapp/button",
+    "van-card": "vant-weapp/card",
+    "van-checkbox": "vant-weapp/checkbox",
+    "van-checkbox-group": "vant-weapp/checkbox-group",
+    "van-radio": "vant-weapp/radio",
+    "van-radio-group": "vant-weapp/radio-group",
+    "van-dialog": "vant-weapp/dialog",
+    "van-rate": "vant-weapp/rate/index",
+    "van-datetime-picker": "vant-weapp/datetime-picker/index",
+    "van-steps": "vant-weapp/steps/index",
+    "van-tag": "vant-weapp/tag/index"
+  },
   "tabBar": {
-    "color": "#888",
-    "selectedColor": "#b11111",
-    "borderStyle": "black",
     "list": [
       {
-        "selectedIconPath": "images/icon/index_sel.png",
-        "iconPath": "images/icon/index.png",
         "pagePath": "pages/index/index",
-        "text": "主页"
+        "text": "首页",
+        "iconPath": "/images/icon/index.png",
+        "selectedIconPath": "/images/icon/index_sel.png"
       },
       {
-        "selectedIconPath": "images/icon/lease_sel.png",
-        "iconPath": "images/icon/lease.png",
-        "pagePath": "pages/lease/lease",
-        "text": "租赁"
+        "pagePath": "pages/find/find",
+        "text": "发现",
+        "iconPath": "/images/icon/find.png",
+        "selectedIconPath": "/images/icon/find_sel.png"
       },
       {
-        "selectedIconPath": "images/icon/my_sel.png",
-        "iconPath": "images/icon/my.png",
         "pagePath": "pages/my/my",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "/images/icon/my.png",
+        "selectedIconPath": "/images/icon/my_sel.png"
       }
-    ]
-  }
+    ],
+    "color": "#fff",
+    "selectedColor": "#fff",
+    "backgroundColor": "#4D7AD2"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "navigateToMiniProgramAppIdList": [
+    "wx54e676273869baa6"
+  ],
+  "requiredBackgroundModes": [
+    "location"
+  ]
 }

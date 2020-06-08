@@ -1,0 +1,31 @@
+/* pages/eatOrderDetail/eatOrderDetail.wxss */
+@import "/pages/eatSubmit/eatSubmit";
+page{
+  background: #f4f5f5;
+}
+.card{
+  background: #fff;
+  border-radius: 10px;
+  width: 690rpx;
+  margin: 10px auto;
+}
+.opeatBtn{
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 30rpx;
+  padding: 0 15px;
+  display: inline-block;
+  margin-right: 10px;
+}
+.blueBg{
+  background: #4D7AD2;
+  color: #fff;
+}
+.grayBg{
+  border: 1rpx solid #333;
+  color: #333;
+}
+
+.orderUserStateName{
+  font-size: 48rpx;
+}

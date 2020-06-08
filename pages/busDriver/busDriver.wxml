@@ -1,0 +1,13 @@
+<!--pages/busDriver/busDriver.wxml-->
+<view class="container">
+  <view class="weui-cell">
+     <view class="weui-cell__hd">
+       <image src="" class="busImg"></image>
+     </view>
+     <view class="weui-cell__bd">
+       <view>车牌号：晋A23823</view>
+       <view>发车时间：8:00</view>
+       
+     </view>
+  </view>
+</view>

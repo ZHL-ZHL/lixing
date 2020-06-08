@@ -1,0 +1,94 @@
+/* pages/myadrAdd/myadrAdd.wxss */
+/* @import '../model/model.wxss'; */
+.weui-cells:after,.weui-cells:before,.weui-cell:before {
+   border:0;  
+}
+.top_line{
+    height: 1px;
+    background-color: #efeff4;
+}
+.add_item{
+    padding: 10px;
+    margin: 0px 10px 0px 10px;
+    border-bottom: 1px solid silver;
+    border-bottom-color: #efeff4;
+    display: flex;
+    font-size: 15px;
+}
+.item_text{
+    padding-top: 3px;
+    color: #666;
+    font-size: 28rpx;
+}
+.item_input{
+    padding-left: 30px;
+    width: 70%;
+}
+.item_input_1{
+    width: 100%;
+    color: #333333;
+    height: 50rpx;
+}
+.item_picker{
+    width: 100%;
+}
+.item_picker1{
+    width: 85%;
+}
+
+.add_address{
+    display: inline-block;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+    right: 0;
+}
+.add{
+    width:640rpx;
+    height:90rpx;
+    background:#4D7AD2;
+    border-radius:45px;
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 15px;
+    margin-left: 5%;
+}
+.add button{
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  color: #fff;
+}
+.add button:after{
+   border: none;
+}
+.weui-cell_input{
+  padding: 10px 15px;
+}
+.weui-cell:before {
+    border-bottom: 1px solid #E6E6E6; 
+}
+.username{
+  color: #333333;
+  padding-left: 15px;
+}
+.addressList{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.mask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5)
+}

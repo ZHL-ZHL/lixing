@@ -1,0 +1,9 @@
+/* pages/announcement/announcement.wxss */
+.card{
+  width: 690rpx;
+  margin: 10px auto;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  border-radius: 10rpx;
+  box-shadow: 0px 3rpx 21rpx 0px rgba(0, 0, 0, 0.11);
+}

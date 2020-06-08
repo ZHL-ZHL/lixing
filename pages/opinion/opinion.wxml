@@ -1,0 +1,11 @@
+<!--pages/opinion/opinion.wxml-->
+<view class="container">
+  <view class="weui-cell">请输入备注</view>
+  <textarea class="textarea" placeholder="请输入备注" bindinput="toContent"></textarea>
+  <view class="" wx:if="{{type==0}}">
+    <view class="weui-cell"></view>
+    <view class="weui-cell">签字</view>
+  </view>
+   <view class="blueBg btn" catchtap="getimg" wx:if="{{type==0}}">完成</view>
+   <view class="blueBg btn" catchtap="updata" wx:if="{{type==1}}">拒绝</view>
+</view>

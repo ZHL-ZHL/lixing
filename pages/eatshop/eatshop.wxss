@@ -1,0 +1,73 @@
+/* pages/eatshop/eatshop.wxss */
+.container .van-tabs__line {
+  background-color: #4d7ad2;
+}
+page{
+  background: #f4f5f5;
+}
+.listItem{
+  width: 690rpx;
+  background: #fff;
+  border-radius: 10px;
+  margin: 10px auto;
+}
+.orderNum{
+  font-size: 48rpx;
+  font-weight: 500;
+  font-style: italic;
+}
+.orderNum label{
+  font-size: 24rpx;
+  font-weight: normal;
+}
+.xLine{
+  height: 1rpx;
+  border-top: 1rpx dotted #e1e1e1;
+  width: 630rpx;
+  margin: 0 auto;
+}
+.nickname{
+  font-size: 32rpx;
+  font-weight: 500;
+}
+.telIcon{
+  width: 48rpx;
+  height: 48rpx;
+  display: block;
+}
+.con{
+  padding: 0 15px;
+  color: #888;
+  font-size: 26rpx;
+  padding-bottom: 10px;
+}
+.goodsNum{
+  padding-top: 10px;
+  padding-left: 15px;
+  font-size: 32rpx;
+  font-weight: 500;
+}
+.price label{
+  font-size: 24rpx;
+  font-weight: normal;
+}
+.operaBtn{
+  display: inline-block;
+  margin-left: 10px;
+  line-height: 60rpx;
+  padding: 0 20px;
+  border-radius: 30rpx;
+}
+.blueBg{
+  background: #4d7ad2;
+  color: #fff;
+}
+.grayBg{
+  border: 1rpx solid #666;
+  box-sizing: border-box;
+}
+.yyTime{
+  font-size: 22rpx;
+  font-weight: 400;
+  font-style: normal;
+}

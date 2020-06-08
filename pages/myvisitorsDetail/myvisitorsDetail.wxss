@@ -1,0 +1,8 @@
+/* pages/myvisitorsDetail/myvisitorsDetail.wxss */
+.line{
+  border-bottom: 10rpx solid #e1e1e1;
+}
+.info{
+  padding: 10px 15px;
+  line-height: 2;
+}

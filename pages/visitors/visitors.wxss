@@ -1,0 +1,106 @@
+/* pages/visitors/visitors.wxss */
+.line{
+  border: 5rpx solid #f4f4f5;
+}
+.list .weui-cell__bd{
+  padding-left: 10px;
+}
+.list .weui-cell__hd{
+  width: 150rpx;
+}
+.list .weui-cell::after{
+  position: absolute;
+  content: "";
+  left: 15px;
+  right: 15px;
+  bottom: 0;
+  height: 1rpx;
+  border-bottom: 1rpx solid #e1e1e1;
+}
+.list .weui-cell:nth-last-child(1)::after{
+  border: none;
+}
+.btn{
+  margin: 0 auto;
+  width:120rpx;
+  line-height:40rpx;
+  background:rgba(0,63,132,1);
+  border-radius:20rpx;
+  color: #fff;
+}
+textarea{
+  width:690rpx;
+  height:195rpx;
+  border:1rpx solid #e1e1e1;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.submit{
+  margin: 10px auto;
+  text-align: center;
+}
+.submit .btn{
+  margin: 0 auto;
+  width: 150rpx;
+}
+.submit .cencel{
+  background: #fff;
+  color: #333;
+}
+.save{
+  font-weight: normal;
+  padding: 0;
+  min-height: 42rpx !important;
+  font-size: 28rpx;
+}
+.cencel{
+  font-weight: normal;
+  padding: 0;
+  min-height: 42rpx !important;
+  font-size: 28rpx;
+}
+.mark{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+.card{
+  background: #fff;
+  width: 650rpx;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 200rpx;
+  z-index: 2;
+  border-radius: 5px;
+  padding-top: 50rpx;
+  padding-bottom: 20rpx;
+}
+.card .weui-cell__hd{
+  width: 180rpx;
+}
+.card_title{
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 32rpx;
+  border-bottom: 1rpx solid #e1e1e1;
+}
+.card_foot{
+  background:rgba(0,63,132,1);
+  color: #fff;
+  line-height: 80rpx;
+  text-align: center;
+}
+.card input{
+  border: 1rpx solid #e1e1e1;
+  padding-left: 10px;
+}
+.peerList .weui-cell__hd{
+  width: 180rpx;
+}

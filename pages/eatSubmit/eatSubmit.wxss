@@ -1,0 +1,107 @@
+/* pages/eatSubmit/eatSubmit.wxss */
+.valueStyle{
+  color: #4D7AD2;
+}
+.line{
+  height: 10rpx;
+  background: #f4f5f5;
+}
+.userName{
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-bottom: 5rpx;
+}
+.addressIcon{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 10px;
+  display: block;
+}
+.r_jt{
+  margin-left: 10px;
+}
+.thumb{
+  width: 100rpx;
+  height: 100rpx;
+  display: block;
+  margin-right: 10px;
+}
+.eatNum{
+  margin-right: 15px;
+  font-size: 22rpx;
+}
+.price{
+  font-weight: 500;
+}
+.price label{
+   font-size: 22rpx;
+}
+.bline::before{
+  position: absolute;
+  left: 15px;
+  right: 0;
+  height: 1rpx;
+  border-top: 1rpx solid #e1e1e1;
+  top: 0;
+}
+.totalPrice{
+  font-size: 32rpx;
+  color: #FF7800
+}
+.fixCar{
+  position: fixed;
+  bottom: 10px;
+  right: 0;
+  left: 0;
+  height: 100rpx;
+  background: #fff;
+  padding-left: 15px;
+  padding-right: 0;
+  margin: auto;
+  width: 680rpx;
+  box-sizing: border-box;
+  border-radius: 50rpx;
+  box-shadow: 0px 3rpx 21rpx 0px rgba(0, 0, 0, 0.11);
+}
+.fixCar .kf{
+  font-size: 22rpx;
+  width: 48rpx;
+  height: 48rpx;
+  position: relative;
+  margin-right: 25px;
+}
+.carNum{
+  position: absolute;
+  right: -10px;
+  top: -5rpx;
+  background: #FF7800;
+  color: #fff;
+  width: 15px;
+  line-height: 15px;
+  border-radius: 7px;
+  text-align: center;
+
+
+}
+.kfIcon{
+  width: 48rpx;
+  height: 48rpx;
+  display: block;
+  margin: 5rpx auto;
+}
+.kong{
+  height: 130rpx;
+}
+.jsBtn{
+  width: 200rpx;
+  color: #fff;
+  background: #4d7ad2;
+  line-height: 100rpx;
+  text-align: center;
+  border-radius:0 50rpx 50rpx 0 ;
+}
+.remark{
+  width: 185px;
+  word-wrap: break-word;
+  word-break: normal;
+}

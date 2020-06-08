@@ -1,0 +1,132 @@
+<!--pages/eatSubmit/eatSubmit.wxml-->
+<view class="container">
+  <picker bindchange="bindChangeYq" value="{{qyIndex}}" range="{{qy}}">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">园区</view>
+      <view class="weui-cell__ft valueStyle" wx:if="{{qyIndex!=null}}">{{qy[qyIndex]}}</view>
+      <view class="weui-cell__ft valueStyle" wx:else>请选择</view>
+      <view class="weui-cell__ft">
+        <image src="/images/icon/r_jt.png" class="r_jt"></image>
+      </view>
+    </view>
+  </picker>
+  
+  <picker bindchange="bindChangePsStyle" value="{{peiIndex}}" range="{{peis}}" disabled="{{disabled}}" wx:if="{{qyIndex!=null}}">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">取餐方式</view>
+      <view class="weui-cell__ft valueStyle" wx:if="{{peiIndex!=null}}">{{peis[peiIndex]}}</view>
+      <view class="weui-cell__ft valueStyle" wx:else>请选择</view>
+      <view class="weui-cell__ft" wx:if="{{qyIndex==0}}">
+        <image src="/images/icon/r_jt.png" class="r_jt"></image>
+      </view>
+    </view>
+  </picker>
+   <picker mode="time" value="{{time}}" bindchange="bindDateChange" start="{{starTime}}"  wx:if="{{qyIndex!=null&&peiIndex!=null}}" end="{{endTime}}">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+         <label wx:if="{{peiIndex==0}}">自提时间</label>
+         <label wx:if="{{peiIndex==1}}">预约配送时间</label>
+      </view>
+      <view class="weui-cell__ft valueStyle">{{time}}</view>
+      <view class="weui-cell__ft">
+        <image src="/images/icon/r_jt.png" class="r_jt"></image>
+      </view>
+    </view>
+  </picker>
+  <view class="weui-cell" wx:if="{{peiIndex!=null}}" bindtap="toAddress">
+    <view class="weui-cell__hd">
+       <image src="/images/address.png" class="addressIcon"></image>
+    </view>
+    <view class="weui-cell__bd" wx:if="{{peiIndex==0}}">
+      <view class="userName">
+        {{rtShop.name}} {{rtShop.managerPhone}}
+      </view>
+      <view>{{rtShop.address}}</view>
+    </view>
+    <view wx:if="{{peiIndex==1}}" class="weui-cell__bd">
+       
+       <view wx:if="{{address}}">
+          <view class="userName">
+            {{address.addrName}} {{address.addrPhone}}
+          </view>
+          <view>{{address.addrArea}}{{address.companyName}}{{address.addrTotaladdr}}</view>
+       </view>
+       <view wx:else>选择地址</view>
+    </view>
+    <view class="weui-cell__ft"  wx:if="{{peiIndex==1}}">
+       <image src="/images/icon/r_jt.png" class="r_jt"></image>
+    </view>
+  </view>
+  <view wx:if="{{peiIndex==0 }}">
+    <view class="weui-cell" >
+      <view class="weui-cell__bd">取餐人姓名</view>
+      <view class="weui-cell__ft">
+          <input placeholder="填写取餐人姓名" class="valueStyle" bindinput="nameInput" value="{{nameInput}}"></input>
+      </view>
+    </view>
+    <view class="weui-cell" >
+     <view class="weui-cell__bd">预留电话</view>
+     <view class="weui-cell__ft">
+        <input placeholder="填写取餐人电话" class="valueStyle" bindinput="phoneInput" value="{{orderPhone}}" type="number"></input>
+     </view>
+  </view>
+  </view>
+  
+
+  <view class="line"></view>
+  <view class="order">
+     <view class="weui-cell" wx:for="{{eatList}}" wx:key="index">
+        <view class="weui-cell__hd">
+          <image src="{{ylink+item.foodPic}}" mode="aspectFill" class="thumb"></image>
+        </view>
+        <view class="weui-cell__bd">{{item.foodName}}</view>
+        <view class="weui-cell__hd eatNum">x{{item.cartFoodCount}}</view>
+        <view class="weui-cell__hd price"><label>￥</label>{{item.cartFoodPrice*item.cartFoodCount}}</view>
+     </view>
+  </view>
+  <view class="weui-cell bline">
+    <view class="weui-cell__bd">包装费</view>
+    <view class="weui-cell__hd price"><label>￥</label>{{bzTotalPrice}}</view>
+  </view>
+  <view class="weui-cell bline" wx:if="{{peiIndex==1}}">
+    <view class="weui-cell__bd">配送费</view>
+    <view class="weui-cell__hd price"><label>￥</label>{{peisFee}}</view>
+  </view>
+  <view class="weui-cell bline ">
+    <view class="weui-cell__bd"></view>
+    <view class="weui-cell__hd">合计：</view>
+    <view class="weui-cell__ft totalPrice" wx:if="{{peiIndex==1}}">
+       <label>￥</label>{{heji1}}
+    </view>
+
+    <view class="weui-cell__ft totalPrice" wx:else>
+       <label>￥</label>{{heji}}
+    </view>
+  </view>
+  <view class="line"></view>
+  <navigator class="weui-cell" hover-class="none" url="/pages/eatRemark/eatRemark">
+     <view class="weui-cell__bd">订单备注</view>
+     <view class="weui-cell__ft">
+        <view class="remark">{{remark}}</view>
+     </view>
+     <view class="weui-cell__ft">
+        <image src="/images/icon/r_jt.png" class="r_jt"></image>
+     </view>
+  </navigator>
+  <view class="kong"></view>
+  <view class="fixCar weui-cell" >
+     <view class="weui-cell__hd">合计：</view>
+     <view class="weui-cell__bd">
+       
+       <view class="totalPrice" wx:if="{{peiIndex==1}}">
+         <label>￥</label>{{heji1}}
+       </view>
+       <view class="totalPrice" wx:else>
+         <label>￥</label>{{heji}}
+       </view>
+     </view>
+     <view class="weui-cell__hd">
+       <view class="jsBtn" bindtap="toSubmit">提交</view>
+     </view>
+  </view>
+</view>

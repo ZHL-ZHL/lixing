@@ -1,6 +1,14 @@
 export default {
-  // host: 'http://192.168.0.112:7070/renren-fast',
-  host: 'https://zlxcx.sumirafamily.com/api/renren-fast',
-  // ?user=ktapi&pwd=050654&key=693207DB8148FBC90D1DBDBB
-  hostCar:'http://120.78.172.249:8099'
+  // imgURL: "http://192.168.0.122:8022/supply/susys", 
+  // host: 'http://192.168.0.108:7070',
+  //  host: 'http://192.168.0.102:7070', 
+  //  host: 'http://192.168.0.101:7070', 
+  //  host: 'http://192.168.0.109:7070',
+  //  host: 'http://192.168.0.108:7070',
+  // <---正式服务地址--->
+  host:'https://zlxcx.sumirafamily.com/api',
+  imgURL: 'https://zlxcx.sumirafamily.com/api/renren-fast',
+  host2: 'http://39.100.156.89/api',
+  imghost: "https://zlxcx.sumirafamily.com/api/renren-fast",
+  // <---正式服务地址--->
 }

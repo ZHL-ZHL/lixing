@@ -1,0 +1,84 @@
+<!--pages/shopDetail/shopDetail.wxml-->
+<view class="container">
+  <view class="list bgWhite">
+    <view class="weui-cell title ">
+      <view class="weui-cell__hd">
+        <text class="blueCircle">商户</text>
+      </view>
+      <view class="weui-cell__bd">
+        <view>{{info.companyName}}</view>
+        <view class="gary {{auditStatus==1?'greenZi':''}}" wx:if="{{auditStatus==0}}">审核通过</view>
+        <view class="gary {{auditStatus==1?'redZi':''}}" wx:if="{{auditStatus==1}}">审核失败</view>
+        <view class="gary" wx:if="{{auditStatus==2}}">待审核</view>
+      </view>
+    </view>
+    <view class="shinfo">
+      <view class="listItem" wx:if="{{info.contractType==0}}"> 
+        <text>申请编号：</text>{{info.contractId}}
+      </view>
+      <view class="listItem" wx:if="{{info.contractType==1}}"> 
+        <text>申请编号：</text>{{info.feeId}}
+      </view>
+      <view class="listItem" wx:if="{{info.contractType==2}}"> 
+        <text>申请编号：</text>{{info.surrenderId}}
+      </view>
+
+      <view class="listItem">
+        <text>申请时间：</text>{{info.createTime}}
+      </view>
+    </view>
+    <navigator class="weui-cell" url="/pages/process/process?id={{contractId}}">
+       <view class="weui-cell__bd">查看合同信息</view>
+       <view class="weui-cell__ft">
+          <image src="/images/jin.png" class="tui"></image>
+       </view>
+    </navigator>
+    
+  </view>
+  <view class="weui-cell"></view>
+    <view class="bgWhite process">
+        <view class="weui-cell">
+           <view class="weui-cell__hd"><text class="blueCircle">客户</text></view>
+           <view class="weui-cell__bd">
+              <view class="identity">申请人</view>
+              <view class="nickname">{{info.companyName}}</view>
+           </view>
+           <view class="weui-cell__ft">{{info.createTime}}</view>
+        </view>
+         <view class="weui-cell" wx:for="{{reviewers}}" wx:key="index">
+           <view class="weui-cell__hd">
+             <view class="blueCircle {{item.signature?'langLine':'sddf'}}">{{item.twozi}} <image src="/images/cheak1.png" class="checkStatu"  wx:if="{{item.checkStatus==2&&(auditStatus!=1)}}"></image>
+                <image src="/images/cheak2.png" class="checkStatu"  wx:if="{{item.checkStatus==0}}"></image>
+                <image src="/images/cheak3.png" class="checkStatu"  wx:if="{{item.checkStatus==1}}"></image>
+             </view>
+           </view>
+           <view class="weui-cell__bd">
+              <view class="identity">
+                  {{item.checkMan.name}}
+                  <text class="nickname" wx:if="{{item.checkStatus==0}}">(审核通过)</text>
+                  <text class="nickname" wx:if="{{item.checkStatus==1}}">(拒绝)</text>
+                  <text class="nickname" wx:if="{{item.checkStatus==2&&(auditStatus!=1)}}">(待审核)</text>
+              </view>
+              <view wx:if="{{item.checkRemark}}" class="checkRemark">
+                  备注：{{item.checkRemark}}
+              </view>
+              <view wx:if="{{item.signature}}">
+                  <image src="{{item.signature+'?access_token='+token}}" class="signature"></image>
+              </view>
+           </view>
+           <view class="weui-cell__ft" wx:if="{{item.checkTime}}">{{item.checkTime}}</view>
+        </view>
+    </view>
+    <view class="kong"></view>
+    <view wx:if="{{type==0}}">
+      <view class="weui-cell" wx:if="{{source.checkMan.id==checkLevel}}">
+        <view class="weui-cell__bd">
+          <view class="pinkBg btn" bindtap="decision" data-type="1"> 拒绝 </view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class="blueBg btn" bindtap="decision" data-type="0">同意</view>
+        </view>
+      </view>
+    </view>
+    
+</view>

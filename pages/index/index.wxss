@@ -1,36 +1,108 @@
 /**index.wxss**/
-.banner,.banner image,swiper{
-  width: 100%;
-  height: 300rpx;
+.header{
+   color: #fff;
+   background: #4D7AD2;
+   padding: 8px 15rpx;
+}
+.searchBar{
+  border: 1rpx solid #e1e1e1;
+  /* height: 60rpx; */
+  margin: 0 15rpx;
+  box-sizing: border-box;
+  padding:8rpx 25rpx;
+  color: #999;
+  background: #fff;
+  border-radius: 30rpx;
+}
+.header .weui-cell__ft{
+  color: #fff;
+}
+.searchBar .weui-cell__ft{
+  color: #999;
+}
+.banner swiper,.banner {
+  width:750rpx;
+  height:250rpx;
   display: block;
 }
 .banner{
+  margin-top: 10px;
+}
+.nav{
+  padding: 10px 0;
+}
+.nav swiper{
+  height: 250rpx;
+}
+.iconimage{
+  width: 62rpx;
+  height: 62rpx;
+  display: block;
+  margin: 10rpx auto;
+}
+.navItem{
+  width: 25%;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+.iconName{
+  font-size: 26rpx;
+  color: #333;
+}
+.circle{
+  text-align: center;
+  line-height: 1;
+}
+.cricleItem{
+  width: 50px;
+  height: 3px;
+  background: #E5E5E5;
+  display: inline-block;
+}
+.active{
+  background: #4D7AD2;
+}
+.ads image{
+  width: 690rpx;
+  height: 190rpx;
+  display: block;
+  margin: 0 auto;
+}
+.kong{
+  height: 20px;
+}
+.line{
+  width:750rpx;
+  height:10rpx;
+  background:#E5E5E5;
+}
+.email{
+  display: block;
+  width:57rpx;
+  height:57rpx;
+}
+.adr{
+  width:48rpx;
+  height:48rpx;
+  display: block;
+}
+.swiperClass {
+  margin: 0;
+  margin-top: 10px;
+}
+.slide-image {
+  width: 100%;
+  height: 250rpx;
+  border-radius: 10px;
   position: relative;
 }
-.nav-list-content-left{
-  float:left;
-}
-.nav-list-content-right{
-  border-left: 260rpx solid #fff;
-}
-.nav-list-content-image{
-  width:260rpx;
-  height:140rpx;
-  border-radius: 8rpx;
-}
-.nav-list-content-right{
-  font-size: 24rpx;
-  text-align: left;
-  margin-left:30rpx;
-  line-height: 32rpx;
-}
-.scroll-view-H ul li{
-  display: inline-block;
-}
-.scroll-view-item-H{
-  display: inline-block;
-  width:440rpx;
-  height:150rpx;
-  margin-right: 40rpx;
-  border-radius: 8rpx;
+image.active {
+  transform: none;
+  transition: all 0.2s ease-in 0s;
+}  
+image.quiet {
+  transform: scale(0.8333333);
+  transition: all 0.2s ease-in 0s;
 }

@@ -1,0 +1,49 @@
+/* pages/evaluate/evaluate.wxss */
+.listItem {
+  border: none;
+}
+.listItem .weui-panel__bd {
+  width:750rpx;
+  background:#fff;
+}
+.list1 .weui-cell{
+  margin-top: 25rpx;
+  background: #fff;
+  font-size: 28rpx;
+}
+.list1 .weui-cell .weui-cell__hd{
+  color: #333;
+}
+.list1 .weui-cell::before{
+  border: none;
+}
+textarea{
+  color:#666;
+  width: 100%;
+  line-height: 1.5;
+  height: 270rpx;
+
+}
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 20rpx;
+}
+.container{
+  border-top: 1rpx solid #ddd;
+}
+page{
+  background: #fff;
+}
+.textarea{
+  background: #F9F9F9;
+  padding:10px 30rpx;
+  width: 690rpx;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+.weui-cell::after,.weui-cell::before{
+  border: none;
+}

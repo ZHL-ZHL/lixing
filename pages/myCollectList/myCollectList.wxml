@@ -1,0 +1,49 @@
+<!--pages/myCollect/myCollect.wxml-->
+<view class='container'>
+  <view wx:if="{{type==1}}">
+    <view class="listItem {{item.isTouchMove ? 'touch-move-active' : ''}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{list}}" wx:key="{{index}}" data-index="{{index}}">
+      <view class="weui-panel__bd collItem">
+        <navigator url="/pages/meetingDetail/meetingDetail?id={{item.itemId}}" class="weui-media-box weui-media-box_appmsg" hover-class="none">
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+            <image class="weui-media-box__thumb" src="{{online+item.itemPicture}}" mode="aspectFill" />
+          </view>
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view class="goods_name">{{item.itemName}}</view>
+            <view class="info">
+              {{item.itemAddress}} {{item.itemFloor}}层 {{item.itemArea}}平方米
+            </view>
+            <view class='price'>￥{{item.itemPricePerHour}}</view>
+          </view>
+        </navigator>
+      </view>
+      <view class='delete' data-id="{{item.id}}" bindtap='delCollect' data-idx="{{index}}">
+        删除
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{type==2}}">
+    <view class="repairList">
+      <navigator 
+        class="repairItem" 
+        wx:for="{{list}}" 
+        wx:key="{{index}}"
+        hover-class="none"
+        url=""
+      >
+        <view class="thumb">
+          <image src="{{online+item.itemPicture}}" mode="aspectFill"></image>
+        </view>
+        <view class="caption weui-cell">
+          <view class="weui-cell__bd">
+            <view class="name">{{item.itemName}}</view>
+            <view class="price">￥{{item.itemMaintenancePrice}}</view>
+          </view>
+          <view class="weui-cell__hd like">
+            <van-icon name="like" class="#ff0000" size="20px" />
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <image src='/images/sheng/no_collect.png' class='queS' hidden='{{queS}}'></image>
+</view>

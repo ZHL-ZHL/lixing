@@ -1,0 +1,11 @@
+<!--pages/announcement/announcement.wxml-->
+<view class="container">
+   <view class="card" wx:for="{{list}}" wx:key="index">
+      <view >消毒项目：{{item.sipProjectName}}</view>
+      <view >消毒时间：{{item.sipTime}}</view>
+      <view >消毒人员：{{item.sipMan}}</view>
+      <view >责任人：{{item.sipManager}}</view>
+      <view >消毒方式：{{item.sipMethod}}</view>
+      <view >消毒剂：{{item.sipDisinfectant}}</view>
+   </view>
+</view>

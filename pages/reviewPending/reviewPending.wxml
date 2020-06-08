@@ -1,0 +1,40 @@
+<!--pages/comCarRecord/comCarRecord.wxml-->
+<view>
+  <view class="detialBox">
+    <view class="mapBox">
+      <map id="map" include-points="{{includePoints}}" markers="{{markers}}" polyline="{{polyline}}" show-location style="width: 100%; height: 300px;"></map>
+    </view>
+    <view class="vibox">
+      <text class="detialLable">使用时间：</text>
+      <text>{{userStratTime}} - {{userEndTime}}</text>
+    </view>
+    <view class="vibox">
+      <text class="detialLable">起 点：</text>
+      <text>{{starting}}</text>
+    </view>
+    <view wx:for="{{viaPointList}}">
+      <text class="detialLable">途 径：</text>
+      <text>{{item.address}}</text>
+    </view>
+    <view class="vibox">
+      <text class="detialLable">终 点：</text>
+      <text>{{end}}</text>
+    </view>
+    <view class="vibox">
+      <text class="detialLable">事件原因：</text>
+      <text>{{reason}}</text>
+    </view>
+    <view class="vibox">
+      <text class="detialLable">附件：</text>
+      <image wx:for="{{attachments}}" class="carFileImage" src="{{onLine+item.url}}"></image>
+    </view>
+    <view class="vibox">
+      <view class="detialLable">开始里程：</view>
+      <text class="titlePositionz" bindtap="chooseImage" wx:if="{{!mileageStartPic}}">+</text>
+      <image wx:if="{{mileageStartPic}}" bindtap="chooseImage" src="{{onLine + mileageStartPic}}" class="imgCard "></image>
+    </view>
+    <view class="weui-cell submit">
+      <button class="btn save" catchtap="updateCompanyMileagebtn" id="{{id}}">开始用车</button>
+    </view>
+  </view>
+</view>

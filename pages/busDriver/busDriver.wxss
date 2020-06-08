@@ -1,0 +1,7 @@
+/* pages/busDriver/busDriver.wxss */
+.busImg{
+  width: 180rpx;
+  height: 180rpx;
+  margin-right: 15px;
+  display: block;
+}

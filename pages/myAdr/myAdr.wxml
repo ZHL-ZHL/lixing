@@ -1,0 +1,26 @@
+<!--pages/myadr/myadr.wxml-->
+<view class='container'>
+   <view class="list {{item.isTouchMove ? 'touch-move-active' : ''}}" bindtouchstart="touchstart" bindtouchmove="touchmove" data-index="{{index}}" wx:for="{{adrList}}" wx:key="{{index}}">
+      <view class="adrList" >
+          <view class='adrItem' bindtap='Toque' data-item="{{item}}">
+            <view class='weui-cell userInfo' >
+                <view class='weui-cell__hd'>{{item.name}}</view>
+                <view class='weui-cell__bd'>{{item.phone}} </view>
+                <view class='weui-cell__ft'>
+                  <view catchtap='toedit' data-id="{{item.id}}" data-item="{{item}}">
+                     <image src='../../images/my/edit.png'  class='edit'></image>
+                  </view>
+                </view>
+            </view>
+            <view class='adrXq'><text wx:if="{{item.tag==1}}">默认</text>{{item.provinces}}{{item.address}}</view>
+          </view>
+      </view>
+      <view class='delete'  data-id="{{item.id}}" bindtap='delAdr' data-idx='{{index}}'>删除</view>
+   </view>
+   <image src='/images/sheng/no_address.png' hidden='{{queS}}' class='queS'></image>
+   <view style='110rpx;'></view>
+   <view class='foot_btn'>
+      <view class='btn'><navigator url='/pages/myadrAdd/myadrAdd' hover-class='none'>新建地址</navigator>
+      </view>
+   </view>
+</view>

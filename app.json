@@ -69,9 +69,9 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#4D7AD2",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
   },
   "usingComponents": {
     "van-search": "vant-weapp/search",
@@ -100,25 +100,25 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "/images/icon/index.png",
-        "selectedIconPath": "/images/icon/index_sel.png"
+        "iconPath": "/images/tabbar/index_sel.png",
+        "selectedIconPath": "/images/tabbar/index_sel.png"
       },
       {
         "pagePath": "pages/find/find",
         "text": "中鲁商城",
-        "iconPath": "/images/icon/find.png",
-        "selectedIconPath": "/images/icon/find_sel.png"
+        "iconPath": "/images/tabbar/shop_sel.png",
+        "selectedIconPath": "/images/tabbar/shop.png"
       },
       {
         "pagePath": "pages/my/my",
         "text": "我的",
-        "iconPath": "/images/icon/my.png",
-        "selectedIconPath": "/images/icon/my_sel.png"
+        "iconPath": "/images/tabbar/my.png",
+        "selectedIconPath": "/images/tabbar/my_sel.png"
       }
     ],
-    "color": "#fff",
-    "selectedColor": "#fff",
-    "backgroundColor": "#4D7AD2"
+    "color": "#666",
+    "selectedColor": "#333",
+    "backgroundColor": "#fff"
   },
   "permission": {
     "scope.userLocation": {
@@ -127,9 +127,6 @@
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "navigateToMiniProgramAppIdList": [
-    "wx54e676273869baa6"
-  ],
   "requiredBackgroundModes": [
     "location"
   ]

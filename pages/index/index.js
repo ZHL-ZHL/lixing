@@ -16,113 +16,83 @@ var bmap = require('../../utils/bmap-wx.min.js')
 Page({
   data: {
     banner: [],
+    banner1: [{picture:"/images/banner/banner.png"}],
     cityName: "",
     nav: [
-      [{
-          icon: "/images/icon/1.png",
-          name: "智慧停车",
-          // url: ""
-          url: "/pages/carNumber/carNumber",
-          show: true
-        },
-        {
-          icon: "/images/icon/5.png",
-          name: "我要吃饭",
-          url: "/pages/eat/eat",
-          show: true
-        },
-        {
-          icon: "/images/icon/6.png",
-          name: "在线招商",
-          url: "/pages/investment/investment",
-          show: true
-        },
-        
-        {
-          icon: "/images/icon/3.png",
-          name: "会议室租赁",
-          url: "/pages/meetingRoom/meetingRoom",
-          show: true
-        },
-        {
-          icon: "/images/icon/7.png",
-          name: "维修服务",
-          url: "/pages/repair/repair",
-          show: true
-        },
-        {
-          icon: "/images/icon/9.png",
-          name: "配送订单",
-          url: "/pages/distributionOrder/distributionOrder",
-          show: true
-        },
-        {
-          icon: "/images/icon/clgl.png",
-          name: "车辆管理",
-          url: "/pages/carIndex/carIndex",
-          show: false
-        }, {
-          icon: "/images/bus.png",
-          name: "运单查询",
-          url: "/pages/bus/bus?type=1",
-          show: true
-        },
-        {
-          icon: "/images/icon/2.png",
-          name: "访客预约",
-          url: "/pages/visitors/visitors",
-          show: true
-        },
-        // {
-        //   icon: "/images/icon/6.png",
-        //   name: "金融服务",
-        //   url: "",
-        //   show: true
-        // },
-
-        // {
-        //   icon: "/images/icon/8.png",
-        //   name: "企业培训",
-        //   url: ""
-        // },
-      ],
-      [
-
-        // {
-        //   icon: "/images/icon/2.png",
-        //   name: "访客预约",
-        //   url: "/pages/visitors/visitors",
-        //   show: true
-        // },
-        {
-          icon: "/images/icon/8.png",
-          name: "企业服务",
-          url: "",
-          show: true
-        },
-        {
-          icon: "/images/icon/4.png",
-          name: "物业",
-          url: "/pages/property/property",
-          show: false
-        },
-        {
-          icon: "/images/driver.png",
-          name: "司机",
-          url: "/pages/bus/bus?type=2",
-          show: false
-        },
-       
-      ],
+      {
+        icon: "/images/icon1/nav1.png",
+        name: "智慧停车",
+        // url: ""
+        url: "/pages/carNumber/carNumber",
+        show: true
+      },
+      {
+        icon: "/images/icon1/nav2.png",
+        name: "我要吃饭",
+        url: "/pages/eat/eat",
+        show: true
+      },
+      {
+        icon: "/images/icon1/nav3.png",
+        name: "会议室租赁",
+        url: "/pages/meetingRoom/meetingRoom",
+        show: true
+      },
+      {
+        icon: "/images/icon1/nav4.png",
+        name: "访客预约",
+        url: "/pages/visitors/visitors",
+        show: true
+      },
+      {
+        icon: "/images/icon1/nav5.png",
+        name: "在线招商",
+        url: "/pages/investment/investment",
+        show: true
+      },
+      
+      {
+        icon: "/images/icon1/nav6.png",
+        name: "运单查询",
+        url: "/pages/bus/bus?type=1",
+        show: true
+      },
+      {
+        icon: "/images/icon1/nav7.png",
+        name: "配送订单",
+        url: "/pages/distributionOrder/distributionOrder",
+        show: true
+      },
+      {
+        icon: "/images/icon1/nav8.png",
+        name: "维修服务",
+        url: "/pages/repair/repair",
+        show: true
+      },
+      {
+        icon: "/images/icon1/nav9.png",
+        name: "企业服务",
+        url: "",
+        show: true
+      },
+      {
+        icon: "/images/icon1/nav10.png",
+        name: "更多内容",
+        url: "",
+        show: true
+      },
     ],
     indicatorDots: true, //小点
     indicatorColor: "white",
     autoplay: true, //是否自动轮播
     interval: 3000, //间隔时间
     duration: 500, //滑动时间
-    indicatorActiveColor: "#4D7AD2",
+    indicatorActiveColor: "#FFE400",
     current: 0,
-    swiperIndex: 0
+    swiperIndex: 0,
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    Custom: app.globalData.Custom
   },
   bindchange(e) {
     this.setData({
@@ -155,26 +125,36 @@ Page({
   },
   onLoad: function() {
     let that = this;
-    homeBanner().then(res => {
-      if (res.code == 0) {
-        //  res.data.forEach(item => { 
-        //    item.picture = imageUrl.imgURL + item.picture
-        //  })
-        console.log(res.data)
-        this.setData({
-          banner: res.data
-        })
-      }
-    }).catch(res => {
+    // homeBanner().then(res => {
+    //   if (res.code == 0) {
+    //     //  res.data.forEach(item => { 
+    //     //    item.picture = imageUrl.imgURL + item.picture
+    //     //  })
+    //     console.log(res.data)
+    //     this.setData({
+    //       banner: res.data
+    //     })
+    //   }
+    // }).catch(res => {
 
-    })
-    let query = wx.createSelectorQuery()
-    console.log(query)
+    // })
+    // let query = wx.createSelectorQuery()
+    // console.log(query)
     // indexAdv().then(res=>{
 
     // }).catch(res=>{
 
     // })
+    wx.getImageInfo({
+      src: '/images/bottom.png',
+      success:res=>{
+        console.log(res)
+        this.setData({
+          imgWidth:res.width,
+          imgHeight:res.height,
+        })
+      }
+    })
 
   },
   toAdv(e) {

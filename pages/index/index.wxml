@@ -1,78 +1,61 @@
 <!--index.wxml-->
 <view class="container">
-  <view class='weui-cell header'>
-    <view class="weui-cell__hd" bindtap="openSet">
-      <image src="/images/icon/address.png" class="adr"></image>
-    </view>
-    <view class="weui-cell__hd">{{cityName}}</view>
-    <view class="weui-cell__bd">
-      <view class="searchBar weui-cell">
-        <view class="weui-cell__bd">请输入关键字</view>
-        <view class="weui-cell__ft">
-          <van-icon name="search" size="16px" />
+	<view class="cu-custom" style="height:{{CustomBar}}px">
+		<view class="cu-bar fixed " style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+			<view class="content" style="top:{{StatusBar}}px">
+				<view class="weui-cell " style="height:{{CustomBar-StatusBar}}px">
+           <view class="weui-cell__hd address">{{cityName}}</view>
+           <view class="weui-cell__bd">
+               <input placeholder="请输入..."></input>
+           </view>
+					 <view class="weui-cell__ft">
+					    <image src="/images/news.png" class="news"></image>
+					 </view>
         </view>
-      </view>
-    </view>
-    <view class="weui-cell__ft">
-      <image src="/images/icon/email.png" class="email"></image>
-    </view>
-  </view>
-  <view class="banner">
-    <swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" next-margin="40px" previous-margin="40px"  bindchange="bindchange" >
-      <block wx:for="{{banner}}" wx:key="{{index}}">
-        <swiper-item>
-          <view data-item="{{item}}" hover-class="none" bindtap="toAdv">
-            <image src="{{item.picture}}" class="slide-image {{swiperIndex == index ? 'active' : 'quiet'}}"  mode="aspectFill" />
-          </view>
-        </swiper-item>
-      </block>
-    </swiper>
-  </view>
-  <view class="nav">
-    <swiper bindchange="swiperChange">
-      <block wx:for="{{nav}}" wx:key="{{index}}">
-        <swiper-item>
-          <block  wx:for="{{item}}" wx:key-item="item"  wx:key="idx" >
-            <view class="navItem" data-url="{{item.url}}" data-idx="{{idx}}" data-name="{{item.name}}" bindtap="routerTo" wx:if="{{item.show}}">
-              <image src="{{item.icon}}" class="iconimage" mode="aspectFill" />
-              <text class="iconName">{{item.name}}</text>
-            </view>
-          </block>
-          
-        </swiper-item>
-      </block>
-    </swiper>
-    <view class="circle">
-      <view class="cricleItem {{index==current?'active':''}}" wx:for="{{nav}}" wx:key="index"></view>
-    </view>
-  </view>
-  <view class="line"></view>
-  <view class="weui-cell">智慧停车</view>
-  <!--  bindtap="toPark" -->
-  <view class="ads">
-    <navigator url="/pages/carNumber/carNumber" hover-class="none">
-      <image src="/images/tingche.jpeg" mode="aspectFill"></image>
-    </navigator> 
-  </view> 
-  <view class="weui-cell">我要吃饭</view>
-  <view class="ads">
-    <navigator url="/pages/eat/eat" hover-class="none">
-      <image src="/images/eat.jpg" mode="aspectFill"></image>
-    </navigator>
-  </view>
-  <view class="weui-cell">会议室租赁</view>
-  <view class="ads">
-    <navigator url="/pages/eat/meetingRoom" hover-class="none">
-      <image src="/images/timg.jpg" mode="aspectFill"></image>
-    </navigator>
-  </view>
-  <!-- <view class="weui-cell">维修</view>
-  <view class="ads">
-    <navigator url="/pages/repair/repair" hover-class="none">
-      <image src="/images/banner1.jpg" mode="aspectFill"></image>
-    </navigator>
-  </view> -->
-  <view class="kong"></view>
-  <view></view>
-  <!-- <view bindtap="scan">分享二维码</view> -->
+			</view>
+		</view>
+	</view>
+	<view class="banner">
+		<swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true"  bindchange="bindchange">
+			<block wx:for="{{banner1}}" wx:key="{{index}}">
+				<swiper-item>
+					<view data-item="{{item}}" hover-class="none" bindtap="toAdv">
+						<image src="{{item.picture}}" class="slide-image" mode="aspectFill" />
+					</view>
+				</swiper-item>
+			</block>
+		</swiper>
+	</view>
+	<view class="nav">
+		<block wx:for="{{nav}}" wx:key-item="item" wx:key="idx">
+			<view class="navItem" data-url="{{item.url}}" data-idx="{{idx}}" data-name="{{item.name}}" bindtap="routerTo" wx:if="{{item.show}}">
+				<image src="{{item.icon}}" class="iconimage" mode="aspectFill" />
+				<text class="iconName">{{item.name}}</text>
+			</view>
+		</block>
+	</view>
+	<image src="/images/bottom.png" style="width:{{imgWidth}}rpx;height:{{imgHeight}}rpx"></image>
+	<view class="cart">
+	  <image src="/images/car.png"></image>
+	</view>
+	<!-- <cover-image src="/images/bottom.png"></cover-image> -->
+	<!-- <view class="line"></view>
+	<view class="weui-cell">智慧停车</view>
+	<view class="ads">
+		<navigator url="/pages/carNumber/carNumber" hover-class="none">
+			<image src="/images/tingche.jpeg" mode="aspectFill"></image>
+		</navigator>
+	</view>
+	<view class="weui-cell">我要吃饭</view>
+	<view class="ads">
+		<navigator url="/pages/eat/eat" hover-class="none">
+			<image src="/images/eat.jpg" mode="aspectFill"></image>
+		</navigator>
+	</view>
+	<view class="weui-cell">会议室租赁</view>
+	<view class="ads">
+		<navigator url="/pages/eat/meetingRoom" hover-class="none">
+			<image src="/images/timg.jpg" mode="aspectFill"></image>
+		</navigator>
+	</view> -->
 </view>

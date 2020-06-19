@@ -6,7 +6,7 @@
   left: 0;
   right: 0;
   height: 200px;
-  background: #4d7ad2;
+  background: #FFE400;
   z-index: -1;
 }
 

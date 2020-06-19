@@ -19,7 +19,7 @@
   height: 24rpx;
 }
 .mainColor{
-  color: #4D7AD2;
+  color: #FFE400;
 }
 .btn{
   width: 300rpx;

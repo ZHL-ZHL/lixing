@@ -44,8 +44,8 @@ page{
   height: 250rpx;
 }
 .iconimage{
-  width: 90rpx;
-  height: 90rpx;
+  width: 80rpx;
+  height: 80rpx;
   display: block;
   margin: 10rpx auto;
 }

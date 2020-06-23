@@ -20,63 +20,63 @@ Page({
     cityName: "",
     nav: [
       {
-        icon: "/images/icon1/nav1.png",
+        icon: "/images/icon1/nav8.png",
         name: "智慧停车",
         // url: ""
         url: "/pages/carNumber/carNumber",
         show: true
       },
       {
-        icon: "/images/icon1/nav2.png",
+        icon: "/images/icon1/nav6.png",
         name: "我要吃饭",
         url: "/pages/eat/eat",
         show: true
       },
       {
-        icon: "/images/icon1/nav3.png",
+        icon: "/images/icon1/nav7.png",
         name: "会议室租赁",
         url: "/pages/meetingRoom/meetingRoom",
         show: true
       },
       {
-        icon: "/images/icon1/nav4.png",
+        icon: "/images/icon1/nav10.png",
         name: "访客预约",
         url: "/pages/visitors/visitors",
         show: true
       },
       {
-        icon: "/images/icon1/nav5.png",
+        icon: "/images/icon1/nav9.png",
         name: "在线招商",
         url: "/pages/investment/investment",
         show: true
       },
       
       {
-        icon: "/images/icon1/nav6.png",
+        icon: "/images/icon1/nav5.png",
         name: "运单查询",
         url: "/pages/bus/bus?type=1",
         show: true
       },
       {
-        icon: "/images/icon1/nav7.png",
+        icon: "/images/icon1/nav1.png",
         name: "配送订单",
         url: "/pages/distributionOrder/distributionOrder",
         show: true
       },
       {
-        icon: "/images/icon1/nav8.png",
+        icon: "/images/icon1/nav2.png",
         name: "维修服务",
         url: "/pages/repair/repair",
         show: true
       },
       {
-        icon: "/images/icon1/nav9.png",
+        icon: "/images/icon1/nav4.png",
         name: "企业服务",
         url: "",
         show: true
       },
       {
-        icon: "/images/icon1/nav10.png",
+        icon: "/images/icon1/nav3.png",
         name: "更多内容",
         url: "",
         show: true

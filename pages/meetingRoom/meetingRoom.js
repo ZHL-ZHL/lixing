@@ -83,6 +83,7 @@ Page({
           load: loadMore,
           meetingRoom:list
         })
+        console.log(this.data.meetingRoom)
       }else{
 
       }

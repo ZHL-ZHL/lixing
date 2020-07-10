@@ -29,7 +29,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.11.0",
 	"appid": "wxfef791981a5dcf72",
-	"projectname": "%E5%9B%AD%E5%8C%BA",
+	"projectname": "zhyq-user-c",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
@@ -974,6 +974,20 @@
 					"id": -1,
 					"name": "pages/carNumber/carNumber",
 					"pathName": "pages/carNumber/carNumber",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetingRoom/meetingRoom",
+					"pathName": "pages/meetingRoom/meetingRoom",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetingRoom/meetingRoom",
+					"pathName": "pages/meetingRoom/meetingRoom",
 					"scene": null
 				}
 			]

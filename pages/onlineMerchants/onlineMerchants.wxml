@@ -3,64 +3,64 @@
   <form bindsubmit="formSubmit" bindreset="formReset">
     <view class="list">
       <view class="weui-cell">
-        <view class="weui-cell__hd">公司名称</view>
+        <view class="weui-cell__hd">公司名称:</view>
         <view class="weui-cell__bd">
-          <input placeholder="输入公司名称"  name="companyName"></input>
+          <input placeholder="请填写公司名称" name="companyName"></input>
         </view>
       </view>
       <view class="weui-cell">
-        <view class="weui-cell__hd">联系人</view>
+        <view class="weui-cell__hd">联系人:</view>
         <view class="weui-cell__bd">
-          <input placeholder="输入姓名" name="name"></input>
+          <input placeholder="请填写姓名" name="name"></input>
         </view>
       </view>
       <view class="weui-cell">
-        <view class="weui-cell__hd">联系方式</view>
+        <view class="weui-cell__hd">联系方式:</view>
         <view class="weui-cell__bd">
-          <input placeholder="输入电话" name="phone" type="number"></input>
+          <input placeholder="请填写区号&座机号或者手机号" name="phone" type="number"></input>
         </view>
       </view>
       <view class="weui-cell">
-        <view class="weui-cell__hd">邮箱</view>
+        <view class="weui-cell__hd">邮箱:</view>
         <view class="weui-cell__bd">
-          <input placeholder="输入邮箱" name="email"></input>
+          <input placeholder="请填写电子邮箱地址" name="email"></input>
         </view>
       </view>
       <view class="weui-cell">
-        <view class="weui-cell__hd">公司地址</view>
+        <view class="weui-cell__hd">公司地址:</view>
         <view class="weui-cell__bd">
-          <input placeholder="输入公司地址" name="address"></input>
+          <input placeholder="请填写公司详细地址" name="address"></input>
         </view>
       </view>
       <view class="weui-cell">
-        <view class="weui-cell__hd">经营内容</view>
+        <view class="weui-cell__hd">经营内容:</view>
         <view class="weui-cell__bd">
-          <input placeholder="输入经营内容" name="companyContent"></input>
+          <input placeholder="请填写公司经营内容" name="companyContent"></input>
         </view>
       </view>
       <view class="weui-cell">
-        <view class="weui-cell__hd">用途</view>
-        <view class="weui-cell__bd">
-          <van-checkbox-group value="{{ result }}" name="purpose" bind:change="onChange">
-            <van-checkbox name="仓储" class="van-checkbox-group-item">仓储</van-checkbox>
-            <van-checkbox name="办公" class="van-checkbox-group-item">办公</van-checkbox>
-            <van-checkbox name="配送" class="van-checkbox-group-item">配送</van-checkbox> 
+        <view class="weui-cell__hd">用途:</view>
+        <view class="weui-cell__bd"> 
+          <van-checkbox-group value="{{ result }}" name="purpose">
+            <van-checkbox id="仓储" bindtap="onChange" class="van-checkbox-group-item  {{active1? 'active':'' }}">仓储</van-checkbox>
+            <van-checkbox id="办公" bindtap="onChange" class="van-checkbox-group-item  {{active2? 'active':'' }}">办公</van-checkbox>
+            <van-checkbox id="配送" bindtap="onChange" class="van-checkbox-group-item  {{active3?'active':'' }}">配送</van-checkbox>
           </van-checkbox-group>
         </view>
       </view>
       <view class="weui-cell">
-        <view class="weui-cell__hd">租用面积m²</view>
+        <view class="weui-cell__hd">租用面积:</view>
         <view class="weui-cell__bd">
-          <input placeholder="输入预估租用面积" type="number" name="rentArea"></input>
+          <input placeholder="请填写预估租用面积" type="number" name="rentArea"></input>
+          <text class="danwei">单位：m²</text>
         </view>
       </view>
     </view>
-    <view class="line"></view>
-    <view class="weui-cell submit">
-      <view class="weui-cell__bd">
+    <view class="footer weui-cell">
+      <view class="online">
         <button class="btn cencel" formType="reset" name="Submit">清空</button>
       </view>
-      <view class="weui-cell__bd">
+      <view class="onlineCall" catchtap='freeTell'>
         <button class="btn save" form-type="submit" name="Submit">提交</button>
       </view>
     </view>

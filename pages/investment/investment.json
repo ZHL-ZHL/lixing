@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "在线招商"
+  "navigationBarTitleText": "在线招商",
+  "navigationBarBackgroundColor": "#FFE400"
 }

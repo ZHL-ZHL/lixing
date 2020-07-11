@@ -13,13 +13,13 @@ Page({
     indicatorActiveColor: "#4D7AD2",
     current: 0,
     banner: [{
-        picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/7dee973c887a0344d7404a700927a4fc.jpg'
+      picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/9281dd8e1b7ea091c34c74b4b45a34cf.jpg'
       },
       {
-        picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/65eaae794ff903ecf6597fe20c2ae954.jpg'
+        picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/6799053cc3e039729f1318031677d5ef.jpg'
       },
       {
-        picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/dc65dc92b94b68cd86e47030e185ed07.jpg'
+        picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/30d4cbf1d8bd638411a6cdc1b039b34d.jpg'
       },
     ],
     indicatorDots1: true, //小点
@@ -30,36 +30,15 @@ Page({
     indicatorActiveColor1: "#4D7AD2",
     current1: 0,
     banner1: [{
-        picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/42a675d0eef4e7d56ec1f36da1c7b622.jpg'
+      picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/a9f9bac05ef7a49524f29de689fdca7f.jpg'
       },
       {
-        picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/f31e4648a6e9d769d2da6970a366d0d3.jpeg'
+        picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/d1fc6812007cf44b543644b10a055958.jpg'
       },
 
       {
-        picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/54681d0b370b899a36d555ce6e58601f.jpg'
+        picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/e2056293310830094577425762796da1.jpg'
       },
-    ],
-    indicatorDots2: true, //小点
-    indicatorColor2: "white",
-    autoplay2: true, //是否自动轮播
-    interval2: 3000, //间隔时间
-    duration2: 500, //滑动时间
-    indicatorActiveColor2: "#4D7AD2",
-    current2: 0,
-    banner2: [{
-        picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/c1e1f7c3eb426647b81cdcb6c61eff17.jpg'
-      },
-      {
-        picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/e30734fbcd247d43d2f3fba4b7150d2a.jpeg'
-      },
-      {
-        picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/38d28aee71db16afeb8c15c8a1453f84.jpeg'
-      },
-      {
-        picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/2fc4eb7ae7c2712b82a5bad516745825.jpeg'
-      },
-     
     ],
     indicatorDots3: true, //小点
     indicatorColor3: "white",
@@ -69,11 +48,11 @@ Page({
     indicatorActiveColor3: "#4D7AD2",
     current3: 0,
     banner3: [{
-        picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/229ee996f83489bf744a05be4a953b5f.jpeg'
+      picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/f94148942670754a7c25ac2d57ec0285.jpg'
       }, {
-        picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/a4fbb14e11206b72b09587af70dbd702.jpeg'
+        picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/0a480a106bb99825db28482734311d73.jpg'
       }, {
-        picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/55c69cc31aebe2077203b3d539510b47.jpeg'
+        picture: 'http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/6820cdd24e04cbe00e7df5c3978a508c.jpg'
       }
     ],
   },

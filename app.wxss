@@ -6,8 +6,11 @@
 } 
 .weui-cells:after,.weui-cells:before,.weui-cell:before {
  border:0;  
+ border-top-color: #cccccc
 }
-
+input::-webkit-input-placeholder{
+  color: #cccccc
+}
 ::-webkit-scrollbar {
   width: 0;
   height: 0;

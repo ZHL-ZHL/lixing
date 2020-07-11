@@ -1,100 +1,119 @@
 <!--pages/investment/investment.wxml-->
 <view>
-  <view class="bannertop">
-    <swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
-      <block wx:for="{{banner}}" wx:key="{{index}}">
-        <swiper-item>
-          <view data-item="{{item}}" hover-class="none">
-            <image src="{{item.picture}}" class="slide-image" mode="aspectFill" />
-          </view>
-        </swiper-item>
-      </block>
-    </swiper>
-  </view>
-  <view class="line"></view>
-  <view class="weui-cell">园区介绍</view>
+  <video id="myVideo" src="http://mpvideo.qpic.cn/0bf2iiaaaaaap4abvtbbtvpfaqwdabbaaaaa.f10002.mp4?dis_k=a8dc703ddbbcf91a7e97d8f08adff85a&dis_t=1594454244"
+    binderror="videoErrorCallback" object-fit="cover" show-center-play-btn='{{false}}' show-play-btn="{{true}}" controls ></video>
+  <!-- <view class="line"></view> -->
+  <view class="weui-cell">园区简介</view>
   <view class="ads">
-    <view class="fontCont">中鲁全智是中鲁运通旗下供应链服务子公司，位于中鲁现代物流城内，目前正逐步覆盖省内大同、长治、晋城等地级市，以及省外河北、河南、山东等物流枢纽点。 公司以家居仓配装一体化服务为特色服务，秉承“以服务求生存、以信誉求发展”的经营理念，“以客户为中心”的服务宗旨，致力于全面提升家居流通供应链的运营效率和服务品质。通过整合干支线运输、仓储、配送、安装等服务资源，为客户提供一流运输、仓储、高效配送、专业安装、精细维修、供应链金融等全链条的服务。
+    <view class="fontCont">中鲁全智是中鲁集团旗下供应链服务子公司，位于中鲁现代物流城内，公司专注于为家居生产销售企业提供物流配送服务，秉承“服务一座城”的理念，已形成长三角至晋、津、冀、闽、湘等省市的大型大仓、以及大型门店的配送业务。
     </view>
+    <view class="fontCont">
+      <image src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/7844ca653405c8496730c3103424e196.jpg" mode="aspectFill"></image>
+    </view>
+    <view class="fontCont">在技术上使用自主研发的智慧供应链平台，突破了传统仓到端的平台架构，增加了面向于B端客户和C端客户的服务入口，实现了家居供应链生态的闭环。在模式上以供应链大数据为基础，突破传统的B2C模式，形成了B2B2C的模式。并通过云SAAS的平台技术，将标准化流程和管理制度集成线上化，实现快速以城市为单位的复制模式。
+    </view>
+    <view class="fontCont">
+      <view class="bannertop">
+        <swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
+          <block wx:for="{{banner}}" wx:key="{{index}}">
+            <swiper-item>
+              <view data-item="{{item}}" hover-class="none">
+                <image src="{{item.picture}}" class="slide-image" mode="aspectFill" />
+              </view>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+
   </view>
-  <view class="line"></view>
+  <!-- <view class="line"></view> -->
   <view class="weui-cell">园区优势</view>
   <view class="ads">
-    <view class="fontCont">
-      1、区位优势 位于太原东部中心区域，似扇形中轴。距太原火车站约4km，距太原武宿机场约13km，与南内环电子市场、朝阳街服装城、柳巷商业区、火车南站等多个市区商业繁华区相距较近，是距离市中心最近的物流园区。配送线路放射状分布，极大降低了城市配送成本。
-      <image src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/992d74f110d2332df5a36e7295bb5bd4.jpg" mode="aspectFill"></image>
+    <view class="weui-cell-title">·区位优势</view>
+    <view class="fontCont" style="padding:0px 60rpx">
+      <image src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/a81f7437bb4c345a24016a37d53245fb.jpg"></image>
     </view>
     <view class="fontCont">
-      2、产业优势 将园区建设与产业发展相结合，与华为、伊利等十余家大型集团以及中通快递、百发物流等全国性物流网络企业达成战略合作伙伴，业务涉及家居、家电、医药、快消品、日用化妆品、电商等行业。
-      <image src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/4f3aa88535ac7159b805b95773d549cb.jpg" mode="aspectFill"></image>
+      <view class="weui-cell-img">
+        <image src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/0da738d20bd6ffa0f414686aa3170657.jpg"></image>
+        <text>太原火车站</text>
+      </view>
+      <view class="weui-cell-img">
+        <image src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/966068b09c1026c591c50db861ec94a4.jpg"></image>
+        <text>太原武宿机场</text>
+      </view>
+      <view class="weui-cell-img">
+        <image src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/5b381092e9460b4c06d6a64e8495d8bb.jpg"></image>
+        <text>铜锣湾商圈</text>
+      </view>
+      <view class="weui-cell-img">
+        <image src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/ce85e52c6faf5d264459a588b176f36b.jpg"></image>
+        <text>柳巷商圈</text>
+      </view>
+    </view>
+    <view class="weui-cell-title">·产业优势</view>
+    <view class="fontCont">
+      将园区建设与产业发展相结合，与华为、伊利等十余家大型集团以及中通快递、百发物流等全国性物流网络企业达成战略合作，业务涉及家居、医药、电商、快消品等行业。
+    </view>
+    <view class="weui-cell-title">·规模优势 </view>
+    <view class="fontCont">
+      依托集团资金和资源优势，正逐步在全省布局9大物流中心，开发98个县域物流项目，业务范围将覆盖河北、山东、陕西、河南、内蒙古五大省市自治区。
+      <view class="ads">
+        <view class="banner">
+          <swiper indicator-dots="{{indicatorDots1}}" indicator-color="{{indicatorColor1}}" indicator-active-color="{{indicatorActiveColor1}}" autoplay="{{autoplay1}}" interval="{{interval1}}" duration="{{duration1}}" circular="true">
+            <block wx:for="{{banner1}}" wx:key="{{index}}">
+              <swiper-item>
+                <view data-item="{{item}}" hover-class="none">
+                  <image src="{{item.picture}}" class="slide-image" mode="aspectFill" />
+                </view>
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cell-title">·配套优势</view>
+    <view class="fontCont">
+      园区交通便捷，配套设施齐备完整。可以为客户提供工商、运政、税务、住宿、餐饮、商超等一系列增值服务，为客户打造舒适、便捷、安全的办公环境。
+      <view class="ads">
+        <view class="banner">
+          <swiper indicator-dots="{{indicatorDots3}}" indicator-color="{{indicatorColor3}}" indicator-active-color="{{indicatorActiveColor3}}" autoplay="{{autoplay3}}" interval="{{interval3}}" duration="{{duration3}}" circular="true">
+            <block wx:for="{{banner3}}" wx:key="{{index}}">
+              <swiper-item>
+                <view data-item="{{item}}" hover-class="none">
+                  <image src="{{item.picture}}" class="slide-image" mode="aspectFill" />
+                </view>
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cell-title">·团队优势</view>
+    <view class="fontCont">
+      管理团队高效专业、对标一流、兼收并蓄，以优质服务持续满足顾客需求。运作团队规范有序，精通物流专业操作技能，坚持“以客户为中心”，用心做事，获得了诸多客户的长期信赖。
     </view>
     <view class="fontCont">
-      3、规模优势 依托集团资金和资源优势，正逐步在全省布局9大物流中心，开发98个县域物流项目，业务范围将覆盖河北、山东、陕西、河南、内蒙古等五大省市自治区。
-      <image src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/dff9c25813b7253965042468faf68929.jpg" mode="aspectFill"></image>
+      <view class="fontCont-image1">
+        <image src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/4e8080826a5134a828fb157417505d1d.jpg"></image>
+      </view>
+      <view class="fontCont-image2">
+        <view class="fontCont-image2-item">
+          <image style="margin-bottom:5rpx" src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/e3fade09cd005d36b7e61723a765a13a.jpg"></image>
+        </view>
+        <view class="fontCont-image2-item">
+          <image style="margin-top:5rpx" src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/16a40e1a90806fd446abed798d852b4e.jpg"></image>
+        </view>
+      </view>
     </view>
-    <view class="fontCont">
-      4、配套优势 园区交通便捷，给排水、供电、供热、消防、通讯、宽带网络、监控录像等配套系统齐备完整。可以为客户提供工商、运政、税务、住宿、餐饮、商超、汽配、停车场、维修等一系列增值服务，为客户打造舒适、便捷、安全的办公环境。
-      <image src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/7976019e9b7e1c6041fb17c0713cc34e.jpg" mode="aspectFill"></image>
-    </view>
-    <view class="fontCont">
-      5、团队优势 拥有一支专业、敬业、年轻、高效的精英管理团队，对标一流、兼收并蓄，规范管理、稳健经营，以优质服务持续满足顾客需求。运作团队专业度高，精通业务，具备物流专业操作技能、且坚持“以客户为中心”，用心做事，获得了诸多客户的长期信赖。
-      <image src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/a578e77878fcfafc99631ff63a5610c3.jpg" mode="aspectFill"></image>
-    </view>
-  </view>
-
-  <view class="line"></view>
-  <view class="weui-cell">园区环境</view>
-  <view class="ads">
-    <view class="banner">
-      <swiper indicator-dots="{{indicatorDots1}}" indicator-color="{{indicatorColor1}}" indicator-active-color="{{indicatorActiveColor1}}" autoplay="{{autoplay1}}" interval="{{interval1}}" duration="{{duration1}}" circular="true">
-        <block wx:for="{{banner1}}" wx:key="{{index}}">
-          <swiper-item>
-            <view data-item="{{item}}" hover-class="none">
-              <image src="{{item.picture}}" class="slide-image" mode="aspectFill" />
-            </view>
-          </swiper-item>
-        </block>
-      </swiper>
-    </view>
-    <!-- <image src="" mode="aspectFill"></image> -->
-  </view>
-  <view class="weui-cell">仓库展示</view>
-  <view class="ads">
-     <view class="banner">
-      <swiper indicator-dots="{{indicatorDots2}}" indicator-color="{{indicatorColor2}}" indicator-active-color="{{indicatorActiveColor2}}" autoplay="{{autoplay2}}" interval="{{interval2}}" duration="{{duration2}}" circular="true">
-        <block wx:for="{{banner2}}" wx:key="{{index}}">
-          <swiper-item>
-            <view data-item="{{item}}" hover-class="none">
-              <image src="{{item.picture}}" class="slide-image" mode="aspectFill" />
-            </view>
-          </swiper-item>
-        </block>
-      </swiper>
-    </view>
-    <!-- <image src="" mode="aspectFill"></image> -->
-  </view>
-  <view class="weui-cell">物流展示</view>
-  <view class="ads">
-<view class="banner">
-    <swiper indicator-dots="{{indicatorDots3}}" indicator-color="{{indicatorColor3}}" indicator-active-color="{{indicatorActiveColor3}}" autoplay="{{autoplay3}}" interval="{{interval3}}" duration="{{duration3}}" circular="true">
-      <block wx:for="{{banner3}}" wx:key="{{index}}">
-        <swiper-item>
-          <view data-item="{{item}}" hover-class="none">
-            <image src="{{item.picture}}" class="slide-image" mode="aspectFill" />
-          </view>
-        </swiper-item>
-      </block>
-    </swiper>
-  </view>
-    <!-- <image src="" mode="aspectFill"></image> -->
   </view>
   <view class="kong"></view>
   <view class="footer weui-cell">
-
     <view class="online">
       <navigator url="/pages/onlineMerchants/onlineMerchants" hover-class="none">
-        <view style="height:50rpx;">
-          <van-icon name="chat-o" size="1.5rem" />
+        <view style="height:50rpx;line-height:80rpx;">
+          <van-icon name="chat-o" size="1.3rem" />
         </view> 在线咨询
       </navigator>
     </view>

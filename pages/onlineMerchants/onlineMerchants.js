@@ -12,6 +12,9 @@ Page({
   data: {
     radio: "0",
     result: ['仓储'],
+    active1: true,
+    active2: false,
+    active3: false,
   },
 
   /**
@@ -23,9 +26,8 @@ Page({
     console.log('form发生了reset事件')
   },
   formSubmit(e) {
-
-    let value = e.detail.value
-
+   
+    let value = e.detail.value 
     delete value['仓储']
     delete value['办公']
     delete value['配送']
@@ -40,8 +42,7 @@ Page({
         icon: "none"
       })
     } else {
-      value.purpose = value.purpose.join(',')
-      console.log(value)
+      value.purpose = this.data.result.join(',') 
       companyOnlineSave(value).then(res => {
         if (res.code == 0) {
           wx.showToast({
@@ -79,9 +80,19 @@ Page({
       show: true
     })
   },
-  onChange(event) {
+  onChange(event) { 
+    if (this.data.result.indexOf(event.currentTarget.id) == -1 ) {
+      this.data.result.push(event.currentTarget.id)
+    } else { 
+      this.data.result.splice(this.data.result.indexOf(event.currentTarget.id), 1)
+      this.setData({
+        result: this.data.result
+      }) 
+    }
     this.setData({
-      result: event.detail
+      active1: this.data.result.indexOf('仓储') != -1 ? true : false,
+      active2: this.data.result.indexOf('办公') != -1 ? true : false,
+      active3: this.data.result.indexOf('配送') != -1 ? true : false,
     });
   },
   nameInput(e) {

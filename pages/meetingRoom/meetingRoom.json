@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "会议室租赁"
+  "navigationBarTitleText": "会议室租赁",
+  "navigationStyle": "custom"
 }

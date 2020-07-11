@@ -988,6 +988,27 @@
 					"id": -1,
 					"name": "pages/meetingRoom/meetingRoom",
 					"pathName": "pages/meetingRoom/meetingRoom",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/investment/investment",
+					"pathName": "pages/investment/investment",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/onlineMerchants/onlineMerchants",
+					"pathName": "pages/onlineMerchants/onlineMerchants",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/onlineMerchants/onlineMerchants",
+					"pathName": "pages/onlineMerchants/onlineMerchants",
 					"scene": null
 				}
 			]

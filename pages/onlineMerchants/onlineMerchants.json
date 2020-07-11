@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "在线咨询"
+  "navigationBarTitleText": "在线咨询",
+  "navigationBarBackgroundColor": "#FFE400"
 }

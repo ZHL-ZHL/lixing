@@ -1,16 +1,26 @@
 /* pages/onlineMerchants/onlineMerchants.wxss */
+
 /* pages/health/health.wxss */
+
 /* pages/visitors/visitors.wxss */
-.line{
+
+.weui-cell {
+  padding: 30rpx 30rpx;
+}
+
+.line {
   border: 5rpx solid #f4f4f5;
 }
-.list .weui-cell__bd{
+
+.list .weui-cell__bd {
   padding-left: 10px;
 }
-.list .weui-cell__hd{
+
+.list .weui-cell__hd {
   width: 150rpx;
 }
-.list .weui-cell::after{
+
+.list .weui-cell::after {
   position: absolute;
   content: "";
   left: 15px;
@@ -19,50 +29,35 @@
   height: 1rpx;
   border-bottom: 1rpx solid #e1e1e1;
 }
-.list .weui-cell:nth-last-child(1)::after{
+
+.list .weui-cell:nth-last-child(1)::after {
   border: none;
 }
-.btn{
-  margin: 0 auto;
-  width:120rpx;
-  line-height:40rpx;
-  background:rgba(0,63,132,1);
-  border-radius:20rpx;
-  color: #fff;
+
+.btn.save, .btn.cencel {
+  margin: 0;
+  background: none;
+  color: #333;
+  border: 0px;
+  width: 100%;
+  font-weight: normal;
+  padding: 0;
+  font-size: 28rpx;
+  border-radius: 0px;
+  height: 100%;
+  line-height: 100rpx;
 }
-textarea{
-  width:690rpx;
-  height:195rpx;
-  border:1rpx solid #e1e1e1;
+
+textarea {
+  width: 690rpx;
+  height: 195rpx;
+  border: 1rpx solid #e1e1e1;
   margin: 0 auto;
   padding: 10px;
   box-sizing: border-box;
 }
-.submit{
-  margin: 10px auto;
-  text-align: center;
-}
-.submit .btn{
-  margin: 0 auto;
-  width: 150rpx;
-}
-.submit .cencel{
-  background: #fff;
-  color: #333;
-}
-.save{
-  font-weight: normal;
-  padding: 0;
-  min-height: 42rpx !important;
-  font-size: 28rpx;
-}
-.cencel{
-  font-weight: normal;
-  padding: 0;
-  min-height: 42rpx !important;
-  font-size: 28rpx;
-}
-.mark{
+
+.mark {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -71,7 +66,8 @@ textarea{
   background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
-.card{
+
+.card {
   background: #fff;
   width: 650rpx;
   position: absolute;
@@ -84,34 +80,95 @@ textarea{
   padding-top: 50rpx;
   padding-bottom: 20rpx;
 }
-.card .weui-cell__hd{
+
+.card .weui-cell__hd {
   width: 180rpx;
 }
-.card_title{
+
+.card_title {
   line-height: 80rpx;
   text-align: center;
   font-size: 32rpx;
   border-bottom: 1rpx solid #e1e1e1;
 }
-.card_foot{
-  background:rgba(0,63,132,1);
+
+.card_foot {
+  /* background:rgba(0,63,132,1); */
   color: #fff;
   line-height: 80rpx;
   text-align: center;
 }
-.card input{
+
+.card input {
   border: 1rpx solid #e1e1e1;
   padding-left: 10px;
 }
-.peerList .weui-cell__hd{
+
+.peerList .weui-cell__hd {
   width: 180rpx;
 }
-.van-checkbox-group-item{
-  float: left;
-  margin-bottom: 20rpx;
-  width: 50%;
-}
-.van-radio-group-item{
+
+.van-checkbox-group-item {
   float: left; 
+  width: 26%;
+  padding: 10rpx;
+  text-align: center;
+  box-sizing: border-box;
+  border: 1px solid #cccccc;
+  margin-right: 20rpx;
+}
+
+.van-radio-group-item {
+  float: left;
   width: 50%;
 }
+
+.van-checkbox-group-item .van-checkbox__icon--checked,.van-checkbox__icon-wrap {
+  /* background-color: #FFAD00; */
+  /* border-color: #FFAD00; */
+  display: none;
+}
+
+.footer {
+  text-align: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-top: 1rpx solid #e1e1e1;
+  padding: 0;
+  line-height: 50rpx;
+}
+
+.online {
+  display: inline-block;
+  width: 40%;
+  height: 100rpx;
+  background: #FFE401;
+  color: #333;
+  font-size: 26rpx;
+}
+
+.onlineCall {
+  display: inline-block;
+  width: 60%;
+  height: 100rpx;
+  background: #FFAD00;
+  color: #333;
+  font-size: 26rpx;
+}
+.danwei{
+  position: absolute;
+  right: 20px;
+  top:32rpx;
+  font-size: 24rpx; 
+} 
+ .active{
+   border: 1px solid #FFAD00; 
+ }
+ .active .van-checkbox__label{
+    color: #FFAD00;
+ }
+ .van-checkbox__label {
+   margin: 0 auto!important;
+ }

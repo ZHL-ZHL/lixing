@@ -44,3 +44,13 @@ input::-webkit-input-placeholder{
 .txOrange{
   color: #FF6000;
 }
+
+
+
+.weui-cell {
+  padding: 30rpx;
+}
+
+.line {
+  border: 5rpx solid #f4f4f5;
+}

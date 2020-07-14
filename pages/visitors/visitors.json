@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "访客预约"
+  "navigationBarTitleText": "访客预约",
+  "navigationBarBackgroundColor": "#FFE400"
 }

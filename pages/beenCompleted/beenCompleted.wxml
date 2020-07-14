@@ -48,7 +48,7 @@
       <view class="vibox">
         <text class="detialLable">其他费用：</text>
         <text wx:if="{{mileageDrivingStatus!=1}}">{{otherMoney}}元</text>
-        <input wx:if="{{mileageDrivingStatus==1}}" type="number" name="otherMoney" value="{{otherMoney}}" style="width:60%;display:inline-block;vertical-align: middle;border: 1rpx solid #ccc;" placeholder="请输入其他费用"></input>
+        <input placeholder-class="placeholderClass" wx:if="{{mileageDrivingStatus==1}}" type="number" name="otherMoney" value="{{otherMoney}}" style="width:60%;display:inline-block;vertical-align: middle;border: 1rpx solid #ccc;" placeholder="请输入其他费用"></input>
       </view>
 
       <view class="vibox" wx:if="{{mileageDrivingStatus!=1}}">
@@ -68,7 +68,7 @@
       <view class="vibox">
         <text class="detialLable">备注：</text>
         <text wx:if="{{mileageDrivingStatus!=1}}">{{mileageReamrk}}</text>
-        <input wx:if="{{mileageDrivingStatus==1}}" name="mileageReamrk" value="{{mileageReamrk}}" style="width:60%;display:inline-block;vertical-align: middle;border: 1rpx solid #ccc;" placeholder="请输入备注"></input>
+        <input placeholder-class="placeholderClass" wx:if="{{mileageDrivingStatus==1}}" name="mileageReamrk" value="{{mileageReamrk}}" style="width:60%;display:inline-block;vertical-align: middle;border: 1rpx solid #ccc;" placeholder="请输入备注"></input>
       </view>
       <view class="vibox" wx:if="{{subsidieMoney}}">
         <text class="detialLable">补贴金额：</text>

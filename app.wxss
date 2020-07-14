@@ -44,3 +44,6 @@ input::-webkit-input-placeholder{
 .txOrange{
   color: #FF6000;
 }
+.placeholderClass{
+  color: #ccc;
+}

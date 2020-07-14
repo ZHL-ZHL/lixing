@@ -33,7 +33,7 @@
         <text>我的附近</text>
       </view>
       <view class="weui-cell__bd">
-        <input placeholder="搜索会议室名称/关键词"></input>
+        <input placeholder-class="placeholderClass" placeholder="搜索会议室名称/关键词"></input>
       </view>
       <view class="weui-cell__ft">
         >
@@ -44,7 +44,7 @@
         <text>精准查找</text>
       </view>
       <view class="weui-cell__bd">
-        <input placeholder="设置我需要的人数/面积/价格"></input>
+        <input placeholder-class="placeholderClass" placeholder="设置我需要的人数/面积/价格"></input>
       </view>
       <view class="weui-cell__ft">
         >

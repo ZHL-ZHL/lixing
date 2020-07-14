@@ -6,7 +6,7 @@
 				<view class="weui-cell " style="height:{{CustomBar-StatusBar}}px">
            <view class="weui-cell__hd address">{{cityName}}</view>
            <view class="weui-cell__bd">
-               <input placeholder="请输入..."></input>
+               <input placeholder-class="placeholderClass" placeholder="请输入..."></input>
            </view>
 					 <view class="weui-cell__ft">
 					    <image src="/images/news.png" class="news"></image>

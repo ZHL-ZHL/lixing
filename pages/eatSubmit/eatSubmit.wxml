@@ -61,13 +61,13 @@
     <view class="weui-cell" >
       <view class="weui-cell__bd">取餐人姓名</view>
       <view class="weui-cell__ft">
-          <input placeholder="填写取餐人姓名" class="valueStyle" bindinput="nameInput" value="{{nameInput}}"></input>
+          <input placeholder-class="placeholderClass" placeholder="填写取餐人姓名" class="valueStyle" bindinput="nameInput" value="{{nameInput}}"></input>
       </view>
     </view>
     <view class="weui-cell" >
      <view class="weui-cell__bd">预留电话</view>
      <view class="weui-cell__ft">
-        <input placeholder="填写取餐人电话" class="valueStyle" bindinput="phoneInput" value="{{orderPhone}}" type="number"></input>
+        <input placeholder-class="placeholderClass" placeholder="填写取餐人电话" class="valueStyle" bindinput="phoneInput" value="{{orderPhone}}" type="number"></input>
      </view>
   </view>
   </view>

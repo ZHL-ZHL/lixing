@@ -5,37 +5,37 @@
       <view class="weui-cell">
         <view class="weui-cell__hd">公司名称:</view>
         <view class="weui-cell__bd">
-          <input placeholder="请填写公司名称" name="companyName"></input>
+          <input placeholder-class="placeholderClass" placeholder="请填写公司名称" name="companyName"></input>
         </view>
       </view>
       <view class="weui-cell">
         <view class="weui-cell__hd">联系人:</view>
         <view class="weui-cell__bd">
-          <input placeholder="请填写姓名" name="name"></input>
+          <input placeholder-class="placeholderClass" placeholder="请填写姓名" name="name"></input>
         </view>
       </view>
       <view class="weui-cell">
         <view class="weui-cell__hd">联系方式:</view>
         <view class="weui-cell__bd">
-          <input placeholder="请填写区号&座机号或者手机号" name="phone" type="number"></input>
+          <input placeholder-class="placeholderClass" placeholder="请填写区号&座机号或者手机号" name="phone" type="number"></input>
         </view>
       </view>
       <view class="weui-cell">
         <view class="weui-cell__hd">邮箱:</view>
         <view class="weui-cell__bd">
-          <input placeholder="请填写电子邮箱地址" name="email"></input>
+          <input placeholder-class="placeholderClass" placeholder="请填写电子邮箱地址" name="email"></input>
         </view>
       </view>
       <view class="weui-cell">
         <view class="weui-cell__hd">公司地址:</view>
         <view class="weui-cell__bd">
-          <input placeholder="请填写公司详细地址" name="address"></input>
+          <input placeholder-class="placeholderClass" placeholder="请填写公司详细地址" name="address"></input>
         </view>
       </view>
       <view class="weui-cell">
         <view class="weui-cell__hd">经营内容:</view>
         <view class="weui-cell__bd">
-          <input placeholder="请填写公司经营内容" name="companyContent"></input>
+          <input placeholder-class="placeholderClass" placeholder="请填写公司经营内容" name="companyContent"></input>
         </view>
       </view>
       <view class="weui-cell">
@@ -51,7 +51,7 @@
       <view class="weui-cell">
         <view class="weui-cell__hd">租用面积:</view>
         <view class="weui-cell__bd">
-          <input placeholder="请填写预估租用面积" type="number" name="rentArea"></input>
+          <input placeholder-class="placeholderClass" placeholder="请填写预估租用面积" type="number" name="rentArea"></input>
           <text class="danwei">单位：m²</text>
         </view>
       </view>

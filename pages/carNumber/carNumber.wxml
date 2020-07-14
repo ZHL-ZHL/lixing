@@ -6,7 +6,7 @@
   <view class="carNumber">
     <view class="carNumberTitle">输入车牌</view>
     <view class="carNumberTitlenext">Enter License Plate</view>
-    <input class="weui-input" value="{{carNumber}}" bindinput="onChange" auto-focus/>
+    <input placeholder-class="placeholderClass" class="weui-input" value="{{carNumber}}" bindinput="onChange" auto-focus/>
     <view class="btnsubm" bindtap="subm">查询</view>
   </view>
   <view wx:if="{{showCarInfo}}" style="margin-top:40rpx;margin-bottom:220rpx;">

@@ -9,7 +9,7 @@
             <view class="item_text">联系人：</view>
           </view>
           <view class="weui-cell__bd item_text">
-            <input class="item_input_1" placeholder="请输入联系人" value="{{addressInfo.name}}" name="name" />
+            <input placeholder-class="placeholderClass" class="item_input_1" placeholder="请输入联系人" value="{{addressInfo.name}}" name="name" />
           </view>
         </view>
         <view class="weui-cell weui-cell_input">
@@ -17,7 +17,7 @@
             <view class="item_text">联系方式：</view>
           </view>
           <view class="weui-cell__bd item_text">
-            <input class="item_input_1" placeholder="请输入手机号" value="{{addressInfo.phone}}" name="phone" type="number"/>
+            <input placeholder-class="placeholderClass" class="item_input_1" placeholder="请输入手机号" value="{{addressInfo.phone}}" name="phone" type="number"/>
           </view>
         </view>
         <view class="weui-cell weui-cell_input" wx:if='{{type==2}}'>
@@ -25,7 +25,7 @@
             <view class="item_text">园区：</view>
           </view>
           <view class="weui-cell__bd item_text">
-            <input class="item_input_1" placeholder="请输入园区" value="{{addressInfo.addrArea}}" name="addrArea" />
+            <input placeholder-class="placeholderClass" class="item_input_1" placeholder="请输入园区" value="{{addressInfo.addrArea}}" name="addrArea" />
           </view>
         </view>
         <view class="weui-cell weui-cell_input" wx:if='{{type==2}}'>
@@ -36,7 +36,7 @@
 
             <picker bindchange="bindChangeCompany" value="{{columns[index].id}}" range-key="{{'company'}}" value="{{index}}" range="{{companyList}}">
               <view class="picker">
-                <input name="addrCompanyId" disabled="true" value="{{companyList[index].company}}" placeholder="选择公司"></input>
+                <input placeholder-class="placeholderClass" name="addrCompanyId" disabled="true" value="{{companyList[index].company}}" placeholder="选择公司"></input>
               </view>
             </picker>
           </view>
@@ -58,7 +58,7 @@
             <view class="item_text">详细地址：</view>
           </view>
           <view class="weui-cell__bd item_text">
-            <input class="item_input_1" placeholder="请输入详细地址" value="{{addressInfo.address}}" name="address" />
+            <input placeholder-class="placeholderClass" class="item_input_1" placeholder="请输入详细地址" value="{{addressInfo.address}}" name="address" />
           </view>
         </view>
         <view class="weui-cell weui-cell_switch" wx:if="{{type==1}}">

@@ -13,33 +13,12 @@
   width: 150rpx;
 }
 
-.list .weui-cell::after {
-  position: absolute;
-  content: "";
-  left: 15px;
-  right: 15px;
-  bottom: 0;
-  height: 1rpx;
-  border-bottom: 1rpx solid #e1e1e1;
-}
 
 .list .weui-cell:nth-last-child(1)::after {
   border: none;
 }
 
-.btn.save, .btn.cencel {
-  margin: 0;
-  background: none;
-  color: #333;
-  border: 0px;
-  width: 100%;
-  font-weight: normal;
-  padding: 0;
-  font-size: 28rpx;
-  border-radius: 0px;
-  height: 100%;
-  line-height: 100rpx;
-}
+
 
 textarea {
   width: 690rpx;
@@ -122,34 +101,7 @@ textarea {
   display: none;
 }
 
-.footer {
-  text-align: center;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-top: 1rpx solid #e1e1e1;
-  padding: 0;
-  line-height: 50rpx;
-}
 
-.online {
-  display: inline-block;
-  width: 40%;
-  height: 100rpx;
-  background: #FFE401;
-  color: #333;
-  font-size: 26rpx;
-}
-
-.onlineCall {
-  display: inline-block;
-  width: 60%;
-  height: 100rpx;
-  background: #FFAD00;
-  color: #333;
-  font-size: 26rpx;
-}
 .danwei{
   position: absolute;
   right: 20px;

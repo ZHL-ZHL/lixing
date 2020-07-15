@@ -1,41 +1,59 @@
 <!--pages/carNumber/carNumber.wxml-->
 
 <view class="carNumberDetail">
-  <image src="/images/tingche.jpeg" class="imageBanner" mode="aspectFill"></image>
+  <image src="/images/banner/car.jpeg" class="imageBanner" mode="aspectFill"></image>
   <!-- <view class="carNumberTitle">智慧停车场</view> -->
   <view class="carNumber">
-    <view class="carNumberTitle">输入车牌</view>
+    <view class="carNumberTitle">请输入车牌号码</view>
     <view class="carNumberTitlenext">Enter License Plate</view>
-    <input class="weui-input" value="{{carNumber}}" bindinput="onChange" auto-focus/>
+    <view class="car-palyno-box">
+      <view class="car-palyno-address">
+        <text>晋</text>
+        <text class="triangle"></text> 
+      </view>
+
+      <input placeholder-class="placeholderClass" class="weui-input" value="{{carNumber}}" bindinput="onChange" auto-focus/>
+    </view>
+
     <view class="btnsubm" bindtap="subm">查询</view>
   </view>
-  <view wx:if="{{showCarInfo}}" style="margin-top:40rpx;margin-bottom:220rpx;">
-    <view class="carNumberTitlenext">
-      <!-- <text>{{plateNo}}</text> -->
-      <!-- <text class="seeimage" bindtap="onShowcar">查看照片</text> -->
-    </view>
-    <view class="carNumberTitlenext">{{entryTime}}入场</view>
-    <view class="carNumberTitlenext" wx:if="{{outTime}}">{{outTime}}出场</view>
-    <view class="line"></view>
+  <!-- wx:if="{{showCarInfo}}"  -->
+  <view class="needMoneyDetail">
+    <!-- <view class="carNumberTitlenext">{{entryTime}}入场</view> -->
+
+    <!-- <view class="carNumberTitlenext">{{outTime}}出场</view> -->
     <view class="needMoney">
-      <view class="needMoneybox">
-        <text>需缴费</text>
-        <text class="colorc">¥{{payable/100}}</text>
-      </view>
       <view class="needMoneybox1">
+        <text>入场时间：</text>
+        <text class="textFloat">{{entryTime}}</text>
+      </view>
+      <!--  wx:if="{{outTime}}" -->
+      <view class="needMoneybox1">
+        <text>出场时间：</text>
+        <text class="textFloat">{{outTime}}</text>
+      </view>
+      <view class="needMoneybox1" style="margin:30rpx 0rpx">
+        <text>共停车 {{}} 小时</text>
+        <text class="textFloat" style="float:right">需缴费 <text class="redColor">{{payable/100}}元</text></text>
+      </view>
+
+      <!-- <view class="needMoneybox1">
         <text>停车费</text>
         <text class="textFloat">¥{{payable/100}}</text>
       </view>
       <view class="needMoneybox1">
         <text>已缴费</text>
         <text class="textFloat">¥{{payedFee/100}}</text>
-      </view>
+      </view> -->
     </view>
-    <view class="payBtn" wx:if="{{payable>0}}" bindtap="payMoney">支付</view>
   </view>
-
-
-  <van-dialog use-slot title="车辆图片" show="{{ show }}" show-cancel-button bind:close="onClose">
-    <image src="{{imgName}}" />
-  </van-dialog>
+  <!--  wx:if="{{payable>0}}" -->
+  <view class="footer weui-cell">
+    <view class="online">
+      <button class="btn cencel">¥{{payable/100}}</button>
+    </view>
+    <view class="onlineCall" catchtap='freeTell'>
+      <button class="btn save" bindtap="payMoney">支付</button>
+    </view>
+  </view>
 </view>

@@ -1,51 +1,59 @@
 /**app.wxss**/
 @import "weui.wxss";
+
 .container {
   font-size: 28rpx;
   color: #333;
-} 
-.weui-cells:after,.weui-cells:before,.weui-cell:before {
- border:0;  
- border-top-color: #cccccc
 }
-input::-webkit-input-placeholder{
-  color: #cccccc
+
+.weui-cells:after, .weui-cells:before, .weui-cell:before {
+  border: 0;
+  border-top-color: #ccc;
 }
+
+input::-webkit-input-placeholder {
+  color: #ccc;
+}
+
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
   color: transparent;
 }
 
-.r_jt{
+.r_jt {
   width: 14rpx;
   height: 24rpx;
 }
-.mainColor{
-  color: #FFE400;
+
+.mainColor {
+  color: #ffe400;
 }
-.btn{
+
+.btn {
   width: 300rpx;
   line-height: 60rpx;
   text-align: center;
   margin: 50px auto;
-  border:1rpx solid #515151;
+  border: 1rpx solid #515151;
   border-radius: 30rpx;
 }
-.txRight{
+
+.txRight {
   text-align: right;
 }
-.flRight{
+
+.flRight {
   float: right;
 }
-.txLeft{
+
+.txLeft {
   text-align: left;
 }
-.txOrange{
-  color: #FF6000;
+
+.txOrange {
+  color: #ff6000;
 }
-
-
 
 .weui-cell {
   padding: 30rpx;
@@ -53,4 +61,76 @@ input::-webkit-input-placeholder{
 
 .line {
   border: 5rpx solid #f4f4f5;
+}
+
+.placeholderClass {
+  color: #ccc;
+}
+
+.weui-cell::after {
+  position: absolute;
+  content: "";
+  left: 15px;
+  right: 15px;
+  bottom: 0;
+  height: 1rpx;
+  border-bottom: 1rpx solid #e1e1e1;
+}
+
+.weui-cell__hd {
+  font-size: 26rpx;
+  color: #333;
+}
+
+.footer {
+  text-align: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-top: 1rpx solid #e1e1e1;
+  padding: 0;
+  line-height: 50rpx;
+}
+
+.btn.save, .btn.cencel {
+  margin: 0;
+  background: none;
+  color: #333;
+  border: 0px;
+  width: 100%;
+  font-weight: normal;
+  padding: 0;
+  font-size: 28rpx;
+  border-radius: 0px;
+  height: 100%;
+  line-height: 100rpx;
+}
+
+.online {
+  display: inline-block;
+  width: 40%;
+  height: 100rpx;
+  background: #ffe401;
+  color: #333;
+  font-size: 26rpx;
+}
+
+.onlineCall {
+  display: inline-block;
+  width: 60%;
+  height: 100rpx;
+  background: #ffad00;
+  color: #333;
+  font-size: 26rpx;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border: 10rpx solid transparent;
+  border-top-color: #343434;
+  vertical-align: middle;
+  position: absolute;
+  top: 30rpx;
 }

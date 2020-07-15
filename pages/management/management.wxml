@@ -4,19 +4,19 @@
       <view class="weui-cell">
         <view class="weui-cell__hd">姓名</view>
         <view class="weui-cell__bd">
-          <input placeholder="输入真实姓名" name="infoName" value="{{infoName}}"></input>
+          <input placeholder-class="placeholderClass" placeholder="输入真实姓名" name="infoName" value="{{infoName}}"></input>
         </view>
       </view>
       <view class="weui-cell">
         <view class="weui-cell__hd">身份证号</view>
         <view class="weui-cell__bd">
-          <input placeholder="输入身份证号" name="cardNo" value="{{cardNo}}"></input>
+          <input placeholder-class="placeholderClass" placeholder="输入身份证号" name="cardNo" value="{{cardNo}}"></input>
         </view>
       </view>
       <view class="weui-cell">
         <view class="weui-cell__hd">联系方式</view>
         <view class="weui-cell__bd">
-          <input placeholder="输入联系电话" name="phone" value="{{phone}}"></input>
+          <input placeholder-class="placeholderClass" placeholder="输入联系电话" name="phone" value="{{phone}}"></input>
         </view>
       </view>
       <view class="weui-cell">

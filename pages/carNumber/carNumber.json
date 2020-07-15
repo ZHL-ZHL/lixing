@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "智慧停车"
+  "navigationBarTitleText": "智慧停车",
+  "navigationBarBackgroundColor": "#FFE400"
 }

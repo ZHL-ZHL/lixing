@@ -70,7 +70,7 @@ Page({
 
     let value = e.detail.value
     console.log(value)
-    value.list = this.data.peerList;
+    value.appointmentCompanionList = this.data.peerList;
     if (value.visitorName.length == 0) {
       wx.showToast({
         title: '请填写被访人员名字',
@@ -98,7 +98,7 @@ Page({
       })
     } else {
       addVisitors(value).then(res => {
-        if (res.code == 0) {
+        if (res.code == 200) {
           wx.showToast({
             title: '预约成功',
             success: res => {

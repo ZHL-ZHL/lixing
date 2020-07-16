@@ -1,9 +1,12 @@
 /* pages/visitors/visitors.wxss */
+.container{
+  background: #f8f8f8;
+}
 .line{
   border: 5rpx solid #f4f4f5;
 }
 .list .weui-cell__bd{
-  padding-left: 10px;
+  /* padding-left: 10px; */
 }
 .list .weui-cell__hd{
   width: 150rpx;
@@ -19,15 +22,7 @@
 }
 .list .weui-cell:nth-last-child(1)::after{
   border: none;
-}
-.btn{
-  margin: 0 auto;
-  width:120rpx;
-  line-height:40rpx;
-  background:rgba(0,63,132,1);
-  border-radius:20rpx;
-  color: #fff;
-}
+} 
 textarea{
   width:690rpx;
   height:195rpx;
@@ -79,8 +74,7 @@ textarea{
   top: 200rpx;
   z-index: 2;
   border-radius: 5px;
-  padding-top: 50rpx;
-  padding-bottom: 20rpx;
+  padding-top: 30rpx; 
 }
 .card .weui-cell__hd{
   width: 180rpx;
@@ -103,4 +97,8 @@ textarea{
 }
 .peerList .weui-cell__hd{
   width: 180rpx;
+}
+
+.kong {
+  height: 52px;
 }

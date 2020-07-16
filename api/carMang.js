@@ -12,7 +12,7 @@ export function carList(data) {
 export function getCarInfo(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/wechat_car/info',
+    url: URL.host + '/blade-iot/parCar/getParkingPaymentInfo',
     params: data
   })
 }  

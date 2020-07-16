@@ -5,7 +5,7 @@ import URL from "../utils/host.js"
 export function addVisitors(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/renren-fast/wechat_appointment/one',
+    url: URL.host + '/blade-bms/appointment/save',
     body: data
   })
 }

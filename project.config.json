@@ -1027,6 +1027,20 @@
 					"id": -1,
 					"name": "pages/carNumber/carNumber",
 					"pathName": "pages/carNumber/carNumber",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/visitors/visitors",
+					"pathName": "pages/visitors/visitors",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/carNumber/carNumber",
+					"pathName": "pages/carNumber/carNumber",
 					"scene": null
 				}
 			]

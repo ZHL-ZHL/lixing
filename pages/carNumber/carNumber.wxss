@@ -163,3 +163,15 @@ page{
   border-radius: 8rpx;
   cursor: pointer
 }
+.addressTitle{
+  display: inline-block;
+  width: 80rpx;
+  height: 80rpx;
+  margin: 10rpx;
+  background: #FFE400;
+  color: #333;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 10rpx;
+  cursor: pointer;
+}

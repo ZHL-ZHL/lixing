@@ -5,13 +5,16 @@ import {
 import {
   getCarInfo,
   payMoneys
-} from "../../api/carMang.js" 
+} from "../../api/carMang.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    addressList: ['京', '津', '沪', '渝', '冀', '豫', '云', '辽', '黑', '湘', '皖', '鲁', '新', '苏', '浙', '赣', '鄂', '桂', '甘', '晋', '蒙', '陕', '吉', '闽', '贵', '粤', '青', '藏', '川', '宁', '琼', '港', '澳','台'],
+    addressTitle:"晋",
+    show: false,
     carNumber: '',
     show: false,
     id: null,
@@ -20,12 +23,13 @@ Page({
     entryTime: "",
     outTime: "",
     imgName: "",
+    elapsedTime:0,
     payable: 0,
     payedFee: 0,
   },
   onChange(event) {
     // event.detail 为当前输入的值
-    console.log(event.detail.value);
+    // console.log(event.detail.value);
     this.setData({
       carNumber: event.detail.value
     })
@@ -38,6 +42,24 @@ Page({
   onShowcar() {
     this.setData({
       show: true
+    });
+  },
+  changeAddress(e){
+    // console.log(e.currentTarget.id)
+    this.setData({
+      addressTitle: e.currentTarget.id,
+      show: false
+    })
+  },
+  showPopup() {
+    // console.log(1)
+    this.setData({
+      show: true
+    })
+  },
+  onClose() {
+    this.setData({
+      show: false
     });
   },
   payMoney() {
@@ -79,26 +101,21 @@ Page({
       wx.setStorage({
         key: 'carNumber',
         data: this.data.carNumber.toUpperCase()
-      })
-      // wx.navigateTo({
-      //   url: '/pages/carNumberDetail/carNumberDetail?plateNo=' + this.data.carNumber.toUpperCase(),
-      //   success: function(res) {},
-      //   fail: function(res) {},
-      //   complete: function(res) {},
-      // })
+      }) 
       getCarInfo({
-        plateNo: this.data.carNumber.toUpperCase()
+        parkCode:1,
+        plateNo: this.data.addressTitle+this.data.carNumber.toUpperCase()
       }).then(res => {
-        if (res.code == 0 && res.resCode == 0) {
+        if (res.code == 200) {
           this.setData({
             showCarInfo: true,
-            id: res.data.id,
+            // id: res.data[0].id,
             plateNo: res.data.plateNo,
             entryTime: res.data.entryTime,
-            outTime: res.data.outTime,
-            imgName: res.data.imgName,
+            outTime: res.data.outTime, 
             payable: res.data.payable,
             payedFee: res.data.payedFee,
+            elapsedTime: res.data.elapsedTime
           })
         } else {
           let that = this;
@@ -108,25 +125,21 @@ Page({
             image: '',
             mask: true,
             duration: 1500,
-            success: function (res) {
-              // setTimeout(function () {
-              //   wx.navigateBack({
-              //     delta: 1,
-              //   })
-              // }, 1500);
+            success: function(res) { 
               that.setData({
                 showCarInfo: false,
                 id: "",
                 plateNo: "",
                 entryTime: "",
                 outTime: "",
-                imgName:"",
+                imgName: "",
                 payable: "",
                 payedFee: "",
+                elapsedTime:0,
               })
             },
-            fail: function (res) { },
-            complete: function (res) { },
+            fail: function(res) {},
+            complete: function(res) {},
           })
         }
       })
@@ -136,7 +149,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    getaCompanyInfo().then(res => {})
+    // getaCompanyInfo().then(res => {})
     if (wx.getStorageSync("carNumber")) {
       this.setData({
         carNumber: wx.getStorageSync("carNumber")
@@ -157,11 +170,12 @@ Page({
   onShow: function() {
 
   },
-  validateCar: function(carbrand) {
-    console.log(typeof(carbrand))
+  validateCar: function(carbrand) { 
+    let carbrandALL = this.data.addressTitle+carbrand
+    console.log(typeof (carbrandALL), carbrandALL)
     //车牌号判断的正则表达式
     var regExp = /^(([京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领][A-Z](([0-9]{5}[DF])|([DF]([A-HJ-NP-Z0-9])[0-9]{4})))|([京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领][A-Z][A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9挂学警港澳使领]))$/
-    if (!regExp.test(carbrand.toUpperCase())) {
+    if (!regExp.test(carbrandALL.toUpperCase())) {
       wx.showToast({
         title: '请输入正确的车牌号！',
         duration: 1500

@@ -8,12 +8,13 @@
 
 .weui-cells:after, .weui-cells:before, .weui-cell:before {
   border: 0;
-  border-top-color: #ccc;
+  border-top-color: #e1e1e1;
 }
 
+/* 
 input::-webkit-input-placeholder {
   color: #ccc;
-}
+} */
 
 ::-webkit-scrollbar {
   width: 0;
@@ -67,7 +68,7 @@ input::-webkit-input-placeholder {
   color: #ccc;
 }
 
-.weui-cell::after {
+/* .weui-cell::after {
   position: absolute;
   content: "";
   left: 15px;
@@ -75,7 +76,7 @@ input::-webkit-input-placeholder {
   bottom: 0;
   height: 1rpx;
   border-bottom: 1rpx solid #e1e1e1;
-}
+} */
 
 .weui-cell__hd {
   font-size: 26rpx;
@@ -91,6 +92,7 @@ input::-webkit-input-placeholder {
   border-top: 1rpx solid #e1e1e1;
   padding: 0;
   line-height: 50rpx;
+  z-index: 99;
 }
 
 .btn.save, .btn.cencel {
@@ -133,4 +135,50 @@ input::-webkit-input-placeholder {
   vertical-align: middle;
   position: absolute;
   top: 30rpx;
+}
+
+.btn.addBtn {
+  color: #ffad00;
+  border-color: #ffad00;
+  background: none;
+  width: 130rpx;
+  line-height: 56rpx;
+  border-radius: 3rpx;
+  margin: 0 auto;
+}
+
+.card-title {
+  text-align: center;
+  border-bottom: 1rpx solid rgb(219, 219, 219);
+  padding-bottom: 30rpx;
+}
+
+.card-content {
+  padding: 20rpx 50rpx;
+  line-height: 66rpx;
+}
+
+.card .card-content input {
+  line-height: 40px;
+  height: 40px;
+  border-radius: 4px;
+  background: #f8f8f8;
+  border: 0px;
+}
+.card .btn{
+margin:0;
+  border-radius: 0px;
+  border: 0px;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 20px;
+  width: 100%;
+  border-top: 1rpx solid #f8f8f8;
+}
+.card .btn.ok {
+  background: #ffe401;
+  border-bottom-right-radius: 8rpx;
+} 
+.card .weui-cell {
+  padding: 0px;
 }

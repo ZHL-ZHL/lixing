@@ -1,6 +1,6 @@
 <!--pages/investment/investment.wxml-->
 <view>
-  <video id="myVideo" src="http://mpvideo.qpic.cn/0bf2iiaaaaaap4abvtbbtvpfaqwdabbaaaaa.f10002.mp4?dis_k=a8dc703ddbbcf91a7e97d8f08adff85a&dis_t=1594454244"
+  <video id="myVideo" src="http://mpvideo.qpic.cn/0bf2iiaaaaaap4abvtbbtvpfaqwdabbaaaaa.f10002.mp4?dis_k=ad165df53dd87e353e65ac6cc63563fb&dis_t=1594784748"
     binderror="videoErrorCallback" object-fit="cover" show-center-play-btn='{{false}}' show-play-btn="{{true}}" controls ></video>
   <!-- <view class="line"></view> -->
   <view class="weui-cell">园区简介</view>

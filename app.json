@@ -80,7 +80,8 @@
     "van-rate": "vant-weapp/rate/index",
     "van-datetime-picker": "vant-weapp/datetime-picker/index",
     "van-steps": "vant-weapp/steps/index",
-    "van-tag": "vant-weapp/tag/index"
+    "van-tag": "vant-weapp/tag/index",
+    "van-popup": "vant-weapp/popup/index"
   },
   "tabBar": {
     "list": [

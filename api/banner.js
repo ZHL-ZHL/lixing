@@ -30,7 +30,7 @@ export function discoveryPage() {
 export function leaseBanner(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/wechat_banner/lease_page',
+    url: URL.host + '/blade-bms/wechatbanner/page',
     params: data
   })
 } 

@@ -1,0 +1,58 @@
+/* pages/myMeeting/myMeeting.wxss */
+/* pages/bus/bus.wxss */
+page{
+  background: #f7f7f7;
+}
+label{
+  font-size: 36rpx;
+  font-weight: 500;
+  padding-right: 10px;
+}
+.busImgBox{
+  width: 210rpx;
+  height: 210rpx;
+  display: block;
+  position: relative;
+}
+.busImg{
+  width: 210rpx;
+  height: 210rpx;
+  display: block;
+  margin-right: 15px;
+}
+button.miniBtn{
+  background: #4d7ad2;
+  color: #fff;
+  font-size: 24rpx;
+  padding: 5rpx 15px;
+  border-radius: 30rpx;
+  display: inline-block;
+  width: 196rpx !important;
+  min-height: 25px;
+  line-height: 22px;
+}
+.btnBox{
+  display:flex;
+}
+
+.tag{
+  position: absolute;
+  left: 0;
+  top: 5px;
+}
+.weui-cell__bd{
+  padding-left:20rpx;
+}
+.busList{
+  font-size: 24rpx;
+  width: 690rpx;
+  background: #fff;
+  border-radius: 5px;
+  margin: 10px auto;
+  box-sizing: border-box;
+  padding: 10px;
+  box-shadow: 0px 0px 5px #ccc;
+}
+.r_jt{
+  margin-left: 15rpx;
+}

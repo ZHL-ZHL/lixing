@@ -9,12 +9,12 @@ export function addVisitors(data) {
     body: data
   })
 }
-// 查看列表
+// 查看列表 
 export function visitorsList(data) {
   console.log(data)
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/wechat_appointment/list',
+    url: URL.host + '/blade-bms/appointment/page',
     params: data
   })
 }

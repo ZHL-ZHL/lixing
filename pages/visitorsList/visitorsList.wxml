@@ -1,0 +1,194 @@
+<view class="container">
+	<view class="weui-cell nav">
+		<view wx:for="{{nav}}" wx:key="index" class="weui-cell__bd navItem {{index==currentindex?'active':''}}" bindtap="selNav" data-idx="{{index}}">
+			{{item}}
+		</view>
+	</view>
+	<view class="cont-box">
+		<view wx:if="{{currentindex==0}}">
+			<view class="form-box">
+				<form bindsubmit="formSubmit" bindreset="formReset">
+					<view class="list">
+						<view class="weui-cell">
+							<view class="weui-cell__hd">被访人员</view>
+							<view class="weui-cell__bd">
+								<input placeholder-class="placeholderClass" placeholder="输入被访人姓名" name="intervieweeName"></input>
+							</view>
+						</view>
+						<view class="weui-cell">
+							<view class="weui-cell__hd">被访人电话</view>
+							<view class="weui-cell__bd">
+								<input placeholder-class="placeholderClass" placeholder="输入被访人电话" name="intervieweePhone" type="number"></input>
+							</view>
+						</view>
+						<view class="weui-cell">
+							<view class="weui-cell__hd">访问地点</view>
+							<view class="weui-cell__bd">
+								<input placeholder-class="placeholderClass" placeholder="被访人地址" name="address"></input>
+							</view>
+						</view>
+						<view class="weui-cell">
+							<view class="weui-cell__hd">访问时间</view>
+							<view class="weui-cell__bd">
+								<picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+									<view class="tui-picker-detail">
+										<input placeholder-class="placeholderClass" value="{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}:{{dateTimeArray[5][dateTime[5]]}}" name="beginTime"></input>
+									</view>
+								</picker>
+								<!-- <input placeholder-class="placeholderClass" placeholder="选择日期" name="beginTime" disabled></input> -->
+							</view>
+						</view>
+
+						<view class="weui-cell">
+							<view class="weui-cell__hd">来访人：</view>
+							<view class="weui-cell__bd">
+								<input placeholder-class="placeholderClass" placeholder="输入来访人姓名" name="visitorName"></input>
+							</view>
+						</view>
+						<view class="weui-cell">
+							<view class="weui-cell__hd">来访人电话</view>
+							<view class="weui-cell__bd">
+								<input placeholder-class="placeholderClass" placeholder="输入来访人手机号" name="visitorPhone"></input>
+							</view>
+						</view>
+						<view class="weui-cell">
+							<view class="weui-cell__hd">身份证号</view>
+							<view class="weui-cell__bd">
+								<input placeholder-class="placeholderClass" placeholder="输入来访人身份证号" name="visitorIdentity"></input>
+							</view>
+						</view>
+						<view class="weui-cell">
+							<view class="weui-cell__hd">单位</view>
+							<view class="weui-cell__bd">
+								<input placeholder-class="placeholderClass" placeholder="输入来访人单位" name="visitorCompany"></input>
+							</view>
+						</view>
+						<view class="weui-cell">
+							<view class="weui-cell__hd">车牌号</view>
+							<view class="weui-cell__bd">
+								<input placeholder-class="placeholderClass" placeholder="输入车牌号" name="visitorLicense"></input>
+							</view>
+						</view>
+						<view class="weui-cell">
+							<view class="weui-cell__bd">同行人员</view>
+							<view class="weui-cell__ft">
+								<view class="btn addBtn" bindtap="addperson">增加</view>
+							</view>
+						</view>
+						<view class="peerList">
+							<view class="weui-cell" wx:for="{{peerList}}" wx:key="index">
+								<view class="weui-cell__hd">{{item.companionName}}</view>
+								<view class="weui-cell__bd">{{item.companionIdentity}}</view>
+								<view class="weui-cell__ft"></view>
+							</view>
+						</view>
+						<view class="weui-cell">
+							<view class="weui-cell__hd">访客目的</view>
+							<view class="weui-cell__bd">
+								<input placeholder-class="placeholderClass" placeholder="输入访客目的" name="remark"></input>
+							</view>
+						</view>
+					</view>
+					<view class="kong"></view>
+					<view class="footer weui-cell">
+						<view class="online">
+							<button class="btn cencel" formType="reset" name="Submit">重新填写</button>
+						</view>
+						<view class="onlineCall" catchtap='freeTell'>
+							<button class="btn save" form-type="submit" name="Submit">提 交</button>
+						</view>
+					</view>
+				</form>
+				<view class="mark" hidden="{{show}}">
+					<view class="card">
+						<view class="card-title">添加 - 同行人员</view>
+						<view class="card-content">
+							<view>同行人姓名</view>
+							<view>
+								<input placeholder-class="placeholderClass" placeholder="输入姓名" bindinput="nameInput" value="{{name}}"></input>
+							</view>
+							<view>身份证号</view>
+							<view>
+								<input placeholder-class="placeholderClass" placeholder="输入身份证号" bindinput="sfnumInput" value="{{idcode}}"></input>
+							</view>
+						</view>
+						<view class="weui-cell ">
+							<view class="weui-cell__bd ">
+								<view class="btn cancle" bindtap="cencelAdd">取消</view>
+							</view>
+							<view class="weui-cell__bd ">
+								<view class="btn ok" bindtap="okAdd">确定</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view wx:if="{{currentindex==1}}">
+			<!-- 删除 -->
+			<view class="mark" hidden="{{deleteshow}}">
+				<view class="card">
+					<view class="card-content" style="text-align:center">
+						确定要删除此次预约记录？
+					</view>
+					<view class="weui-cell ">
+						<view class="weui-cell__bd ">
+							<view class="btn cancle" bindtap="canceldelete">取消</view>
+						</view>
+						<view class="weui-cell__bd ">
+							<view class="btn ok" bindtap="okdelete">确定</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view wx:if="{{list.length==0}}">
+				<image src="../../images/sheng/no_list.png" class="no-content"></image>
+			</view>
+			<view wx:if="{{list.length>0}}" class="kang" wx:for="{{list}}" wx:key="index">
+				<view bindtap="toDetail" class="toDetail" data-item="{{item}}">
+					<view class="weui-cell">
+						<view class="weui-cell__bd">
+							<view>
+								申 请 人 ：{{item.visitorName}}
+							</view>
+							<view>
+								申请时间：{{item.createTime}}
+							</view>
+						</view>
+						<view class="weui-cell__ft" style="height:27rpx;">
+							<van-tag plain color="#FFAE00" size="medium" bindtap="openDetail" data-item="{{item}}">查看详情</van-tag>
+							<van-tag plain color="#FFAE00" size="medium" bindtap="openDelete">删除</van-tag>
+						</view>
+					</view>
+					<view class="kangItem">
+						<view>被 访 人 ：{{item.intervieweeName}}</view>
+						<view>被访人电话：{{item.intervieweePhone}}</view>
+						<view>被访时间 ：{{item.beginTime}} </view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view wx:if="{{currentindex==2}}">
+			<view class="card-box">
+				<view class="weui-cell">
+					<view class="weui-cell__hd">
+						<image src="../../images/my/a-5.png" class="user-img"></image>
+					</view>
+					<view class="weui-cell__bd">
+						<view class="identity">王祖贤<text>2</text></view>
+						<view class="nickname">外来访客</view>
+					</view>
+				</view>
+				<view class="weui-cell">
+					<view>
+						<image src="../../images/car.png" class="qcode-img"></image>
+					</view>
+				</view>
+				<view class="time-bottom">请将二维码对准门禁扫描口进行扫描</view>
+			</view>
+			<view class="time-bottom">二维码有效期：2020-02-02 12:00 - 2020-02-02 16:00</view>
+		</view>
+	</view>
+
+
+</view>

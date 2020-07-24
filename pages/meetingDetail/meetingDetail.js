@@ -1,7 +1,11 @@
 // pages/meetingDetail/meetingDetail.js
 var WxParse = require('../wxParse/wxParse.js');
-import { meetingDetail } from "../../api/meeting.js"
-import { collect } from "../../api/collect.js"
+import {
+  meetingDetail
+} from "../../api/meeting.js"
+import {
+  collect
+} from "../../api/collect.js"
 import Url from "../../utils/host.js"
 import {
   xdLogin,
@@ -12,22 +16,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-    banner: [
-      { content: "/images/timg.jpg" },
-    ],
-    indicatorDots: true,  //小点
+    banner: [{
+      content: "/images/timg.jpg"
+    }, ],
+    indicatorDots: true, //小点
     indicatorColor: "white",
-    autoplay: true,  //是否自动轮播
-    interval: 3000,  //间隔时间
-    duration: 500,  //滑动时间
+    autoplay: true, //是否自动轮播
+    interval: 3000, //间隔时间
+    duration: 500, //滑动时间
     indicatorActiveColor: "#4D7AD2",
-    isCollect:false,
-    meetingId:"",
-    meetingDetail:"",
+    isCollect: false,
+    meetingId: "",
+    meetingDetail: "",
     onLine: Url.imghost,
-    userInfo:""
+    userInfo: ""
   },
-  toCall(){
+  toCall() {
     wx.showActionSheet({
       itemList: ['拨打电话'],
       success(res) {
@@ -41,27 +45,27 @@ Page({
       }
     })
   },
-  toCollect(){
-    
-    let data={};
+  toCollect() {
+
+    let data = {};
     data.wechatUserId = this.data.wechatUserId
     data.itemType = 1;
     data.itemId = this.data.meetingId;
-    collect(data).then(res=>{
-       if(res.code==0){
-          wx.showToast({
-            title: res.msg,
-          })
-          this.setData({
-            isCollect:!(this.data.isCollect)
-          })
-       }else{
-         wx.showToast({
-           title: res.msg,
-           icon:"none"
-         })
-       }
-    }).catch(res=>{
+    collect(data).then(res => {
+      if (res.code == 0) {
+        wx.showToast({
+          title: res.msg,
+        })
+        this.setData({
+          isCollect: !(this.data.isCollect)
+        })
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: "none"
+        })
+      }
+    }).catch(res => {
       wx.showToast({
         title: res,
         icon: "none"
@@ -73,67 +77,72 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      meetingId:options.id,
+      meetingId: options.id,
       wechatUserId: wx.getStorageSync("userInfo").wechatUserId,
       userInfo: wx.getStorageSync("userInfo")
     })
     console.log(options.id)
     this.getDetail()
   },
-  getDetail(){
-    meetingDetail({ id: this.data.meetingId, wechatUserId: this.data.wechatUserId}).then(res=>{
-      if(res.code==0){
-        let leaseDetails = res.leaseDetail.leaseDetail
-        WxParse.wxParse('leaseDetail', 'html', leaseDetails, this, 5);
-
+  getDetail() {
+    meetingDetail({
+      id: this.data.meetingId,
+      wechatUserId: this.data.wechatUserId
+    }).then(res => {
+      if (res.code == 200) {
         this.setData({
-          meetingDetail: res.leaseDetail,
-          isCollect: res.leaseDetail.favorite
+          meetingDetail: res.data,
+          isCollect: res.data.leaseImage
         })
-        
-      }else{
+
+      } else {
         wx.showToast({
           title: res.msg,
           icon: "none"
         })
       }
-    }).catch(res=>{
+    }).catch(res => {
       wx.showToast({
         title: res,
-        icon:"none"
+        icon: "none"
       })
     })
   },
-  toAppoint(e){
+  toAppoint(e) {
     // console.log(e)
     let meetingDetail = this.data.meetingDetail;
-    delete (meetingDetail["leaseDetail"]);
-    console.log(meetingDetail)
-    if(this.data.userInfo){
-      
-      wx.navigateTo({
-        url: '/pages/tjMeeting/tjMeeting?info=' + JSON.stringify(meetingDetail) + '&orderType=1&rentType=' + e.currentTarget.dataset.type,
-        success: function (res) { },
-        fail: function (res) { },
-        complete: function (res) { },
-      })
-    }else{
-      xdLogin(e).then(res => {
-        this.setData({
-          userInfo:res
-        })
-        wx.navigateTo({
-          url: '/pages/tjMeeting/tjMeeting?info=' + JSON.stringify(meetingDetail) + '&orderType=1&rentType=' + e.currentTarget.dataset.type,
-          success: function (res) { },
-          fail: function (res) { },
-          complete: function (res) { },
-        })
-        
-      }).catch(res => {
-        console.log(res)
-      })
-    }
+    delete(meetingDetail["leaseDetail"]);
     
+    wx.navigateTo({
+      url: '/pages/tjMeeting/tjMeeting?info=' + JSON.stringify(meetingDetail) + '&orderType=1&rentType=' + e.currentTarget.dataset.type,
+      success: function (res) {},
+      fail: function (res) {},
+      complete: function (res) {},
+    }) 
+
+    // if (this.data.userInfo) { 
+    //   wx.navigateTo({
+    //     url: '/pages/tjMeeting/tjMeeting?info=' + JSON.stringify(meetingDetail) + '&orderType=1&rentType=' + e.currentTarget.dataset.type,
+    //     success: function (res) {},
+    //     fail: function (res) {},
+    //     complete: function (res) {},
+    //   })
+    // } else {
+    //   xdLogin(e).then(res => {
+    //     this.setData({
+    //       userInfo: res
+    //     })
+    //     wx.navigateTo({
+    //       url: '/pages/tjMeeting/tjMeeting?info=' + JSON.stringify(meetingDetail) + '&orderType=1&rentType=' + e.currentTarget.dataset.type,
+    //       success: function (res) {},
+    //       fail: function (res) {},
+    //       complete: function (res) {},
+    //     }) 
+    //   }).catch(res => {
+    //     console.log(res)
+    //   })
+    // }
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -167,7 +176,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-     this.getDetail()
+    this.getDetail()
   },
 
   /**

@@ -1041,6 +1041,69 @@
 					"id": -1,
 					"name": "pages/carNumber/carNumber",
 					"pathName": "pages/carNumber/carNumber",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/visitorsList/visitorsList",
+					"pathName": "pages/visitorsList/visitorsList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetingRoom/meetingRoom",
+					"pathName": "pages/meetingRoom/meetingRoom",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetingDetail/meetingDetail",
+					"pathName": "pages/meetingDetail/meetingDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetingRoom/meetingRoom",
+					"pathName": "pages/meetingRoom/meetingRoom",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetingRoom/meetingRoom",
+					"pathName": "pages/meetingRoom/meetingRoom",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/my",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/myMeeting/myMeeting",
+					"pathName": "pages/myMeeting/myMeeting",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/tjMeeting/tjMeeting",
+					"pathName": "pages/tjMeeting/tjMeeting",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetingRoom/meetingRoom",
+					"pathName": "pages/meetingRoom/meetingRoom",
 					"scene": null
 				}
 			]

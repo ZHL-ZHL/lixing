@@ -1,102 +1,175 @@
 <!--pages/meetingDetail/meetingDetail.wxml-->
-<import src="../wxParse/wxParse.wxml"/>
+<import src="../wxParse/wxParse.wxml" />
 <view class="container">
-  <view class="banner">
-    <!-- <swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
+	<view class="banner">
+		<!-- <swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
       <block wx:for="{{banner}}" wx:key="{{index}}">
         <swiper-item>
           <image src="{{item.content}}" class="slide-image" mode="aspectFill" />
         </swiper-item>
       </block>
     </swiper> -->
-    <image src="{{onLine+meetingDetail.leaseImage}}" class="slide-image" mode="aspectFill"></image>
-    <view class="collect" bindtap="toCollect" wx:if="{{userInfo}}">
-      <van-icon name="like" color="#FF0000" size="20px" wx:if="{{isCollect}}" />
-      <van-icon name="like-o" color="#fff" size="20px" wx:else/>
-    </view>
-  </view>
-  <view class="weui-cell infoName">
-    <view class="weui-cell__bd">
-      <view class="name">{{meetingDetail.leaseName}}
-        <text class="adr">{{meetingDetail.leaseAddressName}}  </text>
-      </view>
-    </view>
-    <view class="weui-cell__ft">
-      <button class="share" open-type="share">
-        <image src="/images/icon/share.png"></image> 分享
-      </button>
-    </view>
-  </view>
-  <view class="line"></view>
-  <view>
-    <view class="weui-cell">
-      <view class="weui-cell__bd">会议厅信息</view>
-    </view>
-    <view class="info">
-      <view class="weui-cell">
-        <view class="weui-cell__bd">面积：{{meetingDetail.leaseArea}}㎡</view>
-        <view class="weui-cell__bd">最大容纳数：{{meetingDetail.leaseGalleryful}}</view>
-      </view>
-      <view class="weui-cell">
-        <view class="weui-cell__bd">所在楼层：{{meetingDetail.leaseFloor}}</view>
-        <view class="weui-cell__bd">无线宽带：{{meetingDetail.leaseBandwidth}}</view>
-      </view>
-      <view class="weui-cell">
-        <view class="weui-cell__bd">长*宽*高： {{meetingDetail.leaseLwh}}</view>
-      </view>
-    </view>
-  </view>
-  <view class="line"></view>
-  <view class="weui-cell">
-    <view class="weui-cell__bd">会议服务设备</view>
-  </view>
-  <view class="info">
-    {{meetingDetail.leaseFacility}}
-  </view>
-  <view class="line"></view>
-  <view class="weui-cell">
-    <view class="weui-cell__bd">费用</view>
-  </view>
-  <view class="info">
-    <view class="weui-cell">
-      <view class="weui-cell__bd">
-        <view class="price">
-          <label>￥</label>
-          <text>{{meetingDetail.leasePriceHours}}元/每小时 </text> 押金
-          <text>{{meetingDetail.depositHours}}元</text>
-        </view>
-        <view class="price">
-          <label>￥</label>
-          <text>{{meetingDetail.leasePriceDay}}元/每天 </text> 押金
-          <text>{{meetingDetail.depositDay}}元</text>
-        </view>
-      </view>
-      <view class="weui-cell__ft">
-        
-      </view>
-    </view>
-   
-  </view>
-   <view class="line"></view>
-   <view class="weui-cell">
-      <view class="weui-cell__bd">详情/设备</view>
-    </view>
-    <view class="info meetingInfo">
-       <template is="wxParse" data="{{wxParseData:leaseDetail.nodes}}"/> 
-    </view>
-  <view class="kong"></view>
-   <view class="footer weui-cell">
-      <view class="weui-cell__bd">
-      </view>
-      <view class="weui-cell__ft">
-         <view class="submit">
-             <view class="ql">
-               <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="toAppoint"  data-type='1'>按小时预约</button>
-             </view>
-             <view class="sl">
-                <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="toAppoint"  data-type='2'>按天预约</button>
-             </view>
-         </view>
-      </view>
-   </view>
+		<image src="{{meetingDetail.leaseImage}}" class="slide-image" mode="aspectFill"></image>
+		<view class="collect" bindtap="toCollect" wx:if="{{userInfo}}">
+			<van-icon name="like" color="#FF0000" size="20px" wx:if="{{isCollect}}" />
+			<van-icon name="like-o" color="#fff" size="20px" wx:else />
+		</view>
+	</view>
+	<view class="cont-main-top">
+		<view class="weui-cell infoName">
+			<view class="weui-cell__bd">
+				<view class="name title-top">
+					{{meetingDetail.leaseName}}
+					<text>{{meetingDetail.leaseBq}}</text>
+					<image src="../../images/address.png" class="icon-phone"></image>
+				</view>
+				<view class="adr">
+					<view style="width: 90%;display: inline-block;">
+						{{meetingDetail.leaseAddressName}}
+					</view>
+					<image src="../../images/address.png" class="icon-adr"></image>
+				</view>
+				<view class="adr">
+					<view style="color:#ccc;">
+						{{meetingDetail.leaseAddressName}}
+					</view>
+				</view>
+			</view>
+			<view class="weui-cell__ft">
+				<button class="share" open-type="share">
+					<image src="/images/icon/share.png"></image> 分享
+				</button>
+			</view>
+		</view>
+		<view class="line"></view>
+		<view>
+			<view class="weui-cell">
+				<view class="weui-cell__bd title-top">会议厅信息</view>
+			</view>
+			<view class="info">
+				<view class="weui-cell">
+					<view class="weui-cell__bd">面积：{{meetingDetail.leaseArea}}㎡</view>
+					<view class="weui-cell__bd">最大容纳数：{{meetingDetail.leaseGalleryful}}</view>
+				</view>
+				<view class="weui-cell">
+					<view class="weui-cell__bd">所在楼层：{{meetingDetail.leaseFloor}}</view>
+					<view class="weui-cell__bd">无线宽带：{{meetingDetail.leaseBandwidth}}Gbps</view>
+				</view>
+				<view class="weui-cell">
+					<view class="weui-cell__bd">长*宽*高： {{meetingDetail.leaseLwh}}</view>
+				</view>
+			</view>
+		</view>
+		<!-- <view class="line"></view> -->
+		<view class="weui-cell">
+			<view class="weui-cell__bd title-top">会议服务设备</view>
+		</view>
+		<view class="weui-cell serve-box">
+			<view class="weui-cell__bd">
+				<image src="../../images/address.png" class="detail-img"></image>
+				<view>免费停车场</view>
+			</view>
+			<view class="weui-cell__bd">
+				<image src="../../images/address.png" class="detail-img"></image>
+				<view>全区域WIFI</view>
+			</view>
+			<view class="weui-cell__bd">
+				<image src="../../images/address.png" class="detail-img"></image>
+				<view>中央空调</view>
+			</view>
+			<view class="weui-cell__bd">
+				<image src="../../images/address.png" class="detail-img"></image>
+				<view>LED大屏</view>
+			</view>
+		</view>
+		<view class="weui-cell serve-box">
+			<view class="weui-cell__bd">
+				<image src="../../images/address.png" class="detail-img"></image>
+				<view>免费停车场</view>
+			</view>
+			<view class="weui-cell__bd">
+				<image src="../../images/address.png" class="detail-img"></image>
+				<view>全区域WIFI</view>
+			</view>
+			<view class="weui-cell__bd">
+				<image src="../../images/address.png" class="detail-img"></image>
+				<view>中央空调</view>
+			</view>
+			<view class="weui-cell__bd">
+				<image src="../../images/address.png" class="detail-img"></image>
+				<view>LED大屏</view>
+			</view>
+		</view>
+		<!-- <view class="info">
+			{{meetingDetail.leaseFacility}}
+		</view> -->
+		<!-- <view class="line"></view> -->
+		<view class="weui-cell">
+			<view class="weui-cell__bd title-top">租赁必读</view>
+		</view>
+		<view>
+			<image src="../../images/address.png" class="require-img"></image>
+			<text class="require-text">费用详情</text>
+		</view>
+		<view class="info">
+			<view class="weui-cell">
+				<view class="weui-cell__bd">
+					<view class="price">
+						<label>￥</label>
+						<text>{{meetingDetail.leasePriceHours}}元/每小时 </text> 押金
+						<text>{{meetingDetail.depositHours}}元</text>
+					</view>
+					<view class="adr">(时间未满1小时按1小时合算，每超时1小时叠加1小时费用)</view>
+					<view class="price">
+						<label>￥</label>
+						<text>{{meetingDetail.leasePriceDay}}元/每天 </text> 押金
+						<text>{{meetingDetail.depositDay}}元</text>
+					</view>
+					<view class="adr">(时间未满1天折合小时计算，但需要扣除押金20%，每超时1小时叠加1小时费用)</view>
+				</view>
+			</view>
+		</view>
+		<view>
+			<image src="../../images/address.png" class="require-img"></image>
+			<text class="require-text">用餐详情</text>
+		</view>
+		<view class="info">
+			<view class="weui-cell">
+				<view class="weui-cell__bd">
+					<view class="adr">免费提供早餐，不提供午餐、晚餐；园区有食堂，可在食堂自选自费就餐~</view>
+				</view>
+			</view>
+		</view>
+		<view>
+			<image src="../../images/address.png" class="require-img"></image>
+			<text class="require-text">其他</text>
+		</view>
+		<view class="info">
+			<view class="weui-cell">
+				<view class="weui-cell__bd">
+					<view class="adr">禁止携带宠物，谢谢合作~</view>
+				</view>
+			</view>
+			<view class="adr" style="padding:50rpx 0px">
+				<view style="width: 90%;display: inline-block;">
+					园区服务热线：0351-666 6868</view>
+				<image src="../../images/address.png" class="icon-adr"></image>
+			</view>
+		</view>
+		<!-- <view class="info meetingInfo">
+			<template is="wxParse" data="{{wxParseData:leaseDetail.nodes}}" />
+		</view> -->
+		<view class="kong"></view>
+		<view class="footer weui-cell">
+			<view class="online">
+      <!--  open-type="getUserInfo" bindgetuserinfo="toAppoint" -->
+				<button class="btn cencel" lang="zh_CN" bindtap="toAppoint" data-type='1'>按小时预约</button>
+			</view>
+      <!-- open-type="getUserInfo"   bindgetuserinfo="toAppoint"-->
+			<view class="onlineCall" catchtap='freeTell'>
+				<button class="btn save" lang="zh_CN" bindtap="toAppoint" data-type='2'>按天预约</button>
+			</view>
+		</view>
+	</view>
+
 </view>

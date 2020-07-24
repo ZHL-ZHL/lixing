@@ -1,7 +1,9 @@
-// pages/visitors/visitors.js
+// pages/visitorsList/visitorsList.js
+
 var dateTimePicker = require('../../utils/datapicker.js');
 import {
-  addVisitors
+  addVisitors,
+  visitorsList
 } from "../../api/visitors.js"
 Page({
 
@@ -9,7 +11,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    deleteshow: true,
     date: '',
     time: '',
     dateTimeArray: null,
@@ -22,18 +23,39 @@ Page({
     name: "",
     idCode: "",
     peerList: [],
-    info: {}
+    nav: ['新增预约', '预约记录', '我的二维码'],
+    currentindex: 0,
+    current: 1,
+    size: 10,
+    load: false,
+    list: [{
+      address: "中鲁物流",
+      beginTime: "2020-02-29 10:13:59",
+      createTime: "2020-02-29 10:14:49",
+      endTime: "",
+      intervieweeName: "郝丽媛",
+      intervieweePhone: "15234152804",
+      isDeleted: 0,
+      remark: "应聘",
+      tenantId: "000000",
+      updateTime: "",
+      visitorCompany: "中鲁物流",
+      visitorIdentity: "230182199301180214",
+      visitorLicense: "",
+      visitorName: "冉维思",
+      visitorPhone: "13603626785",
+      wechatUserId: 554,
+      id:"1283634906672414721",
+    }],
+    type: '',
+    deleteshow:true,
+    noContent: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      info: JSON.parse(options.info)
-    })
-    console.log(this.data.info)
-
     var obj = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
     var obj1 = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
     // 精确到分的处理，将数组的秒去掉
@@ -73,27 +95,6 @@ Page({
     var time6 = that.data.dateTimeArray[5][aaa6];
     var time = time1 + '-' + time2 + '-' + time3 + ' ' + time4 + ':' + time5 + ':' + time6;
 
-  },
-  deleteUser(e) {  
-    this.data.peerList.splice(Number(e.currentTarget.id), 1) 
-    this.setData({
-      peerList: this.data.peerList
-    })
-  },
-  openDelete() {
-    this.setData({
-      deleteshow: false
-    })
-  },
-  okdelete() {
-    this.setData({
-      deleteshow: true
-    })
-  },
-  canceldelete() {
-    this.setData({
-      deleteshow: true
-    })
   },
   formReset: function () {
     console.log('form发生了reset事件')
@@ -164,6 +165,29 @@ Page({
       show: true
     })
   },
+  canceldelete() {
+    this.setData({
+      deleteshow: true
+    })
+  },
+  okdelete() {
+    this.setData({
+      deleteshow: true
+    })
+  },
+  openDelete(){
+    this.setData({
+      deleteshow: false
+    })
+  },
+  openDetail(e){ 
+    wx.navigateTo({
+      url: '/pages/visitors/visitors?info='+JSON.stringify(e.currentTarget.dataset.item),
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
   nameInput(e) {
     this.setData({
       name: e.detail.value
@@ -198,6 +222,30 @@ Page({
       console.log(this.data.peerList)
     }
   },
+  toDetail() {
+
+  },
+  getvisitorsList() {
+    visitorsList({
+      current: 1,
+      size: 10
+    }).then(res => {
+
+    })
+  },
+  selNav: function (e) {
+    let index = e.target.dataset.idx;
+    this.setData({
+      currentindex: index,
+      current: 1,
+      // list: []
+    })
+    if (this.data.currentindex == 1) {
+      // this.getvisitorsList()
+    }
+    // this.getList()
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

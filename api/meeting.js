@@ -4,11 +4,18 @@ import URL from "../utils/host.js"
 export function meetingList(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/sys/leasedetail/list',
+    url: URL.host + '/blade-bms/hzleasedetail/page',
     params: data
   })
 } 
 
+export function hzleasemakeList(data) {
+  return http.fly.request({
+    method: 'get',
+    url: URL.host + '/blade-bms/hzleasemake/page',
+    params: data
+  })
+} 
 
 export function meetingDetail(data) {
   if (data.wechatUserId){
@@ -20,8 +27,8 @@ export function meetingDetail(data) {
   }else{
     return http.fly.request({
       method: 'get',
-      url: URL.host + '/renren-fast/app/leasedetail/info/' + data.id
-      // params: data
+      url: URL.host + '/blade-bms/hzleasedetail/detail',
+      params: data
     })
   }
   

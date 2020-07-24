@@ -38,6 +38,11 @@ Page({
         url: "/pages/myvisitors/myvisitors"
       },
       {
+        name: "我的预约",
+        icon: "/images/my/a-8.png",
+        url: "/pages/myMeeting/myMeeting"
+      },
+      {
         name: "我的收藏",
         icon: "/images/my/a-9.png",
         url: "/pages/myCollect/myCollect"
@@ -75,10 +80,10 @@ Page({
     })
   },
   getPhoneNumber(e) {
-    console.log(e)
-    console.log(e.detail.errMsg)
-    console.log(e.detail.iv)
-    console.log(e.detail.encryptedData)
+    // console.log(e)
+    // console.log(e.detail.errMsg)
+    // console.log(e.detail.iv)
+    // console.log(e.detail.encryptedData)
     let data={}
     data.iv = e.detail.iv
     data.encryptedData = e.detail.encryptedData
@@ -108,34 +113,40 @@ Page({
     })
   },
   routeTo(e) {
-    console.log(e)
-    let idx = e.currentTarget.dataset.index
-    let name = e.currentTarget.dataset.name
-    if(name=="客服电话"){
-      wx.makePhoneCall({
-        phoneNumber: '4008200202',
-      })
-    }
-    if (this.data.userInfo) {
-      wx.navigateTo({
-        url: e.currentTarget.dataset.url,
-        success: function (res) { },
-        fail: function (res) { },
-        complete: function (res) { },
-      })
-    } else {
-      xdLogin(e).then(res => {
-        this.setData({
-          userInfo: res
-        })
-        this.getRole()
-        wx.navigateTo({
-          url: e.currentTarget.dataset.url,
-        })
-      }).catch(res => {
-        console.log(res)
-      })
-    }
+    wx.navigateTo({
+      url: e.currentTarget.dataset.url,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+    // console.log(e)
+    // let idx = e.currentTarget.dataset.index
+    // let name = e.currentTarget.dataset.name
+    // if(name=="客服电话"){
+    //   wx.makePhoneCall({
+    //     phoneNumber: '4008200202',
+    //   })
+    // }
+    // if (this.data.userInfo) {
+    //   wx.navigateTo({
+    //     url: e.currentTarget.dataset.url,
+    //     success: function (res) { },
+    //     fail: function (res) { },
+    //     complete: function (res) { },
+    //   })
+    // } else {
+    //   xdLogin(e).then(res => {
+    //     this.setData({
+    //       userInfo: res
+    //     })
+    //     this.getRole()
+    //     wx.navigateTo({
+    //       url: e.currentTarget.dataset.url,
+    //     })
+    //   }).catch(res => {
+    //     console.log(res)
+    //   })
+    // }
 
 
   },

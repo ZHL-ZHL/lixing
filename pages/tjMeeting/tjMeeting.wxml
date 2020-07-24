@@ -1,171 +1,148 @@
 <!--pages/tjMeeting/tjMeeting.wxml-->
 <view class="container">
-  <view class="adr weui-cell mainColor " wx:if="{{address}}">
-    <view class="weui-cell__bd" wx:if="{{orderType==1}}">
-      <view class="name">服务人：{{address.name}}
-        <text></text>
-      </view>
-      <view class="addressInfo"> 电话：{{address.phone}}</view>
-    </view>
-    <view class="weui-cell__bd" wx:if="{{orderType==2}}">
-      <view class="name">服务人：{{address.name}}
-        <text>电话：{{address.phone}}</text>
-      </view>
-      <view class="addressInfo">地址：{{address.provinces}}{{address.address}}</view>
-    </view>
-    <view class="weui-cell__ft">
-      <image src="/images/icon/r_jt.png" class="r_jt" />
-    </view>
-  </view>
-  <navigator wx:else class="plus" url="/pages/myAdr/myAdr?type=2">
-    <image src="/images/add.png" class="add"></image>选择
-  </navigator>
-  <image src="/images/zs.png" class="zs"></image>
-  <view class="weui-cell goodsInfo" wx:if="{{orderType==1}}">
-    <view class="weui-cell__hd">
-      <image src="{{online+info.leaseImage}}" class="thumb"></image>
-    </view>
-    <view class="weui-cell__bd">
-      <view class="name">{{info.leaseAddressName}} </view>
-      <view class="info">
-        {{info.leaseAddress}} {{info.leaseAddressName}}
-        <view>{{info.leaseArea}}平方米 最多容纳人数{{info.leaseGalleryful}}</view>
-      </view>
-    </view>
-  </view>
+	<view class="adr weui-cell mainColor " wx:if="{{address}}">
+		<view class="weui-cell__bd" wx:if="{{orderType==1}}">
+			<view class="name">服务人：{{address.name}}
+				<text></text>
+			</view>
+			<view class="addressInfo"> 电话：{{address.phone}}</view>
+		</view>
+		<view class="weui-cell__bd" wx:if="{{orderType==2}}">
+			<view class="name">服务人：{{address.name}}
+				<text>电话：{{address.phone}}</text>
+			</view>
+			<view class="addressInfo">地址：{{address.provinces}}{{address.address}}</view>
+		</view>
+		<view class="weui-cell__ft">
+			<image src="/images/icon/r_jt.png" class="r_jt" />
+		</view>
+	</view>
+	<navigator wx:else class="plus" url="/pages/myAdr/myAdr?type=2">
+		<!-- <image src="/images/add.png" class="add"></image> -->
+		<view class="nav-add-address">+ 添加信息</view>
+		<view class="nav-ccc-address">请添加您的个人信息以便我们能尽快联系您~</view>
+	</navigator>
+	<!-- <image src="/images/zs.png" class="zs"></image> -->
+	<!--  wx:if="{{orderType==1}}" -->
+	<view class="weui-cell goodsInfo">
+		<view class="weui-cell__hd">
+			<image src="{{online+info.leaseImage}}" class="thumb"></image>
+		</view>
+		<view class="weui-cell__bd">
+			<view class="name">{{info.leaseName}} </view>
+			<view class="info"> {{info.leaseAddressName}}
+				<view>{{info.leaseArea}}平方米 最多容纳人数{{info.leaseGalleryful}}</view>
+			</view>
+		</view>
+	</view>
 
-  <view wx:if="{{orderType==2}}">
-    <view wx:if="{{isCart}}">
-      <view class="weui-cell goodsInfo" wx:for="{{info}}" wx:key="index">
-        <view class="weui-cell__hd">
-          <image src="{{online+info.picture}}" class="thumb"></image>
-        </view>
-        <view class="weui-cell__bd">
-          <view class="name">{{item.name}} </view>
-          <view class="info">
-            {{item.itemPrice}}
-          </view>
-        </view>
-      </view>
-    </view>
-    <view wx:else>
-      <view class="weui-cell goodsInfo">
-        <view class="weui-cell__hd">
-          <image src="{{online+info.maintenancePicture}}" class="thumb"></image>
-        </view>
-        <view class="weui-cell__bd">
-          <view class="name">{{info.maintenanceName}} </view>
-          <view class="info">
-            {{info.maintenancePrice}}
-          </view>
-        </view>
-      </view>
-    </view>
-  </view>
-
-  <view class="weui-cell yhq">
+	<!-- <view class="weui-cell yhq">
     <view class="weui-cell__bd">优惠券</view>
     <view class="weui-cell__ft">
       <image src="/images/icon/r_jt.png" class="r_jt"></image>
     </view>
   </view>
-  <view class="line"></view>
-  <view class="list">
+  <view class="line"></view> -->
+	<view class="list">
+		<view wx:if="{{orderType==1}}">
+			<view wx:if="{{rentType==2}}">
+				<view class="weui-cell">
+					<view class="weui-cell__hd">
+						<text wx:if="{{orderType==1}}">开始时间：</text>
+						<text wx:if="{{orderType==2}}">预约时间：</text>
+					</view>
+					<picker class="weui-cell__bd" mode="date" value="{{date}}" start="{{today}}" end="{{date1}}" bindchange="bindDateChange">
+						<view class="picker">
+							{{date}}
+						</view>
+					</picker>
+					<view class="weui-cell__ft">
+						<image src="/images/icon/r_jt.png" class="r_jt"></image>
+					</view>
+				</view>
+				<view class="weui-cell" wx:if="{{orderType==1}}">
+					<view class="weui-cell__hd">结束时间：</view>
+					<picker mode="date" value="{{date1}}" start="{{date}}" bindchange="bindDateChange1" class="weui-cell__bd">
+						<view class="picker">
+							{{date1}}
+						</view>
+					</picker>
+					<view class="weui-cell__ft">
+						<image src="/images/icon/r_jt.png" class="r_jt"></image>
+					</view>
+				</view>
+			</view>
+			<view wx:if="{{rentType==1}}">
+				<view class="weui-cell">
+					<view class="weui-cell__hd">
+						<text>选择日期：</text>
+					</view>
+					<view class="weui-cell__bd">
+						<picker mode="date" value="{{date2}}" start="{{today}}" bindchange="bindDateChange2">
+							<view class="picker">
+								{{date2}}
+							</view>
+						</picker>
+					</view>
+					<view class="weui-cell__ft">
+						<image src="/images/icon/r_jt.png" class="r_jt"></image>
+					</view>
+				</view>
+				<view class="weui-cell">
+					<view class="weui-cell__hd">
+						<text>选择开始时间：</text>
+					</view>
+					<picker mode="time" value="{{time}}" bindchange="bindTimeChange" class="weui-cell__bd">
+						<view class="picker">
+							{{time}}
+						</view>
+					</picker>
+					<view class="weui-cell__ft">
+						<image src="/images/icon/r_jt.png" class="r_jt"></image>
+					</view>
+				</view>
+				<view class="weui-cell">
+					<view class="weui-cell__hd">
+						<text>选择结束时间：</text>
+					</view>
+					<picker mode="time" value="{{time2}}" bindchange="bindTimeChange2" class="weui-cell__bd" start="{{time}}">
+						<view class="picker">
+							{{time2}}
+						</view>
+					</picker>
+					<view class="weui-cell__ft">
+						<image src="/images/icon/r_jt.png" class="r_jt"></image>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view wx:else>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">预约时间：</view>
+				<view class="weui-cell__bd">
+					<picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+						<view class="tui-picker-detail">
+							<input placeholder-class="placeholderClass" value="{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}" disabled name="beginTime"></input>
+						</view>
+					</picker>
+					<!-- <input placeholder-class="placeholderClass" placeholder="选择日期" name="beginTime" disabled></input> -->
+				</view>
+			</view>
+		</view>
+		<view class="weui-cell">
+			<view class="weui-cell__bd">备注</view>
+		</view>
+		<view>
+			<textarea placeholder="请填写备注。。。" bindinput="content"></textarea>
+		</view>
+	</view>
+	<!-- {{isCart}} -->
+	<!-- <view class="btn" bindtap="tjCarOrder" wx:if="{{isCart==1}}">提交</view>
+	<view class="btn" bindtap="tjOrder" wx:else>提交</view> -->
+	<view class="footer weui-cell">
+		<view class="allpayBtn">
+			<button class="btn save" bindtap="tjOrder">确定-预约</button>
+		</view>
+	</view>
 
-
-    <view wx:if="{{orderType==1}}">
-      <view wx:if="{{rentType==2}}">
-        <view class="weui-cell">
-          <view class="weui-cell__hd">
-            <text wx:if="{{orderType==1}}">开始时间：</text>
-            <text wx:if="{{orderType==2}}">预约时间：</text>
-          </view>
-          <picker class="weui-cell__bd" mode="date" value="{{date}}" start="{{today}}" end="{{date1}}" bindchange="bindDateChange">
-            <view class="picker">
-              {{date}}
-            </view>
-          </picker>
-          <view class="weui-cell__ft">
-            <image src="/images/icon/r_jt.png" class="r_jt"></image>
-          </view>
-        </view>
-        <view class="weui-cell" wx:if="{{orderType==1}}">
-          <view class="weui-cell__hd">结束时间：</view>
-          <picker mode="date" value="{{date1}}" start="{{date}}" bindchange="bindDateChange1" class="weui-cell__bd">
-            <view class="picker">
-              {{date1}}
-            </view>
-          </picker>
-          <view class="weui-cell__ft">
-            <image src="/images/icon/r_jt.png" class="r_jt"></image>
-          </view>
-        </view>
-      </view>
-      <view wx:if="{{rentType==1}}">
-        <view class="weui-cell">
-          <view class="weui-cell__hd">
-            <text>选择日期：</text>
-          </view>
-          <view class="weui-cell__bd">
-            <picker mode="date" value="{{date2}}" start="{{today}}" bindchange="bindDateChange2">
-              <view class="picker">
-                {{date2}}
-              </view>
-            </picker>
-          </view>
-          <view class="weui-cell__ft">
-            <image src="/images/icon/r_jt.png" class="r_jt"></image>
-          </view>
-        </view>
-        <view class="weui-cell">
-          <view class="weui-cell__hd">
-            <text>选择开始时间：</text>
-          </view>
-          <picker mode="time" value="{{time}}" bindchange="bindTimeChange" class="weui-cell__bd">
-            <view class="picker">
-              {{time}}
-            </view>
-          </picker>
-          <view class="weui-cell__ft">
-            <image src="/images/icon/r_jt.png" class="r_jt"></image>
-          </view>
-        </view>
-        <view class="weui-cell">
-          <view class="weui-cell__hd">
-            <text>选择结束时间：</text>
-          </view>
-          <picker mode="time" value="{{time2}}" bindchange="bindTimeChange2" class="weui-cell__bd" start="{{time}}">
-            <view class="picker">
-              {{time2}}
-            </view>
-          </picker>
-          <view class="weui-cell__ft">
-            <image src="/images/icon/r_jt.png" class="r_jt"></image>
-          </view>
-        </view>
-      </view>
-    </view>
-    <view wx:else>
-      <view class="weui-cell">
-      <view class="weui-cell__hd">预约时间：</view>
-      <view class="weui-cell__bd">
-      <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
-         <view class="tui-picker-detail">
-            <input placeholder-class="placeholderClass" value="{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}" disabled name="beginTime"></input>
-         </view>
-       </picker>
-        <!-- <input placeholder-class="placeholderClass" placeholder="选择日期" name="beginTime" disabled></input> -->
-      </view>
-    </view>
-    </view>
-    <view class="weui-cell">
-      <view class="weui-cell__bd">备注</view>
-    </view>
-    <view>
-      <textarea placeholder="请填写备注。。。" bindinput="content"></textarea>
-    </view>
-  </view>
-  <!-- {{isCart}} -->
-  <view class="btn" bindtap="tjCarOrder" wx:if="{{isCart==1}}">提交</view>
-  <view class="btn" bindtap="tjOrder" wx:else>提交</view>
 </view>

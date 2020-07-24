@@ -1,0 +1,14 @@
+<!--pages/myMeeting/myMeeting.wxml-->
+<view class="container">
+	<view class="weui-cell busList" bindtap="todetail" wx:for="{{list}}" wx:key="index" data-id="{{item.id}}" data-state="{{item.state}}">
+		<view class="weui-cell__hd">
+			<view class="busImgBox">
+				<image src="{{item.carPic}}" class="busImg"></image>
+			</view>
+		</view>
+		<view class="weui-cell__bd">
+			<view><text>{{item.carPlate}}</text></view> 
+			<view>{{item.updateTime}}</view>
+		</view>
+	</view>
+</view>

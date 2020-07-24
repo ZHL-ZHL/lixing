@@ -1,81 +1,123 @@
 /* pages/tjMeeting/tjMeeting.wxss */
-.adr{
+.adr {
   font-size: 26rpx;
 }
-.adr .name text{
-   float: right;
+
+.adr .name text {
+  float: right;
 }
-.addressInfo{
+
+.addressInfo {
   margin-top: 10rpx;
 }
-.zs{
+
+.zs {
   width: 100%;
   height: 10rpx;
   display: block;
 }
-.thumb{
+
+.thumb {
   width: 150rpx;
   height: 150rpx;
   display: block;
   margin-right: 10px;
 }
-.goodsInfo{
-  padding: 15px;
+
+.goodsInfo {
+  box-shadow: 0px 0px 5px #e1e1e1;
+  width: calc(100% - 40rpx);
+  margin: 20px auto;
+  border-radius: 8rpx;
+  box-sizing: border-box;
 }
-.goodsInfo .name{
+
+.goodsInfo .name {
   font-size: 28rpx;
 }
-.goodsInfo .info{
+
+.goodsInfo .info {
   font-size: 24rpx;
   color: #666;
   padding-top: 20rpx;
 }
-.list{
+
+.list {
   font-size: 26rpx;
+  box-shadow: 0px 0px 5px #e1e1e1;
+  width: calc(100% - 40rpx);
+  margin: 20px auto;
+  border-radius: 8rpx;
 }
-.yhq::before{
+
+.yhq::before {
   content: "";
   position: absolute;
   left: 15px;
   right: 0;
-  top:0;
+  top: 0;
   border-top: 1rpx solid #e1e1e1;
   height: 1px;
 }
-.list .weui-cell::before{
+
+.list .weui-cell::before {
   content: "";
   position: absolute;
   left: 15px;
   right: 15px;
-  top:0;
+  top: 0;
   border-top: 1rpx solid #e1e1e1;
   height: 1px;
 }
-.line{
+
+.line {
   width: 100%;
   height: 5px;
   background: #e1e1e1;
 }
-textarea{
-  width: 690rpx;
+
+textarea {
+  width: calc(100% - 40rpx);
   height: 200rpx;
   margin: 0 auto;
-  border: 1rpx solid #e1e1e1;
+  /* border: 1rpx solid #e1e1e1; */
   padding: 10rpx;
   box-sizing: border-box;
 }
-.btn{
+
+.btn {
   background: #4D7AD2;
   color: #fff;
   border: none;
 }
-.plus{
+
+.plus {
   text-align: center;
   line-height: 150rpx;
+  box-shadow: 0px 0px 5px #e1e1e1;
+  width: calc(100% - 40rpx);
+  margin: 20px auto;
+  border-radius: 8rpx;
 }
-.add{
+
+.add {
   width: 48rpx;
   height: 48rpx;
   vertical-align: middle;
   margin-right: 10px;
+}
+.nav-add-address{
+  color: #FF4D6B;
+  font-weight: bold;
+  padding-top: 40rpx;
+}
+.nav-add-address,
+.nav-ccc-address {
+  line-height: 50rpx;
+  font-size: 26rpx;
+}
+.nav-ccc-address {
+  color: #999;
+  padding-bottom: 40rpx;
+  font-size: 24rpx;
 }

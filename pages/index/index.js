@@ -41,7 +41,7 @@ Page({
       {
         icon: "/images/icon1/nav10.png",
         name: "访客预约",
-        url: "/pages/visitors/visitors",
+        url: "/pages/visitorsList/visitorsList",
         show: true
       },
       {

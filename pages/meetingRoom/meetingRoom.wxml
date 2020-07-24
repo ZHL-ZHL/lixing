@@ -1,89 +1,89 @@
 <!--pages/meetingRoom/meetingRoom.wxml-->
 <view class="container">
-  <view class="banner">
-    <swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
-      <block wx:for="{{banner}}" wx:key="{{index}}">
-        <swiper-item>
-          <view data-item="{{item}}" hover-class="none" bindtap="toAdvDeatil">
-            <image src="{{item.picture}}" class="slide-image" mode="aspectFill" />
-          </view>
-        </swiper-item>
-      </block>
-    </swiper>
-  </view>
-  <view class="search-box list">
-    <view class="weui-cell">
-      <view class="weui-cell-title">
-        <text>今日使用</text>
-        <view>7月6日 周一</view>
-      </view>
-      <view class="weui-cell-title">
-        <text>明日退租</text>
-        <view>7月7日 周二</view>
-      </view>
-      <view class="weui-cell-title" style="text-align:right">
-        <text style="margin-right:20rpx;">共1天</text>
-      </view>
-      <view class="weui-cell__ft">
-        >
-      </view>
-    </view>
-    <view class="weui-cell">
-      <view class="weui-cell__hd">
-        <text>我的附近</text>
-      </view>
-      <view class="weui-cell__bd">
-        <input placeholder-class="placeholderClass" placeholder="搜索会议室名称/关键词"></input>
-      </view>
-      <view class="weui-cell__ft">
-        >
-      </view>
-    </view>
-    <view class="weui-cell">
-      <view class="weui-cell__hd">
-        <text>精准查找</text>
-      </view>
-      <view class="weui-cell__bd">
-        <input placeholder-class="placeholderClass" placeholder="设置我需要的人数/面积/价格"></input>
-      </view>
-      <view class="weui-cell__ft">
-        >
-      </view>
-    </view>
-    <view class="btnSearch">查 找</view>
-  </view>
-  <!-- <view class="divider">
+	<view class="banner">
+		<swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
+			<block wx:for="{{banner}}" wx:key="{{index}}">
+				<swiper-item>
+					<view data-item="{{item}}" hover-class="none" bindtap="toAdvDeatil">
+						<image src="{{item.picture}}" class="slide-image" mode="aspectFill" />
+					</view>
+				</swiper-item>
+			</block>
+		</swiper>
+	</view>
+	<view class="search-box list">
+		<view class="weui-cell">
+			<view class="weui-cell-title">
+				<text>今日使用</text>
+				<view>7月6日 周一</view>
+			</view>
+			<view class="weui-cell-title">
+				<text>明日退租</text>
+				<view>7月7日 周二</view>
+			</view>
+			<view class="weui-cell-title" style="text-align:right">
+				<text style="margin-right:20rpx;">共1天</text>
+			</view>
+			<view class="weui-cell__ft" bindtap="showAccurateSearchBtn">
+				<image src="/images/icon/r_jt.png" class="r_jt"></image>
+			</view>
+		</view>
+		<view class="weui-cell">
+			<view class="weui-cell__hd">
+				<text>我的附近</text>
+			</view>
+			<view class="weui-cell__bd">
+				<input placeholder-class="placeholderClass" placeholder="搜索会议室名称/关键词"></input>
+			</view>
+			<view class="weui-cell__ft" bindtap="showAccurateSearchBtn">
+				<image src="/images/icon/r_jt.png" class="r_jt"></image>
+			</view>
+		</view>
+		<view class="weui-cell">
+			<view class="weui-cell__hd">
+				<text>精准查找</text>
+			</view>
+			<view class="weui-cell__bd">
+				<input placeholder-class="placeholderClass" placeholder="设置我需要的人数/面积/价格"></input>
+			</view>
+			<view class="weui-cell__ft" bindtap="showAccurateSearchBtn">
+				<image src="/images/icon/r_jt.png" class="r_jt"></image>
+			</view>
+		</view>
+		<view class="btnSearch">查 找</view>
+	</view>
+	<!-- <view class="divider">
     <text>热门推荐</text>
   </view> -->
-  <view class="divider-title">
-    <view class="divider-title-bold">热门推荐</view>
-    <view class="divider-title-sml">精选会议厅，尽享优质环境</view>
-  </view>
-  <view class="divider-content">
-    <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%;">
-      <navigator id="demo1" class="scroll-view-item_H demo-text-1" wx:for="{{hot}}" wx:key="index" hover-class="none" url="/pages/meetingDetail/meetingDetail?id={{item.itemId}}">
-        <image src="{{item.picture}}" mode="aspectFill"></image>
-        <view class="scroll-view-item_H-name">{{item.name}} {{item.leaseArea}}㎡</view>
-        <view class="scroll-view-item_H-address">{{item.address}}</view>
-        <view class="scroll-view-item_H-price"><text class="scroll-view-item_H-colorred">￥{{item.price}}</text>/时 <text class="scroll-view-item_H-colorred">￥{{item.leasePriceDay}}</text>/天</view>
-      </navigator>
-    </scroll-view>
-  </view>
+	<view class="divider-title">
+		<view class="divider-title-bold">热门推荐</view>
+		<view class="divider-title-sml">精选会议厅，尽享优质环境</view>
+	</view>
+	<view class="divider-content">
+		<scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%;">
+			<navigator id="demo1" class="scroll-view-item_H demo-text-1" wx:for="{{hot}}" wx:key="index" hover-class="none" url="/pages/meetingDetail/meetingDetail?id={{item.id}}">
+				<image src="{{item.leaseImage}}" mode="aspectFill"></image>
+				<view class="scroll-view-item_H-name">{{item.leaseName}} {{item.leaseArea}}㎡</view>
+				<view class="scroll-view-item_H-address">{{item.leaseAddressName}}</view>
+				<view class="scroll-view-item_H-price"><text class="scroll-view-item_H-colorred">￥{{item.leasePriceHours}}</text>/时 <text class="scroll-view-item_H-colorred">￥{{item.leasePriceDay}}</text>/天</view>
+			</navigator>
+		</scroll-view>
+	</view>
 
-  <view class="divider-title">
-    <view class="divider-title-bold">会议厅品牌馆</view>
-    <view class="divider-title-sml">每一套会议厅都是为您精挑细选</view>
-  </view>
-  <view class="divider-content">
-    <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%;">
-      <navigator id="demo2" class="scroll-view-item_H demo-text-2" wx:for="{{meetingRoom}}" wx:key="index" hover-class="none" url="/pages/meetingDetail/meetingDetail?id={{item.itemId}}">
-        <image src="{{onLine+item.leaseImage}}" mode="aspectFill"></image>
-        <view class="scroll-view-item_H-name">{{item.leaseName}}</view>
-        <view class="scroll-view-item_H-address">{{item.leaseAddressName}}</view>
-      </navigator>
-    </scroll-view>
-  </view>
-  <!-- <view class="divider">
+	<view class="divider-title">
+		<view class="divider-title-bold">会议厅品牌馆</view>
+		<view class="divider-title-sml">每一套会议厅都是为您精挑细选</view>
+	</view>
+	<view class="divider-content">
+		<scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%;">
+			<navigator id="demo2" class="scroll-view-item_H demo-text-2" wx:for="{{meetingRoom}}" wx:key="index" hover-class="none" url="/pages/meetingDetail/meetingDetail?id={{item.id}}">
+				<image src="{{item.leaseImage}}" mode="aspectFill"></image>
+				<view class="scroll-view-item_H-name">{{item.leaseName}}</view>
+				<view class="scroll-view-item_H-address">{{item.leaseAddressName}}</view>
+			</navigator>
+		</scroll-view>
+	</view>
+	<!-- <view class="divider">
     <text>会议室推荐</text>
   </view>
   <view class="meetingList">
@@ -102,4 +102,50 @@
       </view>
     </navigator>
   </view> -->
+
+	<van-action-sheet show="{{ showAccurateSearch }}" title="精准查找" bind:close="onClose" round="true" close-on-click-overlay="true">
+		<view class="searchBox">
+			<view class="sheet-content">
+				<view class="sheet-title">价 格 <text>￥1500 - 2000</text></view>
+				<view class="sheet-ititle">￥0 <text>￥1000以上</text></view>
+				<view style="padding-left:1%">
+					<view class="sheet-item-list">￥0-2000</view>
+					<view class="sheet-item-list">￥0-2000</view>
+					<view class="sheet-item-list">￥0-2000</view>
+					<view class="sheet-item-list">￥0-2000</view>
+					<view class="sheet-item-list">￥0-2000</view>
+					<view class="sheet-item-list">￥0-2000</view>
+					<view class="sheet-item-list">￥0-2000</view> 
+				</view>
+			</view>
+
+			<view class="sheet-content">
+				<view class="sheet-title">面 积</view>
+				<view class="sheet-ititle">0 <text>1000以上</text></view>
+				<view style="padding-left:1%">
+					<view class="sheet-item-list">￥0-2000</view>
+					<view class="sheet-item-list">￥0-2000</view>
+					<view class="sheet-item-list">￥0-2000</view>
+					<view class="sheet-item-list">￥0-2000</view>  
+				</view>
+			</view>
+
+			<view class="sheet-content">
+				<view class="sheet-title">参会人数</view>
+				<view class="sheet-ititle">0 <text>1000人以上</text></view>
+				<view style="padding-left:1%">
+					<view class="sheet-item-list">￥0-2000</view>
+					<view class="sheet-item-list">￥0-2000</view>
+					<view class="sheet-item-list">￥0-2000</view>
+					<view class="sheet-item-list">￥0-2000</view>  
+				</view>
+			</view>
+
+
+			<view class="sheet-btn">完成</view>
+		</view>
+	</van-action-sheet>
+
+
+
 </view>

@@ -1,119 +1,135 @@
 <!--pages/visitors/visitors.wxml-->
 <view class="container">
-  <form bindsubmit="formSubmit" bindreset="formReset">
-    <view class="list">
-      <view class="weui-cell">
-        <view class="weui-cell__hd">被访人员</view>
-        <view class="weui-cell__bd">
-          <input placeholder-class="placeholderClass" placeholder="输入被访人姓名" name="intervieweeName"></input>
-        </view>
-      </view>
-      <view class="weui-cell">
-        <view class="weui-cell__hd">被访人电话</view>
-        <view class="weui-cell__bd">
-          <input placeholder-class="placeholderClass" placeholder="输入被访人电话" name="intervieweePhone" type="number"></input>
-        </view>
-      </view>
-      <view class="weui-cell">
-        <view class="weui-cell__hd">访问地点</view>
-        <view class="weui-cell__bd">
-          <input placeholder-class="placeholderClass" placeholder="被访人地址" name="address"></input>
-        </view>
-      </view>
-      <view class="weui-cell">
-        <view class="weui-cell__hd">访问时间</view>
-        <view class="weui-cell__bd">
-          <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
-            <view class="tui-picker-detail">
-              <input placeholder-class="placeholderClass" value="{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}:{{dateTimeArray[5][dateTime[5]]}}"
-                name="beginTime"></input>
-            </view>
-          </picker>
-          <!-- <input placeholder-class="placeholderClass" placeholder="选择日期" name="beginTime" disabled></input> -->
-        </view>
-      </view>
+	<form bindsubmit="formSubmit" bindreset="formReset">
+		<view class="list">
+			<view class="weui-cell">
+				<view class="weui-cell__hd">被访人员</view>
+				<view class="weui-cell__bd">
+					<input placeholder-class="placeholderClass" placeholder="输入被访人姓名" name="intervieweeName" value="{{info.intervieweeName}}"></input>
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">被访人电话</view>
+				<view class="weui-cell__bd">
+					<input placeholder-class="placeholderClass" placeholder="输入被访人电话" name="intervieweePhone" type="number" value="{{info.intervieweePhone}}"></input>
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">访问地点</view>
+				<view class="weui-cell__bd">
+					<input placeholder-class="placeholderClass" value="{{info.address}}" placeholder="被访人地址" name="address"></input>
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">访问时间</view>
+				<view class="weui-cell__bd">
+					<picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+						<view class="tui-picker-detail">
+							<input placeholder-class="placeholderClass" value="{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}:{{dateTimeArray[5][dateTime[5]]}}" name="beginTime"></input>
+						</view>
+					</picker>
+					<!-- <input placeholder-class="placeholderClass" placeholder="选择日期" name="beginTime" disabled></input> -->
+				</view>
+			</view>
 
-      <view class="weui-cell">
-        <view class="weui-cell__hd">来访人：</view>
-        <view class="weui-cell__bd">
-          <input placeholder-class="placeholderClass" placeholder="输入来访人姓名" name="visitorName"></input>
-        </view>
-      </view>
-      <view class="weui-cell">
-        <view class="weui-cell__hd">来访人电话</view>
-        <view class="weui-cell__bd">
-          <input placeholder-class="placeholderClass" placeholder="输入来访人手机号" name="visitorPhone"></input>
-        </view>
-      </view>
-      <view class="weui-cell">
-        <view class="weui-cell__hd">身份证号</view>
-        <view class="weui-cell__bd">
-          <input placeholder-class="placeholderClass" placeholder="输入来访人身份证号" name="visitorIdentity"></input>
-        </view>
-      </view>
-      <view class="weui-cell">
-        <view class="weui-cell__hd">单位</view>
-        <view class="weui-cell__bd">
-          <input placeholder-class="placeholderClass" placeholder="输入来访人单位" name="visitorCompany"></input>
-        </view>
-      </view>
-      <view class="weui-cell">
-        <view class="weui-cell__hd">车牌号</view>
-        <view class="weui-cell__bd">
-          <input placeholder-class="placeholderClass" placeholder="输入车牌号" name="visitorLicense"></input>
-        </view>
-      </view>
-      <view class="weui-cell">
-        <view class="weui-cell__bd">同行人员</view>
-        <view class="weui-cell__ft">
-          <view class="btn addBtn" bindtap="addperson">增加</view>
-        </view>
-      </view>
-      <view class="peerList">
-        <view class="weui-cell" wx:for="{{peerList}}" wx:key="index">
-          <view class="weui-cell__hd">{{item.companionName}}</view>
-          <view class="weui-cell__bd">{{item.companionIdentity}}</view>
-          <view class="weui-cell__ft"></view>
-        </view>
-      </view>
-      <view class="weui-cell">
-        <view class="weui-cell__hd">访客目的</view>
-        <view class="weui-cell__bd">
-          <input placeholder-class="placeholderClass" placeholder="输入访客目的" name="remark"></input>
-        </view>
-      </view>
-    </view>
-    <view class="kong"></view>
-    <view class="footer weui-cell">
-      <view class="online">
-        <button class="btn cencel" formType="reset" name="Submit">重新填写</button>
-      </view>
-      <view class="onlineCall" catchtap='freeTell'>
-        <button class="btn save" form-type="submit" name="Submit">提 交</button>
-      </view>
-    </view>
-  </form>
-  <view class="mark" hidden="{{show}}">
-    <view class="card">
-      <view class="card-title">添加 - 同行人员</view>
-      <view class="card-content">
-        <view>同行人姓名</view>
-        <view>
-          <input placeholder-class="placeholderClass" placeholder="输入姓名" bindinput="nameInput" value="{{name}}"></input>
-        </view>
-        <view>身份证号</view>
-        <view>
-        <input placeholder-class="placeholderClass" placeholder="输入身份证号" bindinput="sfnumInput" value="{{idcode}}"></input> 
-        </view>
-      </view>
-      <view class="weui-cell ">
-        <view class="weui-cell__bd ">
-          <view class="btn cancle" bindtap="cencelAdd">取消</view>
-        </view>
-        <view class="weui-cell__bd ">
-          <view class="btn ok" bindtap="okAdd">确定</view>
-        </view>
-      </view>
-    </view>
-  </view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">来访人：</view>
+				<view class="weui-cell__bd">
+					<input placeholder-class="placeholderClass" value="{{info.visitorName}}" placeholder="输入来访人姓名" name="visitorName"></input>
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">来访人电话</view>
+				<view class="weui-cell__bd">
+					<input placeholder-class="placeholderClass" value="{{info.visitorPhone}}" placeholder="输入来访人手机号" name="visitorPhone"></input>
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">身份证号</view>
+				<view class="weui-cell__bd">
+					<input placeholder-class="placeholderClass" value="{{info.visitorIdentity}}" placeholder="输入来访人身份证号" name="visitorIdentity"></input>
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">单位</view>
+				<view class="weui-cell__bd">
+					<input placeholder-class="placeholderClass" value="{{info.visitorCompany}}" placeholder="输入来访人单位" name="visitorCompany"></input>
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">车牌号</view>
+				<view class="weui-cell__bd">
+					<input placeholder-class="placeholderClass" value="{{info.visitorLicense}}" placeholder="输入车牌号" name="visitorLicense"></input>
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__bd">同行人员</view>
+				<view class="weui-cell__ft">
+					<view class="btn addBtn" bindtap="addperson">增加</view>
+				</view>
+			</view>
+			<view class="peerList">
+				<view class="weui-cell" wx:for="{{peerList}}" wx:key="index">
+					<view class="weui-cell__hd">{{item.companionName}}</view>
+					<view class="weui-cell__bd">{{item.companionIdentity}}</view>
+					<view class="weui-cell__ft" bindtap="deleteUser" id="{{index}}"><text class="delete-user">—</text></view>
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">访客目的</view>
+				<view class="weui-cell__bd">
+					<input placeholder-class="placeholderClass" value="{{info.remark}}" placeholder="输入访客目的" name="remark"></input>
+				</view>
+			</view>
+		</view>
+		<view class="kong"></view>
+		<view class="footer weui-cell">
+			<view class="online">
+				<button class="btn cencel" bindtap="openDelete" name="Submit">删 除</button>
+			</view>
+			<view class="onlineCall" catchtap='freeTell'>
+				<button class="btn save" form-type="submit" name="Submit">修 改</button>
+			</view>
+		</view>
+	</form>
+	<!-- 添加同行人 -->
+	<view class="mark" hidden="{{show}}">
+		<view class="card">
+			<view class="card-title">添加 - 同行人员</view>
+			<view class="card-content">
+				<view>同行人姓名</view>
+				<view>
+					<input placeholder-class="placeholderClass" placeholder="输入姓名" bindinput="nameInput" value="{{name}}"></input>
+				</view>
+				<view>身份证号</view>
+				<view>
+					<input placeholder-class="placeholderClass" placeholder="输入身份证号" bindinput="sfnumInput" value="{{idcode}}"></input>
+				</view>
+			</view>
+			<view class="weui-cell ">
+				<view class="weui-cell__bd ">
+					<view class="btn cancle" bindtap="cencelAdd">取消</view>
+				</view>
+				<view class="weui-cell__bd ">
+					<view class="btn ok" bindtap="okAdd">确定</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 删除 -->
+	<view class="mark" hidden="{{deleteshow}}">
+		<view class="card">
+			<view class="card-content" style="text-align:center">
+				确定要删除此次预约记录？
+			</view>
+			<view class="weui-cell ">
+				<view class="weui-cell__bd ">
+					<view class="btn cancle" bindtap="canceldelete">取消</view>
+				</view>
+				<view class="weui-cell__bd ">
+					<view class="btn ok" bindtap="okdelete">确定</view>
+				</view>
+			</view>
+		</view>
+	</view>
 </view>

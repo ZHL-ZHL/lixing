@@ -32,23 +32,23 @@ Page({
         icon: "/images/my/a-4.png",
         url: "/pages/mydiscount/mydiscount"
       },
-      {
-        name: "访客记录",
-        icon: "/images/my/a-8.png",
-        url: "/pages/myvisitors/myvisitors"
-      },
+      // {
+      //   name: "访客记录",
+      //   icon: "/images/my/a-8.png",
+      //   url: "/pages/myvisitors/myvisitors"
+      // },
       {
         name: "我的预约",
         icon: "/images/my/a-8.png",
         url: "/pages/myMeeting/myMeeting"
       },
+      // {
+      //   name: "我的收藏",
+      //   icon: "/images/my/a-9.png",
+      //   url: "/pages/myCollect/myCollect"
+      // },
       {
-        name: "我的收藏",
-        icon: "/images/my/a-9.png",
-        url: "/pages/myCollect/myCollect"
-      },
-      {
-        name: "帮助与反馈",
+        name: "帮助反馈",
         icon: "/images/my/a-10.png",
         url: "/pages/feedback/feedback"
       },
@@ -64,26 +64,23 @@ Page({
   GotUserInfo(e) {
     wx.showLoading({
       title: '登录中。。。',
-    })
+    }) 
     xdLogin(e).then(res => {
+      console.log(res)
       this.setData({
-        userInfo: res
+        userInfo: wx.getStorageSync("userInfo")
       })
-      if(res.phone.length==0){
-        this.setData({
-          tan:true
-        })
-      }
+      // if(res.phone.length==0){
+      //   this.setData({
+      //     tan:true
+      //   })
+      // }
       this.getRole()
     }).catch(res => {
       console.log(res)
     })
   },
-  getPhoneNumber(e) {
-    // console.log(e)
-    // console.log(e.detail.errMsg)
-    // console.log(e.detail.iv)
-    // console.log(e.detail.encryptedData)
+  getPhoneNumber(e) { 
     let data={}
     data.iv = e.detail.iv
     data.encryptedData = e.detail.encryptedData
@@ -92,7 +89,6 @@ Page({
       if(res.code==0){
         let userInfo=wx.getStorageSync("userInfo")
         userInfo.phone=res.data;
-
         this.setData({
           userInfo,
           tan: false

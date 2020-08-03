@@ -72,10 +72,34 @@ const dayTime = date => {
 
   return [hour, minute].map(formatNumber).join(':')
 }
+
+/**
+ * 将小程序的API封装成支持Promise的API
+ * @params fn {Function} 小程序原始API，如wx.login
+ */
+console.log(111111111111111111111111111111)
+const wxPromisify = fn => {
+  console.log(222222222222222222)
+  return function (obj = {}) {
+    return new Promise((resolve, reject) => {
+      obj.success = function (res) {
+        resolve(res)
+      }
+
+      obj.fail = function (res) {
+        reject(res)
+      }
+
+      fn(obj)
+    })
+  }
+}
 export default {
   getNowTime,
   getDateStr,
   formatTime: formatTime,
   dayTime,
   formatDuring,
+  wxPromisify
 }
+

@@ -12,7 +12,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showAccurateSearch: true,
+    date:'',
+    showdate:false,
+    searchvalue: "",
+    showMain: true,
+    showAccurateSearch: false,
     hot: [],
     meetingRoom: [],
     indicatorDots: true, //小点
@@ -24,9 +28,64 @@ Page({
     onLine: Url.imghost,
     pageNum: 1,
     load: false,
-    banner: []
+    banner: [],
+    low: 1500,
+    heigh:2500,
+    low1: 0,
+    heigh1: 100,
+    low2: 0,
+    heigh2: 500,
   },
 
+  lowValueChangeAction: function (e) {
+    this.setData({
+      low: e.detail.lowValue
+    })
+  },
+
+  heighValueChangeAction: function (e) {
+    this.setData({
+      heigh: e.detail.heighValue
+    })
+  },
+
+  lowValueChangeAction1: function (e) {
+    this.setData({
+      low1: e.detail.lowValue
+    })
+  },
+
+  heighValueChangeAction1: function (e) {
+    this.setData({
+      heigh1: e.detail.heighValue
+    })
+  },
+  lowValueChangeAction1: function (e) {
+    this.setData({
+      low2: e.detail.lowValue
+    })
+  },
+
+  heighValueChangeAction1: function (e) {
+    this.setData({
+      heigh2: e.detail.heighValue
+    })
+  },
+
+  // hideSlider: function (e) {
+  //   this.selectComponent("#zy-slider").hide()
+  //   this.selectComponent("#zy-slider1").hide()
+  // },
+
+  // showSlider: function (e){
+  //   this.selectComponent("#zy-slider").show()
+  //   this.selectComponent("#zy-slider1").show()
+  // },
+
+  // resetSlider: function (e){
+  //   this.selectComponent("#zy-slider").reset()
+  //   this.selectComponent("#zy-slider1").reset()
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -39,6 +98,45 @@ Page({
     this.setData({
       showAccurateSearch: true
     })
+  },
+  showdateBtn(){
+    this.setData({
+      showdate: true
+    });
+  },
+  formatDate(date) {
+    date = new Date(date);
+    return `${date.getMonth() + 1}/${date.getDate()}`;
+  },
+  onConfirm(event) {
+    const [start, end] = event.detail;
+    this.setData({
+      show: false,
+      date: `${this.formatDate(start)} - ${this.formatDate(end)}`,
+    });
+  },
+  ondateClose(){
+    this.setData({
+      showdate: false
+    });
+  },
+  onClickShow() {
+    console.log(2122)
+    this.setData({
+      showMain: false
+    });
+  }, 
+  onSearch() {
+    this.setData({
+      showMain: true,
+      searchvalue: ""
+    });
+  },
+  onCancel() {
+    this.setData({
+      showMain: true,
+      searchvalue: ""
+    });
   },
   onClose() {
     this.setData({

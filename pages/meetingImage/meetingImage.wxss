@@ -1,0 +1,45 @@
+/* pages/meetingImage/meetingImage.wxss */
+page{
+  background: #f8f8f8;
+  height: 100%;
+}
+.weui-cell {
+  text-align: center;
+}
+
+.active {
+  color: #333;
+  font-size: 28rpx;
+  position: relative;
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100rpx;
+  height: 3px;
+  background: #FFE400;
+  bottom: -5px;
+}
+.contant-box{
+  width: calc(100% - 50rpx);
+  margin: 0 auto;
+}
+.cont-title{
+  font-size: 26rpx;
+  font-weight: bold;
+  margin-top: 20rpx;
+  color: #333;
+}
+.cont-mian image{
+  display: inline-block;
+  margin:20rpx 2% 20rpx 0;
+  width: calc(33% - 1%);
+  height: 120rpx;
+}
+.cont-mian image:nth-child(3n){
+  margin-right: 0;
+}

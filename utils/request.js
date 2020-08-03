@@ -5,13 +5,18 @@ fly.interceptors.request.use((request) => {
   wx.showLoading({
     title: "加载中",
   });
-  if (wx.getStorageSync('token')) { //检查本地缓存是否有token存在没有则重新获取
-    // request.headers = {//设置请求头
-    //   'content-type': 'application/json',
-    //   "Authorization": "Bearer "+wx.getStorageSync('token')
-    // }
+  request.headers = { //设置请求头
+    'content-type': 'application/x-www-form-urlencoded',
+    "Authorization": "Basic d2VjaGF0OndlY2hhdF9zZWNyZXQ=",  
+  }
+  if (wx.getStorageSync('token')) { //检查本地缓存是否有token存在没有则重新获取 
+    request.headers = { //设置请求头
+      'content-type': 'application/json;charset=UTF-8',
+      "Authorization": "Basic d2VjaGF0OndlY2hhdF9zZWNyZXQ=", 
+      "Blade-Auth": wx.getStorageSync('token')
+    }
     const mark = request.url.indexOf('?') > -1 ? '&' : '?'
-    request.url = request.url + mark + 'token=' + wx.getStorageSync('token')
+    request.url = request.url + mark
     return request;
   } else {
     // fly.lock();//锁住请求
@@ -77,9 +82,9 @@ fly.interceptors.response.use(
         mask: true,
         success: function(res) {
           wx.clearStorage()
-          wx.switchTab({
-            url: '/pages/my/my',
-          })
+          // wx.switchTab({
+          //   url: '/pages/my/my',
+          // })
           wx.hideLoading();
 
         },

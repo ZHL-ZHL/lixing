@@ -1,71 +1,27 @@
-// pages/find/find.js
-import { discoveryBanner, discoveryPage} from "../../api/banner.js"
-import { findAdv } from "../../api/adv.js"
-import Url from "../../utils/host.js"
+// pages/find/find.js 
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    meetingRoom: [],
-    zlinfo:"",
-    // onLine: Url.imghost,
+    banner1: [{picture:"/images/banner/banner.png"}],
+    indicatorDots: true, //小点
+    indicatorColor: "white",
+    autoplay: true, //是否自动轮播
+    interval: 3000, //间隔时间
+    duration: 500, //滑动时间
+    indicatorActiveColor: "#FFE400",
+    current: 0,
+    swiperIndex: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getFind()
-    this.getadv()
-    this.getdiscoveryPage()
-  },
-  getFind(){
-    discoveryBanner().then(res => {
-      if (res.code == 0) {
-        this.setData({
-          zlinfo: res.data[0]
-        })
-      } else {
-
-      }
-    }).catch(res => {
-
-    })
-  },
-  goDetail:function(e){ 
-    wx.navigateTo({
-      url: e.currentTarget.id,
-    })
-  },
-  toAdvDeatil() {
-    let item = JSON.stringify(this.data.zlinfo)
-    wx.navigateTo({
-      url: '/pages/advDetail/advDetail?info=' + item,
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
-  },
-  getdiscoveryPage(){
-    discoveryPage().then(res => {
-      if (res.code == 0) {
-        this.setData({
-          meetingRoom: res.data
-        })
-      } else {
-
-      }
-    }).catch(res => {
-
-    })
-  },
-  getadv(){
-    findAdv().then(res=>{
-
-    })
-  },
+    
+  },  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -97,10 +53,7 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-    this.getFind()
-    this.getadv()
-    this.getdiscoveryPage()
+  onPullDownRefresh: function () { 
   },
 
   /**

@@ -3,7 +3,7 @@
   <view class="weui-cell">
     <view class="weui-cell__bd">头像</view>
     <view class="weui-cell__hd">
-       <image src="{{userInfo.picture}}" class="avatar" bindtap="chooseImage"></image>
+       <image src="{{userInfo.avatarUrl}}" class="avatar" bindtap="chooseImage"></image>
     </view>
     <view class="weui-cell__ft">
        <image src="/images/icon/r_jt.png" class="r_jt"></image>

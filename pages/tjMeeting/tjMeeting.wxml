@@ -2,10 +2,10 @@
 <view class="container">
 	<view class="adr weui-cell mainColor " wx:if="{{address}}">
 		<view class="weui-cell__bd" wx:if="{{orderType==1}}">
-			<view class="name">服务人：{{address.name}}
-				<text></text>
+			<view class="name">{{address.name}}
+				<text style="color:#ccc"> {{address.phone}}</text>
 			</view>
-			<view class="addressInfo"> 电话：{{address.phone}}</view>
+			<view class="addressInfo">{{address.address}} </view>
 		</view>
 		<view class="weui-cell__bd" wx:if="{{orderType==2}}">
 			<view class="name">服务人：{{address.name}}

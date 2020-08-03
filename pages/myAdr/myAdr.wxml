@@ -20,7 +20,7 @@
    <image src='/images/sheng/no_address.png' hidden='{{queS}}' class='queS'></image>
    <view style='110rpx;'></view>
    <view class='foot_btn'>
-      <view class='btn'><navigator url='/pages/myadrAdd/myadrAdd' hover-class='none'>新建地址</navigator>
+      <view class='btn'><navigator url='/pages/myadrAdd/myadrAdd' hover-class='none'>+ 新建地址</navigator>
       </view>
    </view>
 </view>

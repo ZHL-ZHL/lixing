@@ -1,16 +1,25 @@
 /* pages/feedback/feedback.wxss */
 page{
-  background: #f4f5f5;
+  background: #f8f8f8;
+  height: 100%;
 }
 .content{
   background: #fff;
   width: 100%;
   padding: 10px 15px;
   box-sizing: border-box;
-  color: #666;
+  color: #666; 
+  
 }
 .btn{
   border: none;
-  background: #4D7AD2;
-  color: #fff;
+  background: #ffe401;
+  color: #333;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  border-radius: 0;
+  margin: 0 auto;
+  height: 100rpx;
+  line-height: 100rpx;
 }

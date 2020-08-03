@@ -1,10 +1,14 @@
 /* pages/tjMeeting/tjMeeting.wxss */
+page{
+  background: #f8f8f8;
+  height: 100%;
+}
 .adr {
   font-size: 26rpx;
 }
 
 .adr .name text {
-  float: right;
+  /* float: right; */
 }
 
 .addressInfo {
@@ -120,4 +124,13 @@ textarea {
   color: #999;
   padding-bottom: 40rpx;
   font-size: 24rpx;
+}
+.mainColor{
+   width: calc(100% - 40rpx);
+   margin:0 auto;
+   background: #fff;
+   padding: 30rpx;
+   box-sizing: border-box;
+   color: #333;
+   box-shadow: 0px 0px 5px #e1e1e1;
 }

@@ -1104,6 +1104,111 @@
 					"id": -1,
 					"name": "pages/meetingRoom/meetingRoom",
 					"pathName": "pages/meetingRoom/meetingRoom",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/myAdr/myAdr",
+					"pathName": "pages/myAdr/myAdr",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/myadrAdd/myadrAdd",
+					"pathName": "pages/myadrAdd/myadrAdd",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/myAdr/myAdr",
+					"pathName": "pages/myAdr/myAdr",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/tjMeeting/tjMeeting",
+					"pathName": "pages/tjMeeting/tjMeeting",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetingImage/meetingImage",
+					"pathName": "pages/meetingImage/meetingImage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetingDetail/meetingDetail",
+					"pathName": "pages/meetingDetail/meetingDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetingRoom/meetingRoom",
+					"pathName": "pages/meetingRoom/meetingRoom",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/find/find",
+					"pathName": "pages/find/find",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetingRoom/meetingRoom",
+					"pathName": "pages/meetingRoom/meetingRoom",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetingRoom/meetingRoom",
+					"pathName": "pages/meetingRoom/meetingRoom",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetingRoom/meetingRoom",
+					"pathName": "pages/meetingRoom/meetingRoom",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/feedback/feedback",
+					"pathName": "pages/feedback/feedback",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/my",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/my",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetingRoom/meetingRoom",
+					"pathName": "pages/meetingRoom/meetingRoom",
 					"scene": null
 				}
 			]

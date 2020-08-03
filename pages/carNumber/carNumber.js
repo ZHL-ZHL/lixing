@@ -106,7 +106,7 @@ Page({
         parkCode:1,
         plateNo: this.data.addressTitle+this.data.carNumber.toUpperCase()
       }).then(res => {
-        if (res.code == 200) {
+        if (res.code == 200 && res.data.plateNo) {
           this.setData({
             showCarInfo: true,
             // id: res.data[0].id,
@@ -120,7 +120,7 @@ Page({
         } else {
           let that = this;
           wx.showToast({
-            title: res.resMsg,
+            title: '未查询到该车辆',
             icon: 'none',
             image: '',
             mask: true,
@@ -172,7 +172,7 @@ Page({
   },
   validateCar: function(carbrand) { 
     let carbrandALL = this.data.addressTitle+carbrand
-    console.log(typeof (carbrandALL), carbrandALL)
+    // console.log(typeof (carbrandALL), carbrandALL)
     //车牌号判断的正则表达式
     var regExp = /^(([京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领][A-Z](([0-9]{5}[DF])|([DF]([A-HJ-NP-Z0-9])[0-9]{4})))|([京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领][A-Z][A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9挂学警港澳使领]))$/
     if (!regExp.test(carbrandALL.toUpperCase())) {

@@ -11,6 +11,7 @@ Page({
   data: {
     userId:"",
     userInfo:"",
+
   },
 
   /**
@@ -18,9 +19,10 @@ Page({
    */
   onLoad: function (options) {
      this.setData({
-       userId: wx.getStorageSync("userInfo").sysUserId
+       userInfo: wx.getStorageSync("userInfo")
      })
-    this.getUser()
+     console.log( wx.getStorageSync("userInfo"))
+    // this.getUser()
   },
   getUser(){
     console.log('111111111111')

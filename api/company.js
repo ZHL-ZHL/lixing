@@ -32,7 +32,7 @@ export function queryPassTrafficStatic(data) {
 export function companyOnlineSave(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/renren-fast/sys/cbbusinessadvice/save',
+    url: URL.host + '/blade-bms/businessadvice/save',
     body: data
   })
 }

@@ -44,7 +44,7 @@ Page({
     } else {
       value.purpose = this.data.result.join(',') 
       companyOnlineSave(value).then(res => {
-        if (res.code == 0) {
+        if (res.code == 200) {
           wx.showToast({
             title: '提交成功',
             success: res => {

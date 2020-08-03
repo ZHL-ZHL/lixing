@@ -4,14 +4,26 @@ import URL from "../utils/host.js"
 export function login(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/renren-fast/wechat/login',
+    // header: {
+    //   "Authorization": "Basic d2VjaGF0OndlY2hhdF9zZWNyZXQ=",
+    //   "Content-Type": "application/x-www-form-urlencoded"
+    // },
+    url: URL.host + '/blade-auth/oauth/token',
     body: data
   })
 }
-export function loginOut(data) {
+export function wechatuserInfo(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/renren-fast/wechat/logout'
+    url: URL.host + '/blade-user/wechatuser/update',
+    body: data
+  })
+}
+
+export function loginOut(data) {
+  return http.fly.request({
+    method: 'get',
+    url: URL.host + '/blade-auth/oauth/logout'
   })
 }
 
@@ -27,7 +39,7 @@ export function onLogin(data) {
 export function hasLogin(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/renren-fast/wechat_user/one/'+data.id,
+    url: URL.host + '/renren-fast/wechat_user/one/' + data.id,
     body: data
   })
 }
@@ -61,7 +73,7 @@ export function addressAdd(data) {
 export function addressList(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/wechat_user/address/'+data.userid,
+    url: URL.host + '/renren-fast/wechat_user/address/' + data.userid,
     params: data
   })
 }
@@ -80,7 +92,7 @@ export function addressEdit(data) {
 export function addressDel(data) {
   return http.fly.request({
     method: 'DELETE',
-    url: URL.host + '/renren-fast/wechat_user/address/'+data.id,
+    url: URL.host + '/renren-fast/wechat_user/address/' + data.id,
     body: data
   })
 }
@@ -88,7 +100,7 @@ export function addressDel(data) {
 export function feedback(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/renren-fast/wechat_advise/one/',
+    url: URL.host + '/blade-bms/advise/save',
     body: data
   })
 }

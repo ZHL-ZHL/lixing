@@ -1,9 +1,0 @@
-<!--pages/property/property.wxml-->
-<view class="container">
-  <navigator class="weui-cell" hover-class="none" url="/pages/carFee/carFee">
-     <view class="weui-cell__bd">车辆缴费</view>
-     <view class="weui-cell__ft">
-      <image src="/images/icon/r_jt.png" class="r_jt"></image>
-     </view>
-  </navigator>
-</view>

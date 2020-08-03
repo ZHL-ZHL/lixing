@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "zy-slider": "../../component/zyslider"
+  },
   "navigationBarTitleText": "会议室租赁",
   "navigationBarBackgroundColor": "#FFE400"
 }

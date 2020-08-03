@@ -9,7 +9,7 @@
         </swiper-item>
       </block>
     </swiper> -->
-		<image src="{{meetingDetail.leaseImage}}" class="slide-image" mode="aspectFill"></image>
+		<image src="{{meetingDetail.leaseImage}}" class="slide-image" mode="aspectFill" bindtap="getImageList"></image>
 		<view class="collect" bindtap="toCollect" wx:if="{{userInfo}}">
 			<van-icon name="like" color="#FF0000" size="20px" wx:if="{{isCollect}}" />
 			<van-icon name="like-o" color="#fff" size="20px" wx:else />
@@ -162,14 +162,25 @@
 		<view class="kong"></view>
 		<view class="footer weui-cell">
 			<view class="online">
-      <!--  open-type="getUserInfo" bindgetuserinfo="toAppoint" -->
+				<!--  open-type="getUserInfo" bindgetuserinfo="toAppoint" -->
 				<button class="btn cencel" lang="zh_CN" bindtap="toAppoint" data-type='1'>按小时预约</button>
 			</view>
-      <!-- open-type="getUserInfo"   bindgetuserinfo="toAppoint"-->
+			<!-- open-type="getUserInfo"   bindgetuserinfo="toAppoint"-->
 			<view class="onlineCall" catchtap='freeTell'>
 				<button class="btn save" lang="zh_CN" bindtap="toAppoint" data-type='2'>按天预约</button>
 			</view>
 		</view>
 	</view>
 
+
+	<van-action-sheet show="{{ showAccurateSearch }}" title="优惠券" bind:close="onClose" round="true" close-on-click-overlay="true">
+		<view class="searchBox">
+			<view>
+				<image class="yhqImage" src="../../images/meet/meet01.png"></image>
+				<image class="yhqImage" src="../../images/meet/meet01.png"></image>
+				<image class="yhqImage" src="../../images/meet/meet01.png"></image>
+			</view>
+			<view class="sheet-btn">立即使用</view>
+		</view>
+	</van-action-sheet>
 </view>

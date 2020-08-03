@@ -1,5 +1,0 @@
-<!--pages/advDetail/advDetail.wxml-->
-<view class="container">
-  <image src="{{info.picture}}" class="infoPicture" mode="aspectFill"></image>
-  <view class="content">{{info.detail}}</view>
-</view>

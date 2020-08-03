@@ -16,6 +16,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showAccurateSearch:true,
     banner: [{
       content: "/images/timg.jpg"
     }, ],
@@ -43,6 +44,11 @@ Page({
       fail(res) {
         console.log(res.errMsg)
       }
+    })
+  },
+  onClose() {
+    this.setData({
+      showAccurateSearch: false
     })
   },
   toCollect() {
@@ -108,17 +114,25 @@ Page({
       })
     })
   },
+  getImageList() {
+    wx.navigateTo({
+      url: '/pages/meetingImage/meetingImage',
+      success: function (res) {},
+      fail: function (res) {},
+      complete: function (res) {},
+    })
+  },
   toAppoint(e) {
     // console.log(e)
     let meetingDetail = this.data.meetingDetail;
     delete(meetingDetail["leaseDetail"]);
-    
+
     wx.navigateTo({
       url: '/pages/tjMeeting/tjMeeting?info=' + JSON.stringify(meetingDetail) + '&orderType=1&rentType=' + e.currentTarget.dataset.type,
       success: function (res) {},
       fail: function (res) {},
       complete: function (res) {},
-    }) 
+    })
 
     // if (this.data.userInfo) { 
     //   wx.navigateTo({

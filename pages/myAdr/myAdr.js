@@ -8,7 +8,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    adrList: [],
+    adrList: [{
+      name:"1111",
+      phone:"18334403222",
+      address:"w4232wefsdfdgdfg"
+    }],
     _type: "",
     queS: true,
     pageNum:1
@@ -92,15 +96,12 @@ Page({
       queS: true
     })
     addressList({ page: this.data.pageNum, userid: this.data.userid}).then(res=>{
-       if(res.code==0){
-         
-         if(res.data){
-           console.log(2)
+       if(res.code==200){
+         if(res.data){ 
            this.setData({
              adrList: res.data
            })
-         }else{
-           console.log(1)
+         }else{ 
            this.setData({
              queS: false
            })
@@ -111,11 +112,15 @@ Page({
            title: res.desc,
            icon: 'none'
          })
+        
        }
     }).catch(res=>{
       wx.showToast({
         title: res,
         icon:'none'
+      })
+      this.setData({
+        queS: false
       })
     })
   },

@@ -8,43 +8,47 @@ Page({
    * 页面的初始数据
    */
   data: {
-    content:""
+    content: ""
   },
-  content(e){
-     this.setData({
-       content:e.detail.value
-     })
+  content(e) {
+    this.setData({
+      content: e.detail.value
+    })
   },
-  submit(){
-     if(this.data.content.length==0){
-        wx.showToast({
-          title: '请输入问题或意见',
-          icon:"none"
-        })
-     }else{
-       feedback({ adviseDetail:this.data.content}).then(res=>{
-          if(res.code==0){
-             wx.showToast({
-               title: '提交成功',
-               success:function(){
-                 wx.navigateBack({
-                   delta: 1,
-                 })
-               }
-             })
-          }else{
-            wx.showToast({
-              title: res.msg,
-              icon: "none"
-            })
-          }
-       }).catch(res=>{
+  submit() {
+    if (this.data.content.length == 0) {
+      wx.showToast({
+        title: '请输入问题或意见',
+        icon: "none"
+      })
+    } else {
+      console.log(wx.getStorageSync("userInfo"))
+      feedback({
+        nickname: wx.getStorageSync("userInfo").nickName,
+        adviseDetail: this.data.content
+      }).then(res => {
+        if (res.code == 200) {
           wx.showToast({
-            title: res,
-            icon:"none"
+            title: '提交成功',
+            success: function () {
+              wx.navigateBack({
+                delta: 1,
+              })
+            }
           })
-       })
-     }
+        } else {
+          wx.showToast({
+            title: res.msg,
+            icon: "none"
+          })
+        }
+      }).catch(res => {
+        wx.showToast({
+          title: res,
+          icon: "none"
+        })
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载

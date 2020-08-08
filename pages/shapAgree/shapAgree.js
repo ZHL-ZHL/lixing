@@ -24,7 +24,7 @@ Page({
   },
   getInfo() {
     shopInfo({ id: this.data.shopId}).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         this.setData({
           rtShop: res.rtShop
         })
@@ -47,7 +47,7 @@ Page({
       'bt9asUd8TPrd1mPclDlZt3fHaIO0uTENEMFwX9JntpI'],
       success:res=> {
         boundWeChatUser({ shopId: this.data.shopId }).then(res => {
-          if (res.code == 0) {
+          if (res.code == 200) {
             wx.clearStorage()
             wx.switchTab({
               url: '/pages/my/my',

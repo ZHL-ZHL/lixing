@@ -44,7 +44,7 @@ Page({
   },
   getList(){
     companyList().then(res=>{
-      if(res.code==0){
+      if(res.code==200){
          this.setData({
            companyList:res.page
          })
@@ -124,7 +124,7 @@ Page({
       updata.addrCompanyId = this.data.companyList[this.data.index].id;
       updata.addrTotaladdr = value.address;
       eatAddressSave(updata).then(res=>{
-        if (res.code == 0) {
+        if (res.code == 200) {
           wx.showToast({
             title: '添加成功',
             success: function () {
@@ -153,7 +153,7 @@ Page({
         value.provinces = this.data.region.join(",")
         value.wechatUserId = wx.getStorageSync("userInfo").wechatUserId;
         addressAdd(value).then(res => {
-          if (res.code == 0) {
+          if (res.code == 200) {
             wx.showToast({
               title: '添加成功',
               success: function () {
@@ -181,7 +181,7 @@ Page({
         value.provinces = this.data.region.join(",")
         value.id = this.data.addressInfo.id
         addressEdit(value).then(res => {
-          if (res.code == 0) {
+          if (res.code == 200) {
             wx.showToast({
               title: '修改成功',
               success: function () {

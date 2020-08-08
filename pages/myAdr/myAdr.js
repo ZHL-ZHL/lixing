@@ -1,27 +1,29 @@
 // pages/myadr/myadr.js
-import { addressList } from "../../api/my.js"
-import { address} from "../../api/my.js"
-import { addressDel } from "../../api/my.js"
+import {
+  addressList
+} from "../../api/my.js"
+import {
+  address
+} from "../../api/my.js"
+import {
+  addressDel
+} from "../../api/my.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    adrList: [{
-      name:"1111",
-      phone:"18334403222",
-      address:"w4232wefsdfdgdfg"
-    }],
+    adrList: [],
     _type: "",
     queS: true,
-    pageNum:1
+    pageNum: 1
 
   },
   onLoad: function (options) {
     this.setData({
       userid: wx.getStorageSync('userInfo').wechatUserId,
-      type:options.type
+      type: options.type
     })
     this.getAdrList()
   },
@@ -45,9 +47,9 @@ Page({
         X: startX,
         Y: startY
       }, {
-          X: touchMoveX,
-          Y: touchMoveY
-        });
+        X: touchMoveX,
+        Y: touchMoveY
+      });
     adrList.forEach(function (v, i) {
       v.isTouchMove = false
       //滑动超过30度角 return
@@ -65,7 +67,7 @@ Page({
     })
   },
   Toque: function (e) {
-    if(this.data.type==2){
+    if (this.data.type == 2) {
       console.log(e)
       var item = e.currentTarget.dataset.item;
       let pages = getCurrentPages();
@@ -90,34 +92,37 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  
+
   getAdrList() {
     this.setData({
       queS: true
     })
-    addressList({ page: this.data.pageNum, userid: this.data.userid}).then(res=>{
-       if(res.code==200){
-         if(res.data){ 
-           this.setData({
-             adrList: res.data
-           })
-         }else{ 
-           this.setData({
-             queS: false
-           })
-         }
-          
-       }else{
-         wx.showToast({
-           title: res.desc,
-           icon: 'none'
-         })
-        
-       }
-    }).catch(res=>{
+    addressList({
+      page: this.data.pageNum,
+      userid: this.data.userid
+    }).then(res => {
+      if (res.code == 200) {
+        if (res.data) {
+          this.setData({
+            adrList: res.data.records
+          })
+        } else {
+          this.setData({
+            queS: false
+          })
+        }
+
+      } else {
+        wx.showToast({
+          title: res.desc,
+          icon: 'none'
+        })
+
+      }
+    }).catch(res => {
       wx.showToast({
         title: res,
-        icon:'none'
+        icon: 'none'
       })
       this.setData({
         queS: false
@@ -130,9 +135,9 @@ Page({
     var additemJson = JSON.stringify(additem)
     wx.navigateTo({
       url: '/pages/myadrAdd/myadrAdd?add_Id=' + addId + '&item=' + additemJson,
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
+      success: function (res) {},
+      fail: function (res) {},
+      complete: function (res) {},
     })
   },
   /**
@@ -149,43 +154,45 @@ Page({
     this.getAdrList()
   },
   delAdr: function (e) {
-    var that=this;
+    var that = this;
     console.log(e)
     let idx = e.currentTarget.dataset.idx
     wx.showModal({
       title: '提示',
       content: '确定删除该条地址？',
       showCancel: true,
-      success: res=>{
-        if(res.confirm){
-          addressDel({ id: e.currentTarget.dataset.id}).then(res=>{
-             if(res.code==0){
-               wx.showToast({
-                 title: '删除成功！',
-                 success:function(){
-                   let address = that.data.adrList
-                   address.splice(idx, 1)
-                   that.setData({
-                     adrList: address
-                   })
-                 }
-               })
-             }else{
-               wx.showToast({
-                 title: res.desc,
-                 icon: "none"
-               })
-             }
-          }).catch(res=>{
-             wx.showToast({
-               title: res,
-               icon:"none"
-             })
+      success: res => {
+        if (res.confirm) {
+          addressDel({
+            id: e.currentTarget.dataset.id
+          }).then(res => {
+            if (res.code == 200) {
+              wx.showToast({
+                title: '删除成功！',
+                success: function () {
+                  let address = that.data.adrList
+                  address.splice(idx, 1)
+                  that.setData({
+                    adrList: address
+                  })
+                }
+              })
+            } else {
+              wx.showToast({
+                title: res.desc,
+                icon: "none"
+              })
+            }
+          }).catch(res => {
+            wx.showToast({
+              title: res,
+              icon: "none"
+            })
           })
         }
       },
-      fail: function(res) {},
-      complete: function(res) {},
+      fail: function (res) {},
+      complete: function (res) {},
     })
   },
   /**
@@ -195,13 +202,13 @@ Page({
 
   },
   getDefault: function (id) {
-   
+
   },
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+
   },
 
   /**

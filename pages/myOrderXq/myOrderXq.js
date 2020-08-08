@@ -24,7 +24,7 @@ Page({
   },
   getDetail(){
     orderDetail({ id: this.data.orderId}).then(res=>{
-       if(res.code==0){
+       if(res.code==200){
          this.setData({
            info:res.data
          })

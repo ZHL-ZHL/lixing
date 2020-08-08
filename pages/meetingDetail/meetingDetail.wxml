@@ -2,14 +2,7 @@
 <import src="../wxParse/wxParse.wxml" />
 <view class="container">
 	<view class="banner">
-		<!-- <swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
-      <block wx:for="{{banner}}" wx:key="{{index}}">
-        <swiper-item>
-          <image src="{{item.content}}" class="slide-image" mode="aspectFill" />
-        </swiper-item>
-      </block>
-    </swiper> -->
-		<image src="{{meetingDetail.leaseImage}}" class="slide-image" mode="aspectFill" bindtap="getImageList"></image>
+		<image src="{{meetingDetail.leaseImage}}" class="slide-image" mode="aspectFill" bindtap="getImageList" data-item="{{meetingDetail.leaseContentImage}}"></image>
 		<view class="collect" bindtap="toCollect" wx:if="{{userInfo}}">
 			<van-icon name="like" color="#FF0000" size="20px" wx:if="{{isCollect}}" />
 			<van-icon name="like-o" color="#fff" size="20px" wx:else />
@@ -21,13 +14,13 @@
 				<view class="name title-top">
 					{{meetingDetail.leaseName}}
 					<text>{{meetingDetail.leaseBq}}</text>
-					<image src="../../images/address.png" class="icon-phone"></image>
+					<image src="../../images/meet/phone.png" class="icon-phone"></image>
 				</view>
 				<view class="adr">
 					<view style="width: 90%;display: inline-block;">
 						{{meetingDetail.leaseAddressName}}
 					</view>
-					<image src="../../images/address.png" class="icon-adr"></image>
+					<image src="../../images/meet/address.png" class="icon-adr"></image>
 				</view>
 				<view class="adr">
 					<view style="color:#ccc;">
@@ -36,9 +29,9 @@
 				</view>
 			</view>
 			<view class="weui-cell__ft">
-				<button class="share" open-type="share">
-					<image src="/images/icon/share.png"></image> 分享
-				</button>
+				<!-- <button class="share" open-type="share">
+					<image src="/images/meet/share.png"></image> 分享
+				</button> -->
 			</view>
 		</view>
 		<view class="line"></view>
@@ -63,43 +56,15 @@
 		<!-- <view class="line"></view> -->
 		<view class="weui-cell">
 			<view class="weui-cell__bd title-top">会议服务设备</view>
-		</view>
-		<view class="weui-cell serve-box">
-			<view class="weui-cell__bd">
-				<image src="../../images/address.png" class="detail-img"></image>
-				<view>免费停车场</view>
-			</view>
-			<view class="weui-cell__bd">
-				<image src="../../images/address.png" class="detail-img"></image>
-				<view>全区域WIFI</view>
-			</view>
-			<view class="weui-cell__bd">
-				<image src="../../images/address.png" class="detail-img"></image>
-				<view>中央空调</view>
-			</view>
-			<view class="weui-cell__bd">
-				<image src="../../images/address.png" class="detail-img"></image>
-				<view>LED大屏</view>
-			</view>
-		</view>
-		<view class="weui-cell serve-box">
-			<view class="weui-cell__bd">
-				<image src="../../images/address.png" class="detail-img"></image>
-				<view>免费停车场</view>
-			</view>
-			<view class="weui-cell__bd">
-				<image src="../../images/address.png" class="detail-img"></image>
-				<view>全区域WIFI</view>
-			</view>
-			<view class="weui-cell__bd">
-				<image src="../../images/address.png" class="detail-img"></image>
-				<view>中央空调</view>
-			</view>
-			<view class="weui-cell__bd">
-				<image src="../../images/address.png" class="detail-img"></image>
-				<view>LED大屏</view>
-			</view>
-		</view>
+		</view> 
+
+
+		<van-row class="serve-box">
+			<van-col span="6" wx:for="{{ listIcon }}" wx:key="index">
+				<image src="{{item.icon}}" class="detail-img"></image>
+				<view>{{item.name}}</view>
+			</van-col>
+		</van-row>
 		<!-- <view class="info">
 			{{meetingDetail.leaseFacility}}
 		</view> -->
@@ -108,7 +73,7 @@
 			<view class="weui-cell__bd title-top">租赁必读</view>
 		</view>
 		<view>
-			<image src="../../images/address.png" class="require-img"></image>
+			<image src="../../images/meet/06.png" class="require-img"></image>
 			<text class="require-text">费用详情</text>
 		</view>
 		<view class="info">
@@ -130,7 +95,7 @@
 			</view>
 		</view>
 		<view>
-			<image src="../../images/address.png" class="require-img"></image>
+			<image src="../../images/meet/12.png" class="require-img"></image>
 			<text class="require-text">用餐详情</text>
 		</view>
 		<view class="info">
@@ -141,7 +106,7 @@
 			</view>
 		</view>
 		<view>
-			<image src="../../images/address.png" class="require-img"></image>
+			<image src="../../images/meet/04.png" class="require-img"></image>
 			<text class="require-text">其他</text>
 		</view>
 		<view class="info">
@@ -153,7 +118,7 @@
 			<view class="adr" style="padding:50rpx 0px">
 				<view style="width: 90%;display: inline-block;">
 					园区服务热线：0351-666 6868</view>
-				<image src="../../images/address.png" class="icon-adr"></image>
+				<image src="../../images/meet/phoneh.png" class="icon-adr"></image>
 			</view>
 		</view>
 		<!-- <view class="info meetingInfo">

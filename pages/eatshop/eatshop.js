@@ -44,7 +44,7 @@ Page({
     data.shopState = this.data.navBar[this.data.activetab].id
     data.pageSize=15
     eatshopOrder(data).then(res=>{
-      if(res.code==0){
+      if(res.code==200){
 
         let totalPage;
         let last_page = parseInt((res.page.total / 15));
@@ -102,7 +102,7 @@ Page({
   // 接单
   toaccept(e){
     eatshopAccept({ orderId:e.currentTarget.dataset.id}).then(res=>{
-      if (res.code == 0) {
+      if (res.code == 200) {
         this.getList()
       } else {
         wx.showToast({
@@ -119,7 +119,7 @@ Page({
   },
   toDelivery(e){
     eatshopDelivery({ orderId: e.currentTarget.dataset.id }).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         this.getList()
       } else {
         wx.showToast({
@@ -136,7 +136,7 @@ Page({
   },
   tofinish(e){
     eatshopFinish({ orderId: e.currentTarget.dataset.id }).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         this.getList()
       } else {
         wx.showToast({
@@ -162,7 +162,7 @@ Page({
       success: res=> {
         if(res.confirm){
           eatRefuseOrder({ orderId: e.currentTarget.dataset.id }).then(res => {
-            if (res.code == 0) {
+            if (res.code == 200) {
               this.getList()
             } else {
               wx.showToast({
@@ -184,7 +184,7 @@ Page({
   },
   toRefuseCancel(e){
     eatCancelRefuseOrder({ orderId: e.currentTarget.dataset.id }).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         this.getList()
       } else {
         wx.showToast({
@@ -209,7 +209,7 @@ Page({
       success: res => {
         if (res.confirm) {
           eatCancelAgreeOrder({ orderId: e.currentTarget.dataset.id }).then(res => {
-            if (res.code == 0) {
+            if (res.code == 200) {
               this.getList()
             } else {
               wx.showToast({
@@ -232,7 +232,7 @@ Page({
   tofoodfinish(e){
     
     eatshopfinishFood({ orderId: e.currentTarget.dataset.id }).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         this.getList()
       } else {
         wx.showToast({

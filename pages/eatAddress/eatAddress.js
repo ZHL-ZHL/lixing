@@ -90,7 +90,7 @@ Page({
       queS: true
     })
     eatAddressList().then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
 
         if (res.page.list!=0) {
           this.setData({
@@ -151,7 +151,7 @@ Page({
       success: res => {
         if (res.confirm) {
           addressDel({ id: e.currentTarget.dataset.id }).then(res => {
-            if (res.code == 0) {
+            if (res.code == 200) {
               wx.showToast({
                 title: '删除成功！',
                 success: function () {

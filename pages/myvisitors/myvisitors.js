@@ -23,7 +23,7 @@ Page({
   },
   getList(){
     visitorsList({ page: this.data.pageNum, wechatUserId: this.data.wechatUserId}).then(res=>{
-        if(res.code==0){
+        if(res.code==200){
            console.log(res)
           let list;
           this.data.pageNum == 1 ? list = res.page.list : list = this.data.meetingRoom.concat(res.page.list)

@@ -53,7 +53,7 @@ export function delCar(data) {
 export function tjCar(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/renren-fast/wechat_order/list',
+    url: URL.host + '/blade-bms/wechatuserorder',
     body: data
   })
 } 

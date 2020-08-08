@@ -208,7 +208,7 @@ Page({
   },
   getpingJia(){
     eatpingjiaList({ shopId: 1, pageNum: this.data.page, pageSize: 15}).then(res=>{
-      if(res.code==0){
+      if(res.code==200){
 
         
         let totalPage;
@@ -303,7 +303,7 @@ Page({
       })
       console.log(dataArray)
       eatCar({ rtCarts: JSON.stringify(dataArray)}).then(res => {
-          if(res.code==0){
+          if(res.code==200){
             wx.navigateTo({
               url: '/pages/eatSubmit/eatSubmit?&totalPrice=' + this.data.totalPrice + '&bzTotalPrice=' + this.data.bzTotalPrice,
               success: function (res) { },
@@ -349,7 +349,7 @@ Page({
   },
   getgroupList(){
     eatgroupList({ shopId: 1 }).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         this.setData({
           groupList: res.list
         })
@@ -370,7 +370,7 @@ Page({
   
   getList(){
     foodList({ foodGroup: this.data.foodGroupId, page: this.data.page }).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         let menuList = res.page.list;
         let menuarray = menuList.map(v => {
           return Object.assign({}, v, { num: 0 })
@@ -393,7 +393,7 @@ Page({
   },
   getInfo(){
     shopInfo({id:1}).then(res=>{
-      if(res.code==0){
+      if(res.code==200){
          this.setData({
            rtShop: res.rtShop
          })
@@ -412,7 +412,7 @@ Page({
   },
   getClassification(){
     classification({ code: 'rt-food-goup' }).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         this.setData({
           menNav: res.data
         })

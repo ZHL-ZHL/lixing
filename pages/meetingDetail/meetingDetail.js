@@ -16,7 +16,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showAccurateSearch:true,
+    showAccurateSearch:false,
     banner: [{
       content: "/images/timg.jpg"
     }, ],
@@ -30,7 +30,8 @@ Page({
     meetingId: "",
     meetingDetail: "",
     onLine: Url.imghost,
-    userInfo: ""
+    userInfo: "",
+    listIcon:[]
   },
   toCall() {
     wx.showActionSheet({
@@ -51,14 +52,13 @@ Page({
       showAccurateSearch: false
     })
   },
-  toCollect() {
-
+  toCollect() { 
     let data = {};
     data.wechatUserId = this.data.wechatUserId
     data.itemType = 1;
     data.itemId = this.data.meetingId;
     collect(data).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         wx.showToast({
           title: res.msg,
         })
@@ -98,9 +98,9 @@ Page({
       if (res.code == 200) {
         this.setData({
           meetingDetail: res.data,
-          isCollect: res.data.leaseImage
-        })
-
+          isCollect: res.data.leaseImage,
+          listIcon:res.data.leaseFacilityList
+        })  
       } else {
         wx.showToast({
           title: res.msg,
@@ -114,9 +114,10 @@ Page({
       })
     })
   },
-  getImageList() {
+  getImageList(e) {
+    console.log()
     wx.navigateTo({
-      url: '/pages/meetingImage/meetingImage',
+      url: '/pages/meetingImage/meetingImage?imageList='+e.currentTarget.dataset.item,
       success: function (res) {},
       fail: function (res) {},
       complete: function (res) {},

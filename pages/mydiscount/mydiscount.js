@@ -18,7 +18,7 @@ Page({
     console.log(e)
     let id=e.currentTarget.dataset.id
     getCard({ wechatUserId: this.data.wechatUserId, discountId:id}).then(res=>{
-      if (res.code == 0) {
+      if (res.code == 200) {
         
       } else {
         wx.showToast({
@@ -48,7 +48,7 @@ Page({
       queS: true
     })
     discountAllList({ wechatUserId: this.data.wechatUserId}).then(res=>{
-       if(res.code==0){
+       if(res.code==200){
           if(res.data){
             this.setData({
               list: res.data
@@ -80,7 +80,7 @@ Page({
       queS: true
     })
     discountMyList({ wechatUserId: this.data.wechatUserId }).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         if(res.data){
           this.setData({
             list: res.data

@@ -23,12 +23,22 @@
 			<view class="weui-cell">
 				<view class="weui-cell__hd">访问时间</view>
 				<view class="weui-cell__bd">
-					<picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+					<picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" range="{{dateTimeArray}}">
 						<view class="tui-picker-detail">
-							<input placeholder-class="placeholderClass" value="{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}:{{dateTimeArray[5][dateTime[5]]}}" name="beginTime"></input>
+							<input placeholder-class="placeholderClass" value="{{beginTime}}" name="beginTime"></input>
 						</view>
-					</picker>
-					<!-- <input placeholder-class="placeholderClass" placeholder="选择日期" name="beginTime" disabled></input> -->
+					</picker> 
+				</view>
+			</view>
+
+				<view class="weui-cell">
+				<view class="weui-cell__hd">访问时间</view>
+				<view class="weui-cell__bd">
+					<picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1"  range="{{dateTimeArray1}}">
+						<view class="tui-picker-detail">
+							<input placeholder-class="placeholderClass" value="{{endTime}}" name="endTime"></input>
+						</view>
+					</picker> 
 				</view>
 			</view>
 

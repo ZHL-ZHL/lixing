@@ -153,7 +153,7 @@ Page({
       data.surrenderId = this.data.contractId;
     }
     updateCheck(data).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         wx.navigateBack({
           delta: 2,
         })

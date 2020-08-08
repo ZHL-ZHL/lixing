@@ -27,7 +27,7 @@ Page({
   getUser(){
     console.log('111111111111')
     userInfo({ id: this.data.userId}).then(res=>{
-      if(res.code==0){
+      if(res.code==200){
         this.setData({
           userInfo:res.data
         })
@@ -97,7 +97,7 @@ Page({
     let userInfo=this.data.userInfo;
     var that=this;
     xgUserInfo(userInfo).then(res=>{
-      if (res.code == 0) {
+      if (res.code == 200) {
         wx.setStorage({
           key: 'userInfo',
           data: that.data.userInfo,

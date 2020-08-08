@@ -19,9 +19,9 @@ export function getDateStr(today, addDayCount) {
   } else {
     dd = new Date();
   }
-  dd.setDate(dd.getDate() + addDayCount);//获取AddDayCount天后的日期 
+  dd.setDate(dd.getDate() + addDayCount); //获取AddDayCount天后的日期 
   var y = dd.getFullYear();
-  var m = dd.getMonth() + 1;//获取当前月份的日期 
+  var m = dd.getMonth() + 1; //获取当前月份的日期 
   var d = dd.getDate();
   if (m < 10) {
     m = '0' + m;
@@ -31,6 +31,43 @@ export function getDateStr(today, addDayCount) {
   };
   return y + "-" + m + "-" + d;
 }
+
+Date.prototype.format = function (format) {
+  var o = {
+    "M+": this.getMonth() + 1, //month 
+    "d+": this.getDate(), //day 
+    "h+": this.getHours(), //hour 
+    "m+": this.getMinutes(), //minute 
+    "s+": this.getSeconds(), //second 
+    "q+": Math.floor((this.getMonth() + 3) / 3), //quarter 
+    "S": this.getMilliseconds() //millisecond 
+  }
+
+  if (/(y+)/.test(format)) {
+    format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+  }
+  var week = {
+    "0": "一",
+    "1": "二",
+    "2": "三",
+    "3": "四",
+    "4": "五",
+    "5": "六",
+    "6": "日"
+  };
+  if (/(E+)/.test(format)) {
+    format = format.replace(RegExp.$1, ((RegExp.$1.length > 1) ? (RegExp.$1.length > 2 ? "周" : "周") : "") + week[this.getDay() + ""]);
+  }
+
+  for (var k in o) {
+    if (new RegExp("(" + k + ")").test(format)) {
+      format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+    }
+  }
+  return format;
+}
+
+
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -47,20 +84,18 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-const formatDuring = (number, format)=>{
+const formatDuring = (number, format) => {
   var formateArr = ['Y', 'M', 'D', 'h', 'm', 's'];
   var returnArr = [];
 
-  var date = new Date(number);
-  console.log(date)
+  var date = new Date(number); 
   returnArr.push(date.getFullYear());
   returnArr.push(formatNumber(date.getMonth() + 1));
   returnArr.push(formatNumber(date.getDate()));
 
   returnArr.push(formatNumber(date.getHours()));
   returnArr.push(formatNumber(date.getMinutes()));
-  returnArr.push(formatNumber(date.getSeconds()));
-  console.log(returnArr)  
+  returnArr.push(formatNumber(date.getSeconds())); 
   for (var i in returnArr) {
     format = format.replace(formateArr[i], returnArr[i]);
   }
@@ -73,23 +108,25 @@ const dayTime = date => {
   return [hour, minute].map(formatNumber).join(':')
 }
 
+export function getDaysBetween(dateString1,dateString2){ 
+  var  startDate = Date.parse(dateString1);
+  var  endDate = Date.parse(dateString2);
+  var days=(endDate - startDate)/(1*24*60*60*1000); 
+  return  days;
+}
 /**
  * 将小程序的API封装成支持Promise的API
  * @params fn {Function} 小程序原始API，如wx.login
- */
-console.log(111111111111111111111111111111)
-const wxPromisify = fn => {
-  console.log(222222222222222222)
+ */ 
+const wxPromisify = fn => { 
   return function (obj = {}) {
     return new Promise((resolve, reject) => {
       obj.success = function (res) {
         resolve(res)
       }
-
       obj.fail = function (res) {
         reject(res)
       }
-
       fn(obj)
     })
   }
@@ -100,6 +137,6 @@ export default {
   formatTime: formatTime,
   dayTime,
   formatDuring,
-  wxPromisify
+  wxPromisify,
+  getDaysBetween
 }
-

@@ -1,0 +1,13 @@
+/* pages/meetDetailList/meetDetailList.wxss */
+
+@import "/pages/myMeeting/myMeeting.wxss"; 
+.list-title{
+  font-weight: bold;
+  font-size: 28rpx;
+  margin-right: 20rpx;
+  /* margin-bottom: 30rpx; */
+}
+.list-ccc{
+  color: #ccc;
+  /* margin-top: 30rpx; */
+} 

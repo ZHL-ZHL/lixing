@@ -78,7 +78,7 @@ Page({
     console.log(this.data.files)
     data.assessImage=this.data.files.join(",")
     eatPingjia(data).then(res=>{
-      if(res.code==0){
+      if(res.code==200){
         wx.showToast({
           title: '评价成功',
           duration: 2000,

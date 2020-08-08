@@ -25,7 +25,7 @@
           <view class="">
             <navigator url="/pages/myOrderXq/myOrderXq?id={{item.orderId}}" class="weui-cell goodsInfo" hover-class="none">
               <view class="weui-cell__hd">
-                <image class="thumb" src="{{online+item.picture}}" />
+                <image class="thumb" src="{{item.picture}}" />
               </view>
               <view class="weui-cell__bd caption">
                 <view class="goodsName">{{item.itemName}}</view>

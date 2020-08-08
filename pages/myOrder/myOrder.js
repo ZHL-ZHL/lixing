@@ -82,13 +82,13 @@ Page({
     
     orderList(data).then(res=>{
 
-       if(res.code==0){
+       if(res.code==200){
          console.log(res.data)
-         if (res.data && res.data.totalCount>0 ){
+         if (res.data && res.data.total>0 ){
            let list;
-           this.data.page == 1 ? list = res.data.list : list = this.data.orderList.concat(res.data.list);
+           this.data.page == 1 ? list = res.data.records : list = this.data.orderList.concat(res.data.records);
            let loadMore;
-           this.data.page < res.data.totalPage ? loadMore = true : loadMore = false;
+           this.data.page < res.data.pages ? loadMore = true : loadMore = false;
            this.setData({
              load: loadMore,
              orderList: list

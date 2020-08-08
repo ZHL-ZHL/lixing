@@ -8,14 +8,10 @@
 	<view class="contant-box" wx:if="{{currentindex == 0 || currentindex ==1}}">
 		<view class="cont-title">会议室(5)</view>
 		<view class="cont-mian">
-			<image src="../../images/icon1/nav1.png"></image>
-      <image src="../../images/icon1/nav1.png"></image>
-      <image src="../../images/icon1/nav1.png"></image>
-      <image src="../../images/icon1/nav1.png"></image>
-      <image src="../../images/icon1/nav1.png"></image>
+			<image src="{{item}}" wx:for="{{imageList}}" wx:key=""></image> 
 		</view>
 	</view>
-  <view class="contant-box" wx:if="{{currentindex == 0 || currentindex ==2}}">
+  <!-- <view class="contant-box" wx:if="{{currentindex == 0 || currentindex ==2}}">
 		<view class="cont-title">茶歇(13)</view>
 		<view class="cont-mian">
 			<image src="../../images/icon1/nav2.png"></image>
@@ -44,5 +40,5 @@
       <image src="../../images/icon1/nav4.png"></image>
       <image src="../../images/icon1/nav4.png"></image> 
 		</view>
-	</view>
+	</view> -->
 </view>

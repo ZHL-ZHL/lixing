@@ -74,7 +74,7 @@ Page({
   },
   getInfo(){
     shopInfo({ id: 1 }).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         this.setData({
           rtShop: res.rtShop,
           delivers: res.delivers,
@@ -104,7 +104,7 @@ Page({
   },
   getList(){
     eatCarList().then(res=>{
-      if(res.code==0){
+      if(res.code==200){
         let cartIdArray=res.data.map(v=>{
           return v.id
         })

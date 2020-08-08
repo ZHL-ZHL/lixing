@@ -22,7 +22,7 @@ Page({
   },
   getList() {
     eatOrder({ pageNum: this.data.page, pageSize: 15 }).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         let totalPage;
         let last_page = parseInt((res.page.total / 15));
         parseInt((res.page.total % 15)) ? totalPage = last_page + 1 : totalPage = last_page;
@@ -68,7 +68,7 @@ Page({
       success: res=> {
         if(res.confirm){
           eatcancelOrder(data).then(res => {
-            if (res.code == 0) {
+            if (res.code == 200) {
               this.getList()
             } else {
               wx.showToast({
@@ -94,7 +94,7 @@ Page({
     data.orderId = id;
 
     eatPayOrder(data).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         let data = JSON.parse(res.data)
         console.log(data)
         let pay_info = JSON.parse(data.pay_info)

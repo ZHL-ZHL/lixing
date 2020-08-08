@@ -64,7 +64,7 @@ export function xgUserInfo(data) {
 export function addressAdd(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/renren-fast/wechat_user/address',
+    url: URL.host + '/blade-bms/wechatuseraddress/save',
     body: data
   })
 }
@@ -73,8 +73,7 @@ export function addressAdd(data) {
 export function addressList(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/wechat_user/address/' + data.userid,
-    params: data
+    url: URL.host + '/blade-bms/wechatuseraddress/page'
   })
 }
 
@@ -82,7 +81,7 @@ export function addressList(data) {
 export function addressEdit(data) {
   return http.fly.request({
     method: 'put',
-    url: URL.host + '/renren-fast/wechat_user/address',
+    url: URL.host + '/blade-bms/wechatuseraddress/update',
     body: data
   })
 }
@@ -91,9 +90,8 @@ export function addressEdit(data) {
 
 export function addressDel(data) {
   return http.fly.request({
-    method: 'DELETE',
-    url: URL.host + '/renren-fast/wechat_user/address/' + data.id,
-    body: data
+    method: 'post',
+    url: URL.host + '/blade-bms/wechatuseraddress/remove?ids=' + data.id
   })
 }
 // 反馈意见

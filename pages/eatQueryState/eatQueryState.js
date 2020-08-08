@@ -15,7 +15,7 @@ Page({
    */
   onLoad: function (options) {
     eatqueryState({orderId:options.id}).then(res=>{
-      if(res.code==0){
+      if(res.code==200){
          this.setData({
             msg:res.msg,
             data:res.data

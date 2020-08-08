@@ -28,11 +28,22 @@
 							</view>
 						</view>
 						<view class="weui-cell">
-							<view class="weui-cell__hd">访问时间</view>
+							<view class="weui-cell__hd">访问时间(始)</view>
 							<view class="weui-cell__bd">
-								<picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+								<picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime"   range="{{dateTimeArray}}">
 									<view class="tui-picker-detail">
-										<input placeholder-class="placeholderClass" value="{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}:{{dateTimeArray[5][dateTime[5]]}}" name="beginTime"></input>
+										<input placeholder-class="placeholderClass" value="{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}" name="beginTime"></input>
+									</view>
+								</picker>
+								<!-- <input placeholder-class="placeholderClass" placeholder="选择日期" name="beginTime" disabled></input> -->
+							</view>
+						</view>
+							<view class="weui-cell">
+							<view class="weui-cell__hd">访问时间(止)</view>
+							<view class="weui-cell__bd">
+								<picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1"   range="{{dateTimeArray1}}">
+									<view class="tui-picker-detail">
+										<input placeholder-class="placeholderClass" value="{{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}" name="endTime"></input>
 									</view>
 								</picker>
 								<!-- <input placeholder-class="placeholderClass" placeholder="选择日期" name="beginTime" disabled></input> -->
@@ -109,7 +120,7 @@
 							</view>
 							<view>身份证号</view>
 							<view>
-								<input placeholder-class="placeholderClass" placeholder="输入身份证号" bindinput="sfnumInput" value="{{idcode}}"></input>
+								<input placeholder-class="placeholderClass" placeholder="输入身份证号" bindinput="sfnumInput" value="{{idcode}}"></input> 
 							</view>
 						</view>
 						<view class="weui-cell ">
@@ -157,7 +168,7 @@
 						</view>
 						<view class="weui-cell__ft" style="height:27rpx;">
 							<van-tag plain color="#FFAE00" size="medium" bindtap="openDetail" data-item="{{item}}">查看详情</van-tag>
-							<van-tag plain color="#FFAE00" size="medium" bindtap="openDelete">删除</van-tag>
+							<van-tag plain color="#FFAE00" size="medium" bindtap="openDelete" id="{{item.id}}">删除</van-tag>
 						</view>
 					</view>
 					<view class="kangItem">
@@ -172,16 +183,16 @@
 			<view class="card-box">
 				<view class="weui-cell">
 					<view class="weui-cell__hd">
-						<image src="../../images/my/a-5.png" class="user-img"></image>
+						<image src="{{userInfo.avatarUrl}}" class="user-img"></image>
 					</view>
 					<view class="weui-cell__bd">
-						<view class="identity">王祖贤<text>2</text></view>
+						<view class="identity">{{userInfo.nickName}}</view>
 						<view class="nickname">外来访客</view>
 					</view>
 				</view>
 				<view class="weui-cell">
 					<view>
-						<image src="../../images/car.png" class="qcode-img"></image>
+						<canvas style="width:500rpx; height: 500rpx;" canvas-id="myQrcode"  class="qcode-img"></canvas> 
 					</view>
 				</view>
 				<view class="time-bottom">请将二维码对准门禁扫描口进行扫描</view>

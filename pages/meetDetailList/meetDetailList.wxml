@@ -1,0 +1,17 @@
+<!--pages/meetDetailList/meetDetailList.wxml-->
+<view class="container">
+	<navigator id="demo1"  wx:for="{{list}}" wx:key="index" hover-class="none" url="/pages/meetingDetail/meetingDetail?id={{item.id}}">
+		<view class="weui-cell busList" hover-class="none">
+			<view class="weui-cell__hd">
+				<view class="busImgBox">
+					<image src="{{item.leaseImage}}" class="busImg"></image>
+				</view>
+			</view>
+			<view class="weui-cell__bd">
+				<view><text class="list-title">{{item.leaseName}}</text> {{item.leaseBq}}</view>
+				<view style="margin:10rpx 0rpx">{{item.leaseAddressName}}</view>
+				<view class="list-ccc">{{item.leaseArea}}㎡ 最多容纳{{item.leaseGalleryful}}人</view>
+			</view>
+		</view>
+	</navigator>
+</view>

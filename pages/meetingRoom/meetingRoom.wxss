@@ -204,6 +204,7 @@ page {
 
 .list .weui-cell-title {
   width: 33%;
+  font-size: 26rpx;
 }
 
 .list .weui-cell-title text {
@@ -337,7 +338,24 @@ page {
   overflow-y: auto;
   padding-bottom: 50px;
 }
+.searchBox1{
+  width: 100%;
+  box-sizing: border-box;
+  height: 100%;
+  background: #fff;
+  border-radius: 30rpx 30rpx 0rpx 0rpx;
+  position: absolute;
+  bottom: 0;
+  overflow-y: auto;
+  padding-bottom: 50px;
+}
+.height300 .van-popup--bottom.van-popup--safe{
+  height: 300px;
+}
 .sheet-btn{
   position: fixed;
   bottom: 0;
+}
+.van-popup--bottom.van-popup--safe{
+  height: 500px;
 }

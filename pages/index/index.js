@@ -126,7 +126,7 @@ Page({
   onLoad: function() {
     let that = this;
     // homeBanner().then(res => {
-    //   if (res.code == 0) {
+    //   if (res.code == 200) {
     //     //  res.data.forEach(item => { 
     //     //    item.picture = imageUrl.imgURL + item.picture
     //     //  })
@@ -180,7 +180,7 @@ Page({
   routerTo(e) {
     // if (e.currentTarget.dataset.name == "智慧停车") {
     //   companyList().then(res => { 
-    //     if(res.code == 0){
+    //     if(res.code == 200){
     //       this.toPark()
     //     }
     //   }) 

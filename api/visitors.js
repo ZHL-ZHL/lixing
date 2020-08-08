@@ -9,6 +9,21 @@ export function addVisitors(data) {
     body: data
   })
 }
+
+export function updVisitors(data) {
+  return http.fly.request({
+    method: 'post',
+    url: URL.host + '/blade-bms/appointment/update',
+    body: data
+  })
+}
+export function removeVisitors(data) {
+  return http.fly.request({
+    method: 'post',
+    url: URL.host + '/blade-bms/appointment/remove?ids='+data
+  })
+}
+
 // 查看列表 
 export function visitorsList(data) {
   console.log(data)
@@ -25,3 +40,11 @@ export function visitorsDetail(data) {
     url: URL.host + '/renren-fast/wechat_appointment/one/' + data.appointmentId
   })
 }
+
+export function paymentQcode(data) {
+  return http.fly.request({
+    method: 'get',
+    url: URL.host + '/blade-bms/appointment/page',
+    params: data
+  })
+}  

@@ -1209,6 +1209,41 @@
 					"id": -1,
 					"name": "pages/meetingRoom/meetingRoom",
 					"pathName": "pages/meetingRoom/meetingRoom",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetingRoom/meetingRoom",
+					"pathName": "pages/meetingRoom/meetingRoom",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetingRoom/meetingRoom",
+					"pathName": "pages/meetingRoom/meetingRoom",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetDetailList/meetDetailList",
+					"pathName": "pages/meetDetailList/meetDetailList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetingRoom/meetingRoom",
+					"pathName": "pages/meetingRoom/meetingRoom",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetingRoom/meetingRoom",
+					"pathName": "pages/meetingRoom/meetingRoom",
 					"scene": null
 				}
 			]

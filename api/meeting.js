@@ -21,7 +21,7 @@ export function meetingDetail(data) {
   if (data.wechatUserId){
     return http.fly.request({
       method: 'get',
-      url: URL.host + '/renren-fast/app/leasedetail/info/' + data.id + "/" + data.wechatUserId,
+      url: URL.host + '/blade-bms/leasedetail/info/' + data.id + "/" + data.wechatUserId,
       // params: data
     })
   }else{
@@ -31,5 +31,19 @@ export function meetingDetail(data) {
       params: data
     })
   }
-  
+} 
+
+
+export function selectByKeWord(data) {
+  console.log(data)
+  return http.fly.request({
+    method: 'get',
+    url: URL.host + '/blade-bms/hzleasedetail/selectByKeWord?keyWord='+data
+  })
+}  
+export function hotLease(data) {
+  return http.fly.request({
+    method: 'get',
+    url: URL.host + '/blade-log/api/hotLease'
+  })
 } 

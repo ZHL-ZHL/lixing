@@ -1,9 +1,12 @@
 // pages/visitorsList/visitorsList.js
 
 var dateTimePicker = require('../../utils/datapicker.js');
+import drawQrcode from 'weapp-qrcode'
 import {
   addVisitors,
-  visitorsList
+  paymentQcode,
+  visitorsList,
+  removeVisitors,
 } from "../../api/visitors.js"
 Page({
 
@@ -28,39 +31,27 @@ Page({
     current: 1,
     size: 10,
     load: false,
-    list: [{
-      address: "中鲁物流",
-      beginTime: "2020-02-29 10:13:59",
-      createTime: "2020-02-29 10:14:49",
-      endTime: "",
-      intervieweeName: "郝丽媛",
-      intervieweePhone: "15234152804",
-      isDeleted: 0,
-      remark: "应聘",
-      tenantId: "000000",
-      updateTime: "",
-      visitorCompany: "中鲁物流",
-      visitorIdentity: "230182199301180214",
-      visitorLicense: "",
-      visitorName: "冉维思",
-      visitorPhone: "13603626785",
-      wechatUserId: 554,
-      id:"1283634906672414721",
-    }],
+    list: [],
     type: '',
-    deleteshow:true,
-    noContent: true
+    deleteshow: true,
+    noContent: true,
+    userInfo: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      userInfo: wx.getStorageSync("userInfo")
+    })
     var obj = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
     var obj1 = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
     // 精确到分的处理，将数组的秒去掉
-    var lastArray = obj1.dateTimeArray.pop();
-    var lastTime = obj1.dateTime.pop();
+    var lastArray = obj.dateTimeArray.pop();
+    var lastTime = obj.dateTime.pop();
+    var lastArray1 = obj1.dateTimeArray.pop();
+    var lastTime1 = obj1.dateTime.pop();
 
     this.setData({
       dateTime: obj.dateTime,
@@ -71,29 +62,38 @@ Page({
   },
   changeDateTime(e) {
     const that = this;
-    console.log("打印时间~~~~~~~~~~~~~~~~~~~~~", this.data.dateTimeArray);
-
     this.setData({
       dateTime: e.detail.value
     });
-
-    console.log("打印时间", this.data.dateTime);
-
     var aaa1 = that.data.dateTime[0];
     var aaa2 = that.data.dateTime[1];
     var aaa3 = that.data.dateTime[2];
     var aaa4 = that.data.dateTime[3];
     var aaa5 = that.data.dateTime[4];
-    var aaa6 = that.data.dateTime[5];
-
-
     var time1 = that.data.dateTimeArray[0][aaa1];
     var time2 = that.data.dateTimeArray[1][aaa2];
     var time3 = that.data.dateTimeArray[2][aaa3];
     var time4 = that.data.dateTimeArray[3][aaa4];
     var time5 = that.data.dateTimeArray[4][aaa5];
-    var time6 = that.data.dateTimeArray[5][aaa6];
-    var time = time1 + '-' + time2 + '-' + time3 + ' ' + time4 + ':' + time5 + ':' + time6;
+    var time = time1 + '-' + time2 + '-' + time3 + ' ' + time4 + ':' + time5;
+
+  },
+  changeDateTime1(e) {
+    const that = this;
+    this.setData({
+      dateTime1: e.detail.value
+    });
+    var aaa1 = that.data.dateTime1[0];
+    var aaa2 = that.data.dateTime1[1];
+    var aaa3 = that.data.dateTime1[2];
+    var aaa4 = that.data.dateTime1[3];
+    var aaa5 = that.data.dateTime1[4];
+    var time1 = that.data.dateTimeArray1[0][aaa1];
+    var time2 = that.data.dateTimeArray1[1][aaa2];
+    var time3 = that.data.dateTimeArray1[2][aaa3];
+    var time4 = that.data.dateTimeArray1[3][aaa4];
+    var time5 = that.data.dateTimeArray1[4][aaa5];
+    var time = time1 + '-' + time2 + '-' + time3 + ' ' + time4 + ':' + time5;
 
   },
   formReset: function () {
@@ -171,21 +171,25 @@ Page({
     })
   },
   okdelete() {
+    removeVisitors(this.data.ids).then(res => {
+
+    })
     this.setData({
       deleteshow: true
     })
   },
-  openDelete(){
+  openDelete(e) {
     this.setData({
+      ids: e.currentTarget.id,
       deleteshow: false
     })
   },
-  openDetail(e){ 
+  openDetail(e) {
     wx.navigateTo({
-      url: '/pages/visitors/visitors?info='+JSON.stringify(e.currentTarget.dataset.item),
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
+      url: '/pages/visitors/visitors?info=' + JSON.stringify(e.currentTarget.dataset.item),
+      success: function (res) {},
+      fail: function (res) {},
+      complete: function (res) {},
     })
   },
   nameInput(e) {
@@ -228,9 +232,12 @@ Page({
   getvisitorsList() {
     visitorsList({
       current: 1,
-      size: 10
+      size: 10000,
+      user: true
     }).then(res => {
-
+      this.setData({
+        list: res.data.records
+      })
     })
   },
   selNav: function (e) {
@@ -240,8 +247,22 @@ Page({
       current: 1,
       // list: []
     })
-    if (this.data.currentindex == 1) {
-      // this.getvisitorsList()
+    if (this.data.currentindex == 0) {
+
+    } else if (this.data.currentindex == 1) {
+      this.getvisitorsList()
+    } else {
+      paymentQcode({
+        user: true,
+        exists: true
+      }).then(res => {
+        if (res.code == 200 && res.data) {
+          drawQrcode({
+            canvasId: 'myQrcode',
+            text: res.data.records[0].payment,
+          })
+        }
+      })
     }
     // this.getList()
   },
@@ -257,7 +278,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (this.data.currentindex == 1) {
+      this.getvisitorsList()
+    }
   },
 
   /**

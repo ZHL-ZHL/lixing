@@ -86,7 +86,7 @@ Page({
     data.encryptedData = e.detail.encryptedData
     getPhone(data).then(res=>{
       console.log(res)
-      if(res.code==0){
+      if(res.code==200){
         let userInfo=wx.getStorageSync("userInfo")
         userInfo.phone=res.data;
         this.setData({

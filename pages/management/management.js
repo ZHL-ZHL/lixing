@@ -276,7 +276,7 @@ Page({
       value.driverPicReverse = this.data.driverPicReverse // 驾驶证 反 
       if (this.data.showSub) {
         saveaCompanyInfo(value).then(res => {
-          if (res.code == 0) {
+          if (res.code == 200) {
             wx.showToast({
               title: '填写成功',
               success: res => {
@@ -300,7 +300,7 @@ Page({
       } else {
         value.infoId = this.data.infoId
         updeteaCompanyInfo(value).then(res => {
-          if (res.code == 0) {
+          if (res.code == 200) {
             wx.showToast({
               title: '修改成功',
               success: res => {

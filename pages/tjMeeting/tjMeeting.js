@@ -163,7 +163,7 @@ Page({
       orderData.wechatUserId = this.data.wechatUserId
       console.log(orderData)
       orderTj(orderData).then(res => {
-        if (res.code == 0) {
+        if (res.code == 200) {
           wx.navigateBack({
             delta: 1,
           })
@@ -213,7 +213,7 @@ Page({
       orderData.shoppingList = carArray
       console.log(orderData)
       tjCar(orderData).then(res => {
-        if (res.code == 0) {
+        if (res.code == 200) {
           wx.navigateBack({
             delta: 1,
           })

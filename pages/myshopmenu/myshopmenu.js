@@ -36,7 +36,7 @@ Page({
   toRecommend(e){
     let id=e.currentTarget.dataset.id;
     eatrecommend({ recommendShopId: 1, recommendFoodId:id}).then(res=>{
-      if(res.code==0){
+      if(res.code==200){
         this.getgroupList()
       }else{
         wx.showToast({
@@ -54,7 +54,7 @@ Page({
   toRecommendCencel(e){
     let id = e.currentTarget.dataset.id;
     eatrecommendCencel({foodId: id }).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         this.getgroupList()
       } else {
         wx.showToast({
@@ -73,7 +73,7 @@ Page({
     let id = e.currentTarget.dataset.id;
     let shelf = e.currentTarget.dataset.shelf;
     eatShelf({ foodShelf: !shelf, id:id}).then(res=>{
-      if(res.code==0){
+      if(res.code==200){
         this.getgroupList()
       }else{
         wx.showToast({
@@ -99,7 +99,7 @@ Page({
   },
   getgroupList() {
     eatgroupshopList({ shopId: 1 }).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         this.setData({
           groupList: res.list
         })
@@ -120,7 +120,7 @@ Page({
 
   getInfo() {
     shopInfo({ id: 1 }).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         this.setData({
           rtShop: res.rtShop
         })

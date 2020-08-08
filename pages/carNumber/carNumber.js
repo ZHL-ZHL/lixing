@@ -106,16 +106,16 @@ Page({
         parkCode:1,
         plateNo: this.data.addressTitle+this.data.carNumber.toUpperCase()
       }).then(res => {
-        if (res.code == 200 && res.data.plateNo) {
+        if (res.code == 200 && res.data.data) {
           this.setData({
             showCarInfo: true,
             // id: res.data[0].id,
-            plateNo: res.data.plateNo,
-            entryTime: res.data.entryTime,
-            outTime: res.data.outTime, 
-            payable: res.data.payable,
-            payedFee: res.data.payedFee,
-            elapsedTime: res.data.elapsedTime
+            plateNo: res.data.data.plateNo,
+            entryTime: res.data.data.entryTime,
+            outTime: res.data.data.outTime, 
+            payable: res.data.data.payable,
+            payedFee: res.data.data.payedFee,
+            elapsedTime: res.data.data.elapsedTime
           })
         } else {
           let that = this;

@@ -79,7 +79,7 @@ Page({
   },
   getCartList() {
     carList({pageNum:this.data.page,pageSize:10}).then(res=>{
-       if(res.code==0){
+       if(res.code==200){
           this.setData({
             listItem:res.data.list
           })
@@ -99,7 +99,7 @@ Page({
     var idx = e.currentTarget.dataset.index;
     var id = e.currentTarget.dataset.id;
     delCar({id:id}).then(res=>{
-      if(res.code==0){
+      if(res.code==200){
         listItem.splice(idx, 1)
         that.setData({
           listItem: listItem

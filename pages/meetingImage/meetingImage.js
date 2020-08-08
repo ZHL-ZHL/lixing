@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    nav: ['全部', '会议室', '茶歇', '园区', '周边'],
+    nav: ['全部'],
+    // nav: ['全部', '会议室', '茶歇', '园区', '周边'],
     currentindex: 0,
     current: 1,
     size: 1000,
@@ -16,7 +17,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      imageList: options.imageList.split(',')
+    })
   },
   selNav: function (e) {
     let index = e.target.dataset.idx;

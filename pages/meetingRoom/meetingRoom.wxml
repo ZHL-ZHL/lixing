@@ -14,17 +14,43 @@
 	<view class="search-box list">
 		<view class="weui-cell">
 			<view class="weui-cell-title">
-				<text>今日使用</text>
-				<view>7月6日 周一</view>
+				<text>开始日期</text>
+				<view>{{startDate}}</view>
 			</view>
 			<view class="weui-cell-title">
-				<text>明日退租</text>
-				<view>7月7日 周二</view>
+				<text>结束日期</text>
+				<view>{{endDate}}</view>
 			</view>
 			<view class="weui-cell-title" style="text-align:right">
-				<text style="margin-right:20rpx;">共1天</text>
+				<text>共{{dayNumber}}天</text>
 			</view>
 			<view class="weui-cell__ft" bindtap="showdateBtn">
+				<image src="/images/icon/r_jt.png" class="r_jt"></image>
+			</view>
+		</view>
+		<view class="weui-cell">
+			<view class="weui-cell-title">
+				<text>开始时间</text>
+				<view>{{startTime}}</view>
+			</view>
+			<view class="weui-cell-title">
+				<!-- <text>结束时间</text>
+				<view>{{endTime}}</view> -->
+			</view>
+			<view class="weui-cell__ft" bindtap="showTimeBtn">
+				<image src="/images/icon/r_jt.png" class="r_jt"></image>
+			</view>
+		</view>
+		<view class="weui-cell">
+			<view class="weui-cell-title">
+				<text>结束时间</text>
+				<view>{{endTime}}</view>
+			</view>
+			<view class="weui-cell-title">
+				<!-- <text>结束时间</text>
+				<view>{{endTime}}</view> -->
+			</view> 
+			<view class="weui-cell__ft" bindtap="showTimeBtn">
 				<image src="/images/icon/r_jt.png" class="r_jt"></image>
 			</view>
 		</view>
@@ -33,7 +59,7 @@
 				<text>我的附近</text>
 			</view>
 			<view class="weui-cell__bd">
-				<input placeholder-class="placeholderClass" placeholder="搜索会议室名称/关键词"></input>
+				<input placeholder-class="placeholderClass" placeholder="搜索会议室名称/关键词" value="{{keyword}}"></input>
 			</view>
 			<view class="weui-cell__ft" bindtap="onClickShow">
 				<image src="/images/icon/r_jt.png" class="r_jt"></image>
@@ -44,13 +70,13 @@
 				<text>精准查找</text>
 			</view>
 			<view class="weui-cell__bd">
-				<input placeholder-class="placeholderClass" placeholder="设置我需要的人数/面积/价格"></input>
+				<input placeholder-class="placeholderClass" value="{{allSearchCount}}" placeholder="设置我需要的人数/面积/价格"></input>
 			</view>
 			<view class="weui-cell__ft" bindtap="showAccurateSearchBtn">
 				<image src="/images/icon/r_jt.png" class="r_jt"></image>
 			</view>
 		</view>
-		<view class="btnSearch">查 找</view>
+		<view class="btnSearch" bindtap="goDetail">查 找</view>
 	</view>
 	<!-- <view class="divider">
     <text>热门推荐</text>
@@ -104,81 +130,63 @@
   </view> -->
 	<!-- 精准查找 -->
 	<!-- bind:close="onClose" round="true" close-on-click-overlay="true" -->
-	<view wx:if="{{ showAccurateSearch }}" title="精准查找" class="showAccurateSearch">
-		<view class="searchBox">
-			<!-- <button class='button' bindtap='hideSlider'>隐藏</button>
-					<button class='button' bindtap='showSlider'>显示</button>
-					<button class='button' bindtap='resetSlider'>重置</button> -->
+	<view wx:if="{{ showAccurateSearch }}" bindtap="closeAccurateSearch" title="精准查找" class="showAccurateSearch">
+		<view class="searchBox" catchtap="stopAccurateSearch">
 			<view class="sheet-content">
-				<view class="sheet-title">价 格 <text>￥{{low}}-{{heigh}}</text></view>
-				<view> 
+				<view class="sheet-title">价 格 <text>￥{{lowHeigh}}</text></view>
+				<view>
 					<view class="zy-slider">
 						<zy-slider id="zy-slider" backgroundColor="#EEEEEE" selectedColor="#FFAE00" minValue="{{low}}" maxValue="{{heigh}}" min="0" max="10000" bind:lowValueChange="lowValueChangeAction" bind:heighValueChange="heighValueChangeAction" />
 					</view>
 				</view>
-				<view class="sheet-ititle">￥0 <text>￥1000以上</text></view>
+				<view class="sheet-ititle">￥0 <text>￥10000以上</text></view>
 				<view style="padding-left:1%">
-					<view class="sheet-item-list">￥0-2000</view>
-					<view class="sheet-item-list">￥0-2000</view>
-					<view class="sheet-item-list">￥0-2000</view>
-					<view class="sheet-item-list">￥0-2000</view>
-					<view class="sheet-item-list">￥0-2000</view>
-					<view class="sheet-item-list">￥0-2000</view>
-					<view class="sheet-item-list">￥0-2000</view>
+					<view class="sheet-item-list" wx:for="{{priceList}}" wx:key="index">￥{{item}} <text wx:if="{{index == priceList.length-1}}">以上</text></view>
 				</view>
 			</view>
 
 			<view class="sheet-content">
-				<view class="sheet-title">面 积<text>￥{{low1}}-{{heigh1}}</text></view>
+				<view class="sheet-title">面 积<text>{{lowHeigh1}}m²</text></view>
 				<view class="sheet-ititle">0 <text>1000以上</text></view>
-				<view> 
+				<view>
 					<view class="zy-slider">
-						<zy-slider id="zy-slider1" minValue="{{low1}}" maxValue="{{heigh1}}" min="0" max="1000"  backgroundColor="#EEEEEE" selectedColor="#FFAE00" bind:lowValueChange="lowValueChangeAction1" bind:heighValueChange="heighValueChangeAction1" />
+						<zy-slider id="zy-slider1" minValue="{{low1}}" maxValue="{{heigh1}}" min="0" max="1000" backgroundColor="#EEEEEE" selectedColor="#FFAE00" bind:lowValueChange="lowValueChangeAction1" bind:heighValueChange="heighValueChangeAction1" />
 					</view>
 				</view>
 				<view style="padding-left:1%">
-					<view class="sheet-item-list">￥0-2000</view>
-					<view class="sheet-item-list">￥0-2000</view>
-					<view class="sheet-item-list">￥0-2000</view>
-					<view class="sheet-item-list">￥0-2000</view>
+					<view class="sheet-item-list" wx:for="{{areaList}}" wx:key="index">{{item}}m²<text wx:if="{{index == areaList.length-1}}">以上</text></view>
 				</view>
 			</view>
 
 			<view class="sheet-content">
-				<view class="sheet-title">参会人数</view>
+				<view class="sheet-title">参会人数<text>{{lowHeigh2}}人</text></view>
 				<view class="sheet-ititle">0 <text>1000人以上</text></view>
-				<view> 
+				<view>
 					<view class="zy-slider">
-						<zy-slider id="zy-slider2" minValue="{{low2}}" maxValue="{{heigh2}}" min="0" max="1500"  backgroundColor="#EEEEEE" selectedColor="#FFAE00" bind:lowValueChange="lowValueChangeAction2" bind:heighValueChange="heighValueChangeAction2" />
+						<zy-slider id="zy-slider2" minValue="{{low2}}" maxValue="{{heigh2}}" min="0" max="1500" backgroundColor="#EEEEEE" selectedColor="#FFAE00" bind:lowValueChange="lowValueChangeAction2" bind:heighValueChange="heighValueChangeAction2" />
 					</view>
 				</view>
 				<view style="padding-left:1%">
-					<view class="sheet-item-list">￥0-2000</view>
-					<view class="sheet-item-list">￥0-2000</view>
-					<view class="sheet-item-list">￥0-2000</view>
-					<view class="sheet-item-list">￥0-2000</view>
+					<view class="sheet-item-list" wx:for="{{perpleList}}" wx:key="index">{{item}}人<text wx:if="{{index == perpleList.length-1}}">以上</text></view>
 				</view>
 			</view>
 
-			<view class="sheet-btn">完成</view>
+			<view class="sheet-btn" catchtap="subAccurateSearch">完成</view>
 		</view>
 	</view>
 	<!-- 搜索关键词 -->
 	<view class="show-main" hidden="{{showMain}}">
-		<van-search value="{{ searchvalue }}" placeholder="请输入搜索关键词" show-action bind:search="onSearch" bind:cancel="onCancel" />
+		<van-search value="{{ searchvalue }}" placeholder="请输入搜索关键词" bind:change="onChange" show-action bind:search="onSearch" bind:cancel="onCancel" />
 		<view class="show-mian-box">
 			<view class="show-main-title">
 				<image src="../../images/icon1/nav1.png"></image>
 				大家都在搜
 			</view>
 			<view class="show-main-cont">
-				<text>中鲁会议室</text>
-				<text>中鲁会议室</text>
-				<text>中鲁会议室</text>
-				<text>中鲁会议室</text>
+				<text wx:for="{{keywordList}}" wx:key="index" bindtap="keywordBtn" id="{{item}}">{{item}}</text>
 			</view>
 		</view>
-		<view class="show-mian-box">
+		<!-- <view class="show-mian-box">
 			<view class="show-main-title">
 				<image src="../../images/icon1/nav1.png"></image>
 				品牌会议室
@@ -189,16 +197,33 @@
 				<text>中鲁会议室</text>
 				<text>中鲁会议室</text>
 			</view>
-		</view>
+		</view> -->
 	</view>
 
-	<!-- 时间查找 -->
+	<!-- 日期查找 -->
 	<van-action-sheet show="{{ showdate }}" title="选择日期" bind:close="ondateClose" round="true" close-on-click-overlay="true">
 		<view class="searchBox">
 			<view>
 				<van-calendar show="{{ showdate }}" type="range" bind:close="ondateClose" bind:confirm="onConfirm" />
 			</view>
 			<!-- <view class="sheet-btn">完成</view> -->
+		</view>
+	</van-action-sheet>
+
+
+	<!--时间查找  -->
+	<van-action-sheet class="height300" show="{{ showTime }}" title="选择时间" bind:close="ondateClose1" round="true" close-on-click-overlay="true">
+		<view class="searchBox1">
+			<view>
+				<van-datetime-picker type="time" value="{{ currentDate }}" />
+			</view>
+		</view>
+	</van-action-sheet>
+	<van-action-sheet class="height300" show="{{ showTime2 }}" title="选择时间" bind:close="ondateClose2" round="true" close-on-click-overlay="true">
+		<view class="searchBox1">
+			<view>
+				<van-datetime-picker type="time" value="{{ currentDate2 }}" />
+			</view>
 		</view>
 	</van-action-sheet>
 </view>

@@ -25,7 +25,7 @@ Page({
   },
   getDetail(){
     eatOrderDetail({ orderId: this.data.orderId}).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         this.setData({
           detail: res.data
         })
@@ -48,7 +48,7 @@ Page({
     data.orderId = id;
 
     eatPayOrder(data).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         let data = JSON.parse(res.data)
         console.log(data)
         let pay_info = JSON.parse(data.pay_info)
@@ -98,7 +98,7 @@ Page({
       success: res => {
         if (res.confirm) {
           eatcancelOrder(data).then(res => {
-            if (res.code == 0) {
+            if (res.code == 200) {
               this.getDetail()
             } else {
               wx.showToast({
@@ -140,7 +140,7 @@ Page({
   },
   toaccept(e) {
     eatshopAccept({ orderId: e.currentTarget.dataset.id }).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         this.getDetail()
       } else {
         wx.showToast({
@@ -157,7 +157,7 @@ Page({
   },
   toDelivery(e) {
     eatshopDelivery({ orderId: e.currentTarget.dataset.id }).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         this.getDetail()
       } else {
         wx.showToast({
@@ -175,7 +175,7 @@ Page({
   tofoodfinish(e) {
 
     eatshopfinishFood({ orderId: e.currentTarget.dataset.id }).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         this.getDetail()
       } else {
         wx.showToast({
@@ -192,7 +192,7 @@ Page({
   },
   tofinish(e) {
     eatshopFinish({ orderId: e.currentTarget.dataset.id }).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         this.getDetail()
       } else {
         wx.showToast({
@@ -218,7 +218,7 @@ Page({
       success: res => {
         if (res.confirm) {
           eatRefuseOrder({ orderId: e.currentTarget.dataset.id }).then(res => {
-            if (res.code == 0) {
+            if (res.code == 200) {
               this.getDetail()
             } else {
               wx.showToast({
@@ -240,7 +240,7 @@ Page({
   },
   toRefuseCancel(e) {
     eatCancelRefuseOrder({ orderId: e.currentTarget.dataset.id }).then(res => {
-      if (res.code == 0) {
+      if (res.code == 200) {
         this.getDetail()
       } else {
         wx.showToast({
@@ -265,7 +265,7 @@ Page({
       success: res => {
         if (res.confirm) {
           eatCancelAgreeOrder({ orderId: e.currentTarget.dataset.id }).then(res => {
-            if (res.code == 0) {
+            if (res.code == 200) {
               this.getDetail()
             } else {
               wx.showToast({

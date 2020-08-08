@@ -1,85 +1,100 @@
 /* pages/my_dingdan/my_dingdan.wxss */
 .container .van-tabs__wrap--scrollable .van-tab {
-  -webkit-flex:0 0 20%;
-  flex:0 0 20%;
+  -webkit-flex: 0 0 20%;
+  flex: 0 0 20%;
 }
-.totalPrice .weui-cell__ft{
-  font-size:24rpx;
-  font-weight:500;
-  color:rgba(51,51,51,1);
+
+.totalPrice .weui-cell__ft {
+  font-size: 24rpx;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
 }
-.totalPrice::before{
+
+.totalPrice::before {
   border: none;
 }
-.totalPrice text{
+
+.totalPrice text {
   color: #DD2626;
   font-size: 30rpx;
   padding: 0 10rpx;
-} 
+}
+
 .jion {
-  font-size:30rpx;
-  font-weight:500;
-  color:#DD2626;
-  line-height:1;
-  margin-top:35rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #DD2626;
+  line-height: 1;
+  margin-top: 35rpx;
 }
-.price{
-  font-size:22rpx;
-  font-weight:500;
-  color:rgba(102,102,102,1);
+
+.price {
+  font-size: 22rpx;
+  font-weight: 500;
+  color: rgba(102, 102, 102, 1);
 }
-.weui-panel__bd{
+
+.weui-panel__bd {
   position: relative;
 }
-.weui-panel__bd::after{
-   content: "";
-   position: absolute;
-   left: 24rpx;
-   right:0;
-   border-bottom: 1rpx solid #ddd;
-   bottom: 0;
+
+.weui-panel__bd::after {
+  content: "";
+  position: absolute;
+  left: 24rpx;
+  right: 0;
+  border-bottom: 1rpx solid #ddd;
+  bottom: 0;
 }
-.weui-panel__bd:nth-last-child(1)::after{
+
+.weui-panel__bd:nth-last-child(1)::after {
   border: none;
 }
-.queS{
+
+.queS {
   width: 375rpx;
   height: 375rpx;
   margin: 0 auto;
   margin-top: 120rpx;
   display: block;
 }
+
 .container .van-tabs__line {
-  background-color: #4D7AD2;
+  background-color: #FFE400;
 }
-.thumb{
+
+.thumb {
   width: 180rpx;
   height: 180rpx;
   display: block;
   margin-right: 10px;
 }
-page{
+
+page {
   background: #f4f4f5;
 }
-.listItem{
+
+.listItem {
   background: #fff;
-  margin: 10px ;
+  margin: 10px;
   border-radius: 10rpx;
 }
-.goodsInfo{
+
+.goodsInfo {
   border-top: 1rpx solid #e1e1e1;
   border-bottom: 1rpx solid #e1e1e1;
-  align-items:start;
+  align-items: start;
 }
 
-.status{
-  color: #FD7600;
+.status {
+  color: #FF4D6B;
 }
-.operation .btn{
-  width:159rpx;
-  background:rgba(255,255,255,1);
-  border:1rpx solid #666;
-  border-radius:30rpx;
+
+.operation .btn {
+  width: 159rpx;
+  background: rgba(255, 255, 255, 1);
+  border: 1rpx solid #666;
+  border-radius: 30rpx;
   text-align: center;
   line-height: 50rpx;
   margin: 0;
@@ -87,43 +102,67 @@ page{
   color: #666;
   font-size: 26rpx;
 }
-.goodsName{
+
+.goodsName {
   padding-top: 10rpx;
 }
-.time{
+
+.time {
   color: #666;
   font-size: 24rpx;
   margin-top: 10rpx;
 }
-.price{
+
+.price {
   color: #FD7600;
-  font-size:33rpx;
+  font-size: 33rpx;
   position: absolute;
   left: 0;
   bottom: 0;
 }
-.price text{
+
+.price text {
   font-size: 24rpx;
 }
-.caption{
+
+.caption {
   height: 180rpx;
   position: relative;
 }
-.orderType{
+
+.orderType {
   background: #fff;
   width: 720rpx;
   margin: 10px auto;
   box-sizing: border-box;
   border-radius: 10rpx;
 }
-.orderTypeValue{
+
+.orderTypeValue {
   padding-right: 10px;
   color: #666;
   font-size: 24rpx;
 }
-.queSorder{
+
+.queSorder {
   width: 375rpx;
   height: 375rpx;
   display: block;
   margin: 100px auto;
+}
+
+.icon-img {
+  width: 40rpx;
+  height: 40rpx;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 10rpx;
+}
+
+.title {
+  font-size: 26rpx;
+}
+.r_jt {
+  vertical-align: middle;
+  margin-left: 20rpx;
 }

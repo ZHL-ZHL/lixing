@@ -15,16 +15,20 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    // 
-    console.log(options.startDate, options.endDate, options.keyword, options.allSearchCount)
-
-    this.getList()
+  onLoad: function (options) { 
+    // console.log(options.startDate, options.endDate, options.keyword, options.allSearchCount,options.startTime,options.endTime)
+    this.getList(options)
   },
-  getList() {
+  getList(options) {
     meetingList({
       current: 1,
-      size: 1000
+      size: 1000,
+      startDate:options.startDate!='undefined'?options.startDate:'',
+      endDate:options.endDate!='undefined'?options.endDate:'',
+      keyword:options.keyword!='undefined'?options.keyword:'',
+      allSearchCount:options.allSearchCount!='undefined'?options.allSearchCount:'',
+      startTime:options.startTime!='undefined'?options.startTime:'',
+      endTime:options.endTime!='undefined'?options.endTime:'',
     }).then(res => {
       if (res.code == 200) {
         this.setData({

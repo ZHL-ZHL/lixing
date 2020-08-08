@@ -9,12 +9,10 @@ Page({
   data: {
     navBar: [
       { name: '全部',id:null },
-      { name: '待付款',id:1}, 
-      { name: '已付款',id:2}, 
-      { name: '已完成', id: 3},
-      { name: '退货/退款', id: 4},
+      { name: '待收货',id:1}, 
+      { name: '历史订单',id:2}
     ],
-    type: ['会议室租赁', '维修','停车'],
+    type: ['会议室租赁', '我要吃饭','停车'],
     typeIdx:"",
     orderList:[],
     wechatUserId:"",

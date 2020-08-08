@@ -12,7 +12,7 @@
 		</swiper>
 	</view>
 	<view class="search-box list">
-		<view class="weui-cell">
+		<view class="weui-cell"  bindtap="showdateBtn">
 			<view class="weui-cell-title">
 				<text>开始日期</text>
 				<view>{{startDate}}</view>
@@ -24,63 +24,57 @@
 			<view class="weui-cell-title" style="text-align:right">
 				<text>共{{dayNumber}}天</text>
 			</view>
-			<view class="weui-cell__ft" bindtap="showdateBtn">
+			<view class="weui-cell__ft">
 				<image src="/images/icon/r_jt.png" class="r_jt"></image>
 			</view>
 		</view>
-		<view class="weui-cell">
-			<view class="weui-cell-title">
+
+		<view class="weui-cell"  bindtap="showTimeBtn">
+			<view class="weui-cell__hd">
 				<text>开始时间</text>
-				<view>{{startTime}}</view>
 			</view>
-			<view class="weui-cell-title">
-				<!-- <text>结束时间</text>
-				<view>{{endTime}}</view> -->
+			<view class="weui-cell__bd">
+				<input placeholder-class="placeholderClass" placeholder="请选择开始时间" value="{{startTime}}"></input>
 			</view>
-			<view class="weui-cell__ft" bindtap="showTimeBtn">
+			<view class="weui-cell__ft">
 				<image src="/images/icon/r_jt.png" class="r_jt"></image>
 			</view>
 		</view>
-		<view class="weui-cell">
-			<view class="weui-cell-title">
+		<view class="weui-cell"  bindtap="showTimeBtn2">
+			<view class="weui-cell__hd">
 				<text>结束时间</text>
-				<view>{{endTime}}</view>
 			</view>
-			<view class="weui-cell-title">
-				<!-- <text>结束时间</text>
-				<view>{{endTime}}</view> -->
-			</view> 
-			<view class="weui-cell__ft" bindtap="showTimeBtn">
+			<view class="weui-cell__bd">
+				<input placeholder-class="placeholderClass" placeholder="请选择结束时间" value="{{endTime}}"></input>
+			</view>
+			<view class="weui-cell__ft">
 				<image src="/images/icon/r_jt.png" class="r_jt"></image>
 			</view>
 		</view>
-		<view class="weui-cell">
+		<view class="weui-cell" bindtap="onClickShow">
 			<view class="weui-cell__hd">
 				<text>我的附近</text>
 			</view>
 			<view class="weui-cell__bd">
 				<input placeholder-class="placeholderClass" placeholder="搜索会议室名称/关键词" value="{{keyword}}"></input>
 			</view>
-			<view class="weui-cell__ft" bindtap="onClickShow">
+			<view class="weui-cell__ft" >
 				<image src="/images/icon/r_jt.png" class="r_jt"></image>
 			</view>
 		</view>
-		<view class="weui-cell">
+		<view class="weui-cell"  bindtap="showAccurateSearchBtn">
 			<view class="weui-cell__hd">
 				<text>精准查找</text>
 			</view>
 			<view class="weui-cell__bd">
 				<input placeholder-class="placeholderClass" value="{{allSearchCount}}" placeholder="设置我需要的人数/面积/价格"></input>
 			</view>
-			<view class="weui-cell__ft" bindtap="showAccurateSearchBtn">
+			<view class="weui-cell__ft">
 				<image src="/images/icon/r_jt.png" class="r_jt"></image>
 			</view>
 		</view>
 		<view class="btnSearch" bindtap="goDetail">查 找</view>
 	</view>
-	<!-- <view class="divider">
-    <text>热门推荐</text>
-  </view> -->
 	<view class="divider-title">
 		<view class="divider-title-bold">热门推荐</view>
 		<view class="divider-title-sml">精选会议厅，尽享优质环境</view>
@@ -109,27 +103,7 @@
 			</navigator>
 		</scroll-view>
 	</view>
-	<!-- <view class="divider">
-    <text>会议室推荐</text>
-  </view>
-  <view class="meetingList">
-    <navigator class="weui-cell meetingListItem" wx:for="{{meetingRoom}}" url="/pages/meetingDetail/meetingDetail?id={{item.id}}" hover-class="none" wx:key="index">
-      <view class="weui-cell__hd">
-        <image class="thumb" src="{{onLine+item.leaseImage}}" mode="aspectFill"></image>
-      </view>
-      <view class="weui-cell__bd">
-        <view class="name">{{item.leaseName}}</view> 
-        <view class="adr">
-          {{item.leaseAddressName}}-{{item.leaseFloor}}层-{{item.leaseArea}}㎡
-        </view>
-        <view class="price">
-          ￥{{item.leasePriceHours}}/时 ￥{{item.leasePriceDay}}/天
-        </view>
-      </view>
-    </navigator>
-  </view> -->
 	<!-- 精准查找 -->
-	<!-- bind:close="onClose" round="true" close-on-click-overlay="true" -->
 	<view wx:if="{{ showAccurateSearch }}" bindtap="closeAccurateSearch" title="精准查找" class="showAccurateSearch">
 		<view class="searchBox" catchtap="stopAccurateSearch">
 			<view class="sheet-content">
@@ -205,24 +179,21 @@
 		<view class="searchBox">
 			<view>
 				<van-calendar show="{{ showdate }}" type="range" bind:close="ondateClose" bind:confirm="onConfirm" />
-			</view>
-			<!-- <view class="sheet-btn">完成</view> -->
+			</view> 
 		</view>
-	</van-action-sheet>
-
-
+	</van-action-sheet> 
 	<!--时间查找  -->
-	<van-action-sheet class="height300" show="{{ showTime }}" title="选择时间" bind:close="ondateClose1" round="true" close-on-click-overlay="true">
+	<van-action-sheet class="height300" show="{{ showTime }}" title="选择时间" bind:close="ondateClose1" round="true" close-on-click-overlay="true" >
 		<view class="searchBox1">
 			<view>
-				<van-datetime-picker type="time" value="{{ currentDate }}" />
+				<van-datetime-picker type="time" bind:input="onInput"  bind:confirm="getTime1" value="{{ currentDate }}" />
 			</view>
 		</view>
 	</van-action-sheet>
 	<van-action-sheet class="height300" show="{{ showTime2 }}" title="选择时间" bind:close="ondateClose2" round="true" close-on-click-overlay="true">
 		<view class="searchBox1">
 			<view>
-				<van-datetime-picker type="time" value="{{ currentDate2 }}" />
+				<van-datetime-picker bind:input="onInput2" type="time" bind:confirm="getTime2"  value="{{ currentDate2 }}" />
 			</view>
 		</view>
 	</van-action-sheet>

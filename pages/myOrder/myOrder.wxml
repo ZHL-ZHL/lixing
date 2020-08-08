@@ -1,62 +1,71 @@
 <view class='container'>
-  <van-tabs active="{{activetab}}" bind:change="onChange">
-    <van-tab wx:for="{{navBar}}" wx:key="index" title="{{item.name}}">
-     <picker bindchange="typeChange" value="{{typeIdx}}" range="{{type}}">
-        <view class="weui-cell orderType">
-          <view class="weui-cell__hd">订单类型</view>
-          <view class="weui-cell__bd"></view>
-          <view class="weui-cell__hd orderTypeValue" >{{type[typeIdx]}}</view>
-          <view class="weui-cell__ft">
-              <image src="/images/icon/r_jt.png" class="r_jt"></image>
-          </view>
-        </view>
-      </picker>
-      <view class="list">
-        <view class="listItem" wx:for="{{orderList}}" wx:key="{{index}}">
-          <view class='weui-cell title'>
-            <view class='weui-cell__bd'>订单编号：{{item.orderId}}</view>
-            <view class='weui-cell__ft status'>
-               <text wx:if="{{item.status==1}}">待付款</text>
-               <text wx:if="{{item.status==2}}">已付款</text>
-               <text wx:if="{{item.status==3}}">已完成</text>
-               <text wx:if="{{item.status==4}}">退款</text>
-            </view>
-          </view>
-          <view class="">
-            <navigator url="/pages/myOrderXq/myOrderXq?id={{item.orderId}}" class="weui-cell goodsInfo" hover-class="none">
-              <view class="weui-cell__hd">
-                <image class="thumb" src="{{item.picture}}" />
-              </view>
-              <view class="weui-cell__bd caption">
-                <view class="goodsName">{{item.itemName}}</view>
-                <view class='time' wx:if="{{item.itemType==1}}">
-                   预约时间：{{item.startTime}} 至 {{item.endTime}}
-                </view>
-                <view class='time' wx:if="{{item.itemType==2}}">
-                   预约时间：{{item.startTime}}
-                </view>
-                <view class="price"><text>￥</text>{{item.originalPrice}}</view>
-              </view>
-            </navigator>
-          </view>
-          <view class="weui-cell operation" wx:if="{{item.itemType==1}}">
-             <view class="weui-cell__bd"></view>
-             <view class="weui-cell__ft">
-                <view class="btn" wx:if="{{item.status==1}}">立即付款</view>
-             </view>
-          </view>
-          <view class="weui-cell operation" wx:if="{{item.itemType==2}}">
-             <view class="weui-cell__bd"></view>
-             <view class="weui-cell__ft">
-                <view class="btn" wx:if="{{item.status==1}}">立即付款</view>
-                <view class="btn" wx:if="{{item.status==2}}">取消预约</view>
-             </view>
-          </view>
-        </view>
-      </view>
-      <view wx:if="{{noContent}}">
-         <image src="/images/sheng/no_order.png" class="queSorder"></image>
-      </view>
-    </van-tab>
-  </van-tabs>
+	<van-tabs active="{{activetab}}" bind:change="onChange">
+		<van-tab wx:for="{{navBar}}" wx:key="index" title="{{item.name}}">
+			<picker bindchange="typeChange" value="{{typeIdx}}" range="{{type}}">
+				<view class="weui-cell orderType">
+					<view class="weui-cell__hd">订单类型</view>
+					<view class="weui-cell__bd"></view>
+					<view class="weui-cell__hd orderTypeValue">{{type[typeIdx]}}</view>
+					<view class="weui-cell__ft">
+						<image src="/images/icon/r_jt.png" class="r_jt"></image>
+					</view>
+				</view>
+			</picker>
+			<view class="list">
+				<view class="listItem" wx:for="{{orderList}}" wx:key="{{index}}">
+					<view class='weui-cell title'>
+						<view class='weui-cell__bd' wx:if="{{itemType == 0}}">
+							<image src="../../images/my/meet.png" class="icon-img"></image>  
+              会议室租赁 
+							<image src="/images/icon/r_jt.png" class="r_jt"></image>
+						</view>
+						<view class='weui-cell__bd' wx:if="{{itemType == 1}}">
+							<image src="../../images/my/food.png" class="icon-img"></image>
+							我要吃饭
+						</view>
+						<view class='weui-cell__ft status'>
+							<!--  wx:if="{{item.status==1}}" -->
+							<text>待付款</text>
+							<text wx:if="{{item.status==2}}">已付款</text>
+							<text wx:if="{{item.status==3}}">已完成</text>
+							<text wx:if="{{item.status==4}}">退款</text>
+						</view>
+					</view>
+					<view class="">
+						<navigator url="/pages/myOrderXq/myOrderXq?id={{item.orderId}}" class="weui-cell goodsInfo" hover-class="none">
+							<view class="weui-cell__hd">
+								<image class="thumb" src="{{item.picture}}" />
+							</view>
+							<view class="weui-cell__bd caption">
+								<view class="goodsName">{{item.itemName}}</view>
+								<view class='time' wx:if="{{item.itemType==1}}">
+									预约时间：{{item.startTime}} 至 {{item.endTime}}
+								</view>
+								<view class='time' wx:if="{{item.itemType==2}}">
+									预约时间：{{item.startTime}}
+								</view>
+								<view class="price"><text>￥</text>{{item.originalPrice}}</view>
+							</view>
+						</navigator>
+					</view>
+					<view class="weui-cell operation" wx:if="{{item.itemType==1}}">
+						<view class="weui-cell__bd"></view>
+						<view class="weui-cell__ft">
+							<view class="btn" wx:if="{{item.status==1}}">立即付款</view>
+						</view>
+					</view>
+					<view class="weui-cell operation" wx:if="{{item.itemType==2}}">
+						<view class="weui-cell__bd"></view>
+						<view class="weui-cell__ft">
+							<view class="btn" wx:if="{{item.status==1}}">立即付款</view>
+							<view class="btn" wx:if="{{item.status==2}}">取消预约</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view wx:if="{{noContent}}">
+				<image src="/images/sheng/no_order.png" class="queSorder"></image>
+			</view>
+		</van-tab>
+	</van-tabs>
 </view>

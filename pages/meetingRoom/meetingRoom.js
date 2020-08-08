@@ -16,7 +16,7 @@ Page({
    */
   data: {
     currentDate: '12:00',
-    currentDate1: '12:00',
+    currentDate2: '12:00',
     filter(type, options) {
       if (type === 'minute') {
         return options.filter((option) => option % 5 === 0);
@@ -30,8 +30,8 @@ Page({
     dayNumber: 0,
     date: '',
     showdate: false,
-    showTime:false,
-    showTime2:false,
+    showTime: false,
+    showTime2: false,
     searchvalue: "",
     showMain: true,
     showAccurateSearch: false,
@@ -148,6 +148,30 @@ Page({
       showdate: true
     });
   },
+  onInput(event) {
+    this.setData({
+      currentDate: event.detail,
+    });
+  },
+  onInput2(event) {
+    this.setData({
+      currentDate2: event.detail,
+    });
+  },
+  getTime1(event) {
+    console.log(this.data.currentDate)
+    this.setData({
+      showTime: false,
+      startTime:this.data.currentDate
+    });
+  },
+  getTime2(event) {
+    console.log(this.data.currentDate2) 
+    this.setData({
+      showTime2: false,
+      endTime:this.data.currentDate2
+    });
+  },
   showTimeBtn() {
     this.setData({
       showTime: true
@@ -167,8 +191,10 @@ Page({
     this.setData({
       showdate: false,
       date: `${this.formatDate(start)} - ${this.formatDate(end)}`,
-      startDate: new Date(start).format("yyyy年MM月dd日 EEE").substr(5),
+      startDate: new Date(start).format("yyyy年MM月dd日 EEE").substr(5), 
       endDate: new Date(end).format("yyyy年MM月dd日 EEE").substr(5),
+      startDate1: new Date(start).format("yyyy年MM月dd日"), 
+      endDate1: new Date(end).format("yyyy年MM月dd日"),
       dayNumber: getDaysBetween.getDaysBetween(start, end)
     });
   },
@@ -176,7 +202,7 @@ Page({
     this.setData({
       showdate: false
     });
-  }, 
+  },
   ondateClose1() {
     this.setData({
       showTime: false
@@ -197,7 +223,7 @@ Page({
     })
     this.setData({
       showMain: false,
-      searchvalue:""
+      searchvalue: ""
     });
   },
   keywordBtn(e) {
@@ -211,17 +237,17 @@ Page({
       searchvalue: e.detail,
     });
   },
-  onSearch() { 
+  onSearch() {
     selectByKeWord(this.data.searchvalue).then(res => {
       this.setData({
         showMain: true,
-        keyword:this.data.searchvalue
+        keyword: this.data.searchvalue
       });
-    }) 
+    })
   },
   onCancel() {
     this.setData({
-      showMain: true, 
+      showMain: true,
     });
   },
   onClose() {
@@ -276,9 +302,9 @@ Page({
       complete: function (res) {},
     })
   },
-  goDetail() { 
+  goDetail() {
     wx.navigateTo({
-      url: '/pages/meetDetailList/meetDetailList?startDate='+this.data.startDate+'&endDate='+this.data.endDate+'&keyword='+this.data.keyword+'&allSearchCount='+this.data.allSearchCount,
+      url: '/pages/meetDetailList/meetDetailList?startDate=' + this.data.startDate1 + '&endDate=' + this.data.endDate1 + '&keyword=' + this.data.keyword + '&allSearchCount=' + this.data.allSearchCount+'&startTime='+this.data.startTime+'&endTime='+this.data.endTime,
       success: function (res) {},
       fail: function (res) {},
       complete: function (res) {},

@@ -16,6 +16,7 @@ Page({
   data: {
     date: '',
     time: '',
+    showCode:false,
     dateTimeArray: null,
     dateTime: null,
     dateTimeArray1: null,
@@ -258,8 +259,13 @@ Page({
       }).then(res => {
         if (res.code == 200 && res.data) {
           drawQrcode({
-            canvasId: 'myQrcode',
-            text: res.data.records[0].payment,
+            canvasId: 'myQrcode', 
+            text: res.data.records[0].payment
+          })
+          this.setData({
+            showCode:true,
+            beginTime:res.data.records[0].beginTime,
+            endTime:res.data.records[0].endTime
           })
         }
       })

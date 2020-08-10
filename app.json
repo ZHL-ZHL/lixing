@@ -40,7 +40,8 @@
     "pages/visitorsList/visitorsList",
     "pages/myMeeting/myMeeting",
     "pages/meetingImage/meetingImage",
-    "pages/meetDetailList/meetDetailList"
+    "pages/meetDetailList/meetDetailList",
+    "pages/eatQcode/eatQcode"
   ],
   "window": {
     "backgroundTextStyle": "light",

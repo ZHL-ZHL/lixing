@@ -290,3 +290,7 @@ input::-webkit-input-placeholder {
   background: rgba(255, 174, 0, .1);
   color: #333!important;
 }
+
+.kong {
+  height: 52px;
+}

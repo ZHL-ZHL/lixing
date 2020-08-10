@@ -1,6 +1,7 @@
 <view class='container'>
-	<van-tabs active="{{activetab}}" bind:change="onChange">
+	<!-- <van-tabs active="{{activetab}}" bind:change="onChange">
 		<van-tab wx:for="{{navBar}}" wx:key="index" title="{{item.name}}">
+			<van-popup show="{{ showTop }}" position="top" custom-style="height: 20%;" bind:close="onClose" />
 			<picker bindchange="typeChange" value="{{typeIdx}}" range="{{type}}">
 				<view class="weui-cell orderType">
 					<view class="weui-cell__hd">订单类型</view>
@@ -10,62 +11,141 @@
 						<image src="/images/icon/r_jt.png" class="r_jt"></image>
 					</view>
 				</view>
-			</picker>
-			<view class="list">
-				<view class="listItem" wx:for="{{orderList}}" wx:key="{{index}}">
-					<view class='weui-cell title'>
-						<view class='weui-cell__bd' wx:if="{{itemType == 0}}">
-							<image src="../../images/my/meet.png" class="icon-img"></image>  
-              会议室租赁 
-							<image src="/images/icon/r_jt.png" class="r_jt"></image>
-						</view>
-						<view class='weui-cell__bd' wx:if="{{itemType == 1}}">
-							<image src="../../images/my/food.png" class="icon-img"></image>
-							我要吃饭
-						</view>
-						<view class='weui-cell__ft status'>
-							<!--  wx:if="{{item.status==1}}" -->
-							<text>待付款</text>
-							<text wx:if="{{item.status==2}}">已付款</text>
-							<text wx:if="{{item.status==3}}">已完成</text>
-							<text wx:if="{{item.status==4}}">退款</text>
-						</view>
+			</picker> 
+		</van-tab>
+	</van-tabs> -->
+	<!-- <van-popup show="{{ showTop }}" position="top" custom-style="height: 20%;" bind:close="onClose"> 
+	</van-popup> -->
+	<view wx:if="{{showTop}}" class="showTopBox" bindtap="oncloseTop">
+		<view class="showTopLi" wx:for="{{type}}" wx:key="{{index}}">
+			<view id="{{index}}" catchtap="onClickTop">
+				<view>{{item}}</view>
+				<view class="showtopblur" wx:if="{{index == indexId}}">
+					<image src="../../images/my/makesure.png"></image>
+				</view>
+			</view> 
+		</view>
+	</view>
+	<view>
+		<view class='title1'>
+			<view class="{{0 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='0'>
+				<view class="title-nav">全部
+					<image src="../../images/my/bottom.png" catchtap="showTap" id="0" class="top-icon"></image>
+				</view>
+				<hr class="line-style" />
+			</view>
+			<view class="{{1 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='1'>
+				<view class="title-nav">待收货
+					<image src="../../images/my/bottom.png" catchtap="showTap" id="1" style="margin-left:100rpx" class="top-icon"></image>
+				</view>
+				<hr class="line-style" />
+			</view>
+			<view class="{{2 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='2'>
+				<view class="title-nav">待收货
+					<image src="../../images/my/bottom.png" catchtap="showTap" id="2" style="margin-left:100rpx" class="top-icon"></image>
+				</view>
+				<hr class="line-style" />
+			</view>
+		</view>
+	</view>
+	<view>
+		<view class="list">
+			<view class="listItem" wx:for="{{orderList}}" wx:key="{{index}}">
+				<view class='weui-cell title'>
+					<view class='weui-cell__bd' wx:if="{{itemType == 0}}">
+						<image src="../../images/my/meet.png" class="icon-img"></image>
+						会议室租赁
+						<image src="/images/icon/r_jt.png" class="r_jt"></image>
 					</view>
-					<view class="">
-						<navigator url="/pages/myOrderXq/myOrderXq?id={{item.orderId}}" class="weui-cell goodsInfo" hover-class="none">
-							<view class="weui-cell__hd">
-								<image class="thumb" src="{{item.picture}}" />
+					<view class='weui-cell__bd' wx:if="{{itemType == 1}}">
+						<image src="../../images/my/food.png" class="icon-img"></image>
+						我要吃饭
+					</view>
+					<view class='weui-cell__ft status'>
+						<!--  wx:if="{{item.status==1}}" -->
+						<text>待付款</text>
+						<text wx:if="{{item.status==2}}">已付款</text>
+						<text wx:if="{{item.status==3}}">已完成</text>
+						<text wx:if="{{item.status==4}}">退款</text>
+					</view>
+				</view>
+				<view class="">
+					<navigator url="/pages/myOrderXq/myOrderXq?id={{item.orderId}}" class="weui-cell goodsInfo" hover-class="none">
+						<view class="weui-cell__hd">
+							<image class="thumb" src="{{item.picture}}" />
+						</view>
+						<view class="weui-cell__bd caption">
+							<view class="goodsName">中鲁会议厅</view>
+							<view class='time' wx:if="{{item.itemType==1}}">
+								体育西路50号（亲贤北街与体育西路交叉口）
 							</view>
-							<view class="weui-cell__bd caption">
-								<view class="goodsName">{{item.itemName}}</view>
-								<view class='time' wx:if="{{item.itemType==1}}">
-									预约时间：{{item.startTime}} 至 {{item.endTime}}
-								</view>
-								<view class='time' wx:if="{{item.itemType==2}}">
-									预约时间：{{item.startTime}}
-								</view>
-								<view class="price"><text>￥</text>{{item.originalPrice}}</view>
-							</view>
-						</navigator>
-					</view>
-					<view class="weui-cell operation" wx:if="{{item.itemType==1}}">
-						<view class="weui-cell__bd"></view>
-						<view class="weui-cell__ft">
-							<view class="btn" wx:if="{{item.status==1}}">立即付款</view>
+							<view class='textccc'>900 最多容纳200人</view>
 						</view>
-					</view>
-					<view class="weui-cell operation" wx:if="{{item.itemType==2}}">
-						<view class="weui-cell__bd"></view>
 						<view class="weui-cell__ft">
-							<view class="btn" wx:if="{{item.status==1}}">立即付款</view>
-							<view class="btn" wx:if="{{item.status==2}}">取消预约</view>
+							<view>￥1600</view>
+							<view class='textccc'>3小时</view>
+						</view>
+					</navigator>
+				</view>
+				<view class="weui-cell operationprice">
+					<view class="weui-cell__bd"></view>
+					<view class="weui-cell__ft">
+						总价￥1600，优惠￥100 需支付￥1500
+					</view>
+				</view>
+				<view class="weui-cell operation" wx:if="{{item.itemType==1}}">
+					<view class="weui-cell__bd"></view>
+					<view class="weui-cell__ft">
+						<!-- wx:if="{{item.status==1}}" -->
+						<view class="btn" bindtap="showBottomBtn" id="{{item.id}}">取消订单</view>
+						<view class="btn colorCS">付款</view>
+						<view class="btn colorCS">
+							<navigator url="/pages/eatQcode/eatQcode?id={{item.id}}" hover-class="none">二维码</navigator>
 						</view>
 					</view>
 				</view>
+				<view class="weui-cell operation" wx:if="{{item.itemType==2}}">
+					<view class="weui-cell__bd"></view>
+					<view class="weui-cell__ft">
+						<view class="btn" wx:if="{{item.status==1}}">立即付款</view>
+						<view class="btn" wx:if="{{item.status==2}}">取消预约</view>
+					</view>
+				</view>
 			</view>
-			<view wx:if="{{noContent}}">
-				<image src="/images/sheng/no_order.png" class="queSorder"></image>
+		</view>
+		<van-popup show="{{ showBottom }}" round position="bottom" custom-style="height: 50%" bind:close="onClose">
+			<view class="radio-title">取消订单</view>
+			<view class="radio-msg">订单取消后无法恢复，红包优惠券可退回，请注意在有效期内使用</view>
+			<view class="radio-content">
+				<van-radio-group value="{{ radio }}" bind:change="onradioChange">
+					<van-cell-group>
+						<van-cell title="请选择取消订单原因" clickable data-name="1" bind:click="onClick">
+							<van-radio slot="right-icon" name="1" checked-color="#ff4d6b" />
+						</van-cell>
+						<van-cell title="我不想买了" clickable data-name="2" bind:click="onClick">
+							<van-radio slot="right-icon" name="2" checked-color="#ff4d6b" />
+						</van-cell>
+						<van-cell title="信息填写错误，重新购买" clickable data-name="3" bind:click="onClick">
+							<van-radio slot="right-icon" name="3" checked-color="#ff4d6b" />
+						</van-cell>
+						<van-cell title="其他原因" clickable data-name="4" bind:click="onClick">
+							<van-radio slot="right-icon" name="4" checked-color="#ff4d6b" />
+						</van-cell>
+					</van-cell-group>
+				</van-radio-group>
 			</view>
-		</van-tab>
-	</van-tabs>
+			<view class="kong"></view>
+			<view class="footer weui-cell">
+				<view class="online">
+					<button class="btn cencel" name="Submit">确认取消</button>
+				</view>
+				<view class="onlineCall">
+					<button class="btn save" name="Submit">暂不取消</button>
+				</view>
+			</view>
+		</van-popup>
+		<view wx:if="{{noContent}}">
+			<image src="/images/sheng/no_order.png" class="queSorder"></image>
+		</view>
+	</view>
 </view>

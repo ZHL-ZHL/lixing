@@ -1258,6 +1258,20 @@
 					"id": -1,
 					"name": "pages/myOrder/myOrder",
 					"pathName": "pages/myOrder/myOrder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/myOrderXq/myOrderXq",
+					"pathName": "pages/myOrderXq/myOrderXq",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/myOrder/myOrder",
+					"pathName": "pages/myOrder/myOrder",
 					"scene": null
 				}
 			]

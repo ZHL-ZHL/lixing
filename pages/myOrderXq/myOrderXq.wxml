@@ -1,37 +1,121 @@
-<!--pages/myOrderXq/myOrderXq.wxml-->
-<view class="container">
-   <view class="weui-cell address">
-      <view class="weui-cell__bd">
-         <view class="name">服务人：{{info.orderName}} <text></text></view>
-         <view class="addressInfo"> 电话：{{info.orderPhone}}</view>
-      </view>
-   </view>
-   <navigator class="weui-cell goodsInfo" hover-class="none" url="/pages/meetingDetail/meetingDetail?id={{info.itemId}}">
-      <view class="weui-cell__hd">
-          <image src="{{online}}+{{item.picture}}" class="thumb"></image>
-      </view>
-      <view class="weui-cell__bd">
-        <view class="caption">
-          <view class="goodsname">{{info.itemName}}</view>
-          <view class="info">
-            <view>{{info.address}} {{info.area}}平米</view>
-          </view>
-          <view class="price">￥{{info.originalPrice}}</view>
-        </view>
-      </view>
-   </navigator>
-   <view class="weui-cell operation">
-     <view class="weui-cell__bd"></view>
-     <view class="weui-cell__ft">
-        <view class="btn">再来一单</view>
-     </view>
-   </view>
-   <view class="orderInfo">
-      <view>订单号：{{info.orderId}}</view>
-      <view>下单时间：{{info.createTime}}</view>
-      <view>支付方式：在线支付</view>
-      <view>开始时间：{{info.startTime}}</view>
-      <view>结束时间：{{info.endTime}}</view>
-      <view>备注：{{info.remark}}</view>                      
-   </view>
-</view>
+	<view>
+		<view class="title-img">
+			<view class="title-result">交易成功！</view>
+			<image src="../../images/my/title.png"></image>
+		</view>
+		<view class="title-img">
+			<view class="title-result">等待买家付款</view>
+			<image src="../../images/my/title.png"></image>
+		</view>
+		<view class='weui-cell top-todo'>
+			<view class='weui-cell__bd'>
+				<image src="../../images/my/time.png" class="time-img"></image> 交易时间
+			</view>
+			<view class='weui-cell__ft'>
+				<view>2020-02-07 23:00:00</view>
+				<view style="color:#ccc">(以实际交易时间为准)</view>
+			</view>
+		</view>
+		<view class='weui-cell top-todo'>
+			<view class='weui-cell__hd'>
+				<image src="../../images/my/time.png" class="time-img"></image>
+			</view>
+			<view class='weui-cell__bd'>
+				<view>收货人： 刘德华 1833456230</view>
+				<view>地 址：  山西省太原市小店区长风街山西省太原市小店区长风街</view>
+			</view> 
+		</view>
+		<view>
+		</view>
+		<view class="list">
+			<view class="listItem">
+				<view class='weui-cell title'>
+					<view class='weui-cell__bd'>
+						<image src="../../images/my/meet.png" class="icon-img"></image>
+						会议室租赁
+						<image src="/images/icon/r_jt.png" class="r_jt"></image>
+					</view>
+					<view class='weui-cell__bd' wx:if="{{itemType == 1}}">
+						<image src="../../images/my/food.png" class="icon-img"></image>
+						我要吃饭
+					</view>
+					<view class='weui-cell__ft status'>
+						<!--  wx:if="{{item.status==1}}" -->
+						<text>待付款</text>
+						<text wx:if="{{info.status==2}}">已付款</text>
+						<text wx:if="{{info.status==3}}">已完成</text>
+						<text wx:if="{{info.status==4}}">退款</text>
+					</view>
+				</view>
+				<view class="">
+					<navigator url="/pages/myOrderXq/myOrderXq?id={{info.orderId}}" class="weui-cell goodsInfo" hover-class="none">
+						<view class="weui-cell__hd">
+							<image class="thumb" src="{{info.picture}}" />
+						</view>
+						<view class="weui-cell__bd caption">
+							<view class="goodsName">中鲁会议厅</view>
+							<view class='time'>
+								体育西路50号（亲贤北街与体育西路交叉口）
+							</view>
+							<view class='textccc'>900 最多容纳200人</view>
+						</view>
+						<view class="weui-cell__ft">
+							<view>￥1600</view>
+							<view class='textccc'>3小时</view>
+						</view>
+					</navigator>
+				</view>
+				<view class="weui-cell operationprice">
+					<view class="weui-cell__bd">
+						商品总价</view>
+					<view class="weui-cell__ft">
+						￥1600
+					</view>
+				</view>
+				<view class="weui-cell operationprice">
+					<view class="weui-cell__bd">
+						配送费/快递</view>
+					<view class="weui-cell__ft">
+						无
+					</view>
+				</view>
+				<view class="weui-cell operationprice">
+					<view class="weui-cell__bd">
+						优惠券抵扣</view>
+					<view class="weui-cell__ft">
+						￥100
+					</view>
+				</view>
+				<view class="weui-cell operationprice operationpriceline">
+					<view class="weui-cell__bd">
+						需付款</view>
+					<view class="weui-cell__ft">
+						￥1600
+					</view>
+				</view>
+				<view class="weui-cell operationprice operationpricepad">
+					<view class="weui-cell__bd">
+						联系客服</view>
+					<view class="weui-cell__ft">
+						<image src="../../images/meet/phoneh.png" class="phone-img"></image>
+					</view>
+				</view>
+
+				<view class="weui-cell operation" wx:if="{{info.itemType==2}}">
+					<view class="weui-cell__bd"></view>
+					<view class="weui-cell__ft">
+						<view class="btn" wx:if="{{item.status==1}}">立即付款</view>
+						<view class="btn" wx:if="{{item.status==2}}">取消预约</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="kong" style="height:140rpx"> </view>
+		<view class="weui-cell operation operationfixed">
+			<view class="weui-cell__bd"></view>
+			<view class="weui-cell__ft">
+				<view class="btn">取消订单</view>
+				<view class="btn colorCS">付款</view>
+			</view>
+		</view>
+	</view>

@@ -1,5 +1,7 @@
 // pages/my_dingdan/my_dingdan.js
-import { orderList} from "../../api/order.js"
+import {
+  orderList
+} from "../../api/order.js"
 import Url from "../../utils/host.js"
 Page({
 
@@ -7,105 +9,164 @@ Page({
    * 页面的初始数据
    */
   data: {
-    navBar: [
-      { name: '全部',id:null },
-      { name: '待收货',id:1}, 
-      { name: '历史订单',id:2}
+    radio: '1',
+    showTop: true,
+    showBottom: false,
+    navBar: [{
+        name: '全部',
+        id: null
+      },
+      {
+        name: '待收货',
+        id: 1
+      },
+      {
+        name: '历史订单',
+        id: 2
+      }
     ],
-    type: ['会议室租赁', '我要吃饭','停车'],
-    typeIdx:"",
-    orderList:[],
-    wechatUserId:"",
-    itemType:0,
-    load:false,
-    page:1,
+    currentIndex: 0,
+    indexId: 0,
+    type: ['全部', '会议室租赁', '我要吃饭', '智慧停车'],
+    typeIdx: "",
+    orderList: [],
+    wechatUserId: "",
+    itemType: 0,
+    load: false,
+    page: 1,
     online: Url.imghost,
-    activetab:0,
-    noContent:false
+    activetab: 0,
+    noContent: false
   },
-  
+  showTap() {
+    this.setData({
+      showTop: true
+    })
+  },
+  onClickTop(e) {
+    this.setData({
+      indexId: e.currentTarget.id
+    })
+  },
+  oncloseTop() {
+    this.setData({
+      showTop: false
+    })
+  },
+  titleClick: function (e) {
+    this.setData({
+      //拿到当前索引并动态改变
+      currentIndex: e.currentTarget.dataset.idx,
+      page: 1,
+      orderList: [],
+    })
+    this.getList()
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (options.status){
+    if (options.status) {
       this.setData({
         activetab: options.status
       })
     }
     this.getList()
     this.setData({
-      wechatUserId:wx.getStorageSync("userInfo").wechatUserId
+      wechatUserId: wx.getStorageSync("userInfo").wechatUserId
     })
   },
-  onChange(e){
+  showBottomBtn(e) {
+    this.setData({
+      showBottom: true
+    })
+  },
+  onradioChange(event) {
+    this.setData({
+      radio: event.detail,
+    });
+  },
+  onClose() {
+    this.setData({
+      showBottom: false
+    });
+  },
+  onClick(event) {
+    const {
+      name
+    } = event.currentTarget.dataset;
+    this.setData({
+      radio: name,
+    });
+  },
+  onChange(e) {
     this.setData({
       activetab: e.detail.index,
-      orderList:[],
-      page:1
+      orderList: [],
+      page: 1
     })
     this.getList()
   },
-  typeChange(e){
+  typeChange(e) {
     console.log(e)
     this.setData({
       typeIdx: e.detail.value,
-      page:1,
+      page: 1,
       orderList: [],
-      itemType: parseInt(e.detail.value)+1
+      itemType: parseInt(e.detail.value) + 1
     })
     this.getList()
   },
-  getList(){
-    let data={}
+  getList() {
+    let data = {}
     this.setData({
       noContent: false
     })
     let status = this.data.activetab;
-    
-    if (status==0){
+
+    if (status == 0) {
       status = null
     }
-    
-    if (this.data.itemType){
+
+    if (this.data.itemType) {
       data.itemType = this.data.itemType;
     }
-    if (status){
+    if (status) {
       data.status = status
     }
-    
+
     data.wechatUserId = this.data.wechatUserId;
     data.pageNum = this.data.page;
     data.pageSize = 10
-    
-    orderList(data).then(res=>{
 
-       if(res.code==200){
-         console.log(res.data)
-         if (res.data && res.data.total>0 ){
-           let list;
-           this.data.page == 1 ? list = res.data.records : list = this.data.orderList.concat(res.data.records);
-           let loadMore;
-           this.data.page < res.data.pages ? loadMore = true : loadMore = false;
-           this.setData({
-             load: loadMore,
-             orderList: list
-           })
-           
-         }else{
-           console.log("qqq")
-           this.setData({
-             noContent: true
-           })
-         }
-         
-       }else{
-         wx.showToast({
-           title: res.desc,
-           icon: "none"
-         })
-       }
-    }).catch(res=>{
+    orderList(data).then(res => {
+
+      if (res.code == 200) {
+        console.log(res.data)
+        if (res.data && res.data.total > 0) {
+          let list;
+          this.data.page == 1 ? list = res.data.records : list = this.data.orderList.concat(res.data.records);
+          let loadMore;
+          this.data.page < res.data.pages ? loadMore = true : loadMore = false;
+          this.setData({
+            load: loadMore,
+            orderList: list
+          })
+
+        } else {
+          console.log("qqq")
+          this.setData({
+            noContent: true
+          })
+        }
+
+      } else {
+        wx.showToast({
+          title: res.desc,
+          icon: "none"
+        })
+      }
+    }).catch(res => {
       wx.showToast({
         title: res,
         icon: "none"
@@ -151,9 +212,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    if (this.data.load){
+    if (this.data.load) {
       this.setData({
-        page:this.data.page+1
+        page: this.data.page + 1
       })
       this.getList()
     }

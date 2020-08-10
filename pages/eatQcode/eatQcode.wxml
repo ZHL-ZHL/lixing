@@ -1,0 +1,20 @@
+<!--pages/eatQcode/eatQcode.wxml-->
+<view class="cont-box">
+	<view class="card-box">
+				<view class="weui-cell">
+					<view class="weui-cell__hd">
+						<image src="{{userInfo.avatarUrl}}" class="user-img"></image>
+					</view>
+					<view class="weui-cell__bd">
+						<view class="identity">{{userInfo.nickName}}</view>
+						<!-- <view class="nickname">{{userInfo.nickName}}</view> -->
+					</view>
+				</view>
+				<view class="weui-cell">
+					<view>
+						<canvas style="width:500rpx; height: 500rpx;" canvas-id="myQrcode" class="qcode-img"></canvas>
+					</view>
+				</view>
+				<view class="time-bottom" >请将二维码出示给工作人员</view> 
+			</view>
+</view>

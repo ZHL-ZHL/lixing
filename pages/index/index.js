@@ -22,7 +22,6 @@ Page({
       {
         icon: "/images/icon1/nav8.png",
         name: "智慧停车",
-        // url: ""
         url: "/pages/carNumber/carNumber",
         show: true
       },

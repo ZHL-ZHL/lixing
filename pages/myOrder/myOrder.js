@@ -10,7 +10,7 @@ Page({
    */
   data: {
     radio: '1',
-    showTop: true,
+    showTop: false,
     showBottom: false,
     navBar: [{
         name: '全部',
@@ -45,7 +45,8 @@ Page({
   },
   onClickTop(e) {
     this.setData({
-      indexId: e.currentTarget.id
+      indexId: e.currentTarget.id,
+      showTop:false
     })
   },
   oncloseTop() {

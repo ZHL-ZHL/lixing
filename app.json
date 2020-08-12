@@ -41,7 +41,8 @@
     "pages/myMeeting/myMeeting",
     "pages/meetingImage/meetingImage",
     "pages/meetDetailList/meetDetailList",
-    "pages/eatQcode/eatQcode"
+    "pages/eatQcode/eatQcode",
+    "pages/eatDetail/eatDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,14 +1,15 @@
 <!--viewages/viewaySuccess/viewaySuccess.wxml-->
 <view class="container">
-  <view class="weui-msg">
-    <view class="weui-msg__icon-area">
-      <icon type="success" class="weui-icon-success weui-icon_msg" size="120" color="#4D7AD2"></icon>
-    </view>
-    <view class="weui-msg__text-area">
-      <view class="weui-msg__title">支付成功</view>
-      <view wx:if="{{closeOrder}}" class="weui-msg__desc">支付成功，请到我的订单查看！ </view>
-    </view>
-    <view wx:if="{{closeOrder}}"  class="weui-msg__oviewr-area">
+	<view class="weui-msg">
+		<view class="weui-msg__icon-area">
+			<image src="../../images/success.png" class="successImg"></image>
+		</view>
+		<view class="weui-msg__text-area">
+			<view class="weui-msg__title">恭喜！支付成功！</view>
+			<!-- <view wx:if="{{closeOrder}}" class="weui-msg__desc">支付成功，请到我的订单查看！ </view> -->
+		</view>
+		<view class="num">{{num}}秒后自动跳转首页</view>
+		<!-- <view wx:if="{{closeOrder}}"  class="weui-msg__oviewr-area">
       <view class="weui-btn-area">
         <button class="weui-btn weui-btn_viewrimary" color="#ccd63c">
            <navigator url="/pages/eatOrder/eatOrder" hover-class="none">我的订单</navigator>
@@ -17,6 +18,9 @@
            返回店铺 
         </button>
       </view>
-    </view>
-  </view>
+    </view> -->
+		<view class="btnSave">
+			<navigator hover-class="none" url="/pages/index/index">确定</navigator>
+		</view>
+	</view>
 </view>

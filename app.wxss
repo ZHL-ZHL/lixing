@@ -294,3 +294,6 @@ input::-webkit-input-placeholder {
 .kong {
   height: 52px;
 }
+.van-overlay{
+  overflow-y: auto!important;
+}

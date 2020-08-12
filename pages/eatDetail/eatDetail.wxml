@@ -1,0 +1,115 @@
+<!--pages/eatDetail/eatDetail.wxml-->
+<view>
+	<view class="eatDetail-top">
+		<image src="../../images/eat/title.png"></image>
+	</view>
+	<view class="eatDetail-cont">
+		<view class="title">茶叶蛋/水煮蛋/水蒸蛋</view>
+		<view class="eat-tag">
+			<van-tag color="#EEEEEE">约50g</van-tag>
+			<van-tag color="#EEEEEE">卤味儿</van-tag>
+		</view>
+		<view class="eat-tag-1">
+			<van-tag color="#FFFCE7">好吃不贵，营养健康</van-tag>
+		</view>
+		<view class="eat-count">
+			已销26份 月销1386份
+		</view>
+	</view>
+	<view class="weui-cell" style="padding-bottom:0rpx">
+		<view class="weui-cell__hd colorprice">￥1.5/个</view>
+		<view class="weui-cell__bd"></view>
+		<view class="weui-cell__ft">
+			<view class="chooseBtn" catchtap="showggBtn"> 选规格 </view>
+		</view>
+	</view>
+	<view class="weui-cell" style="padding-top:4rpx">
+		<view class="weui-cell__hd colorPrice1">包装费￥0.5/份</view>
+		<view class="weui-cell__bd"></view>
+		<view class="weui-cell__ft colorprice2">接受预订 6：30开始配送</view>
+	</view>
+	<view class="eatDetail-cont">
+		<view class="title">详情</view>
+		<van-row class="eat-msg">
+			<van-col span="5">掌柜描述：</van-col>
+			<van-col span="19">冰瓷龟裂纹”茶叶蛋，晶莹透亮，漂亮好吃,晶莹透亮，漂亮好吃,晶莹透亮，漂亮好吃</van-col>
+			<van-col span="5">主料：</van-col>
+			<van-col span="19">走地鸡笨鸡蛋</van-col>
+			<van-col span="5">分量：</van-col>
+			<van-col span="19">约50g</van-col>
+			<van-col span="5">口味：</van-col>
+			<van-col span="19">卤味儿</van-col>
+		</van-row>
+	</view>
+
+	<view class="eatDetail-cont">
+		<view class="title">推荐搭配</view>
+		<view class="divider-content">
+			<scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%;">
+				<navigator id="demo2" class="scroll-view-item_H demo-text-2" wx:for="{{eatList}}" wx:key="index" hover-class="none" url="/pages/eatDetail/eatDetail">
+					<image src="{{item.picture}}" mode="aspectFill"></image>
+					<view class="scroll-view-item_H-name">{{item.name}}</view>
+					<view class="scroll-view-item_H-address">约{{item.num}}g</view>
+					<view class="scroll-view-item_H-price">￥{{item.price}}/碗</view>
+				</navigator>
+			</scroll-view>
+		</view>
+	</view>
+</view>
+
+
+<view>
+	<van-overlay show="{{ showGG }}" class="index50">
+		<view class="wrapper-showGG">
+			<view class="block">
+				<view class="weui-cell wrapper-showGG-title">茶叶蛋/水煮蛋/水蒸蛋</view>
+				<view class="weui-cell">
+					<view class="weui-cell__hd">
+						品类
+					</view>
+				</view>
+				<view class="wrapper-showGG-text">
+					<view> 茶叶蛋 </view>
+					<view> 水煮蛋 </view>
+					<view> 水蒸蛋 </view>
+				</view>
+				<view class="weui-cell border-bottom">
+					<view class="weui-cell__hd">
+						购买数量
+					</view>
+					<view class="weui-cell__bd"></view>
+					<view class="weui-cell__ft">
+						<image src="/images/eat/jian.png" class="footAdd" bindtap="goodsDel" data-idx="{{idx}}"></image>
+						<view class="foodValue">
+							1
+						</view>
+						<image src="/images/eat/jia.png" class="footAdd" bindtap="goodsAdd"></image>
+					</view>
+				</view>
+				<view class="weui-cell">
+					<view class="weui-cell__hd">
+						取餐时间
+					</view>
+				</view>
+				<view class="wrapper-showGG-text">
+					<view>6:30 - 9:30</view>
+					<view>11:30 - 144:00</view>
+					<view>18.30 - 22:00</view>
+				</view>
+
+				<view class="weui-cell ">
+					<view class="weui-cell__hd colorred">
+						￥20.00
+					</view>
+					<view class="weui-cell__bd"></view>
+					<view class="weui-cell__ft">
+						<view class="goCar">+ 加入购物车</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="closeIcon">
+			<van-icon name="close" bindtap="closeshowGG" />
+		</view>
+	</van-overlay>
+</view>

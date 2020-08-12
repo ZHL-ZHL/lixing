@@ -1,1 +1,30 @@
 /* pages/paySuccess/paySuccess.wxss */
+.btnSave{
+  position: fixed;
+  bottom: 0;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background-color:#FFE401 ;
+  color: #333;
+  width: 100%;
+}
+.num{
+  position: fixed;
+  bottom: 140rpx; 
+  text-align: center; 
+  color: #666;
+  width: 100%;
+  font-size: 26rpx;
+}
+.successImg{
+  margin:0 auto;
+  display: block;
+  margin-top: 35%;
+  width: 90px;
+  height: 80px; 
+}
+.weui-msg__title{
+  font-weight: bold;
+  font-size: 34rpx;
+}

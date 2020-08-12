@@ -5,13 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    closeOrder:true
+    closeOrder:true,
+    num:3
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+  console.log(options)
     if (options.type==1){
       this.setData({
         closeOrder:false
@@ -20,7 +22,7 @@ Page({
   },
   goBack(){
     wx.navigateTo({
-      url: '/pages/eat/eat',
+      url: '/pages/index/index',
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},

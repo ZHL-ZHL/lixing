@@ -5,7 +5,7 @@ import URL from "../utils/host.js"
 export function eatList(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/food/recommend/list',
+    url: URL.host + '/blade-bms/food/recommend/list',
     params: data
   })
 } 
@@ -13,7 +13,7 @@ export function eatList(data) {
 export function shopInfo(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/restaurant/info/'+data.id,
+    url: URL.host + '/blade-bms/restaurant/info/'+data.id,
     params: data
   })
 } 
@@ -21,7 +21,7 @@ export function shopInfo(data) {
 export function classification(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/sys/sysdict/pullDown',
+    url: URL.host + '/blade-bms/sys/sysdict/pullDown',
     params: data
   })
 } 
@@ -29,7 +29,7 @@ export function classification(data) {
 export function foodList(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/food/list',
+    url: URL.host + '/blade-bms/food/list',
     params: data
   })
 } 
@@ -37,7 +37,7 @@ export function foodList(data) {
 export function eatSbumit(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/renren-fast/shop/order/create',
+    url: URL.host + '/blade-bms/shop/order/create',
     body: data
   })
 } 
@@ -45,15 +45,15 @@ export function eatSbumit(data) {
 export function eatCar(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/renren-fast/shop/rtcart/save',
+    url: URL.host + '/blade-bms/shop/rtcart/save',
     body: data
   })
 } 
 
 export function eatCarList(data) {
   return http.fly.request({
-    method: 'post',
-    url: URL.host + '/renren-fast/shop/rtcart/list',
+    method: 'get',
+    url: URL.host + '/blade-bms/shop/list',
     body: data
   })
 } 
@@ -61,7 +61,7 @@ export function eatCarList(data) {
 export function eatAddressList(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/shop/rtaddress/list',
+    url: URL.host + '/blade-bms/shop/rtaddress/list',
     params: data
   })
 } 
@@ -70,7 +70,7 @@ export function eatAddressList(data) {
 export function eatAddressSave(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/renren-fast/shop/rtaddress/save',
+    url: URL.host + '/blade-bms/shop/rtaddress/save',
     body: data
   })
 } 
@@ -78,7 +78,7 @@ export function eatAddressSave(data) {
 export function eatOrder(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/shop/order/user/pageList',
+    url: URL.host + '/blade-bms/shop/order/user/pageList',
     params: data
   })
 } 
@@ -86,7 +86,7 @@ export function eatOrder(data) {
 export function eatshopOrder(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/shop/order/restaurant/list',
+    url: URL.host + '/blade-bms/shop/order/restaurant/list',
     params: data
   })
 } 
@@ -94,7 +94,7 @@ export function eatshopOrder(data) {
 export function eatshopAccept(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/shop/order/shopAccept',
+    url: URL.host + '/blade-bms/shop/order/shopAccept',
     params: data
   })
 } 
@@ -102,7 +102,7 @@ export function eatshopAccept(data) {
 export function eatshopDelivery(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/shop/order/startDelivery',
+    url: URL.host + '/blade-bms/shop/order/startDelivery',
     params: data
   })
 } 
@@ -110,7 +110,7 @@ export function eatshopDelivery(data) {
 export function eatshopFinish(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/shop/order/finishDelivery',
+    url: URL.host + '/blade-bms/shop/order/finishDelivery',
     params: data
   })
 } 
@@ -120,7 +120,7 @@ export function eatshopFinish(data) {
 export function eatOrderDetail(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/shop/order/info',
+    url: URL.host + '/blade-bms/shop/order/info',
     params: data
   })
 } 
@@ -128,7 +128,7 @@ export function eatOrderDetail(data) {
 export function eatgroupList(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/food/group/list',
+    url: URL.host + '/blade-bms/food/group/list',
     params: data
   })
 } 
@@ -136,7 +136,7 @@ export function eatgroupList(data) {
 export function eatgroupshopList(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/food/group/shop/list',
+    url: URL.host + '/blade-bms/food/group/shop/list',
     params: data
   })
 } 
@@ -144,7 +144,7 @@ export function eatgroupshopList(data) {
 export function eatPingjia(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/renren-fast/shop/rtassess/create',
+    url: URL.host + '/blade-bms/shop/rtassess/create',
     body: data
   })
 } 
@@ -152,7 +152,7 @@ export function eatPingjia(data) {
 export function eatpingjiaList(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/shop/rtassess/pageList',
+    url: URL.host + '/blade-bms/shop/rtassess/pageList',
     params: data
   })
 } 
@@ -160,7 +160,7 @@ export function eatpingjiaList(data) {
 export function eatcancelOrder(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/shop/order/cancelOrder',
+    url: URL.host + '/blade-bms/shop/order/cancelOrder',
     params: data
   })
 } 
@@ -171,7 +171,7 @@ export function eatcancelOrder(data) {
 export function eatPayOrder(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/shop/order/pay',
+    url: URL.host + '/blade-bms/shop/order/pay',
     params: data
   })
 } 
@@ -179,14 +179,14 @@ export function eatPayOrder(data) {
 export function eatCancelAgreeOrder(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/shop/order/cancel/agree',
+    url: URL.host + '/blade-bms/shop/order/cancel/agree',
     params: data
   })
 } 
 export function eatCancelRefuseOrder(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/shop/order/cancel/refuse',
+    url: URL.host + '/blade-bms/shop/order/cancel/refuse',
     params: data
   })
 } 
@@ -196,7 +196,7 @@ export function eatCancelRefuseOrder(data) {
 export function eatRefuseOrder(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/shop/order/shopRefuse',
+    url: URL.host + '/blade-bms/shop/order/shopRefuse',
     params: data
   })
 } 
@@ -205,7 +205,7 @@ export function eatRefuseOrder(data) {
 export function eatrecommend(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/renren-fast/shop/recommend/save',
+    url: URL.host + '/blade-bms/shop/recommend/save',
     body: data
   })
 } 
@@ -213,7 +213,7 @@ export function eatrecommend(data) {
 export function eatrecommendCencel(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/shop/recommend/cancel',
+    url: URL.host + '/blade-bms/shop/recommend/cancel',
     params: data
   })
 } 
@@ -221,7 +221,7 @@ export function eatrecommendCencel(data) {
 export function eatShelf(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/renren-fast/food/shelf',
+    url: URL.host + '/blade-bms/food/shelf',
     body: data
   })
 } 
@@ -230,7 +230,7 @@ export function eatShelf(data) {
 export function eatqueryState(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/shop/order/refund/queryState',
+    url: URL.host + '/blade-bms/shop/order/refund/queryState',
     params: data
   })
 } 
@@ -238,7 +238,7 @@ export function eatqueryState(data) {
 export function eatshopfinishFood(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/shop/order/finishFood',
+    url: URL.host + '/blade-bms/shop/order/finishFood',
     params: data
   })
 } 
@@ -246,7 +246,7 @@ export function eatshopfinishFood(data) {
 export function boundWeChatUser(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/restaurant/boundWeChatUser',
+    url: URL.host + '/blade-bms/restaurant/boundWeChatUser',
     params: data
   })
 } 
@@ -254,7 +254,7 @@ export function boundWeChatUser(data) {
 export function sterilize(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/shop/sterilize/list',
+    url: URL.host + '/blade-bms/shop/sterilize/list',
     params: data
   })
 } 

@@ -198,7 +198,7 @@
 				<view class="time-bottom" wx:if="{{showCode}}">请将二维码对准门禁扫描口进行扫描</view>
 				<view class="time-bottom" wx:if="{{!showCode}}">二维码已经过期，请重新申请</view>
 			</view>
-			<view class="time-bottom" wx:if="{{showCode}}">二维码有效期：{{beginTime}} - {{beginTime}}</view>
+			<view class="time-bottom" wx:if="{{showCode}}">二维码有效期：{{beginTime}} - {{endTime}}</view>
 		</view>
 	</view>
 

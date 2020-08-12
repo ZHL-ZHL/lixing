@@ -61,7 +61,6 @@ page {
   height: 340rpx;
   width: 420rpx;
   border: 1px solid #f0f0f0;
-
 }
 
 .scroll-view-item_H:nth-last-child(1) {

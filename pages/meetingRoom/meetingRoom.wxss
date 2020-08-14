@@ -245,11 +245,15 @@ page {
 
 
 .weui-cell__ft {
-  width: 30px;
+  width: 40px;
 }
 
-
-
+.weui-cell__ft image,.weui-cell__ft van-icon{
+  vertical-align: middle;
+}
+.van-icon{
+  font-size: 34rpx;
+}
 .wrapper {
   display: flex;
   align-items: center;

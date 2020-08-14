@@ -5,7 +5,7 @@ import URL from "../utils/host.js"
 export function orderTj(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/blade-bms/wechatuserorder/one',
+    url: URL.host + '/blade-bms/userorder/save',
     body: data
   })
 }
@@ -14,7 +14,7 @@ export function orderList(data) {
   console.log()
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/blade-bms/wechatuserorder/list',
+    url: URL.host + '/blade-bms/userorder/wechat/page',
     params: data
   })
 }
@@ -22,6 +22,6 @@ export function orderList(data) {
 export function orderDetail(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/blade-bms/wechatuserorder/detail?id='+data.id
+    url: URL.host + '/blade-bms/userorder/wechat/detail?orderNum=' + data
   })
 }

@@ -3,6 +3,10 @@ import {
   orderList
 } from "../../api/order.js"
 import Url from "../../utils/host.js"
+
+import { 
+  payMoneys
+} from "../../api/carMang.js"
 Page({
 
   /**
@@ -46,8 +50,11 @@ Page({
   onClickTop(e) {
     this.setData({
       indexId: e.currentTarget.id,
-      showTop:false
+      showTop: false,
+      page: 1,
+      orderList: [],
     })
+    this.getList()
   },
   oncloseTop() {
     this.setData({
@@ -128,23 +135,27 @@ Page({
     if (status == 0) {
       status = null
     }
-
+    data.statu = this.data.currentIndex!=0 ? this.data.currentIndex : ""
+    data.itemType = this.data.indexId ? this.data.indexId : ""
     if (this.data.itemType) {
-      data.itemType = this.data.itemType;
+
     }
     if (status) {
       data.status = status
     }
 
-    data.wechatUserId = this.data.wechatUserId;
+    // data.wechatUserId = this.data.wechatUserId;
     data.pageNum = this.data.page;
     data.pageSize = 10
 
     orderList(data).then(res => {
 
       if (res.code == 200) {
-        console.log(res.data)
+
         if (res.data && res.data.total > 0) {
+          res.data.records.forEach(item => {
+            item.orderInfoObj = JSON.parse(item.orderInfo)
+          });
           let list;
           this.data.page == 1 ? list = res.data.records : list = this.data.orderList.concat(res.data.records);
           let loadMore;
@@ -173,6 +184,41 @@ Page({
         icon: "none"
       })
     })
+  },
+
+  payMoney() {
+    payMoneys({
+      id: this.data.id
+    }).then(res => {
+      let pay_info = JSON.parse(JSON.parse(res.data).pay_info)
+      console.log(pay_info)
+      wx.requestPayment({
+        // 'appId': data,
+        'timeStamp': pay_info.timeStamp,
+        'nonceStr': pay_info.nonceStr,
+        'package': pay_info.package,
+        'signType': pay_info.signType,
+        'paySign': pay_info.paySign,
+        'success': function(res) {
+          console.log(res)
+          wx.showToast({
+            title: "支付成功",
+            icon: 'success',
+            duration: 2000,
+            success: function() {
+              wx.navigateTo({
+                url: '/pages/paySuccess/paySuccess?type=1',
+                success: function(res) {},
+                fail: function(res) {},
+                complete: function(res) {},
+              })
+            }
+          })
+        },
+        fail: function(res1) {}
+      })
+    })
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

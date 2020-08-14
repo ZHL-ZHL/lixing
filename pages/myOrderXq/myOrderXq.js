@@ -1,16 +1,22 @@
 // pages/myOrderXq/myOrderXq.js
-import { orderDetail} from "../../api/order.js"
+import {
+  orderDetail
+} from "../../api/order.js"
 import Url from "../../utils/host.js"
-
+var interval;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    orderId:"",
-    info: "", 
+    orderNum: "",
+    info: "",
     online: Url.imghost,
+    // 总时间
+    remainTime: 0,
+    remainTimeNew: '',
+    // countDownNum:60,
   },
 
   /**
@@ -18,23 +24,70 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      orderId:options.id
+      orderNum: options.orderNum
     })
+    // this.countDown()
+
     this.getDetail()
   },
-  getDetail(){
-    orderDetail({ id: this.data.orderId}).then(res=>{
-       if(res.code==200){
-         this.setData({
-           info:res.data
-         })
-       }else{
+  // 剩余时间(毫秒)处理转换时间
+  transformRemainTime(time) {
+    var min = Math.floor(time % 3600);
+    this.setData({
+      remainTimeNew: Math.floor(time / 3600) + "时" + Math.floor(min / 60) + "分" + time % 60 + "秒"
+    })
+  },
+  // 开始倒计时
+  startCountdown: function () {
+    var that = this
+    interval = setInterval(function () {
+      var time = that.data.remainTime - 1;
+      if (time > 0) {
+        that.setData({
+          remainTime: time
+        });
+        that.transformRemainTime(that.data.remainTime);
+      } else {
+        clearInterval(interval);
+        this.getDetail()
+      }
+    }, 1000);
+  },
+  // 倒计时效果
+  // countDown: function () {
+  //   let that = this;
+  //   let countDownNum = that.data.countDownNum; //获取倒计时初始值 
+  //   that.setData({
+  //     timer: setInterval(function () {  
+  //       countDownNum--; 
+  //       that.setData({
+  //         countDownNum: countDownNum
+  //       }) 
+  //       if (countDownNum == 0) { 
+  //         clearInterval(that.data.timer); 
+  //       }
+  //     }, 1000)
+  //   })
+  // },
+  getDetail() {
+    orderDetail(this.data.orderNum).then(res => {
+      if (res.code == 200) {
+        this.setData({
+          info: res.data.leaseDetail,
+          leaseOrder: res.data.leaseOrder,
+          userOrder: res.data.userOrder,
+          remainTime:  Math.floor(res.data.remainingTime/1000)
+        })
+        if (this.data.remainTime > 0) {
+          this.startCountdown()
+        } 
+      } else {
         wx.showToast({
           title: res.msg,
-          icon:"none"
+          icon: "none"
         })
-       }
-    }).catch(res=>{
+      }
+    }).catch(res => {
       wx.showToast({
         title: res,
         icon: "none"
@@ -58,15 +111,13 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
-  },
+  onHide: function () {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    clearInterval(interval);
   },
 
   /**

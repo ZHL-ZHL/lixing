@@ -88,14 +88,14 @@ const formatDuring = (number, format) => {
   var formateArr = ['Y', 'M', 'D', 'h', 'm', 's'];
   var returnArr = [];
 
-  var date = new Date(number); 
+  var date = new Date(number);
   returnArr.push(date.getFullYear());
   returnArr.push(formatNumber(date.getMonth() + 1));
   returnArr.push(formatNumber(date.getDate()));
 
   returnArr.push(formatNumber(date.getHours()));
   returnArr.push(formatNumber(date.getMinutes()));
-  returnArr.push(formatNumber(date.getSeconds())); 
+  returnArr.push(formatNumber(date.getSeconds()));
   for (var i in returnArr) {
     format = format.replace(formateArr[i], returnArr[i]);
   }
@@ -108,17 +108,17 @@ const dayTime = date => {
   return [hour, minute].map(formatNumber).join(':')
 }
 
-export function getDaysBetween(dateString1,dateString2){ 
-  var  startDate = Date.parse(dateString1);
-  var  endDate = Date.parse(dateString2);
-  var days=(endDate - startDate)/(1*24*60*60*1000); 
-  return  days;
+export function getDaysBetween(dateString1, dateString2) {
+  var startDate = Date.parse(dateString1);
+  var endDate = Date.parse(dateString2);
+  var days = (endDate - startDate) / (1 * 24 * 60 * 60 * 1000);
+  return days;
 }
 /**
  * 将小程序的API封装成支持Promise的API
  * @params fn {Function} 小程序原始API，如wx.login
- */ 
-const wxPromisify = fn => { 
+ */
+const wxPromisify = fn => {
   return function (obj = {}) {
     return new Promise((resolve, reject) => {
       obj.success = function (res) {
@@ -130,7 +130,10 @@ const wxPromisify = fn => {
       fn(obj)
     })
   }
-}
+} 
+
+
+
 export default {
   getNowTime,
   getDateStr,
@@ -138,5 +141,5 @@ export default {
   dayTime,
   formatDuring,
   wxPromisify,
-  getDaysBetween
+  getDaysBetween, 
 }

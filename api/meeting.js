@@ -4,7 +4,7 @@ import URL from "../utils/host.js"
 export function meetingList(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/blade-bms/hzleasedetail/page',
+    url: URL.host + '/blade-bms/hzleasedetail/wechat/page',
     params: data
   })
 } 

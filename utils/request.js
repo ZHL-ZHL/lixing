@@ -93,8 +93,9 @@ fly.interceptors.response.use(
       })
       return
     } else {
-      if (err.response.data.message) {
-        return err.response.data.message
+      console.log(err.response.data.msg)
+      if (err.response.data.msg) {
+        return err.response.data.msg
       } else {
         return '请求数据失败,请稍后再试'
       }

@@ -3,10 +3,10 @@ import {
   meetingList,
   hotLease,
   selectByKeWord
-} from "../../api/meeting.js";
+} from "../../api/meeting.js"; 
 import {
   leaseBanner
-} from "../../api/banner.js";
+} from "../../api/banner.js"; 
 import getDaysBetween from "../../utils/util";
 import Url from "../../utils/host.js"
 Page({
@@ -24,9 +24,26 @@ Page({
 
       return options;
     },
-    priceList: ["0-2000", "2000-4000", "4000-6000", "6000-8000", "8000-10000", "10000"],
-    areaList: ["0-100", "100-500", "500-1000", "1000"],
-    perpleList: ["0-500", "500-1000", "1000-1500", "1500"],
+    priceList: [
+      [0, 2000],
+      [2000, 4000],
+      [4000, 6000],
+      [6000, 8000],
+      [8000, 10000],
+      [10000, '以上']
+    ],
+    areaList: [
+      [0, 100],
+      [100, 500],
+      [500, 1000],
+      [1000, '以上']
+    ],
+    perpleList: [
+      [0, 500],
+      [500, 1000],
+      [1000, 1500],
+      [1500, '以上']
+    ],
     dayNumber: 0,
     date: '',
     showdate: false,
@@ -47,18 +64,67 @@ Page({
     pageNum: 1,
     load: false,
     banner: [],
-    low: 1500,
-    heigh: 2500,
+    low: 0,
+    heigh: 0,
     lowHeigh: "",
     low1: 0,
-    heigh1: 100,
+    heigh1: 0,
     lowHeigh1: "",
     low2: 0,
-    heigh2: 500,
+    heigh2: 0,
     lowHeigh2: "",
     keywordList: [],
     keyword: "",
     allSearchCount: ""
+  },
+  changePrice(e) { 
+    this.setData({
+      low:e.currentTarget.dataset.item[0],
+      heigh:e.currentTarget.dataset.item[1],
+      lowHeigh:e.currentTarget.dataset.item[0]+'-'+e.currentTarget.dataset.item[1]
+    }) 
+    this.selectComponent("#zy-slider")._propertyLeftValueChange()
+    this.selectComponent("#zy-slider")._propertyRightValueChange()
+  },
+  changeArea(e) {
+    console.log(e.currentTarget.dataset.item)
+    this.setData({
+      low1:e.currentTarget.dataset.item[0],
+      heigh1:e.currentTarget.dataset.item[1],
+      lowHeigh1:e.currentTarget.dataset.item[0]+'-'+e.currentTarget.dataset.item[1]
+    })
+    this.selectComponent("#zy-slider1")._propertyLeftValueChange()
+    this.selectComponent("#zy-slider1")._propertyRightValueChange()
+  },
+  changePeople(e) {
+    console.log(e.currentTarget.dataset.item)
+    this.setData({
+      low2:e.currentTarget.dataset.item[0],
+      heigh2:e.currentTarget.dataset.item[1],
+      lowHeigh2:e.currentTarget.dataset.item[0]+'-'+e.currentTarget.dataset.item[1]
+    })
+    this.selectComponent("#zy-slider2")._propertyLeftValueChange()
+    this.selectComponent("#zy-slider2")._propertyRightValueChange()
+  },
+  clearallSearchCount() {
+    this.setData({
+      allSearchCount: ""
+    })
+  },
+  clearKeyword() {
+    this.setData({
+      keyword: ""
+    })
+  },
+  clearEndTime() {
+    this.setData({
+      endTime: ""
+    })
+  },
+  clearStartTime() {
+    this.setData({
+      startTime: ""
+    })
   },
 
   lowValueChangeAction: function (e) {
@@ -68,8 +134,7 @@ Page({
     this.setData({
       lowHeigh: this.data.low + '-' + this.data.heigh
     })
-  },
-
+  }, 
   heighValueChangeAction: function (e) {
     this.setData({
       heigh: e.detail.heighValue
@@ -162,14 +227,14 @@ Page({
     console.log(this.data.currentDate)
     this.setData({
       showTime: false,
-      startTime:this.data.currentDate
+      startTime: this.data.currentDate
     });
   },
   getTime2(event) {
-    console.log(this.data.currentDate2) 
+    console.log(this.data.currentDate2)
     this.setData({
       showTime2: false,
-      endTime:this.data.currentDate2
+      endTime: this.data.currentDate2
     });
   },
   showTimeBtn() {
@@ -191,9 +256,9 @@ Page({
     this.setData({
       showdate: false,
       date: `${this.formatDate(start)} - ${this.formatDate(end)}`,
-      startDate: new Date(start).format("yyyy年MM月dd日 EEE").substr(5), 
+      startDate: new Date(start).format("yyyy年MM月dd日 EEE").substr(5),
       endDate: new Date(end).format("yyyy年MM月dd日 EEE").substr(5),
-      startDate1: new Date(start).format("yyyy年MM月dd日"), 
+      startDate1: new Date(start).format("yyyy年MM月dd日"),
       endDate1: new Date(end).format("yyyy年MM月dd日"),
       dayNumber: getDaysBetween.getDaysBetween(start, end)
     });
@@ -304,7 +369,7 @@ Page({
   },
   goDetail() {
     wx.navigateTo({
-      url: '/pages/meetDetailList/meetDetailList?startDate=' + this.data.startDate1 + '&endDate=' + this.data.endDate1 + '&keyword=' + this.data.keyword + '&allSearchCount=' + this.data.allSearchCount+'&startTime='+this.data.startTime+'&endTime='+this.data.endTime,
+      url: '/pages/meetDetailList/meetDetailList?startDate=' + this.data.startDate1 + '&endDate=' + this.data.endDate1 + '&keyword=' + this.data.keyword + '&allSearchCount=' + this.data.allSearchCount + '&startTime=' + this.data.startTime + '&endTime=' + this.data.endTime,
       success: function (res) {},
       fail: function (res) {},
       complete: function (res) {},

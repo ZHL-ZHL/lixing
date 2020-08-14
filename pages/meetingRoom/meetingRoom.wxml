@@ -12,7 +12,7 @@
 		</swiper>
 	</view>
 	<view class="search-box list">
-		<view class="weui-cell"  bindtap="showdateBtn">
+		<view class="weui-cell" bindtap="showdateBtn">
 			<view class="weui-cell-title">
 				<text>开始日期</text>
 				<view>{{startDate}}</view>
@@ -29,25 +29,27 @@
 			</view>
 		</view>
 
-		<view class="weui-cell"  bindtap="showTimeBtn">
+		<view class="weui-cell" bindtap="showTimeBtn">
 			<view class="weui-cell__hd">
 				<text>开始时间</text>
 			</view>
 			<view class="weui-cell__bd">
-				<input placeholder-class="placeholderClass" placeholder="请选择开始时间" value="{{startTime}}"></input>
+				<input placeholder-class="placeholderClass" readonly placeholder="请选择开始时间" value="{{startTime}}"></input>
 			</view>
 			<view class="weui-cell__ft">
+				<van-icon name="cross" wx:if="{{startTime}}" style="margin-right:16rpx" catchtap="clearStartTime" />
 				<image src="/images/icon/r_jt.png" class="r_jt"></image>
 			</view>
 		</view>
-		<view class="weui-cell"  bindtap="showTimeBtn2">
+		<view class="weui-cell" bindtap="showTimeBtn2">
 			<view class="weui-cell__hd">
 				<text>结束时间</text>
 			</view>
 			<view class="weui-cell__bd">
-				<input placeholder-class="placeholderClass" placeholder="请选择结束时间" value="{{endTime}}"></input>
+				<input placeholder-class="placeholderClass" readonly placeholder="请选择结束时间" value="{{endTime}}"></input>
 			</view>
 			<view class="weui-cell__ft">
+				<van-icon name="cross" wx:if="{{endTime}}" style="margin-right:16rpx" catchtap="clearEndTime" />
 				<image src="/images/icon/r_jt.png" class="r_jt"></image>
 			</view>
 		</view>
@@ -56,20 +58,22 @@
 				<text>我的附近</text>
 			</view>
 			<view class="weui-cell__bd">
-				<input placeholder-class="placeholderClass" placeholder="搜索会议室名称/关键词" value="{{keyword}}"></input>
+				<input placeholder-class="placeholderClass" readonly placeholder="搜索会议室名称/关键词" value="{{keyword}}"></input>
 			</view>
-			<view class="weui-cell__ft" >
+			<view class="weui-cell__ft">
+				<van-icon name="cross" wx:if="{{keyword}}" style="margin-right:16rpx" catchtap="clearKeyword" />
 				<image src="/images/icon/r_jt.png" class="r_jt"></image>
 			</view>
 		</view>
-		<view class="weui-cell"  bindtap="showAccurateSearchBtn">
+		<view class="weui-cell" bindtap="showAccurateSearchBtn">
 			<view class="weui-cell__hd">
 				<text>精准查找</text>
 			</view>
 			<view class="weui-cell__bd">
-				<input placeholder-class="placeholderClass" value="{{allSearchCount}}" placeholder="设置我需要的人数/面积/价格"></input>
+				<input placeholder-class="placeholderClass" readonly value="{{allSearchCount}}" placeholder="设置我需要的人数/面积/价格"></input>
 			</view>
 			<view class="weui-cell__ft">
+				<van-icon name="cross" wx:if="{{allSearchCount}}" style="margin-right:16rpx" catchtap="clearallSearchCount" />
 				<image src="/images/icon/r_jt.png" class="r_jt"></image>
 			</view>
 		</view>
@@ -115,7 +119,7 @@
 				</view>
 				<view class="sheet-ititle">￥0 <text>￥10000以上</text></view>
 				<view style="padding-left:1%">
-					<view class="sheet-item-list" wx:for="{{priceList}}" wx:key="index">￥{{item}} <text wx:if="{{index == priceList.length-1}}">以上</text></view>
+					<view class="sheet-item-list" catchtap="changePrice" data-item="{{item}}" wx:for="{{priceList}}" wx:key="index">￥{{item[0]}}-{{item[1]}}</view>
 				</view>
 			</view>
 
@@ -128,7 +132,7 @@
 					</view>
 				</view>
 				<view style="padding-left:1%">
-					<view class="sheet-item-list" wx:for="{{areaList}}" wx:key="index">{{item}}m²<text wx:if="{{index == areaList.length-1}}">以上</text></view>
+					<view class="sheet-item-list" catchtap="changeArea" data-item="{{item}}" wx:for="{{areaList}}" wx:key="index">{{item[0]}}-{{item[1]}}</view>
 				</view>
 			</view>
 
@@ -141,7 +145,7 @@
 					</view>
 				</view>
 				<view style="padding-left:1%">
-					<view class="sheet-item-list" wx:for="{{perpleList}}" wx:key="index">{{item}}人<text wx:if="{{index == perpleList.length-1}}">以上</text></view>
+					<view class="sheet-item-list" catchtap="changePeople" data-item="{{item}}" wx:for="{{perpleList}}" wx:key="index">{{item[0]}}-{{item[1]}}</view>
 				</view>
 			</view>
 
@@ -179,21 +183,21 @@
 		<view class="searchBox">
 			<view>
 				<van-calendar show="{{ showdate }}" type="range" bind:close="ondateClose" bind:confirm="onConfirm" />
-			</view> 
+			</view>
 		</view>
-	</van-action-sheet> 
+	</van-action-sheet>
 	<!--时间查找  -->
-	<van-action-sheet class="height300" show="{{ showTime }}" title="选择时间" bind:close="ondateClose1" round="true" close-on-click-overlay="true" >
+	<van-action-sheet class="height300" show="{{ showTime }}" title="选择时间" bind:close="ondateClose1" round="true" close-on-click-overlay="true">
 		<view class="searchBox1">
 			<view>
-				<van-datetime-picker type="time" bind:input="onInput"  bind:confirm="getTime1" value="{{ currentDate }}" />
+				<van-datetime-picker type="time" bind:input="onInput" bind:confirm="getTime1" value="{{ currentDate }}" />
 			</view>
 		</view>
 	</van-action-sheet>
 	<van-action-sheet class="height300" show="{{ showTime2 }}" title="选择时间" bind:close="ondateClose2" round="true" close-on-click-overlay="true">
 		<view class="searchBox1">
 			<view>
-				<van-datetime-picker bind:input="onInput2" type="time" bind:confirm="getTime2"  value="{{ currentDate2 }}" />
+				<van-datetime-picker bind:input="onInput2" type="time" bind:confirm="getTime2" value="{{ currentDate2 }}" />
 			</view>
 		</view>
 	</van-action-sheet>

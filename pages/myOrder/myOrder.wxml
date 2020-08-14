@@ -23,7 +23,7 @@
 				<view class="showtopblur" wx:if="{{index == indexId}}">
 					<image src="../../images/my/makesure.png"></image>
 				</view>
-			</view> 
+			</view>
 		</view>
 	</view>
 	<view>
@@ -41,7 +41,7 @@
 				<hr class="line-style" />
 			</view>
 			<view class="{{2 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='2'>
-				<view class="title-nav">待收货
+				<view class="title-nav">历史订单
 					<image src="../../images/my/bottom.png" catchtap="showTap" id="2" style="margin-left:100rpx" class="top-icon"></image>
 				</view>
 				<hr class="line-style" />
@@ -52,37 +52,41 @@
 		<view class="list">
 			<view class="listItem" wx:for="{{orderList}}" wx:key="{{index}}">
 				<view class='weui-cell title'>
-					<view class='weui-cell__bd' wx:if="{{itemType == 0}}">
-						<image src="../../images/my/meet.png" class="icon-img"></image>
-						会议室租赁
-						<image src="/images/icon/r_jt.png" class="r_jt"></image>
+					<view class='weui-cell__bd' wx:if="{{item.itemType == 1}}">
+						<navigator url="/pages/meetingRoom/meetingRoom" hover-class="none">
+							<image src="../../images/my/meet.png" class="icon-img"></image>
+							会议室租赁
+							<image src="/images/icon/r_jt.png" class="r_jt"></image>
+						</navigator>
 					</view>
-					<view class='weui-cell__bd' wx:if="{{itemType == 1}}">
-						<image src="../../images/my/food.png" class="icon-img"></image>
-						我要吃饭
+					<view class='weui-cell__bd' wx:if="{{item.itemType == 2}}">
+						<navigator url="/pages/eat/eat" hover-class="none">
+							<image src="../../images/my/food.png" class="icon-img"></image>
+							我要吃饭
+							<image src="/images/icon/r_jt.png" class="r_jt"></image>
+						</navigator>
 					</view>
 					<view class='weui-cell__ft status'>
-						<!--  wx:if="{{item.status==1}}" -->
-						<text>待付款</text>
-						<text wx:if="{{item.status==2}}">已付款</text>
-						<text wx:if="{{item.status==3}}">已完成</text>
-						<text wx:if="{{item.status==4}}">退款</text>
+						<text wx:if="{{item.statu == 1}}">待付款</text>
+						<text wx:if="{{item.statu==2}}">已付款</text>
+						<text wx:if="{{item.statu==3}}">已完成</text>
+						<text wx:if="{{item.statu==4}}">退款</text>
 					</view>
 				</view>
 				<view class="">
-					<navigator url="/pages/myOrderXq/myOrderXq?id={{item.orderId}}" class="weui-cell goodsInfo" hover-class="none">
+					<navigator url="/pages/myOrderXq/myOrderXq?orderNum={{item.orderNum}}" class="weui-cell goodsInfo" hover-class="none">
 						<view class="weui-cell__hd">
-							<image class="thumb" src="{{item.picture}}" />
+							<image class="thumb" src="{{item.orderInfoObj.leaseImage}}" />
 						</view>
 						<view class="weui-cell__bd caption">
-							<view class="goodsName">中鲁会议厅</view>
+							<view class="goodsName">{{item.orderInfoObj.leaseName}}</view>
 							<view class='time' wx:if="{{item.itemType==1}}">
-								体育西路50号（亲贤北街与体育西路交叉口）
+								{{item.orderInfoObj.leaseAddressName}}
 							</view>
-							<view class='textccc'>900 最多容纳200人</view>
+							<view class='textccc'>{{item.orderInfoObj.leaseArea}}m² 最多容纳{{item.orderInfoObj.leaseGalleryful}}人</view>
 						</view>
 						<view class="weui-cell__ft">
-							<view>￥1600</view>
+							<view>￥{{item.originalPrice}}</view>
 							<view class='textccc'>3小时</view>
 						</view>
 					</navigator>
@@ -90,25 +94,24 @@
 				<view class="weui-cell operationprice">
 					<view class="weui-cell__bd"></view>
 					<view class="weui-cell__ft">
-						总价￥1600，优惠￥100 需支付￥1500
+						总价￥{{item.originalPrice}}，优惠￥{{item.discountPrice}} 需支付￥{{item.amountPayable}}
 					</view>
 				</view>
 				<view class="weui-cell operation" wx:if="{{item.itemType==1}}">
 					<view class="weui-cell__bd"></view>
 					<view class="weui-cell__ft">
-						<!-- wx:if="{{item.status==1}}" -->
 						<view class="btn" bindtap="showBottomBtn" id="{{item.id}}">取消订单</view>
-						<view class="btn colorCS">付款</view>
-						<view class="btn colorCS">
-							<navigator url="/pages/eatQcode/eatQcode?id={{item.id}}" hover-class="none">二维码</navigator>
-						</view>
+						<view class="btn colorCS" wx:if="{{item.statu==1}}">付款</view>
 					</view>
 				</view>
 				<view class="weui-cell operation" wx:if="{{item.itemType==2}}">
 					<view class="weui-cell__bd"></view>
 					<view class="weui-cell__ft">
-						<view class="btn" wx:if="{{item.status==1}}">立即付款</view>
-						<view class="btn" wx:if="{{item.status==2}}">取消预约</view>
+						<view class="btn" wx:if="{{item.statu==1}}">立即付款</view>
+						<view class="btn" wx:if="{{item.statu==2}}">取消订单</view>
+						<view class="btn colorCS" wx:if="{{item.itemType==2}}">
+							<navigator url="/pages/eatQcode/eatQcode?id={{item.id}}" hover-class="none">二维码</navigator>
+						</view>
 					</view>
 				</view>
 			</view>

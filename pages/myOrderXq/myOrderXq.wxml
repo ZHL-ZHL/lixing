@@ -1,18 +1,22 @@
 	<view>
-		<view class="title-img">
+		<view class="title-img" wx:if="{{userOrder.statu==2}}">
 			<view class="title-result">交易成功！</view>
 			<image src="../../images/my/title.png"></image>
 		</view>
-		<view class="title-img">
-			<view class="title-result">等待买家付款</view>
+		<view class="title-img" wx:if="{{userOrder.statu==1}}">
+			<!-- <view class="title-result">等待买家付款</view> -->
+			<!-- <view class="title-result"> {{countDownNum}}</view> -->
+			<view class="title-result">
+				{{remainTimeNew}}
+			</view>
 			<image src="../../images/my/title.png"></image>
 		</view>
-		<view class='weui-cell top-todo'>
+		<view class='weui-cell top-todo' wx:if="{{userOrder.statu==2}}">
 			<view class='weui-cell__bd'>
 				<image src="../../images/my/time.png" class="time-img"></image> 交易时间
 			</view>
 			<view class='weui-cell__ft'>
-				<view>2020-02-07 23:00:00</view>
+				<view>{{userOrder.updateTime}}</view>
 				<view style="color:#ccc">(以实际交易时间为准)</view>
 			</view>
 		</view>
@@ -21,46 +25,47 @@
 				<image src="../../images/my/time.png" class="time-img"></image>
 			</view>
 			<view class='weui-cell__bd'>
-				<view>收货人： 刘德华 1833456230</view>
-				<view>地 址：  山西省太原市小店区长风街山西省太原市小店区长风街</view>
-			</view> 
+				<view>收货人： {{leaseOrder.orderName}} {{leaseOrder.orderPhone}}</view>
+				<view wx:if="{{leaseOrder.orderAddress}}">地 址： {{leaseOrder.orderAddress}}</view>
+			</view>
 		</view>
 		<view>
 		</view>
 		<view class="list">
 			<view class="listItem">
 				<view class='weui-cell title'>
-					<view class='weui-cell__bd'>
+					<view class='weui-cell__bd' wx:if="{{userOrder.itemType == 1}}">
 						<image src="../../images/my/meet.png" class="icon-img"></image>
 						会议室租赁
 						<image src="/images/icon/r_jt.png" class="r_jt"></image>
 					</view>
-					<view class='weui-cell__bd' wx:if="{{itemType == 1}}">
+					<view class='weui-cell__bd' wx:if="{{userOrder.itemType == 2}}">
 						<image src="../../images/my/food.png" class="icon-img"></image>
 						我要吃饭
 					</view>
 					<view class='weui-cell__ft status'>
-						<!--  wx:if="{{item.status==1}}" -->
-						<text>待付款</text>
-						<text wx:if="{{info.status==2}}">已付款</text>
-						<text wx:if="{{info.status==3}}">已完成</text>
-						<text wx:if="{{info.status==4}}">退款</text>
+						<!--  -->
+						<text  wx:if="{{userOrder.statu==1}}">待付款</text>
+						<text  wx:if="{{userOrder.statu==2}}">已取消</text>
+						<text wx:if="{{userOrder.statu==3}}">已付款</text>
+						<text wx:if="{{userOrder.statu==4}}">已完成</text>
+						<text wx:if="{{userOrder.statu==5}}">退款</text>
 					</view>
 				</view>
 				<view class="">
-					<navigator url="/pages/myOrderXq/myOrderXq?id={{info.orderId}}" class="weui-cell goodsInfo" hover-class="none">
+					<navigator url="/pages/meetingRoom/meetingRoom" class="weui-cell goodsInfo" hover-class="none">
 						<view class="weui-cell__hd">
-							<image class="thumb" src="{{info.picture}}" />
+							<image class="thumb" src="{{info.leaseImage}}" />
 						</view>
 						<view class="weui-cell__bd caption">
-							<view class="goodsName">中鲁会议厅</view>
+							<view class="goodsName">{{info.leaseName}}</view>
 							<view class='time'>
-								体育西路50号（亲贤北街与体育西路交叉口）
+								{{info.leaseAddressName}}
 							</view>
-							<view class='textccc'>900 最多容纳200人</view>
+							<view class='textccc'> {{info.leaseArea}} 最多容纳{{info.leaseGalleryful}}人</view>
 						</view>
 						<view class="weui-cell__ft">
-							<view>￥1600</view>
+							<view>￥{{userOrder.originalPrice}}</view>
 							<view class='textccc'>3小时</view>
 						</view>
 					</navigator>
@@ -69,7 +74,7 @@
 					<view class="weui-cell__bd">
 						商品总价</view>
 					<view class="weui-cell__ft">
-						￥1600
+						￥{{userOrder.originalPrice}}
 					</view>
 				</view>
 				<view class="weui-cell operationprice">
@@ -83,14 +88,14 @@
 					<view class="weui-cell__bd">
 						优惠券抵扣</view>
 					<view class="weui-cell__ft">
-						￥100
+						￥{{userOrder.discountPrice}}
 					</view>
 				</view>
 				<view class="weui-cell operationprice operationpriceline">
 					<view class="weui-cell__bd">
 						需付款</view>
 					<view class="weui-cell__ft">
-						￥1600
+						￥{{userOrder.amountPayable}}
 					</view>
 				</view>
 				<view class="weui-cell operationprice operationpricepad">
@@ -98,14 +103,6 @@
 						联系客服</view>
 					<view class="weui-cell__ft">
 						<image src="../../images/meet/phoneh.png" class="phone-img"></image>
-					</view>
-				</view>
-
-				<view class="weui-cell operation" wx:if="{{info.itemType==2}}">
-					<view class="weui-cell__bd"></view>
-					<view class="weui-cell__ft">
-						<view class="btn" wx:if="{{item.status==1}}">立即付款</view>
-						<view class="btn" wx:if="{{item.status==2}}">取消预约</view>
 					</view>
 				</view>
 			</view>

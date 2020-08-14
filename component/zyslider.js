@@ -1,6 +1,5 @@
 // component/zyslider/zyslider.js
 var util = require('../utils/util')
-console.log(util,1111111)
 Component({
   /**
    * 组件的属性列表
@@ -27,15 +26,15 @@ Component({
       type: Number
     },
     /** 滑块颜色 */
-    blockColor:{
+    blockColor: {
       type: String
     },
     /** 未选择进度条颜色 */
-    backgroundColor:{
+    backgroundColor: {
       type: String
     },
     /** 已选择进度条颜色 */
-    selectedColor:{
+    selectedColor: {
       type: String
     }
   },
@@ -63,10 +62,9 @@ Component({
   methods: {
 
     /**
-    * 设置左边滑块的值
-    */
+     * 设置左边滑块的值
+     */
     _propertyLeftValueChange: function () {
-
       let minValue = this.data.minValue / this.data.max * this.data.bigLength
       let min = this.data.min / this.data.max * this.data.bigLength
       this.setData({
@@ -101,7 +99,9 @@ Component({
       })
 
       let lowValue = parseInt(pagex / this.data.bigLength * parseInt(this.data.max - this.data.min) + this.data.min)
-      var myEventDetail = { lowValue: lowValue }
+      var myEventDetail = {
+        lowValue: lowValue
+      }
       this.triggerEvent('lowValueChange', myEventDetail)
     },
 
@@ -124,7 +124,9 @@ Component({
       pagex = pagex - this.data.sliderLength
       let heighValue = parseInt(pagex / this.data.bigLength * (this.data.max - this.data.min) + this.data.min)
 
-      var myEventDetail = { heighValue: heighValue }
+      var myEventDetail = {
+        heighValue: heighValue
+      }
       this.triggerEvent('heighValueChange', myEventDetail)
     },
 
@@ -145,8 +147,8 @@ Component({
       })
     },
     /**
-    * 重置
-    */
+     * 重置
+     */
     reset: function () {
       this.setData({
         rightValue: this.data.totalLength,
@@ -177,11 +179,11 @@ Component({
             containerLeft: res.left / that.data.ratio
           })
 
-        /**
-         * 设置初始滑块位置
-         */
-        that._propertyLeftValueChange()
-        that._propertyRightValueChange()
+          /**
+           * 设置初始滑块位置
+           */
+          that._propertyLeftValueChange()
+          that._propertyRightValueChange() 
         }).exec()
       })
   }

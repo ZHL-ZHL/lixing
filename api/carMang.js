@@ -19,7 +19,7 @@ export function getCarInfo(data) {
 
 export function payMoneys(data) {
   return http.fly.request({
-    method: 'post',
-    url: URL.host + '/renren-fast/wechat_car/pay?id=' + data.id,
+    method: 'get',
+    url: URL.host + '/blade-bms/userorder/wechat/pay?orderType=' + data.orderType+'&orderNum='+data.orderNum,
   })
 }

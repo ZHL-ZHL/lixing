@@ -1,5 +1,4 @@
-<view class='container'>
-	<!-- <van-tabs active="{{activetab}}" bind:change="onChange">
+<!-- <van-tabs active="{{activetab}}" bind:change="onChange">
 		<van-tab wx:for="{{navBar}}" wx:key="index" title="{{item.name}}">
 			<van-popup show="{{ showTop }}" position="top" custom-style="height: 20%;" bind:close="onClose" />
 			<picker bindchange="typeChange" value="{{typeIdx}}" range="{{type}}">
@@ -16,6 +15,8 @@
 	</van-tabs> -->
 	<!-- <van-popup show="{{ showTop }}" position="top" custom-style="height: 20%;" bind:close="onClose"> 
 	</van-popup> -->
+
+<view class='container'>
 	<view wx:if="{{showTop}}" class="showTopBox" bindtap="oncloseTop">
 		<view class="showTopLi" wx:for="{{type}}" wx:key="{{index}}">
 			<view id="{{index}}" catchtap="onClickTop">
@@ -35,13 +36,13 @@
 				<hr class="line-style" />
 			</view>
 			<view class="{{1 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='1'>
-				<view class="title-nav">待收货
+				<view class="title-nav">待付款
 					<image src="../../images/my/bottom.png" catchtap="showTap" id="1" style="margin-left:100rpx" class="top-icon"></image>
 				</view>
 				<hr class="line-style" />
 			</view>
 			<view class="{{2 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='2'>
-				<view class="title-nav">历史订单
+				<view class="title-nav">已付款
 					<image src="../../images/my/bottom.png" catchtap="showTap" id="2" style="margin-left:100rpx" class="top-icon"></image>
 				</view>
 				<hr class="line-style" />
@@ -74,7 +75,7 @@
 					</view>
 				</view>
 				<view class="">
-					<navigator url="/pages/myOrderXq/myOrderXq?orderNum={{item.orderNum}}" class="weui-cell goodsInfo" hover-class="none">
+					<navigator url="/pages/myOrderXq/myOrderXq?orderNum={{item.orderNum}}&itemType={{item.itemType}}" class="weui-cell goodsInfo" hover-class="none">
 						<view class="weui-cell__hd">
 							<image class="thumb" src="{{item.orderInfoObj.leaseImage}}" />
 						</view>

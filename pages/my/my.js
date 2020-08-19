@@ -65,16 +65,15 @@ Page({
     wx.showLoading({
       title: '登录中。。。',
     }) 
-    xdLogin(e).then(res => {
-      console.log(res)
+    xdLogin(e).then(res => { 
       this.setData({
         userInfo: wx.getStorageSync("userInfo")
       })
-      // if(res.phone.length==0){
-      //   this.setData({
-      //     tan:true
-      //   })
-      // }
+      if(!res.phone || res.phone.length==0){
+        this.setData({
+          tan:true
+        })
+      }
       this.getRole()
     }).catch(res => {
       console.log(res)

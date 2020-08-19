@@ -13,8 +13,11 @@
 			<view class="weui-cell__bd">
 				<view class="name title-top">
 					{{meetingDetail.leaseName}}
-					<text>{{meetingDetail.leaseBq}}</text>
+					<text>{{meetingDetail.leaseBq}}</text> 
 					<image src="../../images/meet/phone.png" class="icon-phone"></image>
+				</view>
+				<view>
+				<van-rate readonly value="{{ meetingDetail.leaseStarlevel }}"/>
 				</view>
 				<view class="adr">
 					<view style="width: 90%;display: inline-block;">

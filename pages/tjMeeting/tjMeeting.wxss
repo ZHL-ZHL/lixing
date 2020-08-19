@@ -6,11 +6,7 @@ page{
 .adr {
   font-size: 26rpx;
 }
-
-.adr .name text {
-  /* float: right; */
-}
-
+ 
 .addressInfo {
   margin-top: 10rpx;
 }

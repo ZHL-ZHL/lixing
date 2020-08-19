@@ -107,27 +107,22 @@ Page({
     value.appointmentCompanionList = this.data.peerList;
     if (value.visitorName.length == 0) {
       wx.showToast({
-        title: '请填写被访人员名字',
-        icon: "none"
-      })
-    } else if (value.intervieweePhone.length == 0 || value.intervieweePhone.length != 11) {
-      wx.showToast({
-        title: '被访人手机号不正确',
-        icon: "none"
-      })
-    } else if (value.address.length == 0) {
-      wx.showToast({
-        title: '请填写访问地点',
-        icon: "none"
-      })
-    } else if (value.visitorName.length == 0) {
-      wx.showToast({
-        title: '请填写被访人姓名',
+        title: '请填写名字',
         icon: "none"
       })
     } else if (value.visitorPhone.length == 0 || value.visitorPhone.length != 11) {
       wx.showToast({
-        title: '请填写被访人电话',
+        title: '请填写电话',
+        icon: "none"
+      })
+    } else if (value.intervieweePhone.length > 0 && value.intervieweePhone.length != 11) {
+      wx.showToast({
+        title: '被访人手机号不正确',
+        icon: "none"
+      })
+    } else if (value.intervieweeName.length == 0) {
+      wx.showToast({
+        title: '请填写被访人姓名',
         icon: "none"
       })
     } else {
@@ -180,7 +175,7 @@ Page({
             this.getvisitorsList()
           }
         })
-      }  
+      }
     })
     this.setData({
       deleteshow: true
@@ -264,7 +259,7 @@ Page({
         user: true,
         exists: true
       }).then(res => {
-        if (res.code == 200 && res.data) {
+        if (res.code == 200 && res.data.records.length > 0) {
           drawQrcode({
             canvasId: 'myQrcode',
             text: res.data.records[0].payment

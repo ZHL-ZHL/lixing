@@ -32,7 +32,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.0",
-	"appid": "wxfef791981a5dcf72",
+	"appid": "wxc35575f7a176ae3c",
 	"projectname": "zhyq-user-c",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -1321,6 +1321,20 @@
 					"id": -1,
 					"name": "pages/myOrder/myOrder",
 					"pathName": "pages/myOrder/myOrder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetingRoom/meetingRoom",
+					"pathName": "pages/meetingRoom/meetingRoom",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/eat/eat",
+					"pathName": "pages/eat/eat",
 					"scene": null
 				}
 			]

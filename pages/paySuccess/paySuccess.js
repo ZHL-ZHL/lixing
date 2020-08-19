@@ -5,10 +5,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-    closeOrder:true,
-    num:3
+    closeOrder:true, 
+    countDownNum:3,
+    timer:''
   },
-
+// 倒计时效果
+  countDown: function () {
+    let that = this;
+    let countDownNum = that.data.countDownNum; //获取倒计时初始值 
+    that.setData({
+      timer: setInterval(function () {  
+        countDownNum--; 
+        that.setData({
+          countDownNum: countDownNum
+        }) 
+        if (countDownNum == 0) { 
+          clearInterval(that.data.timer); 
+          wx.switchTab({
+            url: '/pages/index/index',
+          })
+        }
+      }, 1000)
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -19,6 +38,7 @@ Page({
         closeOrder:false
       })
     }
+    this.countDown()
   },
   goBack(){
     wx.navigateTo({
@@ -53,7 +73,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    clearInterval(this.data.timer); 
   },
 
   /**

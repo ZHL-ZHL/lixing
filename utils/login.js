@@ -13,9 +13,11 @@ export function xdLogin(data) {
     if (data.detail.userInfo) {
       wx.login({
         success: res => {
+          // console.log(res)
           login({
             code: res.code,
-            appId: 'wxfef791981a5dcf72',
+            // appId: 'wxfef791981a5dcf72',
+            appId:"wxc35575f7a176ae3c",
             grant_type: 'wechat',
             scope: "all"
           }).then(res1 => { 

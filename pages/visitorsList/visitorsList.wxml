@@ -9,55 +9,15 @@
 			<view class="form-box">
 				<form bindsubmit="formSubmit" bindreset="formReset">
 					<view class="list">
+					
 						<view class="weui-cell">
-							<view class="weui-cell__hd">被访人员</view>
-							<view class="weui-cell__bd">
-								<input placeholder-class="placeholderClass" placeholder="输入被访人姓名" name="intervieweeName"></input>
-							</view>
-						</view>
-						<view class="weui-cell">
-							<view class="weui-cell__hd">被访人电话</view>
-							<view class="weui-cell__bd">
-								<input placeholder-class="placeholderClass" placeholder="输入被访人电话" name="intervieweePhone" type="number"></input>
-							</view>
-						</view>
-						<view class="weui-cell">
-							<view class="weui-cell__hd">访问地点</view>
-							<view class="weui-cell__bd">
-								<input placeholder-class="placeholderClass" placeholder="被访人地址" name="address"></input>
-							</view>
-						</view>
-						<view class="weui-cell">
-							<view class="weui-cell__hd">访问时间(始)</view>
-							<view class="weui-cell__bd">
-								<picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" range="{{dateTimeArray}}">
-									<view class="tui-picker-detail">
-										<input placeholder-class="placeholderClass" value="{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}" name="beginTime"></input>
-									</view>
-								</picker>
-								<!-- <input placeholder-class="placeholderClass" placeholder="选择日期" name="beginTime" disabled></input> -->
-							</view>
-						</view>
-						<view class="weui-cell">
-							<view class="weui-cell__hd">访问时间(止)</view>
-							<view class="weui-cell__bd">
-								<picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" range="{{dateTimeArray1}}">
-									<view class="tui-picker-detail">
-										<input placeholder-class="placeholderClass" value="{{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}" name="endTime"></input>
-									</view>
-								</picker>
-								<!-- <input placeholder-class="placeholderClass" placeholder="选择日期" name="beginTime" disabled></input> -->
-							</view>
-						</view>
-
-						<view class="weui-cell">
-							<view class="weui-cell__hd">来访人：</view>
+							<view class="weui-cell__hd">姓名</view>
 							<view class="weui-cell__bd">
 								<input placeholder-class="placeholderClass" placeholder="输入来访人姓名" name="visitorName"></input>
 							</view>
 						</view>
 						<view class="weui-cell">
-							<view class="weui-cell__hd">来访人电话</view>
+							<view class="weui-cell__hd">电话</view>
 							<view class="weui-cell__bd">
 								<input placeholder-class="placeholderClass" placeholder="输入来访人手机号" name="visitorPhone"></input>
 							</view>
@@ -93,6 +53,47 @@
 								<view class="weui-cell__ft"></view>
 							</view>
 						</view>
+						<view class="weui-cell">
+							<view class="weui-cell__hd">被访人员</view>
+							<view class="weui-cell__bd">
+								<input placeholder-class="placeholderClass" placeholder="输入被访人姓名" name="intervieweeName"></input>
+							</view>
+						</view>
+						<view class="weui-cell">
+							<view class="weui-cell__hd">被访人电话</view>
+							<view class="weui-cell__bd">
+								<input placeholder-class="placeholderClass" placeholder="输入被访人电话" name="intervieweePhone" type="number"></input>
+							</view>
+						</view>
+						<!-- <view class="weui-cell">
+							<view class="weui-cell__hd">访问地点</view>
+							<view class="weui-cell__bd">
+								<input placeholder-class="placeholderClass" placeholder="被访人地址" name="address"></input>
+							</view>
+						</view> -->
+						<view class="weui-cell">
+							<view class="weui-cell__hd">访问时间(始)</view>
+							<view class="weui-cell__bd">
+								<picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" range="{{dateTimeArray}}">
+									<view class="tui-picker-detail">
+										<input placeholder-class="placeholderClass" value="{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}" name="beginTime"></input>
+									</view>
+								</picker>
+								<!-- <input placeholder-class="placeholderClass" placeholder="选择日期" name="beginTime" disabled></input> -->
+							</view>
+						</view>
+						<view class="weui-cell">
+							<view class="weui-cell__hd">访问时间(止)</view>
+							<view class="weui-cell__bd">
+								<picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" range="{{dateTimeArray1}}">
+									<view class="tui-picker-detail">
+										<input placeholder-class="placeholderClass" value="{{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}" name="endTime"></input>
+									</view>
+								</picker>
+								<!-- <input placeholder-class="placeholderClass" placeholder="选择日期" name="beginTime" disabled></input> -->
+							</view>
+						</view>
+
 						<view class="weui-cell">
 							<view class="weui-cell__hd">访客目的</view>
 							<view class="weui-cell__bd">

@@ -22,6 +22,6 @@ export function orderList(data) {
 export function orderDetail(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/blade-bms/userorder/wechat/detail?orderNum=' + data
+    url: URL.host + '/blade-bms/userorder/wechat/detail?orderNum=' + data.orderNum+'&orderType='+data.orderType
   })
 }

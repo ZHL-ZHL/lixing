@@ -22,14 +22,16 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (options) { 
     this.setData({
-      orderNum: options.orderNum
+      orderNum: options.orderNum,
+      orderType:options.itemType==1?'leaseOrder':''
     })
     // this.countDown()
 
     this.getDetail()
   },
+  
   // 剩余时间(毫秒)处理转换时间
   transformRemainTime(time) {
     var min = Math.floor(time % 3600);
@@ -70,7 +72,7 @@ Page({
   //   })
   // },
   getDetail() {
-    orderDetail(this.data.orderNum).then(res => {
+    orderDetail({orderNum:this.data.orderNum,orderType:this.data.orderType}).then(res => {
       if (res.code == 200) {
         this.setData({
           info: res.data.leaseDetail,

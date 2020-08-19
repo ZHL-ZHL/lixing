@@ -8,6 +8,10 @@ import getNowTime from "../../utils/util";
 import {
   tjCar
 } from "../../api/repair.js"
+
+import { 
+  payMoneys
+} from "../../api/carMang.js"
 Page({
 
   /**
@@ -121,6 +125,41 @@ Page({
   onReady: function () {
 
   },
+  payMoney(orderNum) {
+    payMoneys({
+      orderType:'leaseOrder',
+      orderNum:orderNum
+    }).then(res => {
+      let pay_info = JSON.parse(res.data.pay_info)
+      console.log(pay_info,'2222222222')
+      wx.requestPayment({
+        // 'appId': data,
+        'timeStamp': pay_info.timeStamp,
+        'nonceStr': pay_info.nonceStr,
+        'package': pay_info.package,
+        'signType': pay_info.signType,
+        'paySign': pay_info.paySign,
+        'success': function(res) {
+          console.log(res)
+          wx.showToast({
+            title: "支付成功",
+            icon: 'success',
+            duration: 2000,
+            success: function() {
+              wx.navigateTo({
+                url: '/pages/paySuccess/paySuccess?type=1',
+                success: function(res) {},
+                fail: function(res) {},
+                complete: function(res) {},
+              })
+            }
+          })
+        },
+        fail: function(res1) {}
+      })
+    })
+
+  },
   tjOrder() {
     if (this.data.address.length == 0) {
       wx.showToast({
@@ -165,9 +204,10 @@ Page({
       console.log(orderData)
       orderTj(orderData).then(res => {
         if (res.code == 200) {
-          wx.navigateBack({
-            delta: 1,
-          })
+          this.payMoney(res.data)
+          // wx.navigateBack({
+          //   delta: 1,
+          // })
         } else {
           wx.showToast({
             title: res.msg,

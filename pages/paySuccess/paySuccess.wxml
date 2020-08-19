@@ -8,7 +8,7 @@
 			<view class="weui-msg__title">恭喜！支付成功！</view>
 			<!-- <view wx:if="{{closeOrder}}" class="weui-msg__desc">支付成功，请到我的订单查看！ </view> -->
 		</view>
-		<view class="num">{{num}}秒后自动跳转首页</view>
+		<view class="num">{{countDownNum}}秒后自动跳转首页</view>
 		<!-- <view wx:if="{{closeOrder}}"  class="weui-msg__oviewr-area">
       <view class="weui-btn-area">
         <button class="weui-btn weui-btn_viewrimary" color="#ccd63c">
@@ -20,7 +20,7 @@
       </view>
     </view> -->
 		<view class="btnSave">
-			<navigator hover-class="none" url="/pages/index/index">确定</navigator>
+			<navigator hover-class="none" open-type="switchTab" url="/pages/index/index">确定</navigator>
 		</view>
 	</view>
 </view>

@@ -1,4 +1,4 @@
-// pages/eat/eat.js
+// pages/groupBuy/groupBuy.js
 import {
   eatList,
   shopInfo,
@@ -7,19 +7,16 @@ import {
   eatCar,
   eatCarList,
   eatgroupList,
-  eatreserveList,
   eatpingjiaList
 } from "../../api/eat.js"
 import URL from "../../utils/host.js"
-
+var interval;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    detailObj: {},
-    shopInfoMsg: {},
     eatList: [{
       name: '宫保鸡丁',
       show: true,
@@ -66,14 +63,8 @@ Page({
     menNav: [],
     isFixed: false,
     cartList: [],
-    reserveList: [],
     totalPrice: 0,
-    totalPriceDiscount: 0,
     totalNum: 0,
-    totalPrice1: 0,
-    totalPriceDiscount1: 0,
-    bzTotalPrice1: 0,
-    totalNum1: 0,
     menuList: [],
     current: 0,
     rtShop: "",
@@ -86,20 +77,51 @@ Page({
     item: "",
     show: false,
     ids: [],
-    ids1: [],
     load: false,
-    news: []
+    news: [],
+    // 总时间
+    remainTime: 1000,
+    remainTime1: '',
+    remainTime2: '',
+    remainTime3: '',
   },
+  // 剩余时间(毫秒)处理转换时间
+  transformRemainTime(time) {
+    var min = Math.floor(time % 3600);
+    this.setData({
+      remainTime1: Math.floor(time / 3600),
+      remainTime2: Math.floor(min / 60),
+      remainTime3: time % 60
+    })
+  },
+  // 开始倒计时
+  startCountdown: function () {
+    var that = this
+    interval = setInterval(function () {
+      var time = that.data.remainTime - 1;
+      if (time > 0) {
+        that.setData({
+          remainTime: time
+        });
+        that.transformRemainTime(that.data.remainTime);
+      } else {
+        clearInterval(interval);
+        this.getDetail()
+      }
+    }, 1000);
+  },
+
+
+
   onChange(e) {
     this.setData({
-      current: 0,
       activetab: e.detail.index
     })
     if (e.detail.index == 1) {
       this.setData({
         page: 1
       })
-      // this.getpingJia()
+      this.getpingJia()
     }
   },
   showTitleBtn() {
@@ -142,10 +164,9 @@ Page({
     })
     console.log(this.data.eatList)
   },
-  toDetail(e) {
-    let info = e.currentTarget.dataset.item
+  toDetail() {
     wx.navigateTo({
-      url: '/pages/eatDetail/eatDetail?info=' + JSON.stringify(info),
+      url: '/pages/eatDetail/eatDetail',
       success: function (res) {},
       fail: function (res) {},
       complete: function (res) {},
@@ -194,20 +215,27 @@ Page({
     })
   },
   goodsAdd(e) {
+    console.log(e)
     let item = e.currentTarget.dataset.item;
-    let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList
+    let groupList = this.data.groupList
     let idx = e.currentTarget.dataset.idx
     let addid = e.currentTarget.dataset.id
-    let foodCount = e.currentTarget.dataset.limitCount
-    if (foodCount == 0 || !foodCount) {
+    let foodCount = e.currentTarget.dataset.foodcount
+    if (foodCount == 0) {
+      wx.showToast({
+        title: '菜品不足！',
+      })
+    } else {
       groupList.forEach((good) => {
-        if (good.coodVo && good.coodVo.length > 0) {
-          good.coodVo.forEach((food) => {
+        if (good.children && good.children.length > 0) {
+          good.children.forEach((food) => {
             if (food.id == addid) {
               if (!food.num) {
                 food.num = 1
               } else {
-                if (!foodCount || foodCount > food.num) {
+                console.log(foodCount, food.num)
+                if (foodCount > food.num) {
+
                   food.num += 1
                 } else {
                   wx.showToast({
@@ -219,60 +247,49 @@ Page({
           })
         }
       })
-    } else {
-
     }
+
     this.selectFoods(item)
     // 优化体验，异步传递当前点击文档节点
-    if (this.data.activetab == 0) {
-      this.setData({
-        groupList: groupList
-      })
-    } else {
-      this.setData({
-        eatreserveList: groupList
-      })
-    }
+    this.setData({
+      groupList
+    })
   },
   goodsDel(e) {
     let item = e.currentTarget.dataset.item;
-    let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList
+    let groupList = this.data.groupList
     let idx = e.currentTarget.dataset.idx
     let addid = e.currentTarget.dataset.id
+
     groupList.forEach((good) => {
-      if (good.coodVo && good.coodVo.length > 0) {
-        if (good.coodVo.length > 0) {
-          good.coodVo.forEach((food) => {
+      if (good.children && good.children.length > 0) {
+        if (good.children.length > 0) {
+          good.children.forEach((food) => {
             if (food.id == addid) {
               food.num -= 1
             }
           })
         }
       }
+
     })
     this.selectFoods(item)
     // 优化体验，异步传递当前点击文档节点
-    if (this.data.activetab == 0) {
-      this.setData({
-        groupList: groupList
-      })
-    } else {
-      this.setData({
-        eatreserveList: groupList
-      })
-    }
-
+    this.setData({
+      groupList
+    })
   },
   selectFoods(item) {
     let num = 0;
-    let cartList = this.data.activetab == 0 ? this.data.cartList : this.data.reserveList;
-    let ids = this.data.activetab == 0 ? this.data.ids : this.data.ids1;
+
+    let cartList = this.data.cartList;
+    let ids = this.data.ids;
     let josnCartList = JSON.stringify(cartList)
-    let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList
+    let groupList = this.data.groupList;
     let foods = []
     groupList.forEach((good) => {
-      if (good.coodVo && good.coodVo.length > 0) {
-        good.coodVo.forEach((food) => {
+      if (good.children && good.children.length > 0) {
+        good.children.forEach((food) => {
           if (food.num > 0) {
             if (ids.indexOf(food.id) != -1) {
               let index = cartList.findIndex(item1 => {
@@ -294,67 +311,29 @@ Page({
         })
       }
     })
-    cartList.forEach((item, index) => {
-      if (item.num == 0) {
-        cartList.splice(index, 1)
-        ids.splice(index, 1)
-      }
-    });
-    if (this.data.activetab == 0) {
-      this.setData({
-        cartList: cartList,
-        ids: ids
-      })
-      this.totalCount()
-    } else {
-      this.setData({
-        reserveList: cartList,
-        ids1: ids
-      })
-      this.totalCount1()
-    }
+
+    this.setData({
+      cartList,
+      ids
+    })
+    console.log(cartList)
+    this.totalCount()
   },
   totalCount() {
     let total = 0
     let totalPrice = 0;
-    let totalPriceDiscount = 0;
     let bzTotalPrice = 0
     this.data.cartList.forEach((food) => {
       total += food.num;
-      totalPriceDiscount += food.discount ? food.discount * food.num : food.price * food.num
-      totalPrice += food.price * food.num
-      bzTotalPrice += food.packagePrice * food.num
+      totalPrice += food.foodPrice * food.num
+      bzTotalPrice += food.foodPakagePrice * food.num
     })
     this.setData({
       totalPrice: totalPrice.toFixed(2),
       totalNum: total,
-      bzTotalPrice: bzTotalPrice.toFixed(2),
-      totalPriceDiscount: totalPriceDiscount
+      bzTotalPrice: bzTotalPrice.toFixed(2)
     })
     if (this.data.totalNum == 0) {
-      this.setData({
-        show: false
-      })
-    }
-  },
-  totalCount1() {
-    let total = 0
-    let totalPrice = 0;
-    let totalPriceDiscount = 0;
-    let bzTotalPrice = 0
-    this.data.reserveList.forEach((food) => {
-      total += food.num;
-      totalPriceDiscount += food.discount ? food.discount * food.num : food.price * food.num
-      totalPrice += food.price * food.num
-      bzTotalPrice += food.packagePrice * food.num
-    })
-    this.setData({
-      totalPrice1: totalPrice.toFixed(2),
-      totalNum1: total,
-      bzTotalPrice1: bzTotalPrice.toFixed(2),
-      totalPriceDiscount1: totalPriceDiscount
-    })
-    if (this.data.totalNum1 == 0) {
       this.setData({
         show: false
       })
@@ -367,6 +346,8 @@ Page({
       pageSize: 15
     }).then(res => {
       if (res.code == 200) {
+
+
         let totalPage;
         let last_page = parseInt((res.page.total / 15));
         parseInt((res.page.total % 15)) ? totalPage = last_page + 1 : totalPage = last_page;
@@ -433,19 +414,58 @@ Page({
       bzTotalPrice: bzTotal.toFixed(2)
     });
   },
-  toSubmit(e) {
-    console.log(e.currentTarget.id)
-    let info = {
-      type: e.currentTarget.id ? e.currentTarget.id : 0,
-      list: this.data.activetab == 0 ? this.data.cartList : this.data.reserveList,
-      bzTotalPrice: this.data.activetab == 0 ? this.data.bzTotalPrice : this.data.bzTotalPrice1,
-      peiSf: this.data.activetab == 0 ? this.data.peiSf : this.data.peiSf1,
-      totalPrice: this.data.activetab == 0 ? this.data.totalPrice : this.data.totalPrice1,
-      totalPriceDiscount: this.data.activetab == 0 ? this.data.totalPriceDiscount : this.data.totalPriceDiscount1,
+  toSubmit() {
+    if (this.data.totalNum == 0) {
+      wx.showToast({
+        title: '请选择你要购买的饭饭！',
+        icon: "none",
+      })
+    } else {
+
+
+      let cartList = this.data.cartList
+      let dataArray = cartList.filter(v => {
+        if (v.num == 0) {
+          return false
+        } else {
+          return true
+        }
+      }).map(v => {
+        let data = {}
+        data.cartShopId = v.foodShop;
+        data.cartFoodName = v.id;
+        data.cartFoodPrice = v.foodPrice;
+        data.cartFoodCount = v.num
+        return data
+      })
+      console.log(dataArray)
+      eatCar({
+        rtCarts: JSON.stringify(dataArray)
+      }).then(res => {
+        if (res.code == 200) {
+          wx.navigateTo({
+            url: '/pages/eatSubmit/eatSubmit?&totalPrice=' + this.data.totalPrice + '&bzTotalPrice=' + this.data.bzTotalPrice,
+            success: function (res) {},
+            fail: function (res) {},
+            complete: function (res) {},
+          })
+        } else {
+          wx.showToast({
+            title: res.msg,
+            icon: "none"
+          })
+        }
+      }).catch(res => {
+        wx.showToast({
+          title: res.msg,
+          icon: "none"
+        })
+      })
+
+
+
     }
-    wx.navigateTo({
-      url: '/pages/eatListPay/eatListPay?info=' + JSON.stringify(info),
-    })
+
   },
   toOrder() {
     wx.navigateTo({
@@ -460,34 +480,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getInfo()
-    // this.getcarLists()
+    this.getcarLists()
     this.getgroupList()
-    // this.getClassification()
-
+    this.getInfo()
+    this.getClassification()
+    this.startCountdown()
   },
   getgroupList() {
-    eatreserveList().then(res => {
+    eatgroupList({
+      shopId: 1
+    }).then(res => {
       if (res.code == 200) {
         this.setData({
-          eatreserveList: res.data
-        })
-      } else {
-        wx.showToast({
-          title: res.msg,
-          icon: "none"
-        })
-      }
-    }).catch(res => {
-      wx.showToast({
-        title: res.msg,
-        icon: "none"
-      })
-    })
-    eatgroupList().then(res => {
-      if (res.code == 200) {
-        this.setData({
-          groupList: res.data
+          groupList: res.list
         })
         // this.selectFoods()
       } else {
@@ -533,10 +538,12 @@ Page({
     })
   },
   getInfo() {
-    shopInfo().then(res => {
+    shopInfo({
+      id: 1
+    }).then(res => {
       if (res.code == 200) {
         this.setData({
-          shopInfoMsg: res.data
+          rtShop: res.rtShop
         })
       } else {
         wx.showToast({
@@ -592,68 +599,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (this.data.detailObj.id) { 
-      let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList 
-      let cartList = this.data.activetab == 0 ? this.data.cartList : this.data.reserveList 
-      let ids = this.data.activetab == 0 ? this.data.ids : this.data.ids1
-      groupList.forEach(item => {
-        if (item.coodVo && item.coodVo.length > 0) {
-          item.coodVo.forEach(item1 => {
-            if (item1.id == this.data.detailObj.id) {
-              item1.num = this.data.detailObj.num
-              if (cartList.length == 0) {
-                cartList.push(this.data.detailObj)
-                ids.push(this.data.detailObj.id)
-              } else {
-                if (ids.indexOf(this.data.detailObj.id) == -1) {
-                  ids.push(this.data.detailObj.id)
-                  cartList.push(this.data.detailObj)
-                }
-              }
-              cartList.forEach((item, index) => {
-                if (item.id == this.data.detailObj.id) {
-                  item.num = this.data.detailObj.num
-                  if (this.data.detailObj.num == 0) {
-                    cartList.splice(index, 1)
-                    ids.splice(index, 1)
-                  }
-                }
-              });
-            }
-          });
-        }
 
-      });
-      if (this.data.activetab == 0) {
-        this.setData({
-          groupList: groupList
-        })
-      } else {
-        this.setData({
-          eatreserveList: groupList
-        })
-      }
-
-
-
-
-
-
-
-      if (this.data.activetab == 0) {
-        this.setData({
-          cartList: cartList,
-          ids: ids
-        })
-        this.totalCount()
-      } else {
-        this.setData({
-          reserveList: cartList,
-          ids1: ids
-        })
-        this.totalCount1()
-      }
-    }
   },
 
   /**
@@ -667,7 +613,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    clearInterval(interval);
   },
 
   /**

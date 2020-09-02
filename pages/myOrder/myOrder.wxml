@@ -13,7 +13,7 @@
 			</picker> 
 		</van-tab>
 	</van-tabs> -->
-	<!-- <van-popup show="{{ showTop }}" position="top" custom-style="height: 20%;" bind:close="onClose"> 
+<!-- <van-popup show="{{ showTop }}" position="top" custom-style="height: 20%;" bind:close="onClose"> 
 	</van-popup> -->
 
 <view class='container'>
@@ -75,41 +75,48 @@
 					</view>
 				</view>
 				<view class="">
-					<navigator url="/pages/myOrderXq/myOrderXq?orderNum={{item.orderNum}}&itemType={{item.itemType}}" class="weui-cell goodsInfo" hover-class="none">
-						<view class="weui-cell__hd">
-							<image class="thumb" src="{{item.orderInfoObj.leaseImage}}" />
-						</view>
-						<view class="weui-cell__bd caption">
-							<view class="goodsName">{{item.orderInfoObj.leaseName}}</view>
-							<view class='time' wx:if="{{item.itemType==1}}">
-								{{item.orderInfoObj.leaseAddressName}}
+					<navigator url="/pages/myOrderXq/myOrderXq?orderNum={{item.orderNum}}&itemType={{item.itemType}}" class="goodsInfo" hover-class="none">
+						<view wx:if="{{item.itemType == 1}}" class="weui-cell">
+							<view class="weui-cell__hd">
+								<image class="thumb" src="{{item.orderInfoObj.leaseImage}}" />
 							</view>
-							<view class='textccc'>{{item.orderInfoObj.leaseArea}}m² 最多容纳{{item.orderInfoObj.leaseGalleryful}}人</view>
+							<view class="weui-cell__bd caption">
+								<view class="goodsName">{{item.orderInfoObj.leaseName}}</view>
+								<view class='time' wx:if="{{item.itemType==1}}">
+									{{item.orderInfoObj.leaseAddressName}}
+								</view>
+								<view class='textccc'>{{item.orderInfoObj.leaseArea}}m² 最多容纳{{item.orderInfoObj.leaseGalleryful}}人</view>
+							</view>
+							<view class="weui-cell__ft">
+								<view>￥{{item.originalPrice}}</view>
+								<view class='textccc'>{{item.orderInfoObj.serviceTime}}</view>
+							</view>
 						</view>
-						<view class="weui-cell__ft">
-							<view>￥{{item.originalPrice}}</view>
-							<view class='textccc'>3小时</view>
+						<view wx:if="{{item.itemType == 2}}" class="weui-cell" wx:for="{{item.orderInfoObj}}" wx:for-item="item1" wx:key="idx">
+							<view class="weui-cell__hd">
+								<image class="thumb" src="{{item1.showPice}}" />
+							</view>
+							<view class="weui-cell__bd caption">
+								<view class="goodsName">{{item1.name}}</view>
+							</view>
+							<view class="weui-cell__ft">
+								<view>￥{{item1.price}}</view>
+								<view class='textccc'>x{{item1.num}}</view>
+							</view>
 						</view>
 					</navigator>
 				</view>
 				<view class="weui-cell operationprice">
 					<view class="weui-cell__bd"></view>
 					<view class="weui-cell__ft">
-						总价￥{{item.originalPrice}}，优惠￥{{item.discountPrice}} 需支付￥{{item.amountPayable}}
+						总价￥{{item.originalPrice}}，优惠￥{{item.originalPrice - item.discountPrice}} 需支付￥{{item.amountPayable}}
 					</view>
 				</view>
-				<view class="weui-cell operation" wx:if="{{item.itemType==1}}">
+				<view class="weui-cell operation">
 					<view class="weui-cell__bd"></view>
 					<view class="weui-cell__ft">
-						<view class="btn" bindtap="showBottomBtn" id="{{item.id}}">取消订单</view>
-						<view class="btn colorCS" wx:if="{{item.statu==1}}">付款</view>
-					</view>
-				</view>
-				<view class="weui-cell operation" wx:if="{{item.itemType==2}}">
-					<view class="weui-cell__bd"></view>
-					<view class="weui-cell__ft">
-						<view class="btn" wx:if="{{item.statu==1}}">立即付款</view>
-						<view class="btn" wx:if="{{item.statu==2}}">取消订单</view>
+						<view class="btn" bindtap="showBottomBtn" data-item="{{item}}"> 取消订单</view>
+						<view class="btn colorCS" data-item="{{item}}" bindtap="payMoney" wx:if="{{item.statu==1}}">付款</view>
 						<view class="btn colorCS" wx:if="{{item.itemType==2}}">
 							<navigator url="/pages/eatQcode/eatQcode?id={{item.id}}" hover-class="none">二维码</navigator>
 						</view>

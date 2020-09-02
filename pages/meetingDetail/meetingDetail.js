@@ -92,8 +92,7 @@ Page({
   },
   getDetail() {
     meetingDetail({
-      id: this.data.meetingId,
-      wechatUserId: this.data.wechatUserId
+      id: this.data.meetingId
     }).then(res => {
       if (res.code == 200) {
         this.setData({

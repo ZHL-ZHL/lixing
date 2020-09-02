@@ -1,0 +1,92 @@
+<!--pages/eatListPay/eatListPay.wxml-->
+<view class="container">
+	<view class="adr weui-cell mainColor " wx:if="{{address}}">
+		<view class="weui-cell__bd">
+			<view class="name">{{address.name}}
+				<text style="color:#ccc"> {{address.phone}}</text>
+			</view>
+			<view class="addressInfo">{{address.address}} </view>
+		</view>
+		<view class="weui-cell__ft">
+			<image src="/images/icon/r_jt.png" class="r_jt" />
+		</view>
+	</view>
+	<navigator wx:else class="plus" url="/pages/myAdr/myAdr?type=2">
+		<view class="nav-add-address">+ 添加信息</view>
+		<view class="nav-ccc-address">请添加您的个人信息以便我们能尽快联系您~</view>
+	</navigator>
+	<view>
+		<view class="weui-cell">
+			<view class="weui-cell__hd">
+				订单方式：
+			</view>
+			<view class="weui-cell__bd">
+			</view>
+			<view class="weui-cell__ft">
+				<picker bindchange="bindPickerChange" value="{{orderTypeList[index].id}}" range-key="{{'dictName'}}" value="{{index}}" range="{{orderTypeList}}">
+					<view class="picker">
+						<input placeholder-class="placeholderClass" name="orderType" disabled="true" value="{{orderTypeList[index].dictName}}"></input>
+					</view>
+				</picker>
+			</view>
+		</view>
+	</view>
+	<view class="weui-cell goodsInfo" wx:for="{{info.list}}">
+		<view class="weui-cell__hd">
+			<image src="{{item.showPice}}" class="thumb"></image>
+		</view>
+		<view class="weui-cell__bd">
+			<view class="name">{{item.name}} </view>
+		</view>
+		<view class="weui-cell__ft">
+			<view class="name">￥{{item.discountPrice}}</view>
+			<view class="info">x{{item.num}}</view>
+		</view>
+	</view>
+</view>
+<view class="list">
+
+
+	<view class="weui-cell">
+		<view class="weui-cell__hd">
+			打包费：
+		</view>
+		<view class="weui-cell__bd">
+		</view>
+		<view class="weui-cell__ft">
+			￥{{info.bzTotalPrice}}
+		</view>
+	</view>
+	<view class="weui-cell">
+		<view class="weui-cell__hd">
+			配送费：
+		</view>
+		<view class="weui-cell__bd">
+		</view>
+		<view class="weui-cell__ft">
+			￥{{info.peiSf}}
+		</view>
+	</view>
+	<view class="weui-cell">
+		<view class="weui-cell__hd">
+			需付款：
+		</view>
+		<view class="weui-cell__bd">
+		</view>
+		<view class="weui-cell__ft">
+			已优惠：￥{{info.totalPrice - info.totalPriceDiscount}} 小计：￥{{info.totalPriceDiscount}}
+		</view>
+	</view>
+
+	<view class="weui-cell">
+		<view class="weui-cell__bd">备注</view>
+	</view>
+	<view>
+		<textarea placeholder="请填写备注。。。" bindinput="content"></textarea>
+	</view>
+</view>
+<view class="footer weui-cell">
+	<view class="allpayBtn">
+		<button class="btn save" bindtap="tjOrder">确定-支付</button>
+	</view>
+</view>

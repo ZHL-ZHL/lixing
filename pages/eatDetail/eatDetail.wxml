@@ -4,29 +4,32 @@
 		<image src="../../images/eat/title.png"></image>
 	</view>
 	<view class="eatDetail-cont">
-		<view class="title">茶叶蛋/水煮蛋/水蒸蛋</view>
-		<view class="eat-tag">
-			<van-tag color="#EEEEEE">约50g</van-tag>
-			<van-tag color="#EEEEEE">卤味儿</van-tag>
-		</view>
-		<view class="eat-tag-1">
+		<view class="title">{{info.name}}</view>
+		<!-- <view class="eat-tag-1">
 			<van-tag color="#FFFCE7">好吃不贵，营养健康</van-tag>
-		</view>
+		</view> -->
 		<view class="eat-count">
-			已销26份 月销1386份
+			已销{{}}份 月销{{}}份
 		</view>
 	</view>
 	<view class="weui-cell" style="padding-bottom:0rpx">
-		<view class="weui-cell__hd colorprice">￥1.5/个</view>
+		<view class="weui-cell__hd colorprice">￥{{info.price}}{{info.units}}</view>
 		<view class="weui-cell__bd"></view>
 		<view class="weui-cell__ft">
-			<view class="chooseBtn" catchtap="showggBtn"> 选规格 </view>
+			<view wx:if="{{info.isSpecification}}" class="chooseBtn" catchtap="showggBtn"> 选规格 </view>
+			<view class="foodNum" wx:if="{{!info.isSpecification}}">
+				<image src="/images/eat/jian.png" class="footAdd" wx:if="{{info.num>0}}" catchtap="goodsDel" data-idx="{{idx}}" data-num="{{info.num}}" data-id="{{info.id}}" data-item="{{info}}"></image>
+				<view class="foodValue" wx:if="{{info.num>0}}">
+					{{info.num}}
+				</view>
+				<image src="/images/eat/jia.png" class="footAdd" catchtap="goodsAdd" data-idx="{{idx}}" data-num="{{info.num}}" data-id="{{info.id}}" data-item="{{info}}" data-foodcount="{{info.limitCount-info.foodResidueCount}}" style="margin-right:20px"></image>
+			</view>
 		</view>
 	</view>
 	<view class="weui-cell" style="padding-top:4rpx">
-		<view class="weui-cell__hd colorPrice1">包装费￥0.5/份</view>
+		<view class="weui-cell__hd colorPrice1">包装费￥{{info.packagePrice}}/份</view>
 		<view class="weui-cell__bd"></view>
-		<view class="weui-cell__ft colorprice2">接受预订 6：30开始配送</view>
+		<view wx:if="{{info.isReserve}}" class="weui-cell__ft colorprice2">接受预订</view>
 	</view>
 	<view class="eatDetail-cont">
 		<view class="title">详情</view>
@@ -42,7 +45,7 @@
 		</van-row>
 	</view>
 
-	<view class="eatDetail-cont">
+	<!-- <view class="eatDetail-cont">
 		<view class="title">推荐搭配</view>
 		<view class="divider-content">
 			<scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%;">
@@ -54,7 +57,7 @@
 				</navigator>
 			</scroll-view>
 		</view>
-	</view>
+	</view> -->
 </view>
 
 

@@ -25,10 +25,9 @@ Page({
   onLoad: function (options) { 
     this.setData({
       orderNum: options.orderNum,
-      orderType:options.itemType==1?'leaseOrder':''
+      orderType:options.itemType==1?'leaseOrder':'foodOrder'
     })
     // this.countDown()
-
     this.getDetail()
   },
   
@@ -36,7 +35,7 @@ Page({
   transformRemainTime(time) {
     var min = Math.floor(time % 3600);
     this.setData({
-      remainTimeNew: Math.floor(time / 3600) + "时" + Math.floor(min / 60) + "分" + time % 60 + "秒"
+      remainTimeNew: Math.floor(min / 60) + "分" + time % 60 + "秒"
     })
   },
   // 开始倒计时
@@ -75,9 +74,7 @@ Page({
     orderDetail({orderNum:this.data.orderNum,orderType:this.data.orderType}).then(res => {
       if (res.code == 200) {
         this.setData({
-          info: res.data.leaseDetail,
-          leaseOrder: res.data.leaseOrder,
-          userOrder: res.data.userOrder,
+          info: res.data,  
           remainTime:  Math.floor(res.data.remainingTime/1000)
         })
         if (this.data.remainTime > 0) {

@@ -42,7 +42,9 @@
     "pages/meetingImage/meetingImage",
     "pages/meetDetailList/meetDetailList",
     "pages/eatQcode/eatQcode",
-    "pages/eatDetail/eatDetail"
+    "pages/eatDetail/eatDetail",
+    "pages/groupBuy/groupBuy", 
+    "pages/eatListPay/eatListPay"
   ],
   "window": {
     "backgroundTextStyle": "light",

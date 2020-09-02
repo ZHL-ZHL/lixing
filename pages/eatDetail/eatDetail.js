@@ -6,34 +6,60 @@ Page({
    */
   data: {
     showGG: false,
-    eatList: [{
-      name: "养生粥（绿豆/红枣...）",
-      num: 350,
-      price: 6,
-      picture: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597209899287&di=54060209c6f9261d0f83b0e88fea70be&imgtype=0&src=http%3A%2F%2Fdimg.52bjw.cn%2Fimage%2Fupload%2F02%2Fb3%2F13%2F9c%2F02b3139c182c94c2360338ee3193da3b.jpg'
-    }, {
-      name: "养生粥（绿豆/红枣...）",
-      num: 350,
-      price: 6,
-      picture: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597209899287&di=54060209c6f9261d0f83b0e88fea70be&imgtype=0&src=http%3A%2F%2Fdimg.52bjw.cn%2Fimage%2Fupload%2F02%2Fb3%2F13%2F9c%2F02b3139c182c94c2360338ee3193da3b.jpg'
-    }, {
-      name: "养生粥（绿豆/红枣...）",
-      num: 350,
-      price: 6,
-      picture: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597209899287&di=54060209c6f9261d0f83b0e88fea70be&imgtype=0&src=http%3A%2F%2Fdimg.52bjw.cn%2Fimage%2Fupload%2F02%2Fb3%2F13%2F9c%2F02b3139c182c94c2360338ee3193da3b.jpg'
-    }, {
-      name: "养生粥（绿豆/红枣...）",
-      num: 350,
-      price: 6,
-      picture: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597209899287&di=54060209c6f9261d0f83b0e88fea70be&imgtype=0&src=http%3A%2F%2Fdimg.52bjw.cn%2Fimage%2Fupload%2F02%2Fb3%2F13%2F9c%2F02b3139c182c94c2360338ee3193da3b.jpg'
-    }]
+    info: {},
+    eatList: [
+      //   {
+      //   name: "养生粥（绿豆/红枣...）",
+      //   num: 350,
+      //   price: 6,
+      //   picture: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597209899287&di=54060209c6f9261d0f83b0e88fea70be&imgtype=0&src=http%3A%2F%2Fdimg.52bjw.cn%2Fimage%2Fupload%2F02%2Fb3%2F13%2F9c%2F02b3139c182c94c2360338ee3193da3b.jpg'
+      // }, {
+      //   name: "养生粥（绿豆/红枣...）",
+      //   num: 350,
+      //   price: 6,
+      //   picture: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597209899287&di=54060209c6f9261d0f83b0e88fea70be&imgtype=0&src=http%3A%2F%2Fdimg.52bjw.cn%2Fimage%2Fupload%2F02%2Fb3%2F13%2F9c%2F02b3139c182c94c2360338ee3193da3b.jpg'
+      // }, {
+      //   name: "养生粥（绿豆/红枣...）",
+      //   num: 350,
+      //   price: 6,
+      //   picture: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597209899287&di=54060209c6f9261d0f83b0e88fea70be&imgtype=0&src=http%3A%2F%2Fdimg.52bjw.cn%2Fimage%2Fupload%2F02%2Fb3%2F13%2F9c%2F02b3139c182c94c2360338ee3193da3b.jpg'
+      // }, {
+      //   name: "养生粥（绿豆/红枣...）",
+      //   num: 350,
+      //   price: 6,
+      //   picture: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597209899287&di=54060209c6f9261d0f83b0e88fea70be&imgtype=0&src=http%3A%2F%2Fdimg.52bjw.cn%2Fimage%2Fupload%2F02%2Fb3%2F13%2F9c%2F02b3139c182c94c2360338ee3193da3b.jpg'
+      // }
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      info: JSON.parse(options.info)
+    })
+    console.log(this.data.info)
+  },
+  goodsDel(e) {
+    if (this.data.info.num && this.data.info.num > 0) {
+      this.data.info.num--
+    } else {
+      this.data.info.num = 0;
+    }
+    this.setData({
+      info: this.data.info
+    })
+  },
+  goodsAdd(e) {
+    if (this.data.info.num) {
+      this.data.info.num++
+    } else {
+      this.data.info.num = 1;
+    }
+    this.setData({
+      info: this.data.info
+    })
   },
   showggBtn() {
     this.setData({
@@ -62,15 +88,18 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
-  },
+  onHide: function () {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-
+  onUnload: function () { 
+    // console.log(this.data.info)
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2];
+    prevPage.setData({
+      detailObj: this.data.info,
+    })
   },
 
   /**

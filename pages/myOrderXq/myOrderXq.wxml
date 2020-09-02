@@ -1,9 +1,9 @@
 	<view>
-		<view class="title-img" wx:if="{{userOrder.statu==2}}">
+		<view class="title-img" wx:if="{{info.statu==2}}">
 			<view class="title-result">交易成功！</view>
 			<image src="../../images/my/title.png"></image>
 		</view>
-		<view class="title-img" wx:if="{{userOrder.statu==1}}">
+		<view class="title-img" wx:if="{{info.statu==1}}">
 			<!-- <view class="title-result">等待买家付款</view> -->
 			<!-- <view class="title-result"> {{countDownNum}}</view> -->
 			<view class="title-result">
@@ -16,7 +16,7 @@
 				<image src="../../images/my/time.png" class="time-img"></image> 交易时间
 			</view>
 			<view class='weui-cell__ft'>
-				<view>{{userOrder.updateTime}}</view>
+				<view>{{info.updateTime}}</view>
 				<view style="color:#ccc">(以实际交易时间为准)</view>
 			</view>
 		</view>
@@ -25,8 +25,8 @@
 				<image src="../../images/my/time.png" class="time-img"></image>
 			</view>
 			<view class='weui-cell__bd'>
-				<view>收货人： {{leaseOrder.orderName}} {{leaseOrder.orderPhone}}</view>
-				<view wx:if="{{leaseOrder.orderAddress}}">地 址： {{leaseOrder.orderAddress}}</view>
+				<view>收货人： {{info.orderName}} {{info.orderPhone}}</view>
+				<view wx:if="{{info.orderAddress}}">地 址： {{info.orderAddress}}</view>
 			</view>
 		</view>
 		<view>
@@ -34,68 +34,78 @@
 		<view class="list">
 			<view class="listItem">
 				<view class='weui-cell title'>
-					<view class='weui-cell__bd' wx:if="{{userOrder.itemType == 1}}">
+					<view class='weui-cell__bd' wx:if="{{info.itemType == 1}}">
 						<image src="../../images/my/meet.png" class="icon-img"></image>
 						会议室租赁
 						<image src="/images/icon/r_jt.png" class="r_jt"></image>
 					</view>
-					<view class='weui-cell__bd' wx:if="{{userOrder.itemType == 2}}">
+					<view class='weui-cell__bd' wx:if="{{info.itemType == 2}}">
 						<image src="../../images/my/food.png" class="icon-img"></image>
 						我要吃饭
 					</view>
 					<view class='weui-cell__ft status'>
 						<!--  -->
-						<text  wx:if="{{userOrder.statu==1}}">待付款</text>
-						<text  wx:if="{{userOrder.statu==2}}">已取消</text>
-						<text wx:if="{{userOrder.statu==3}}">已付款</text>
-						<text wx:if="{{userOrder.statu==4}}">已完成</text>
-						<text wx:if="{{userOrder.statu==5}}">退款</text>
+						<text  wx:if="{{info.statu==1}}">待付款</text>
+						<text  wx:if="{{info.statu==2}}">已付款</text>
+						<text wx:if="{{info.statu==3}}">已付款</text>
+						<text wx:if="{{info.statu==4}}">已取消</text>
+						<text wx:if="{{info.statu==5}}">退款</text>
 					</view>
 				</view>
 				<view class="">
-					<navigator url="/pages/meetingRoom/meetingRoom" class="weui-cell goodsInfo" hover-class="none">
-						<view class="weui-cell__hd">
-							<image class="thumb" src="{{info.leaseImage}}" />
-						</view>
-						<view class="weui-cell__bd caption">
-							<view class="goodsName">{{info.leaseName}}</view>
-							<view class='time'>
-								{{info.leaseAddressName}}
+					<navigator url="/pages/meetingRoom/meetingRoom" class="goodsInfo" hover-class="none">
+						<view class="weui-cell" wx:for="{{info.productDetails}}">
+							<view class="weui-cell__hd">
+								<image class="thumb" src="{{item.showPice}}" />
 							</view>
-							<view class='textccc'> {{info.leaseArea}} 最多容纳{{info.leaseGalleryful}}人</view>
+							<view class="weui-cell__bd caption">
+								<view class="goodsName">{{item.name}}</view>
+								<view class='time' wx-if="{{item.leaseAddressName}}">
+									{{item.leaseAddressName}}
+								</view>
+								<view class='textccc' wx:if="{{item.leaseArea}}"> {{item.leaseArea}} 最多容纳{{item.leaseGalleryful}}人</view>
+							</view>
+							<view class="weui-cell__ft">
+								<view>￥{{item.price}}</view>
+								<view class='textccc'>x{{item.num}}</view>
+							</view>
 						</view>
-						<view class="weui-cell__ft">
-							<view>￥{{userOrder.originalPrice}}</view>
-							<view class='textccc'>3小时</view>
-						</view>
+
 					</navigator>
 				</view>
 				<view class="weui-cell operationprice">
 					<view class="weui-cell__bd">
 						商品总价</view>
 					<view class="weui-cell__ft">
-						￥{{userOrder.originalPrice}}
+						￥{{info.originalPrice}}
 					</view>
 				</view>
-				<view class="weui-cell operationprice">
+				<view class="weui-cell operationprice" wx:if="{{info.deliverPrice}}">
 					<view class="weui-cell__bd">
 						配送费/快递</view>
 					<view class="weui-cell__ft">
-						无
+						{{info.deliverPrice}}
+					</view>
+				</view>
+				<view class="weui-cell operationprice" wx:if="{{info.packagePrice}}">
+					<view class="weui-cell__bd">
+						包装费</view>
+					<view class="weui-cell__ft">
+						{{info.packagePrice}}
 					</view>
 				</view>
 				<view class="weui-cell operationprice">
 					<view class="weui-cell__bd">
 						优惠券抵扣</view>
 					<view class="weui-cell__ft">
-						￥{{userOrder.discountPrice}}
+						￥{{info.originalPrice - info.discountPrice}}
 					</view>
 				</view>
 				<view class="weui-cell operationprice operationpriceline">
 					<view class="weui-cell__bd">
 						需付款</view>
 					<view class="weui-cell__ft">
-						￥{{userOrder.amountPayable}}
+						￥{{info.amountPayable}}
 					</view>
 				</view>
 				<view class="weui-cell operationprice operationpricepad">

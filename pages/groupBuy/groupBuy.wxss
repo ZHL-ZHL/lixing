@@ -1,0 +1,115 @@
+/* pages/groupBuy/groupBuy.wxss */
+@import "/pages/eat/eat";
+
+.yuanj {
+  text-decoration: none
+}
+
+.top-msg {
+  padding: 4rpx 30rpx;
+}
+
+.top-msg text {
+  margin: 0px;
+  width: 95%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.top-msg image {
+  width: 26rpx;
+  height: 16rpx;
+}
+
+.container {
+  min-height: auto;
+}
+
+.title-result {
+  width: 100%;
+  box-sizing: border-box;
+  height: 50px;
+  text-align: right;
+  line-height: 50px;
+  position: relative;
+}
+
+.title-result image {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  right: 0;
+  z-index: -1;
+}
+
+.title-result text.textRight {
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #FFFFFF;
+  color: #FF4D6B;
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  margin-right: 10px;
+  border-radius: 8rpx;
+  text-align: center;
+  font-size: 26rpx;
+  font-weight: bold;
+}
+
+.title-result text.textLeft {
+  float: left;
+  font-size: 26rpx;
+  color: #FF4D6C;
+  margin-left: 10px;
+}
+
+.thumb {
+  width: 220rpx;
+  height: 220rpx;
+}
+
+.foodprice {
+  font-size: 24rpx;
+  color: #FF4D6B;
+  bottom: 0px;
+  position: absolute;
+}
+.foodprice text{
+  font-size: 26rpx;
+}
+.cart{
+  width:100rpx;
+  height:100rpx;
+  box-shadow:2rpx 3rpx 15rpx 0px rgba(0, 0, 0, 0.1);
+  border-radius:50%;
+  position: fixed;
+  bottom:120rpx;
+  right: 42rpx;
+  border: 10rpx solid #fff;
+  background:linear-gradient(180deg,rgba(255,231,30,1),rgba(255,210,0,1));
+  align-items: center;
+}
+.cart image{
+  width: 60rpx;
+  height: 60rpx;
+  display: block;
+  margin: 0 auto;
+  margin-top: 20rpx;
+}
+.cart-num{
+  position: absolute;
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  text-align: center;
+  background: #FF4D6B;
+  color: #fff;
+  right: -30rpx; 
+  top:-20rpx;
+  font-size: 24rpx;
+  line-height: 50rpx;
+  font-weight: bold;
+}

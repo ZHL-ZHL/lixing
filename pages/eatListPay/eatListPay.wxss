@@ -1,0 +1,6 @@
+/* pages/eatListPay/eatListPay.wxss */
+@import "/pages/tjMeeting/tjMeeting.wxss";
+.weui-cell__ft{
+  color: #555;
+  font-size:26rpx;
+}

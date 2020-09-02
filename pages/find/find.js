@@ -5,7 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    banner1: [{picture:"/images/banner/banner.png"}],
+    banner1: [{
+        picture: "/images/banner/banner.png"
+      },
+      {
+        picture: "/images/banner/banner.png"
+      }
+    ],
     indicatorDots: true, //小点
     indicatorColor: "white",
     autoplay: true, //是否自动轮播
@@ -15,13 +21,21 @@ Page({
     current: 0,
     swiperIndex: 0
   },
-
+  toAdv(e) {
+    let item = JSON.stringify(e.currentTarget.dataset.item)
+    wx.navigateTo({
+      url: '/pages/groupBuy/groupBuy' ,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-  },  
+
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -53,8 +67,7 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () { 
-  },
+  onPullDownRefresh: function () {},
 
   /**
    * 页面上拉触底事件的处理函数

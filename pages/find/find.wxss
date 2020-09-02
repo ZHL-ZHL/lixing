@@ -1,2 +1,5 @@
 /* pages/find/find.wxss */
 @import "/pages/index/index.wxss";
+.slide-image{
+  margin: 20rpx auto;
+}

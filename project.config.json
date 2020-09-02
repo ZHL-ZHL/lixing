@@ -1335,6 +1335,55 @@
 					"id": -1,
 					"name": "pages/eat/eat",
 					"pathName": "pages/eat/eat",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/find/find",
+					"pathName": "pages/find/find",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/groupBuy/groupBuy",
+					"pathName": "pages/groupBuy/groupBuy",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/eat/eat",
+					"pathName": "pages/eat/eat",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/eatListPay/eatListPay",
+					"pathName": "pages/eat/eat",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/eatListPay/eatListPay",
+					"pathName": "pages/eatListPay/eatListPay",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/eat/eat",
+					"pathName": "pages/eat/eat",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/myOrder/myOrder",
+					"pathName": "pages/myOrder/myOrder",
 					"scene": null
 				}
 			]

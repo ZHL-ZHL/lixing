@@ -18,19 +18,11 @@ export function hzleasemakeList(data) {
 } 
 
 export function meetingDetail(data) {
-  if (data.wechatUserId){
-    return http.fly.request({
-      method: 'get',
-      url: URL.host + '/blade-bms/leasedetail/info/' + data.id + "/" + data.wechatUserId,
-      // params: data
-    })
-  }else{
-    return http.fly.request({
-      method: 'get',
-      url: URL.host + '/blade-bms/hzleasedetail/detail',
-      params: data
-    })
-  }
+  return http.fly.request({
+    method: 'get',
+    url: URL.host + '/blade-bms/hzleasedetail/detail',
+    params: data
+  })
 } 
 
 

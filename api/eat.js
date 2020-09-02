@@ -8,15 +8,24 @@ export function eatList(data) {
     url: URL.host + '/blade-bms/food/recommend/list',
     params: data
   })
-} 
-
-export function shopInfo(data) {
+}  
+export function shopInfo() {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/blade-bms/restaurant/info/'+data.id,
-    params: data
+    url: URL.host + '/blade-bms/shop/client/detail?id=1298522833797799937'
   })
 } 
+
+export function paySave(data) {
+  return http.fly.request({
+    method: 'post',
+    url: URL.host + '/blade-bms/rtorder/client/save',
+    body: data
+  })
+} 
+
+
+
 
 export function classification(data) {
   return http.fly.request({
@@ -125,13 +134,18 @@ export function eatOrderDetail(data) {
   })
 } 
 
-export function eatgroupList(data) {
+export function eatgroupList() {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/blade-bms/food/group/list',
-    params: data
+    url: URL.host + '/blade-bms/shop/client/list?shopId=1298522833797799937'
   })
 } 
+export function eatreserveList() {
+  return http.fly.request({
+    method: 'get',
+    url: URL.host + '/blade-bms/shop/client/reserveList?shopId=1298522833797799937'
+  })
+}  
 
 export function eatgroupshopList(data) {
   return http.fly.request({

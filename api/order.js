@@ -10,8 +10,7 @@ export function orderTj(data) {
   })
 }
 // 订单列表
-export function orderList(data) {
-  console.log()
+export function orderList(data) { 
   return http.fly.request({
     method: 'get',
     url: URL.host + '/blade-bms/userorder/wechat/page',
@@ -23,5 +22,13 @@ export function orderDetail(data) {
   return http.fly.request({
     method: 'get',
     url: URL.host + '/blade-bms/userorder/wechat/detail?orderNum=' + data.orderNum+'&orderType='+data.orderType
+  })
+}
+
+export function userorderRefund(data) { 
+  return http.fly.request({
+    method: 'get',
+    url: URL.host + '/blade-bms/userorder/wechat/refund',
+    params: data
   })
 }

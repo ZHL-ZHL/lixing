@@ -1,6 +1,6 @@
 <!--pages/investment/investment.wxml-->
 <view>
-  <video id="myVideo" src="http://mpvideo.qpic.cn/0bf2iiaaaaaap4abvtbbtvpfaqwdabbaaaaa.f10002.mp4?dis_k=ad165df53dd87e353e65ac6cc63563fb&dis_t=1594784748"
+  <video id="myVideo" src="http://39.100.156.89:9000/video/0bf2iiaaaaaap4abvtbbtvpfaqwdabbaaaaa.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=PB44H9HTXD9ZZD9YNSW0%2F20200902%2F%2Fs3%2Faws4_request&X-Amz-Date=20200902T034748Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3c38008238ac6902de8061be2e2c3a1fec03e32cc4fb4d0872dcd165aca173ea"
     binderror="videoErrorCallback" object-fit="cover" show-center-play-btn='{{false}}' show-play-btn="{{true}}" controls ></video>
   <!-- <view class="line"></view> -->
   <view class="weui-cell">园区简介</view>

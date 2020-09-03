@@ -1,21 +1,3 @@
-<!-- <van-tabs active="{{activetab}}" bind:change="onChange">
-		<van-tab wx:for="{{navBar}}" wx:key="index" title="{{item.name}}">
-			<van-popup show="{{ showTop }}" position="top" custom-style="height: 20%;" bind:close="onClose" />
-			<picker bindchange="typeChange" value="{{typeIdx}}" range="{{type}}">
-				<view class="weui-cell orderType">
-					<view class="weui-cell__hd">订单类型</view>
-					<view class="weui-cell__bd"></view>
-					<view class="weui-cell__hd orderTypeValue">{{type[typeIdx]}}</view>
-					<view class="weui-cell__ft">
-						<image src="/images/icon/r_jt.png" class="r_jt"></image>
-					</view>
-				</view>
-			</picker> 
-		</van-tab>
-	</van-tabs> -->
-<!-- <van-popup show="{{ showTop }}" position="top" custom-style="height: 20%;" bind:close="onClose"> 
-	</van-popup> -->
-
 <view class='container'>
 	<view wx:if="{{showTop}}" class="showTopBox" bindtap="oncloseTop">
 		<view class="showTopLi" wx:for="{{type}}" wx:key="{{index}}">
@@ -70,8 +52,8 @@
 					<view class='weui-cell__ft status'>
 						<text wx:if="{{item.statu == 1}}">待付款</text>
 						<text wx:if="{{item.statu==2}}">已付款</text>
-						<text wx:if="{{item.statu==3}}">已完成</text>
-						<text wx:if="{{item.statu==4}}">退款</text>
+						<text wx:if="{{item.statu==3}}">退款中</text>
+						<text wx:if="{{item.statu==4}}">已完成</text>
 					</view>
 				</view>
 				<view class="">
@@ -115,9 +97,9 @@
 				<view class="weui-cell operation">
 					<view class="weui-cell__bd"></view>
 					<view class="weui-cell__ft">
-						<view class="btn" bindtap="showBottomBtn" data-item="{{item}}"> 取消订单</view>
+						<view class="btn" bindtap="showBottomBtn" data-item="{{item}}" wx:if="{{item.statu==1}}">取消订单</view>
 						<view class="btn colorCS" data-item="{{item}}" bindtap="payMoney" wx:if="{{item.statu==1}}">付款</view>
-						<view class="btn colorCS" wx:if="{{item.itemType==2}}">
+						<view class="btn colorCS" wx:if="{{item.itemType==2 && item.statu==2}}">
 							<navigator url="/pages/eatQcode/eatQcode?id={{item.id}}" hover-class="none">二维码</navigator>
 						</view>
 					</view>
@@ -148,10 +130,10 @@
 			<view class="kong"></view>
 			<view class="footer weui-cell">
 				<view class="online">
-					<button class="btn cencel" name="Submit">确认取消</button>
+					<button class="btn cencel" name="Submit">暂不取消</button>
 				</view>
 				<view class="onlineCall">
-					<button class="btn save" name="Submit">暂不取消</button>
+					<button class="btn save" name="Submit">确认取消</button>
 				</view>
 			</view>
 		</van-popup>

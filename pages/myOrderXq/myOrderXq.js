@@ -1,8 +1,13 @@
 // pages/myOrderXq/myOrderXq.js
 import {
-  orderDetail
+  orderDetail,
+  userorderRefund
 } from "../../api/order.js"
 import Url from "../../utils/host.js"
+
+import {
+  payMoneys
+} from "../../api/carMang.js"
 var interval;
 Page({
 
@@ -10,6 +15,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    reason: "",
+    showNoMoney: false,
     orderNum: "",
     info: "",
     online: Url.imghost,
@@ -18,19 +25,94 @@ Page({
     remainTimeNew: '',
     // countDownNum:60,
   },
+  getNoMoney() {
+    this.setData({
+      showNoMoney: true
+    })
+  },
+  changeReason(e) {
+    this.setData({
+      reason: e.detail.value
+    })
+  },
+  saveNoMoney(e) {
+    // if (!this.data.reason) {
+    //   wx.showToast({
+    //     title: '请填写退款理由',
+    //     icon: "none"
+    //   })
+    //   return false
+    // }
+    userorderRefund({
+      orderNum: this.data.orderNum,
+      reason: this.data.reason,
+      orderType: "foodOrder"
+    }).then(res => {
+      if (res.code == 200) {
+        wx.navigateBack({
+          delta: 1,
+        })
+      }
+    })
+  },
+  payMoney(e) {
+    console.log(e)
+    let orderType = ""
+    if (e.currentTarget.dataset.item.itemType == 1) {
+      orderType = "leaseOrder"
+    } else if (e.currentTarget.dataset.item.itemType == 2) {
+      orderType = "foodOrder"
+    }
+    payMoneys({
+      orderType: orderType,
+      orderNum: this.data.orderNum
+    }).then(res => {
+      let pay_info = JSON.parse(res.data.pay_info)
+      wx.requestPayment({
+        // 'appId': data,
+        'timeStamp': pay_info.timeStamp,
+        'nonceStr': pay_info.nonceStr,
+        'package': pay_info.package,
+        'signType': pay_info.signType,
+        'paySign': pay_info.paySign,
+        'success': function (res) {
+          console.log(res)
+          wx.showToast({
+            title: "支付成功",
+            icon: 'success',
+            duration: 2000,
+            success: function () {
+              wx.navigateTo({
+                url: '/pages/paySuccess/paySuccess?type=1',
+                success: function (res) {},
+                fail: function (res) {},
+                complete: function (res) {},
+              })
+            }
+          })
+        },
+        fail: function (res1) {}
+      })
+    })
 
+  },
+  freeTell: function (e) {
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.item.userPhone,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) { 
+  onLoad: function (options) {
     this.setData({
       orderNum: options.orderNum,
-      orderType:options.itemType==1?'leaseOrder':'foodOrder'
+      orderType: options.itemType == 1 ? 'leaseOrder' : 'foodOrder'
     })
     // this.countDown()
     this.getDetail()
   },
-  
+
   // 剩余时间(毫秒)处理转换时间
   transformRemainTime(time) {
     var min = Math.floor(time % 3600);
@@ -71,15 +153,18 @@ Page({
   //   })
   // },
   getDetail() {
-    orderDetail({orderNum:this.data.orderNum,orderType:this.data.orderType}).then(res => {
+    orderDetail({
+      orderNum: this.data.orderNum,
+      orderType: this.data.orderType
+    }).then(res => {
       if (res.code == 200) {
         this.setData({
-          info: res.data,  
-          remainTime:  Math.floor(res.data.remainingTime/1000)
+          info: res.data,
+          remainTime: Math.floor(res.data.remainingTime / 1000)
         })
         if (this.data.remainTime > 0) {
           this.startCountdown()
-        } 
+        }
       } else {
         wx.showToast({
           title: res.msg,

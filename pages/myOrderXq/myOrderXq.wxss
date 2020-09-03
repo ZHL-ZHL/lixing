@@ -63,3 +63,31 @@
   left: 20%;
   font-weight: bold;
 }
+
+.putDownfood button.dialog-index--van-dialog__confirm.van-button--default {
+  background: #FFE401 !important;
+  color: #333 !important;
+}
+
+.van-dialog__button {
+  width: 50%;
+}
+
+.dialog-content {
+  padding: 50rpx 0rpx;
+  text-align: center;
+}
+
+textarea {
+  width: 90%;
+  height: 91px;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border: 1rpx solid #e1e1e1;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  margin: 0 auto;
+
+
+}

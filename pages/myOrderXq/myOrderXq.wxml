@@ -43,12 +43,16 @@
 						<image src="../../images/my/food.png" class="icon-img"></image>
 						我要吃饭
 					</view>
-					<view class='weui-cell__ft status'> 
+					<view class='weui-cell__ft status'>
 						<text  wx:if="{{info.statu==1}}">待付款</text>
 						<text  wx:if="{{info.statu==2}}">已付款</text>
-						<text wx:if="{{info.statu==3}}">退款中</text>
+						<text  wx:if="{{info.statu==2 && item.orderState == 2}}">已出餐</text>
+						<text  wx:if="{{info.statu==2 && item.orderState == 3}}">订单完成</text>
+						<text wx:if="{{info.statu==3 && info.refundState == 1}}" style="color:#11B500">退款成功</text>
+						<text wx:if="{{info.statu==3 && info.refundState == 2}}">拒绝退款</text>
+						<text wx:if="{{info.statu==3 && info.refundState == 3}}">退款异常</text>
+						<text wx:if="{{info.statu==3 && info.refundState == 4}}">退款中</text>
 						<text wx:if="{{info.statu==4}}">已取消</text>
-						<text wx:if="{{info.statu==5}}">退款</text>
 					</view>
 				</view>
 				<view class="">
@@ -124,6 +128,9 @@
 				<view class="btn colorCS" wx:if="{{info.statu==1}}" bindtap="payMoney" data-item="{{info}}">付款</view>
 				<view class="btn colorCS" wx:if="{{info.orderState == 1}}" data-item="{{info}}" bindtap="getNoMoney">申请退款</view>
 				<view class="btn colorCS" data-item="{{info}}" bindtap='freeTell'>联系商户</view>
+				<view class="btn colorCS" wx:if="{{info.itemType==2 && info.statu==2 && info.orderState == 2}}">
+					<navigator url="/pages/eatQcode/eatQcode?orderNum={{orderNum}}" hover-class="none">二维码</navigator>
+				</view>
 			</view>
 		</view>
 	</view>

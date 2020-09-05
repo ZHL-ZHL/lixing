@@ -15,8 +15,9 @@ Page({
   onLoad: function (options) {
     drawQrcode({
       canvasId: 'myQrcode', 
-      text: 'xxxxdffvvffggbbb'
+      text:options.orderNum
     })
+    console.log(options.orderNum)
     this.setData({
       userInfo: wx.getStorageSync("userInfo")
     })

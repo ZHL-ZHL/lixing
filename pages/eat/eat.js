@@ -18,6 +18,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    listfoodName: "",
+    specificationList: [],
     detailObj: {},
     shopInfoMsg: {},
     eatList: [{
@@ -178,10 +180,25 @@ Page({
       isFixed: e.detail.isFixed
     })
   },
-  showggBtn() {
+  showggBtn(e) {
+    e.currentTarget.dataset.item.specificationDetail.forEach(item => {
+      item.specificationListnew = item.specificationListnew ? item.specificationListnew : [] 
+      item.specificationList.forEach(item1 => {
+        let obj = {
+          name: item1,
+          show: false,
+        }
+        item.specificationListnew.push(obj)
+      });
+    });
     this.setData({
-      showGG: true
+      listfoodName: e.currentTarget.dataset.item.name,
+      specificationList: e.currentTarget.dataset.item.specificationDetail,
     })
+    this.setData({
+      showGG: true,
+    })
+    console.log(this.data.specificationList)
   },
   showCar() {
     this.setData({
@@ -592,9 +609,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (this.data.detailObj.id) { 
-      let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList 
-      let cartList = this.data.activetab == 0 ? this.data.cartList : this.data.reserveList 
+    if (this.data.detailObj.id) {
+      let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList
+      let cartList = this.data.activetab == 0 ? this.data.cartList : this.data.reserveList
       let ids = this.data.activetab == 0 ? this.data.ids : this.data.ids1
       groupList.forEach(item => {
         if (item.coodVo && item.coodVo.length > 0) {

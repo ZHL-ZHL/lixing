@@ -98,7 +98,7 @@ Page({
   },
   freeTell: function (e) {
     wx.makePhoneCall({
-      phoneNumber: e.currentTarget.dataset.item.userPhone,
+      phoneNumber: e.currentTarget.dataset.item.shopPhone,
     })
   },
   /**

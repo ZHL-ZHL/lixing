@@ -84,7 +84,7 @@
 							</view>
 						</view>
 						<view class="menuList">
-							<view class="weui-cell menulistItem" wx:for="{{groupList[current].coodVo}}" wx:for-index="idx" wx:for-item="menuItem" wx:key="idx" catchtap="toDetail"  data-item="{{menuItem}}">
+							<view class="weui-cell menulistItem" wx:for="{{groupList[current].coodVo}}" wx:for-index="idx" wx:for-item="menuItem" wx:key="idx" catchtap="toDetail" data-item="{{menuItem}}">
 								<view class="weui-cell__hd thumb">
 									<image src="{{menuItem.showPice}}" class="thumb" mode="aspectFill"></image>
 								</view>
@@ -109,7 +109,7 @@
 											仅剩{{}}份
 										</view>
 										<view class="foodNum" wx:if="{{menuItem.isSpecification}}">
-											<view class="chooseBtn" catchtap="showggBtn"> 选规格 </view>
+											<view class="chooseBtn" catchtap="showggBtn" data-item="{{menuItem}}"> 选规格 </view>
 										</view>
 										<view class="foodNum" wx:if="{{!menuItem.isSpecification}}">
 											<image src="/images/eat/jian.png" class="footAdd" wx:if="{{menuItem.num>0}}" catchtap="goodsDel" data-idx="{{idx}}" data-num="{{menuItem.num}}" data-id="{{menuItem.id}}" data-item="{{menuItem}}"></image>
@@ -136,7 +136,7 @@
 							</view>
 						</view>
 						<view class="menuList">
-							<view class="weui-cell menulistItem" wx:for="{{eatreserveList[current].coodVo}}" wx:for-index="idx" wx:for-item="menuItem" wx:key="idx" catchtap="toDetail" data-item="{{menuItem}}"> 
+							<view class="weui-cell menulistItem" wx:for="{{eatreserveList[current].coodVo}}" wx:for-index="idx" wx:for-item="menuItem" wx:key="idx" catchtap="toDetail" data-item="{{menuItem}}">
 								<view class="weui-cell__hd thumb">
 									<image src="{{menuItem.showPice}}" class="thumb" mode="aspectFill"></image>
 								</view>
@@ -376,31 +376,21 @@
 	<van-overlay show="{{ showGG }}" class="index50">
 		<view class="wrapper-showGG">
 			<view class="block">
-				<view class="weui-cell wrapper-showGG-title">套餐A - 两荤一素</view>
-				<view class="weui-cell">
-					<view class="weui-cell__hd">
-						荤菜
+				<view class="weui-cell wrapper-showGG-title">{{listfoodName}}</view>
+				<view wx:for="{{specificationList}}">
+					<view class="weui-cell">
+						<view class="weui-cell__hd">
+							{{item.categoryName}}菜
+						</view>
+						<view class="weui-cell__bd color-999"> 请选择{{item.num}}份{{item.categoryName}}菜</view>
+						<view class="weui-cell__ft">
+							<van-icon name="arrow-down" />
+						</view>
 					</view>
-					<view class="weui-cell__bd color-999"> 请选择两份荤菜</view>
-					<view class="weui-cell__ft">
-						<van-icon name="arrow-down" />
+					<view class="wrapper-showGG-text">
+						<view wx:for="{{item.specificationListnew}}" wx:for-item="newItem" class="mn {{newItem.show?'active':''}}" data-item="{{newItem}}" catchtap="changeColor">{{newItem.name}}</view>
 					</view>
-				</view>
-				<view class="wrapper-showGG-text">
-					<view wx:for="{{eatList}}" class="mn {{item.show?'active':''}}" data-item="{{item}}" catchtap="changeColor">辣子鸡丁</view>
-				</view>
-				<view class="weui-cell">
-					<view class="weui-cell__hd">
-						素菜
-					</view>
-					<view class="weui-cell__bd color-999"> 请选择一份荤菜</view>
-					<view class="weui-cell__ft">
-						<van-icon name="arrow-down" />
-					</view>
-				</view>
-				<view class="wrapper-showGG-text">
-					<view wx:for="{{eatList}}" class="mn {{item.show?'active':''}}" data-item="{{item}}" catchtap="changeColor">辣子鸡丁</view>
-				</view>
+				</view> 
 				<view class="weui-cell border-bottom">
 					<view class="weui-cell__hd">
 						购买数量
@@ -415,12 +405,11 @@
 					</view>
 				</view>
 				<view class="weui-cell">
-					<view class="weui-cell__hd colorred">
-						￥20.00
-					</view>
+					<view class="weui-cell__hd"></view>
 					<view class="weui-cell__bd"></view>
-					<view class="weui-cell__ft">
-						<view class="goCar">+ 加入购物车</view>
+					<view class="weui-cell__ft  colorred">
+						￥20.00
+						<!-- <view class="goCar">+ 加入购物车</view> -->
 					</view>
 				</view>
 			</view>

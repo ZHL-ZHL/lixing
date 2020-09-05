@@ -6,6 +6,7 @@ import Url from "../../utils/host.js"
 
 import { 
   payMoneys
+  
 } from "../../api/carMang.js"
 Page({
 
@@ -178,7 +179,7 @@ Page({
       status = null
     }
     data.statu = this.data.currentIndex!=0 ? this.data.currentIndex : ""
-    data.itemType = this.data.indexId ? this.data.indexId : ""
+    data.itemType = this.data.indexId !=0 ? this.data.indexId : ""
     if (this.data.itemType) {
 
     }

@@ -88,6 +88,4 @@ textarea {
   border-radius: 8rpx;
   padding: 20rpx;
   margin: 0 auto;
-
-
 }

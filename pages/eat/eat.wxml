@@ -109,7 +109,7 @@
 											仅剩{{}}份
 										</view>
 										<view class="foodNum" wx:if="{{menuItem.isSpecification}}">
-											<view class="chooseBtn" catchtap="showggBtn" data-item="{{menuItem}}"> 选规格 </view>
+											<view class="chooseBtn" catchtap="showggBtn" data-item="{{menuItem}}"  > 选规格 </view>
 										</view>
 										<view class="foodNum" wx:if="{{!menuItem.isSpecification}}">
 											<image src="/images/eat/jian.png" class="footAdd" wx:if="{{menuItem.num>0}}" catchtap="goodsDel" data-idx="{{idx}}" data-num="{{menuItem.num}}" data-id="{{menuItem.id}}" data-item="{{menuItem}}"></image>
@@ -317,7 +317,7 @@
 					<van-icon class="deleteIcon" name="delete" />清空购物车</view>
 			</view>
 			<scroll-view scroll-y="true" style="height:380rpx;" wx:if="{{activetab == 0}}">
-				<view class="weui-cell" wx:for="{{cartList}}" wx:key="index">
+				<view class="weui-cell" wx:for="{{cartList}}" wx:key="index" >
 					<view class="weui-cell__hd">
 						<image src="{{item.showPice}}" class="thumb"></image>
 					</view>
@@ -377,7 +377,7 @@
 		<view class="wrapper-showGG">
 			<view class="block">
 				<view class="weui-cell wrapper-showGG-title">{{listfoodName}}</view>
-				<view wx:for="{{specificationList}}">
+				<view wx:for="{{specificationList}}" wx:key="index" wx:for-index="index">
 					<view class="weui-cell">
 						<view class="weui-cell__hd">
 							{{item.categoryName}}菜
@@ -388,7 +388,7 @@
 						</view>
 					</view>
 					<view class="wrapper-showGG-text">
-						<view wx:for="{{item.specificationListnew}}" wx:for-item="newItem" class="mn {{newItem.show?'active':''}}" data-item="{{newItem}}" catchtap="changeColor">{{newItem.name}}</view>
+						<view wx:for="{{item.specificationListnew}}" wx:for-item="newItem" class="mn {{newItem.show?'active':''}}" data-item="{{newItem}}" catchtap="changeColor"  data-pidx="{{index}}" data-idx="{{idx}}" wx:for-index="idx" >{{newItem.name}}</view>
 					</view>
 				</view> 
 				<view class="weui-cell border-bottom">
@@ -405,11 +405,11 @@
 					</view>
 				</view>
 				<view class="weui-cell">
-					<view class="weui-cell__hd"></view>
+					<view class="weui-cell__hd colorred">	￥{{menuItem.price}}</view>
 					<view class="weui-cell__bd"></view>
-					<view class="weui-cell__ft  colorred">
-						￥20.00
-						<!-- <view class="goCar">+ 加入购物车</view> -->
+					<view class="weui-cell__ft  ">
+					
+						<view class="goCar" bindtap="tocarr" >+ 加入购物车</view>
 					</view>
 				</view>
 			</view>

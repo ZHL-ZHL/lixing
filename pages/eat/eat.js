@@ -22,19 +22,7 @@ Page({
     specificationList: [],
     detailObj: {},
     shopInfoMsg: {},
-    eatList: [{
-      name: '宫保鸡丁',
-      show: true,
-    }, {
-      name: '鱼香肉丝',
-      show: true,
-    }, {
-      name: '土豆牛肉',
-      show: false,
-    }, {
-      name: '小炒肉',
-      show: false,
-    }],
+    eatList: [],
     showTitle: false,
     showGG: false,
     activetab: 0,
@@ -90,7 +78,8 @@ Page({
     ids: [],
     ids1: [],
     load: false,
-    news: []
+    news: [],
+    menuItem:""
   },
   onChange(e) {
     this.setData({
@@ -113,36 +102,88 @@ Page({
 
   },
   changeColor(e) {
-    for (let i = 0; i < this.data.eatList.length; i++) {
-      const item = this.data.eatList[i];
+    console.log(this.data.eatList)
+    let pidx=e.currentTarget.dataset.pidx
+    let idx=e.currentTarget.dataset.idx
+    let specificationList=this.data.specificationList
+    let list=specificationList[pidx].specificationListnew
+   
+    console.log(e)
+    console.log(list)
+    let selNum=list.filter(function (v) {
+      if (v.show) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+    for (let i = 0; i < list.length; i++) {
+      const item = list[i];
       if (item.name == e.currentTarget.dataset.item.name) {
-        item.show = !e.currentTarget.dataset.item.show
-        break
-      }
-    }
-    let num = 0;
-    for (let i = 0; i < this.data.eatList.length; i++) {
-      const item = this.data.eatList[i];
-      if (item.show) {
-        num++
-      }
-    }
-
-    if (num > 2) {
-      for (let i = 0; i < this.data.eatList.length; i++) {
-        const item = this.data.eatList[i];
-        if (item.show && item.name != e.currentTarget.dataset.item.name) {
-          item.show = false
+        console.log(selNum.length)
+        console.log(specificationList.num)
+        console.log(selNum.length==specificationList[pidx].num)
+        console.log(selNum.length==!item.show)
+        if(!item.show&&(selNum.length==specificationList[pidx].num)){
+            wx.showToast({
+              title: '选'+specificationList[pidx].num+'个'+specificationList[pidx].categoryName+'菜',
+              icon:"none"
+            })
+        }else{
+          item.show = !e.currentTarget.dataset.item.show
           break
         }
+       
       }
     }
-
-
+    specificationList[pidx].specificationListnew=list
     this.setData({
-      eatList: this.data.eatList
+      specificationList
     })
-    console.log(this.data.eatList)
+  },
+  
+  tocarr(){
+    let item=this.data.menuItem
+    let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList
+    // let foodCount = e.currentTarget.dataset.limitCount
+    groupList.forEach((good) => {
+      if (good.coodVo && good.coodVo.length > 0) {
+        good.coodVo.forEach((food) => {
+          if (food.id == item.id) {
+            let tcArray=[]
+            let tc=[]
+            this.data.specificationList.forEach(item => {
+              item.specificationListnew.forEach(item1 => {
+                if(item1.show){
+                  tc.push(item1.name)
+                }
+              });
+            });
+            tcArray.push({specificationList:tc})
+            if (!food.num) {
+              food.num = 1
+              food.specificationList=tcArray
+            } else {
+              food.num += 1
+              food.specificationList=food.specificationList.concat(tcArray)
+            }
+            console.log(food)
+          }
+        })
+      }
+    })
+    this.selectFoods(item)
+    // 优化体验，异步传递当前点击文档节点
+    if (this.data.activetab == 0) {
+      this.setData({
+        groupList: groupList,
+        showGG:false
+      })
+    } else {
+      this.setData({
+        eatreserveList: groupList
+      })
+    }
   },
   toDetail(e) {
     let info = e.currentTarget.dataset.item
@@ -181,19 +222,11 @@ Page({
     })
   },
   showggBtn(e) {
-    e.currentTarget.dataset.item.specificationDetail.forEach(item => {
-      item.specificationListnew = item.specificationListnew ? item.specificationListnew : [] 
-      item.specificationList.forEach(item1 => {
-        let obj = {
-          name: item1,
-          show: false,
-        }
-        item.specificationListnew.push(obj)
-      });
-    });
+    console.log(e)
     this.setData({
       listfoodName: e.currentTarget.dataset.item.name,
       specificationList: e.currentTarget.dataset.item.specificationDetail,
+      menuItem:e.currentTarget.dataset.item
     })
     this.setData({
       showGG: true,
@@ -486,8 +519,9 @@ Page({
   getgroupList() {
     eatreserveList().then(res => {
       if (res.code == 200) {
+        
         this.setData({
-          eatreserveList: res.data
+          eatreserveList:res.data
         })
       } else {
         wx.showToast({
@@ -503,8 +537,30 @@ Page({
     })
     eatgroupList().then(res => {
       if (res.code == 200) {
+        let list=res.data
+        for(let i=0;i<list.length;i++){
+          let coodVo=list[i].coodVo
+          for(let j=0;j<coodVo.length;j++){
+            
+            
+            if(coodVo[j].type==1&&(coodVo[j].specificationDetail&&coodVo[j].specificationDetail.length>0)){
+              coodVo[j].specificationDetail.forEach(item => {
+                console.log(i,j)
+                item.specificationListnew = item.specificationListnew ? item.specificationListnew : [] 
+                item.specificationList.forEach(item1 => {
+                  let obj = {
+                    name: item1,
+                    show: false,
+                  }
+                  item.specificationListnew.push(obj)
+                });
+              });
+            }
+          }
+          
+        }
         this.setData({
-          groupList: res.data
+          groupList: list
         })
         // this.selectFoods()
       } else {

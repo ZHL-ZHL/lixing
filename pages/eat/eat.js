@@ -41,17 +41,17 @@ Page({
     indicatorActiveColor: "#FFE400",
     swiperIndex: 0,
     navBar: [{
-        name: '点菜',
-        id: 0
-      },
-      {
-        name: '预定',
-        id: 1
-      },
-      {
-        name: '商家',
-        id: 2
-      },
+      name: '点菜',
+      id: 0
+    },
+    {
+      name: '预定',
+      id: 1
+    },
+    {
+      name: '商家',
+      id: 2
+    },
     ],
     menNav: [],
     isFixed: false,
@@ -79,7 +79,7 @@ Page({
     ids1: [],
     load: false,
     news: [],
-    menuItem:""
+    menuItem: ""
   },
   onChange(e) {
     this.setData({
@@ -103,14 +103,14 @@ Page({
   },
   changeColor(e) {
     console.log(this.data.eatList)
-    let pidx=e.currentTarget.dataset.pidx
-    let idx=e.currentTarget.dataset.idx
-    let specificationList=this.data.specificationList
-    let list=specificationList[pidx].specificationListnew
-   
+    let pidx = e.currentTarget.dataset.pidx
+    let idx = e.currentTarget.dataset.idx
+    let specificationList = this.data.specificationList
+    let list = specificationList[pidx].specificationListnew
+
     console.log(e)
     console.log(list)
-    let selNum=list.filter(function (v) {
+    let selNum = list.filter(function (v) {
       if (v.show) {
         return true;
       } else {
@@ -122,50 +122,50 @@ Page({
       if (item.name == e.currentTarget.dataset.item.name) {
         console.log(selNum.length)
         console.log(specificationList.num)
-        console.log(selNum.length==specificationList[pidx].num)
-        console.log(selNum.length==!item.show)
-        if(!item.show&&(selNum.length==specificationList[pidx].num)){
-            wx.showToast({
-              title: '选'+specificationList[pidx].num+'个'+specificationList[pidx].categoryName+'菜',
-              icon:"none"
-            })
-        }else{
+        console.log(selNum.length == specificationList[pidx].num)
+        console.log(selNum.length == !item.show)
+        if (!item.show && (selNum.length == specificationList[pidx].num)) {
+          wx.showToast({
+            title: '选' + specificationList[pidx].num + '个' + specificationList[pidx].categoryName + '菜',
+            icon: "none"
+          })
+        } else {
           item.show = !e.currentTarget.dataset.item.show
           break
         }
-       
+
       }
     }
-    specificationList[pidx].specificationListnew=list
+    specificationList[pidx].specificationListnew = list
     this.setData({
       specificationList
     })
   },
-  
-  tocarr(){
-    let item=this.data.menuItem
+
+  tocarr() {
+    let item = this.data.menuItem
     let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList
     // let foodCount = e.currentTarget.dataset.limitCount
     groupList.forEach((good) => {
       if (good.coodVo && good.coodVo.length > 0) {
         good.coodVo.forEach((food) => {
           if (food.id == item.id) {
-            let tcArray=[]
-            let tc=[]
+            let tcArray = []
+            let tc = []
             this.data.specificationList.forEach(item => {
               item.specificationListnew.forEach(item1 => {
-                if(item1.show){
+                if (item1.show) {
                   tc.push(item1.name)
                 }
               });
             });
-            tcArray.push({specificationList:tc})
+            tcArray.push({ specificationList: tc.join(",") })
             if (!food.num) {
               food.num = 1
-              food.specificationList=tcArray
+              food.specificationList = tcArray
             } else {
               food.num += 1
-              food.specificationList=food.specificationList.concat(tcArray)
+              food.specificationList = food.specificationList.concat(tcArray)
             }
             console.log(food)
           }
@@ -177,7 +177,7 @@ Page({
     if (this.data.activetab == 0) {
       this.setData({
         groupList: groupList,
-        showGG:false
+        showGG: false
       })
     } else {
       this.setData({
@@ -189,9 +189,9 @@ Page({
     let info = e.currentTarget.dataset.item
     wx.navigateTo({
       url: '/pages/eatDetail/eatDetail?info=' + JSON.stringify(info),
-      success: function (res) {},
-      fail: function (res) {},
-      complete: function (res) {},
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
     })
   },
   closeshowGG() {
@@ -211,9 +211,9 @@ Page({
     let phone = e.currentTarget.dataset.phone;
     wx.makePhoneCall({
       phoneNumber: phone,
-      success: function (res) {},
-      fail: function (res) {},
-      complete: function (res) {},
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
     })
   },
   onScroll(e) {
@@ -226,7 +226,7 @@ Page({
     this.setData({
       listfoodName: e.currentTarget.dataset.item.name,
       specificationList: e.currentTarget.dataset.item.specificationDetail,
-      menuItem:e.currentTarget.dataset.item
+      menuItem: e.currentTarget.dataset.item
     })
     this.setData({
       showGG: true,
@@ -320,6 +320,7 @@ Page({
     let josnCartList = JSON.stringify(cartList)
     let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList
     let foods = []
+    console.log(cartList)
     groupList.forEach((good) => {
       if (good.coodVo && good.coodVo.length > 0) {
         good.coodVo.forEach((food) => {
@@ -329,6 +330,7 @@ Page({
                 return item1.id == food.id
               })
               cartList[index] = food
+              
             } else {
               cartList.push(food)
               ids.push(food.id)
@@ -500,9 +502,9 @@ Page({
   toOrder() {
     wx.navigateTo({
       url: '/pages/eatOrder/eatOrder',
-      success: function (res) {},
-      fail: function (res) {},
-      complete: function (res) {},
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
     })
   },
 
@@ -519,9 +521,9 @@ Page({
   getgroupList() {
     eatreserveList().then(res => {
       if (res.code == 200) {
-        
+
         this.setData({
-          eatreserveList:res.data
+          eatreserveList: res.data
         })
       } else {
         wx.showToast({
@@ -537,16 +539,16 @@ Page({
     })
     eatgroupList().then(res => {
       if (res.code == 200) {
-        let list=res.data
-        for(let i=0;i<list.length;i++){
-          let coodVo=list[i].coodVo
-          for(let j=0;j<coodVo.length;j++){
-            
-            
-            if(coodVo[j].type==1&&(coodVo[j].specificationDetail&&coodVo[j].specificationDetail.length>0)){
+        let list = res.data
+        for (let i = 0; i < list.length; i++) {
+          let coodVo = list[i].coodVo
+          for (let j = 0; j < coodVo.length; j++) {
+
+
+            if (coodVo[j].type == 1 && (coodVo[j].specificationDetail && coodVo[j].specificationDetail.length > 0)) {
               coodVo[j].specificationDetail.forEach(item => {
-                console.log(i,j)
-                item.specificationListnew = item.specificationListnew ? item.specificationListnew : [] 
+                console.log(i, j)
+                item.specificationListnew = item.specificationListnew ? item.specificationListnew : []
                 item.specificationList.forEach(item1 => {
                   let obj = {
                     name: item1,
@@ -557,7 +559,7 @@ Page({
               });
             }
           }
-          
+
         }
         this.setData({
           groupList: list

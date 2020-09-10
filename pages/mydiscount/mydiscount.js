@@ -1,25 +1,25 @@
 // pages/mydiscount/mydiscount.js
-import { discountAllList } from "../../api/discount.js"
-import {discountMyList} from "../../api/discount.js"
-import { getCard } from "../../api/discount.js"
+import { myYe } from "../../api/discount.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    wechatUserId:"",
-    list:[],
-    nav:["可领取","我的卡券"],
-    current:"0",
-    queS:true
+    yeE:"",
+    cardNum:""
   },
-  getCard1(e){
+  getYuE(e){
     console.log(e)
-    let id=e.currentTarget.dataset.id
-    getCard({ wechatUserId: this.data.wechatUserId, discountId:id}).then(res=>{
+    let data={}
+    data.appId="wxc35575f7a176ae3c"
+    data.openId=wx.getStorageSync('openId')
+    myYe(data).then(res=>{
       if (res.code == 200) {
-        
+        this.setData({
+           yeE:res.data.balance,
+           cardNum:res.data.cardNum
+        })
       } else {
         wx.showToast({
           title: res.msg,
@@ -107,10 +107,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      wechatUserId: wx.getStorageSync('userInfo').wechatUserId
-    })
-    this.getAllList()
+   this.getYuE()
   },
 
   /**

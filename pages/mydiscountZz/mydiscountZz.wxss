@@ -1,0 +1,26 @@
+/* pages/mydiscountZz/mydiscountZz.wxss */
+page{
+  background: #f8f8f8;
+}
+.card{
+  width: 670rpx;
+  background: #FFFFFF;
+  box-shadow: 0rpx 0rpx 15rpx 0rpx rgba(0, 0, 0, 0.05);
+  border-radius: 10rpx;
+  margin: 20px auto;
+}
+.ewmImg{
+  width: 380rpx;
+  height: 380rpx;
+  display: block;
+  margin: 20px auto;
+}
+.explain{
+  text-align: center;
+  margin: 20px 0;
+}
+.scanCode{
+    text-align: center;
+    line-height: 98rpx;
+    border-top: 1px solid #EDEDED;
+}

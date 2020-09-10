@@ -35,6 +35,10 @@ export function xdLogin(data) {
 
               })
             }
+            wx.setStorage({
+              key: "openId",
+              data: res1.openId,
+            })
             resolve(res1)
           }).catch(res1 => {
             reject(res1)

@@ -1,0 +1,11 @@
+/* pages/mydiscountCz/mydiscountCz.wxss */
+.card{
+  width: 710rpx;
+  /* height: 210rpx; */
+  background: #FFFFFF;
+  border: 4rpx solid #EDF1A3;
+  box-shadow: 0rpx 3rpx 15rpx 0rpx rgba(0, 0, 0, 0.06);
+  border-radius: 10rpx;
+  text-align: center;
+  padding:20px 0;
+}

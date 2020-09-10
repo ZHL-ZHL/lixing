@@ -24,3 +24,20 @@ export function getCard(data) {
     body: data
   })
 } 
+// 余额
+export function myYe(data) {
+  return http.fly.request({
+    method: 'get',
+    url: URL.host + '/blade-bms/wechatmealcard/detail',
+    params: data
+  })
+} 
+// 充值
+
+export function topay(data) {
+  return http.fly.request({
+    method: 'post',
+    url: URL.host + '/blade-bms/wechatmealcard/toPay',
+    body: data
+  })
+} 

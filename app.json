@@ -43,8 +43,11 @@
     "pages/meetDetailList/meetDetailList",
     "pages/eatQcode/eatQcode",
     "pages/eatDetail/eatDetail",
-    "pages/groupBuy/groupBuy", 
-    "pages/eatListPay/eatListPay"
+    "pages/groupBuy/groupBuy",
+    "pages/eatListPay/eatListPay",
+    "pages/mydiscountCz/mydiscountCz",
+    "pages/mydiscountTk/mydiscountTk",
+    "pages/mydiscountZz/mydiscountZz"
   ],
   "window": {
     "backgroundTextStyle": "light",

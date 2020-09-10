@@ -1,0 +1,9 @@
+<!--pages/mydiscountCz/mydiscountCz.wxml-->
+<view class="container">
+    <view class="weui-cell" wx:for="{{list}}" wx:key="index">
+      <view class="weui-cell__bd card " bindtap="toCz" data-index="{{index}}">
+         <view>{{item.name}}元</view>
+         <view>售价{{item.cz}}元（充￥{{item.zs}}送）</view>
+      </view>
+    </view>
+</view>

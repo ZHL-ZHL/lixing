@@ -1,0 +1,15 @@
+<!--pages/mydiscountZz/mydiscountZz.wxml-->
+<view class="container">
+   <view class="card">
+      <view class="weui-cell" style="background:#FFFBE7;color:#FFAD00;padding:10px 15px">
+        <view class="weui-cell__hd"></view>
+        <view class="weui-cell__bd">面对面转账</view>
+      </view>
+      <view class="explain">扫二维码向我转账</view>
+      <view style="text-align:center">
+         <!-- <image src="/images/zhonglu-logo-small.png" > </image> -->
+         <canvas style="width:380rpx; height: 380rpx;" canvas-id="myQrcode" class="ewmImg"></canvas>
+      </view>
+      <view class="scanCode">扫一扫向对方转账</view>
+   </view>
+</view>

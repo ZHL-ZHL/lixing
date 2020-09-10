@@ -110,14 +110,28 @@ Page({
       orderData.amountPayable = Number(orderData.deliverPrice) +  Number(orderData.discountPrice) +  Number(orderData.packagePrice)
       let arr = []
       this.data.info.list.forEach(item => {
-        let obj = {
-          id: item.id,
-          num: item.num,
-          showPice: item.showPice,
-          price: item.price,
-          name: item.name
+        
+        if(item.type==1){
+          let obj = {
+            id: item.id,
+            num: item.num,
+            showPice: item.showPice,
+            price: item.price,
+            name: item.name,       
+            specificationList:item.specificationList[0].specificationList
+          }
+          arr.push(obj)
+        }else{
+          let obj = {
+            id: item.id,
+            num: item.num,
+            showPice: item.showPice,
+            price: item.price,
+            name: item.name
+          }
+          arr.push(obj)
         }
-        arr.push(obj)
+        
       });
       orderData.orderInfo = JSON.stringify(arr)
       console.log(orderData)

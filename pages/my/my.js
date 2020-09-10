@@ -28,7 +28,7 @@ Page({
       }
     ],
     navList: [{
-        name: "我的卡包",
+        name: "我的饭卡",
         icon: "/images/my/a-4.png",
         url: "/pages/mydiscount/mydiscount"
       },
@@ -173,6 +173,7 @@ Page({
       })
     } else {
       xdLogin(e).then(res => {
+        
         this.setData({
           userInfo: res
         })

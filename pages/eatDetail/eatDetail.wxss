@@ -32,6 +32,7 @@ margin-right: 10rpx;
   padding: 2rpx 16rpx;
   border-radius: 8rpx;
   color: #333333;
+  position: relative;
 }
 .colorprice{
   color: #FF4D6B;

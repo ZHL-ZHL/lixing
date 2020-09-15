@@ -1,5 +1,5 @@
 /* pages/mydiscountTk/mydiscountTk.wxss */
-.weui-cell::after{
+.weui-cell::after {
   content: "";
   height: 1rpx;
   border-bottom: 1rpx solid #e1e1e1;
@@ -8,7 +8,8 @@
   bottom: 0;
   position: absolute;
 }
-.btnYellow{
+
+.btnYellow {
   width: 750rpx;
   line-height: 98rpx;
   background: #FFE301;
@@ -16,4 +17,12 @@
   left: 0;
   bottom: 0;
   text-align: center;
+}
+
+.weui-cell__bd {
+  vertical-align: middle;
+  font-size: 26rpx;
+  vertical-align: middle;
+  line-height: 46rpx;
+
 }

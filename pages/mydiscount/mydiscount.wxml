@@ -34,7 +34,7 @@
 				<view class="weui-cell__bd">
                <view> <image class="icon" src="/images/kb/qb.png"></image></view>
                <view>当前余额</view>
-               <view>￥{{yeE}}</view>
+               <view class="money">￥{{yeE}}</view>
             </view>
 			</view>
 		</view>

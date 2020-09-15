@@ -108,7 +108,7 @@ export function feedback(data) {
 export function getPhone(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/wechat/phone/',
+    url: URL.host + '/blade-user/wechatuser/phone?appid=wxc35575f7a176ae3c',
     params: data
   })
 }

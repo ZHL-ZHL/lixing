@@ -41,17 +41,17 @@ Page({
     indicatorActiveColor: "#FFE400",
     swiperIndex: 0,
     navBar: [{
-      name: '点菜',
-      id: 0
-    },
-    {
-      name: '预定',
-      id: 1
-    },
-    {
-      name: '商家',
-      id: 2
-    },
+        name: '点菜',
+        id: 0
+      },
+      {
+        name: '预定',
+        id: 1
+      },
+      {
+        name: '商家',
+        id: 2
+      },
     ],
     menNav: [],
     isFixed: false,
@@ -142,10 +142,9 @@ Page({
     })
   },
 
-  tocarr() {
+  tocarradd() {
     let item = this.data.menuItem
     let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList
-    // let foodCount = e.currentTarget.dataset.limitCount
     groupList.forEach((good) => {
       if (good.coodVo && good.coodVo.length > 0) {
         good.coodVo.forEach((food) => {
@@ -159,15 +158,22 @@ Page({
                 }
               });
             });
-            tcArray.push({ specificationList: tc.join(",") })
-            if (!food.num) {
-              food.num = 1
-              food.specificationList = tcArray
-            } else {
-              food.num += 1
-              food.specificationList = food.specificationList.concat(tcArray)
+            if (tc.length > 0) {
+              tcArray.push({
+                specificationList: tc.join(",")
+              })
+              if (!food.num) {
+                food.num = 1
+                food.specificationList = tcArray
+              } else {
+                food.num += 1
+                food.specificationList = food.specificationList.concat(tcArray)
+              }
             }
-            console.log(food)
+
+            // this.setData({
+            //   menuItem:food
+            // })
           }
         })
       }
@@ -189,9 +195,9 @@ Page({
     let info = e.currentTarget.dataset.item
     wx.navigateTo({
       url: '/pages/eatDetail/eatDetail?info=' + JSON.stringify(info),
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
+      success: function (res) {},
+      fail: function (res) {},
+      complete: function (res) {},
     })
   },
   closeshowGG() {
@@ -211,9 +217,9 @@ Page({
     let phone = e.currentTarget.dataset.phone;
     wx.makePhoneCall({
       phoneNumber: phone,
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
+      success: function (res) {},
+      fail: function (res) {},
+      complete: function (res) {},
     })
   },
   onScroll(e) {
@@ -244,6 +250,7 @@ Page({
     })
   },
   goodsAdd(e) {
+    console.log(e)
     let item = e.currentTarget.dataset.item;
     let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList
     let idx = e.currentTarget.dataset.idx
@@ -265,6 +272,9 @@ Page({
                   })
                 }
               }
+              this.setData({
+                menuItem: food
+              })
             }
           })
         }
@@ -285,7 +295,9 @@ Page({
     }
   },
   goodsDel(e) {
+    console.log(e)
     let item = e.currentTarget.dataset.item;
+    let iitem = e.currentTarget.dataset.mitem
     let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList
     let idx = e.currentTarget.dataset.idx
     let addid = e.currentTarget.dataset.id
@@ -295,6 +307,17 @@ Page({
           good.coodVo.forEach((food) => {
             if (food.id == addid) {
               food.num -= 1
+              if (food.specificationList) {
+                food.specificationList.forEach((item1, index) => {
+                  if (item1.specificationList == iitem) {
+                    food.specificationList.splice(index, 1)
+                    return
+                  }
+                });
+                this.setData({
+                  menuItem: food
+                })
+              }
             }
           })
         }
@@ -320,7 +343,7 @@ Page({
     let josnCartList = JSON.stringify(cartList)
     let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList
     let foods = []
-    console.log(cartList)
+    // console.log(cartList)
     groupList.forEach((good) => {
       if (good.coodVo && good.coodVo.length > 0) {
         good.coodVo.forEach((food) => {
@@ -330,7 +353,7 @@ Page({
                 return item1.id == food.id
               })
               cartList[index] = food
-              
+
             } else {
               cartList.push(food)
               ids.push(food.id)
@@ -340,7 +363,7 @@ Page({
               let index = cartList.findIndex(item1 => {
                 return item1.id == food.id
               })
-              console.log(index)
+              // console.log(index)
             }
           }
         })
@@ -502,9 +525,9 @@ Page({
   toOrder() {
     wx.navigateTo({
       url: '/pages/eatOrder/eatOrder',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
+      success: function (res) {},
+      fail: function (res) {},
+      complete: function (res) {},
     })
   },
 
@@ -667,6 +690,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log(this.data.detailObj)
     if (this.data.detailObj.id) {
       let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList
       let cartList = this.data.activetab == 0 ? this.data.cartList : this.data.reserveList
@@ -675,6 +699,7 @@ Page({
         if (item.coodVo && item.coodVo.length > 0) {
           item.coodVo.forEach(item1 => {
             if (item1.id == this.data.detailObj.id) {
+              item1.specificationList = this.data.detailObj.specificationList
               item1.num = this.data.detailObj.num
               if (cartList.length == 0) {
                 cartList.push(this.data.detailObj)
@@ -699,6 +724,7 @@ Page({
         }
 
       });
+      console.log(groupList)
       if (this.data.activetab == 0) {
         this.setData({
           groupList: groupList

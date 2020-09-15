@@ -34,28 +34,8 @@
 			</view>
 		</block>
 	</view>
-	<image src="/images/bottom.png" style="width:{{imgWidth}}rpx;height:{{imgHeight}}rpx"></image>
+	<!-- <image src="/images/bottom.png" style="width:{{imgWidth}}rpx;height:{{imgHeight}}rpx"></image> -->
 	<view class="cart">
 	  <image src="/images/car.png"></image>
-	</view>
-	<!-- <cover-image src="/images/bottom.png"></cover-image> -->
-	<!-- <view class="line"></view>
-	<view class="weui-cell">智慧停车</view>
-	<view class="ads">
-		<navigator url="/pages/carNumber/carNumber" hover-class="none">
-			<image src="/images/tingche.jpeg" mode="aspectFill"></image>
-		</navigator>
-	</view>
-	<view class="weui-cell">我要吃饭</view>
-	<view class="ads">
-		<navigator url="/pages/eat/eat" hover-class="none">
-			<image src="/images/eat.jpg" mode="aspectFill"></image>
-		</navigator>
-	</view>
-	<view class="weui-cell">会议室租赁</view>
-	<view class="ads">
-		<navigator url="/pages/eat/meetingRoom" hover-class="none">
-			<image src="/images/timg.jpg" mode="aspectFill"></image>
-		</navigator>
-	</view> -->
+	</view> 
 </view>

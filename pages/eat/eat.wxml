@@ -109,7 +109,10 @@
 											仅剩{{}}份
 										</view>
 										<view class="foodNum" wx:if="{{menuItem.isSpecification}}">
-											<view class="chooseBtn" catchtap="showggBtn" data-item="{{menuItem}}"  > 选规格 </view>
+											<view class="chooseBtn" catchtap="showggBtn" data-item="{{menuItem}}">
+												选规格
+												<text class="numTop" wx:if="{{menuItem.num>0}}">{{menuItem.num}}</text>
+											</view>
 										</view>
 										<view class="foodNum" wx:if="{{!menuItem.isSpecification}}">
 											<image src="/images/eat/jian.png" class="footAdd" wx:if="{{menuItem.num>0}}" catchtap="goodsDel" data-idx="{{idx}}" data-num="{{menuItem.num}}" data-id="{{menuItem.id}}" data-item="{{menuItem}}"></image>
@@ -161,7 +164,10 @@
 											仅剩{{}}份
 										</view>
 										<view class="foodNum" wx:if="{{menuItem.isSpecification}}">
-											<view class="chooseBtn" catchtap="showggBtn"> 选规格 </view>
+											<view class="chooseBtn" catchtap="showggBtn">
+												选规格
+												<text class="numTop" wx:if="{{menuItem.num>0}}">{{menuItem.num}}</text>
+											</view>
 										</view>
 
 										<view class="foodNum" wx:if="{{!menuItem.isSpecification}}">
@@ -317,31 +323,55 @@
 					<van-icon class="deleteIcon" name="delete" />清空购物车</view>
 			</view>
 			<scroll-view scroll-y="true" style="height:380rpx;" wx:if="{{activetab == 0}}">
-				<view class="weui-cell" wx:for="{{cartList}}" wx:key="index" >
-					<view class="weui-cell__hd">
-						<image src="{{item.showPice}}" class="thumb"></image>
-					</view>
-					<view class="weui-cell__bd">
-						<view>
-							{{item.name}}
+				<view wx:for="{{cartList}}" wx:key="index">
+					<view class="weui-cell" wx:if="{{!item.specificationList}}">
+						<view class="weui-cell__hd">
+							<image src="{{item.showPice}}" class="thumb"></image>
 						</view>
-						<!-- <view class="color999">
-							(约430克)
-						</view> -->
-						<view class="foodPrice1">
-							<label>￥</label>{{item.price}}
-						</view>
-					</view>
-					<view class="weui-cell__ft">
-						<view class="">
-							<image src="/images/eat/jian.png" class="footAdd" wx:if="{{item.num>0}}" bindtap="goodsDel" data-idx="{{idx}}" data-num="{{item.num}}" data-id="{{item.id}}" data-item="{{item}}"></image>
-							<view class="foodValue" wx:if="{{item.num>0}}">
-								{{item.num}}
+						<view class="weui-cell__bd">
+							<view>
+								{{item.name}}
 							</view>
-							<image src="/images/eat/jia.png" class="footAdd" bindtap="goodsAdd" data-idx="{{idx}}" data-num="{{item.num}}" data-foodcount="{{item.foodCount-item.foodResidueCount}}" data-id="{{item.id}}" data-item="{{item}}"></image>
+							<view class="foodPrice1">
+								<label>￥</label>{{item.price}}
+							</view>
+						</view>
+						<view class="weui-cell__ft">
+							<view class="">
+								<image src="/images/eat/jian.png" class="footAdd" wx:if="{{item.num>0}}" bindtap="goodsDel" data-idx="{{idx}}" data-num="{{item.num}}" data-id="{{item.id}}" data-item="{{item}}"></image>
+								<view class="foodValue" wx:if="{{item.num>0}}">
+									{{item.num}}
+								</view>
+								<image src="/images/eat/jia.png" class="footAdd" bindtap="goodsAdd" data-idx="{{idx}}" data-num="{{item.num}}" data-foodcount="{{item.foodCount-item.foodResidueCount}}" data-id="{{item.id}}" data-item="{{item}}"></image>
+							</view>
+						</view>
+					</view>
+					<view class="weui-cell" wx:if="{{item.specificationList.length>0}}" wx:for="{{item.specificationList}}" wx:for-item="menuItem" wx:key="idx">
+						<view class="weui-cell__hd">
+							<image src="{{item.showPice}}" class="thumb"></image>
+						</view>
+						<view class="weui-cell__bd">
+							<view>
+								{{item.name}}
+							</view>
+							<view style="font-size:24rpx;color:#ccc">
+								{{menuItem.specificationList}}
+							</view>
+							<view class="foodPrice1">
+								<label>￥</label>{{item.price}}
+							</view>
+						</view>
+						<view class="weui-cell__ft">
+							<view class="">
+								<image src="/images/eat/jian.png" class="footAdd" wx:if="{{item.num>0}}" bindtap="goodsDel" data-idx="{{idx}}" data-num="{{item.num}}" data-mitem="{{menuItem.specificationList}}" data-id="{{item.id}}" data-item="{{item}}"></image>
+								<view class="foodValue" wx:if="{{item.num>0}}">
+									1
+								</view>
+							</view>
 						</view>
 					</view>
 				</view>
+
 			</scroll-view>
 			<scroll-view scroll-y="true" style="height:380rpx;" wx:if="{{activetab == 1}}">
 				<view class="weui-cell" wx:for="{{reserveList}}" wx:key="index">
@@ -388,28 +418,21 @@
 						</view>
 					</view>
 					<view class="wrapper-showGG-text">
-						<view wx:for="{{item.specificationListnew}}" wx:for-item="newItem" class="mn {{newItem.show?'active':''}}" data-item="{{newItem}}" catchtap="changeColor"  data-pidx="{{index}}" data-idx="{{idx}}" wx:for-index="idx" >{{newItem.name}}</view>
-					</view>
-				</view> 
-				<view class="weui-cell border-bottom">
-					<view class="weui-cell__hd">
-						购买数量
-					</view>
-					<view class="weui-cell__bd"></view>
-					<view class="weui-cell__ft">
-						<image src="/images/eat/jian.png" class="footAdd" bindtap="goodsDel" data-idx="{{idx}}"></image>
-						<view class="foodValue">
-							1
-						</view>
-						<image src="/images/eat/jia.png" class="footAdd" bindtap="goodsAdd"></image>
+						<view wx:for="{{item.specificationListnew}}" wx:for-item="newItem" class="mn {{newItem.show?'active':''}}" data-item="{{newItem}}" catchtap="changeColor" data-pidx="{{index}}" data-idx="{{idx}}" wx:for-index="idx">{{newItem.name}}</view>
 					</view>
 				</view>
 				<view class="weui-cell">
-					<view class="weui-cell__hd colorred">	￥{{menuItem.price}}</view>
+					<view class="weui-cell__hd colorred"> ￥{{menuItem.price}}</view>
 					<view class="weui-cell__bd"></view>
 					<view class="weui-cell__ft  ">
-					
-						<view class="goCar" bindtap="tocarr" >+ 加入购物车</view>
+						<view class="goCar" bindtap="tocarradd">+ 加入购物车</view>
+						<!-- <view wx:if="{{menuItem.num>0}}">
+							<image src="/images/eat/jian.png" class="footAdd" wx:if="{{menuItem.num>0}}" bindtap="goodsDel" data-idx="{{idx}}" data-num="{{menuItem.num}}" data-id="{{menuItem.id}}" data-item="{{menuItem}}"></image>
+							<view class="foodValue" wx:if="{{menuItem.num>0}}">
+								{{menuItem.num}}
+							</view>
+							<image src="/images/eat/jia.png" class="footAdd" bindtap="tocarradd" data-idx="{{idx}}" data-num="{{menuItem.num}}" data-foodcount="{{menuItem.foodCount-menuItem.foodResidueCount}}" data-id="{{menuItem.id}}" data-item="{{menuItem}}"></image>
+						</view> -->
 					</view>
 				</view>
 			</view>

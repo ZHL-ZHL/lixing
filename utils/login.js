@@ -25,6 +25,12 @@ export function xdLogin(data) {
               key: 'token',
               data: res1.access_token,
             })
+            let userInfonew =  wx.getStorageSync('userInfo') 
+            userInfonew.phone = res1.phone 
+            wx.setStorage({
+              key: 'userInfo',
+              data: userInfonew
+            })
             if(res1.haveLogged==0){ 
               wechatuserInfo({
                 nickName:data.detail.userInfo.nickName,

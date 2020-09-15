@@ -7,29 +7,7 @@ Page({
   data: {
     showGG: false,
     info: {},
-    eatList: [
-      //   {
-      //   name: "养生粥（绿豆/红枣...）",
-      //   num: 350,
-      //   price: 6,
-      //   picture: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597209899287&di=54060209c6f9261d0f83b0e88fea70be&imgtype=0&src=http%3A%2F%2Fdimg.52bjw.cn%2Fimage%2Fupload%2F02%2Fb3%2F13%2F9c%2F02b3139c182c94c2360338ee3193da3b.jpg'
-      // }, {
-      //   name: "养生粥（绿豆/红枣...）",
-      //   num: 350,
-      //   price: 6,
-      //   picture: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597209899287&di=54060209c6f9261d0f83b0e88fea70be&imgtype=0&src=http%3A%2F%2Fdimg.52bjw.cn%2Fimage%2Fupload%2F02%2Fb3%2F13%2F9c%2F02b3139c182c94c2360338ee3193da3b.jpg'
-      // }, {
-      //   name: "养生粥（绿豆/红枣...）",
-      //   num: 350,
-      //   price: 6,
-      //   picture: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597209899287&di=54060209c6f9261d0f83b0e88fea70be&imgtype=0&src=http%3A%2F%2Fdimg.52bjw.cn%2Fimage%2Fupload%2F02%2Fb3%2F13%2F9c%2F02b3139c182c94c2360338ee3193da3b.jpg'
-      // }, {
-      //   name: "养生粥（绿豆/红枣...）",
-      //   num: 350,
-      //   price: 6,
-      //   picture: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597209899287&di=54060209c6f9261d0f83b0e88fea70be&imgtype=0&src=http%3A%2F%2Fdimg.52bjw.cn%2Fimage%2Fupload%2F02%2Fb3%2F13%2F9c%2F02b3139c182c94c2360338ee3193da3b.jpg'
-      // }
-    ]
+    eatList: []
   },
 
   /**
@@ -61,13 +39,82 @@ Page({
       info: this.data.info
     })
   },
-  showggBtn() {
+  showggBtn(e) {
+    console.log(e)
+    this.setData({
+      listfoodName: e.currentTarget.dataset.item.name,
+      specificationList: e.currentTarget.dataset.item.specificationDetail,
+      menuItem: e.currentTarget.dataset.item
+    })
     this.setData({
       showGG: true
     })
   },
   closeshowGG() {
     this.setData({
+      showGG: false
+    })
+  },
+  changeColor(e) {
+    let pidx = e.currentTarget.dataset.pidx
+    let idx = e.currentTarget.dataset.idx
+    let specificationList = this.data.specificationList
+    let list = specificationList[pidx].specificationListnew
+    let selNum = list.filter(function (v) {
+      if (v.show) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+    for (let i = 0; i < list.length; i++) {
+      const item = list[i];
+      if (item.name == e.currentTarget.dataset.item.name) {
+        if (!item.show && (selNum.length == specificationList[pidx].num)) {
+          wx.showToast({
+            title: '选' + specificationList[pidx].num + '个' + specificationList[pidx].categoryName + '菜',
+            icon: "none"
+          })
+        } else {
+          item.show = !e.currentTarget.dataset.item.show
+          break
+        }
+
+      }
+    }
+    specificationList[pidx].specificationListnew = list
+    this.setData({
+      specificationList
+    })
+  },
+  tocarradd() { 
+    let tcArray = []
+    let tc = []
+    console.log(this.data.specificationList)
+    this.data.specificationList.forEach(item => {
+      item.specificationListnew.forEach(item1 => {
+        if (item1.show) {
+          tc.push(item1.name)
+        }
+      });
+    });
+    console.log(tc)
+    if (tc.length > 0) {
+      tcArray.push({
+        specificationList: tc.join(",")
+      })
+      console.log(tcArray)
+      console.log(this.data.info)
+      if (!this.data.info.num) {
+        this.data.info.num = 1
+        this.data.info.specificationList = tcArray
+      } else {
+        this.data.info.num += 1
+        this.data.info.specificationList = this.data.info.specificationList.concat(tcArray)
+      }
+    } 
+    this.setData({ 
+      info:this.data.info,
       showGG: false
     })
   },
@@ -93,8 +140,9 @@ Page({
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () { 
+  onUnload: function () {
     // console.log(this.data.info)
+    this.data.info.num = this.data.info.num ? this.data.info.num : 0
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
     prevPage.setData({

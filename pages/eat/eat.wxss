@@ -616,10 +616,26 @@ movable-view {
 .colorred {
   color: #FF4D6B;
 }
-.fixCaractive{
-  background:#FFE402 ;
+
+.fixCaractive {
+  background: #FFE402;
 }
-.jsBtnactive{
-  background:#FFAE00 ;
+
+.jsBtnactive {
+  background: #FFAE00;
   color: #000;
+}
+
+.numTop {
+  position: absolute;
+  display: inline-block;
+  background: #FF4D6B;
+  color: #fff;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  line-height: 20px;
+  top: -10px;
+  right: -10px; 
 }

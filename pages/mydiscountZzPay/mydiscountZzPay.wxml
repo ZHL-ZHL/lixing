@@ -1,0 +1,14 @@
+<!--pages/mydiscountZzPay/mydiscountZzPay.wxml-->
+<view class="container">
+   <view class="weui-cell">
+       <view class="weui-cell__bd" style="height:200rpx">
+          <view style="font-weight:600;font-size:40rpx">付款给{{nickname}}</view>
+       </view>
+       <view class="weui-cell__hd"></view>
+   </view>
+   <view class="cardMoney">
+        <view class="weui-cell">金额</view>
+        <view class="weui-cell" style="font-size:50rpx;padding-top:0;font-weight:500" >￥{{money}}</view>
+        <view class="btnYellow" bindtap="toPay">确认</view>
+   </view>
+</view>

@@ -9,3 +9,15 @@
   text-align: center;
   padding:20px 0;
 }
+.btnYellow{
+  width: 750rpx;
+  line-height: 98rpx;
+  background: #FFE301;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+}
+.bgYellow{
+  background:#ECF1A7
+}

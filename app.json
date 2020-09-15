@@ -47,7 +47,9 @@
     "pages/eatListPay/eatListPay",
     "pages/mydiscountCz/mydiscountCz",
     "pages/mydiscountTk/mydiscountTk",
-    "pages/mydiscountZz/mydiscountZz"
+    "pages/mydiscountZz/mydiscountZz",
+    "pages/mydiscountZzS/mydiscountZzS",
+    "pages/mydiscountZzPay/mydiscountZzPay"
   ],
   "window": {
     "backgroundTextStyle": "light",

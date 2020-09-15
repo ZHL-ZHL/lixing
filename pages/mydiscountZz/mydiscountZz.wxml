@@ -6,10 +6,17 @@
         <view class="weui-cell__bd">面对面转账</view>
       </view>
       <view class="explain">扫二维码向我转账</view>
+      <view class="explain" style="font-size:50rpx;font-weight:500" wx:if="{{setMoney!=0}}">
+          ￥{{setMoney}}
+      </view>
       <view style="text-align:center">
          <!-- <image src="/images/zhonglu-logo-small.png" > </image> -->
-         <canvas style="width:380rpx; height: 380rpx;" canvas-id="myQrcode" class="ewmImg"></canvas>
+         <canvas canvas-id="myQrcode" class="ewmImg"></canvas>
       </view>
-      <view class="scanCode">扫一扫向对方转账</view>
+      <view class="weui-cell setline" style="text-align:center;padding-bottom:20px">
+         <navigator class="weui-cell__bd " hover-class="none" url="/pages/mydiscountZzS/mydiscountZzS?type=1">设置金额</navigator>
+         <view class="weui-cell__bd">保存收款码</view>
+      </view>
+      <view class="scanCode" bindtap="sacnCode">扫一扫向对方转账</view>
    </view>
 </view>

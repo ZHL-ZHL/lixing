@@ -1452,8 +1452,41 @@
 				},
 				{
 					"id": -1,
+<<<<<<< HEAD
 					"name": "pages/mydiscount/mydiscount",
 					"pathName": "pages/mydiscount/mydiscount",
+=======
+					"name": "pages/mydiscountZz/mydiscountZz",
+					"pathName": "pages/mydiscountZz/mydiscountZz",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mydiscountZzS/mydiscountZzS",
+					"pathName": "pages/mydiscountZzS/mydiscountZzS",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mydiscountZz/mydiscountZz",
+					"pathName": "pages/mydiscountZz/mydiscountZz",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mydiscountZzPay/mydiscountZzPay",
+					"pathName": "pages/mydiscountZzPay/mydiscountZzPay",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mydiscountCz/mydiscountCz",
+					"pathName": "pages/mydiscountCz/mydiscountCz",
+>>>>>>> ce3def7e8fbfd9f92c4fb370e07f7052003ec487
 					"scene": null
 				}
 			]

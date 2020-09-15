@@ -1,0 +1,16 @@
+<!--pages/mydiscountZzS/mydiscountZzS.wxml-->
+<view class="container">
+  <view class="cardS">
+     <view class="weui-cell" wx:if="{{type==1}}">收款金额</view>
+     <view class="weui-cell" wx:if="{{type==2}}">输入金额</view>
+     <view class="weui-cell sInput" style="padding-top:0">
+       <view class="weui-cell__hd"  style="font-size:60rpx;">￥</view>
+       <view class="weui-cell__bd"  style="font-size:60rpx;">
+          <input type="digit" bindinput="jeInput"></input>
+       </view>
+     </view>
+     <view class="weui-cell">
+         <view class="btnYellow" bindtap="toZhuanZ">确定</view>
+     </view>
+  </view>
+</view>

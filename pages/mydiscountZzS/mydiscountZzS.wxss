@@ -1,0 +1,27 @@
+/* pages/mydiscountZzS/mydiscountZzS.wxss */
+page{
+  background: #f8f8f8;
+}
+.cardS{
+  width: 690rpx;
+  background:#fff;
+  margin: 20px auto;
+  box-sizing: border-box;
+  padding:10px
+}
+.btnYellow{
+  width: 100%;
+  line-height: 98rpx;
+  text-align: center;
+  background:#FFE301;
+  border-radius: 5px;
+}
+.sInput::after{
+  position: absolute;
+  content: "";
+  left: 15px;
+  right: 15px;
+  bottom: 10px;
+  border-bottom: 1rpx solid #ededed;
+  height: 1px;
+}

@@ -10,8 +10,8 @@ page{
   margin: 20px auto;
 }
 .ewmImg{
-  width: 380rpx;
-  height: 380rpx;
+  width:160px;
+  height: 160px;
   display: block;
   margin: 20px auto;
 }
@@ -23,4 +23,15 @@ page{
     text-align: center;
     line-height: 98rpx;
     border-top: 1px solid #EDEDED;
+}
+.setline::after{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 0;
+  bottom: 20px;
+  width: 1px;
+  content: "";
+  background: #EDEDED;
 }

@@ -71,11 +71,5 @@ page {
 .icon {
   width: 45rpx;
   height: 45rpx;
-  display: block;
-  margin: 10px auto;
-}
-
-.money {
-  font-size: 36rpx;
-  font-weight: bold;
+  /* display: block; */
 }

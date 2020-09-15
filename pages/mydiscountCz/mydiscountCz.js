@@ -1,27 +1,48 @@
 // pages/mydiscountCz/mydiscountCz.js
-import {topay} from "../../api/discount"
+import {topay,chargeactivity} from "../../api/discount"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[
-      {name:110,cz:100,zs:10},
-      {name:0.02,cz:0.01,zs:0.01},
-    ],
-    cardNum:""
+    list:[],
+    cardNum:"",
+    current:0
   },
-  toCz(e){
-    console.log(e)
-    let index=e.currentTarget.dataset.index
+  sel(e){
+     this.setData({
+       current:e.currentTarget.dataset.index
+     })
+  },
+  getList(){
+    chargeactivity({shopId:wx.getStorageSync('shopId')}).then(res=>{
+       if(res.code==200){
+         this.setData({
+           list:res.data
+         })
+       }else{
+        wx.showToast({
+          title: res.msg,
+          icon:"none"
+        })
+       }
+    }).catch(res=>{
+      wx.showToast({
+        title: res,
+        icon:"none"
+      })
+    })
+  },
+  toCz(){
+    let index=this.data.current
     let money=this.data.list[index]
     let data={}
     data.appId="wxc35575f7a176ae3c"
     data.openId=wx.getStorageSync('openId')
-    data.rechargeMoney=money.cz
+    data.rechargeMoney=money.rechargeMoney
     data.cardNum=this.data.cardNum
-    data.giveMoney=money.zs
+    data.giveMoney=money.giveMoney
     topay(data).then(res=>{
       let pay_info=JSON.parse(res.data.pay_info)
       wx.requestPayment({
@@ -58,6 +79,7 @@ Page({
      this.setData({
       cardNum:options.cardNum
      })
+     this.getList()
   },
 
   /**

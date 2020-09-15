@@ -41,3 +41,21 @@ export function topay(data) {
     body: data
   })
 } 
+//转账
+export function totransfer(data) {
+  return http.fly.request({
+    method: 'post',
+    url: URL.host + '/blade-bms/wechatmealcard/transfer',
+    body: data
+  })
+} 
+// 充送规则
+
+
+export function chargeactivity(data) {
+  return http.fly.request({
+    method: 'get',
+    url: URL.host + '/blade-bms/rtrechargeactivity/list',
+    params: data
+  })
+} 

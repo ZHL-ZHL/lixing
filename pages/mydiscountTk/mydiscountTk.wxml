@@ -19,5 +19,9 @@
          </view>
       </view>
    </view>
-   <view class=" btnYellow">接受退款协议并发起退款申请</view>
+   <view class=" btnYellow" bindtap="refundApplyBtn">接受退款协议并发起退款申请</view>
 </view>
+
+<van-dialog use-slot title="申请退款" show="{{ showPassMoney }}" bind:confirm="savePassMoneybtn" class="putDownfood" show-cancel-button>
+	<view class="dialog-content">确定发起退款申请么？</view>
+</van-dialog>

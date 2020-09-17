@@ -1,4 +1,5 @@
 <!--pages/eatDetail/eatDetail.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
 <view>
 	<view class="eatDetail-top">
 		<image src="../../images/eat/title.png"></image>
@@ -16,8 +17,8 @@
 		<view class="weui-cell__hd colorprice">￥{{info.price}}{{info.units}}</view>
 		<view class="weui-cell__bd"></view>
 		<view class="weui-cell__ft">
-			<view wx:if="{{info.isSpecification}}" data-item="{{info}}" class="chooseBtn" catchtap="showggBtn"> 选规格 <text class="numTop" wx:if="{{info.num>0}}">{{info.num}}</text> </view>
-			<view class="foodNum" wx:if="{{!info.isSpecification}}">
+			<view wx:if="{{info.isSpecification && !info.contorno}}" data-item="{{info}}" class="chooseBtn" catchtap="showggBtn"> 选规格 <text class="numTop" wx:if="{{info.num>0}}">{{info.num}}</text> </view>
+			<view class="foodNum" wx:if="{{!info.isSpecification || info.contorno}}">
 				<image src="/images/eat/jian.png" class="footAdd" wx:if="{{info.num>0}}" catchtap="goodsDel" data-idx="{{idx}}" data-num="{{info.num}}" data-id="{{info.id}}" data-item="{{info}}"></image>
 				<view class="foodValue" wx:if="{{info.num>0}}">
 					{{info.num}}
@@ -33,7 +34,10 @@
 	</view>
 	<view class="eatDetail-cont">
 		<view class="title">详情</view>
-		<van-row class="eat-msg">
+		<view class="wxParse">
+			<template is="wxParse" data="{{wxParseData:content.nodes}}" />
+		</view>
+		<!-- <van-row class="eat-msg">
 			<van-col span="5">掌柜描述：</van-col>
 			<van-col span="19">冰瓷龟裂纹”茶叶蛋，晶莹透亮，漂亮好吃,晶莹透亮，漂亮好吃,晶莹透亮，漂亮好吃</van-col>
 			<van-col span="5">主料：</van-col>
@@ -42,7 +46,7 @@
 			<van-col span="19">约50g</van-col>
 			<van-col span="5">口味：</van-col>
 			<van-col span="19">卤味儿</van-col>
-		</van-row>
+		</van-row> -->
 	</view>
 
 	<!-- <view class="eatDetail-cont">

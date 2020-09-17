@@ -4,22 +4,22 @@
 		<view class="cu-bar fixed " style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
 			<view class="content" style="top:{{StatusBar}}px">
 				<view class="weui-cell " style="height:{{CustomBar-StatusBar}}px">
-           <view class="weui-cell__hd address">{{cityName}}</view>
-           <view class="weui-cell__bd">
-               <input placeholder-class="placeholderClass" placeholder="请输入..."></input>
-           </view>
-					 <view class="weui-cell__ft">
-					    <image src="/images/news.png" class="news"></image>
-					 </view>
-        </view>
+					<view class="weui-cell__hd address">{{cityName}}</view>
+					<view class="weui-cell__bd">
+						<input placeholder-class="placeholderClass" placeholder="请输入..."></input>
+					</view>
+					<view class="weui-cell__ft">
+						<image src="/images/news.png" class="news"></image>
+					</view>
+				</view>
 			</view>
 		</view>
 	</view>
 	<view class="banner">
-		<swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true"  bindchange="bindchange">
+		<swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
 			<block wx:for="{{banner1}}" wx:key="{{index}}">
 				<swiper-item>
-					<view data-item="{{item}}" hover-class="none" bindtap="toAdv">
+					<view data-item="{{item}}" hover-class="none">
 						<image src="{{item.picture}}" class="slide-image" mode="aspectFill" />
 					</view>
 				</swiper-item>
@@ -34,8 +34,43 @@
 			</view>
 		</block>
 	</view>
+	<view>
+		<view class="show-main-title">
+			<text class="first-title">商城活动</text>
+			<image src="../../images/icon/fire.png"></image>
+			<text>回馈新老用户</text>
+		</view>
+	</view>
+	<view class="banner banner1">
+		<swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
+			<block wx:for="{{banner}}" wx:key="{{index}}">
+				<swiper-item>
+					<view data-item="{{item}}" hover-class="none" bindtap="toAdv">
+						<image src="{{item.picture}}" class="slide-image1" mode="aspectFill" />
+					</view>
+				</swiper-item>
+			</block>
+		</swiper>
+	</view>
+	<view>
+		<view class="show-main-title">
+			<text class="first-title">美食新主意</text>
+			<image src="../../images/icon/fire.png"></image>
+			<text>吃货推荐</text><text></text> 
+		</view>
+		<view class="divider-content">
+			<scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%;">
+				<navigator id="demo2" class="scroll-view-item_H demo-text-2" wx:for="{{eatList}}" wx:key="index" hover-class="none" url="/pages/eat/eat">
+					<image src="{{item.showPice}}" mode="aspectFill"></image>
+					<view class="scroll-view-item_H-name">{{item.name}}</view>
+				</navigator>
+			</scroll-view>
+		</view>
+	</view>
+	<navigator url="/pages/eat/eat" class="see-more" hover-class="none">查看更多美食</navigator>
+
 	<!-- <image src="/images/bottom.png" style="width:{{imgWidth}}rpx;height:{{imgHeight}}rpx"></image> -->
 	<view class="cart">
-	  <image src="/images/car.png"></image>
-	</view> 
+		<image src="/images/car.png"></image>
+	</view>
 </view>

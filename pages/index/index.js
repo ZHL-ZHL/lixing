@@ -5,21 +5,20 @@ import {
   homeBanner
 } from "../../api/banner.js"
 import {
-  indexAdv
-} from "../../api/adv.js"
-import {
-  companyList
-} from "../../api/company.js"
+  eatgroupList
+} from "../../api/eat.js"
 
 // import imageUrl from "../../utils/host.js"
 var bmap = require('../../utils/bmap-wx.min.js')
 Page({
   data: {
-    banner: [],
-    banner1: [{picture:"/images/banner/banner.png"}],
+    eatList: [],
+    banner: [{
+      picture: "/images/banner/huodong.png"
+    }],
+    banner1: [],
     cityName: "",
-    nav: [
-      {
+    nav: [{
         icon: "/images/icon1/nav8.png",
         name: "智慧停车",
         url: "/pages/carNumber/carNumber",
@@ -49,7 +48,7 @@ Page({
         url: "/pages/investment/investment",
         show: true
       },
-      
+
       {
         icon: "/images/icon1/nav5.png",
         name: "运单查询",
@@ -88,15 +87,9 @@ Page({
     duration: 500, //滑动时间
     indicatorActiveColor: "#FFE400",
     current: 0,
-    swiperIndex: 0,
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom
-  },
-  bindchange(e) {
-    this.setData({
-      swiperIndex: e.detail.current
-    })
   },
   scan() {
     wx.scanCode({
@@ -104,15 +97,15 @@ Page({
         console.log(res)
         wx.navigateTo({
           url: '/' + res.path,
-          success: function(res) {},
-          fail: function(res) {},
-          complete: function(res) {},
+          success: function (res) {},
+          fail: function (res) {},
+          complete: function (res) {},
         })
       }
     })
   },
   //事件处理函数
-  bindViewTap: function() {
+  bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
@@ -122,21 +115,18 @@ Page({
 
     })
   },
-  onLoad: function() {
+  onLoad: function () {
+   
     let that = this;
-    // homeBanner().then(res => {
-    //   if (res.code == 200) {
-    //     //  res.data.forEach(item => { 
-    //     //    item.picture = imageUrl.imgURL + item.picture
-    //     //  })
-    //     console.log(res.data)
-    //     this.setData({
-    //       banner: res.data
-    //     })
-    //   }
-    // }).catch(res => {
+    homeBanner().then(res => {
+      if (res.code == 200) { 
+        this.setData({
+          banner1: res.data.records
+        })
+      }
+    }).catch(res => {
 
-    // })
+    })
     // let query = wx.createSelectorQuery()
     // console.log(query)
     // indexAdv().then(res=>{
@@ -146,11 +136,11 @@ Page({
     // })
     wx.getImageInfo({
       src: '/images/bottom.png',
-      success:res=>{
+      success: res => {
         console.log(res)
         this.setData({
-          imgWidth:res.width,
-          imgHeight:res.height,
+          imgWidth: res.width,
+          imgHeight: res.height,
         })
       }
     })
@@ -159,10 +149,10 @@ Page({
   toAdv(e) {
     let item = JSON.stringify(e.currentTarget.dataset.item)
     wx.navigateTo({
-      url: '/pages/advDetail/advDetail?info=' + item,
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
+      url: '/pages/groupBuy/groupBuy',
+      success: function (res) {},
+      fail: function (res) {},
+      complete: function (res) {},
     })
   },
   toPark() {
@@ -188,9 +178,9 @@ Page({
       if (wx.getStorageSync("userInfo").phone) {
         wx.navigateTo({
           url: e.currentTarget.dataset.url,
-          success: function(res) {},
-          fail: function(res) {},
-          complete: function(res) {},
+          success: function (res) {},
+          fail: function (res) {},
+          complete: function (res) {},
         })
       } else {
         wx.showToast({
@@ -198,9 +188,9 @@ Page({
           icon: 'none',
           image: '',
           mask: true,
-          success: function(res) {},
-          fail: function(res) {},
-          complete: function(res) {},
+          success: function (res) {},
+          fail: function (res) {},
+          complete: function (res) {},
         })
       }
 
@@ -224,9 +214,9 @@ Page({
     } else {
       wx.navigateTo({
         url: e.currentTarget.dataset.url,
-        success: function(res) {},
-        fail: function(res) {},
-        complete: function(res) {},
+        success: function (res) {},
+        fail: function (res) {},
+        complete: function (res) {},
       })
     }
   },
@@ -236,7 +226,7 @@ Page({
       current: e.detail.current
     })
   },
-  getUserInfo: function(e) {
+  getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -244,18 +234,25 @@ Page({
       hasUserInfo: true
     })
   },
-  onShareAppMessage: function(res) {
+  onShareAppMessage: function (res) {
     console.log()
     if (res.from === 'button') {}
     return {
       title: ' 中鲁智慧园区',
       path: '/pages/index/index',
-      success: function(res) {
+      success: function (res) {
 
       }
     }
   },
   onShow() {
+    eatgroupList().then(res => {
+      if (res.code == 200) {
+        this.setData({
+          eatList:res.data[0].coodVo
+        })
+      }
+    })
     var that = this;
     wx.getLocation({
       type: 'wgs84',
@@ -266,10 +263,10 @@ Page({
     var BMap = new bmap.BMapWX({
       ak: '2pMuQoHqw4hRCCLyATVQIqPyiM2xIqE1'
     });
-    var fail = function(data) {
+    var fail = function (data) {
       console.log('fail!!!!')
     };
-    var success = function(data) {
+    var success = function (data) {
       console.log(data);
       that.setData({
         cityName: data.currentWeather[0].currentCity

@@ -54,6 +54,7 @@
 						<text wx:if="{{item.statu==2}}">已付款</text>
 						<text wx:if="{{item.statu==3}}">退款订单</text>
 						<text wx:if="{{item.statu==4}}">已完成</text>
+						
 					</view>
 				</view>
 				<view class="">
@@ -98,7 +99,7 @@
 					<view class="weui-cell__bd"></view>
 					<view class="weui-cell__ft">
 						<view class="btn" bindtap="showBottomBtn" data-item="{{item}}" wx:if="{{item.statu==1}}">取消订单</view>
-						<view class="btn colorCS" data-item="{{item}}" bindtap="payMoney" wx:if="{{item.statu==1}}">付款</view> 
+						<view class="btn colorCS" data-item="{{item}}" bindtap="payMoney" wx:if="{{item.statu==1}}">付款</view>
 					</view>
 				</view>
 			</view>

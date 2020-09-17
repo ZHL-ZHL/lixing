@@ -15,7 +15,7 @@
       <image src="/images/icon/r_jt.png" class="r_jt"></image>
     </view> -->
 	</navigator>
-	<button class="noLogin weui-cell" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="GotUserInfo" wx:else>
+	<button class="noLogin weui-cell"  bindtap="getRoleEat" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="GotUserInfo" wx:else>
 		<view class="weui-cell__hd">
 			<image src="/images/my/nologin.png"></image>
 		</view>

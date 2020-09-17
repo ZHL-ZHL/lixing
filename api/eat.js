@@ -125,6 +125,15 @@ export function eatshopFinish(data) {
 } 
 
 
+export function rtfoodDetail(data) {
+  return http.fly.request({
+    method: 'get',
+    url: URL.host + '/blade-bms/rtfood/detail',
+    params: data
+  })
+} 
+
+
 
 export function eatOrderDetail(data) {
   return http.fly.request({

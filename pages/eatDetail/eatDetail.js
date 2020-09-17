@@ -1,4 +1,8 @@
 // pages/eatDetail/eatDetail.js
+var WxParse = require('../../wxParse/wxParse.js');
+import {
+  rtfoodDetail
+} from "../../api/eat.js"
 Page({
 
   /**
@@ -7,17 +11,22 @@ Page({
   data: {
     showGG: false,
     info: {},
-    eatList: []
+    eatList: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      info: JSON.parse(options.info)
-    })
-    console.log(this.data.info)
+    var that = this;  
+    let info =  JSON.parse(options.info)
+    rtfoodDetail({id:info.id}).then(res=>{ 
+      info.detail = res.data.detail
+      this.setData({
+        info:info
+      })
+      WxParse.wxParse('content', 'html', info.detail, that, 0);
+    })  
   },
   goodsDel(e) {
     if (this.data.info.num && this.data.info.num > 0) {

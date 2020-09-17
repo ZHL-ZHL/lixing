@@ -1,5 +1,5 @@
 // pages/meetingDetail/meetingDetail.js
-var WxParse = require('../wxParse/wxParse.js');
+var WxParse = require('../../wxParse/wxParse.js');
 import {
   meetingDetail
 } from "../../api/meeting.js"

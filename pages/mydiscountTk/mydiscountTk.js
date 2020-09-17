@@ -1,12 +1,17 @@
 // pages/mydiscountTk/mydiscountTk.js
+
+import {
+  refundApply
+} from "../../api/discount"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    yuE:150,
-    zkYuE:"120"
+    yuE: 150,
+    zkYuE: "120",
+    showPassMoney: false
   },
 
   /**
@@ -14,11 +19,31 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      yuE:options.yuE,
-      zkYuE:(Number(options.yuE)*0.8).toFixed(2)
+      cardNum: options.cardNum,
+      yuE: options.yuE,
+      zkYuE: (Number(options.yuE) * 0.8).toFixed(2)
     })
   },
 
+  refundApplyBtn() {
+    this.setData({
+      showPassMoney: true
+    })
+  },
+  savePassMoneybtn() {
+    refundApply({
+      cardNum: this.data.cardNum,
+      shopId: wx.getStorageSync('shopId'),
+      balance: this.data.yuE,
+      refundMoney: this.data.zkYuE
+    }).then(res => {
+      if (res.code == 200) {
+        wx.navigateBack({
+          delta: 1,
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

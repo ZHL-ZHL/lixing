@@ -1,6 +1,5 @@
 // pages/eat/eat.js
 import {
-  eatList,
   shopInfo,
   classification,
   foodList,
@@ -18,6 +17,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showTime: "",
     listfoodName: "",
     specificationList: [],
     detailObj: {},
@@ -31,7 +31,7 @@ Page({
     scale: 2,
     ylink: URL.imgURL,
     banner1: [{
-      picture: "/images/banner/banner.png"
+      picture: "/images/eat/img1.png"
     }],
     indicatorDots: false, //小点
     indicatorColor: "white",
@@ -98,6 +98,15 @@ Page({
       showTitle: !this.data.showTitle
     })
   },
+  changeTime(e) {
+    let index = e.currentTarget.dataset.time
+    let menuItem = e.currentTarget.dataset.item
+    menuItem.dateTime = index
+    this.setData({ 
+      menuItem: menuItem,
+      showTime: index,
+    })
+  },
   addEatList() {
 
   },
@@ -108,8 +117,6 @@ Page({
     let specificationList = this.data.specificationList
     let list = specificationList[pidx].specificationListnew
 
-    console.log(e)
-    console.log(list)
     let selNum = list.filter(function (v) {
       if (v.show) {
         return true;
@@ -142,13 +149,17 @@ Page({
     })
   },
 
-  tocarradd() {
+  tocarradd(e) {
     let item = this.data.menuItem
+    let dateTime = e.currentTarget.dataset.item.dateTime
     let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList
     groupList.forEach((good) => {
       if (good.coodVo && good.coodVo.length > 0) {
         good.coodVo.forEach((food) => {
           if (food.id == item.id) {
+            if (this.data.activetab == 1) {
+              food.dateTime = dateTime
+            } 
             let tcArray = []
             let tc = []
             this.data.specificationList.forEach(item => {
@@ -170,10 +181,6 @@ Page({
                 food.specificationList = food.specificationList.concat(tcArray)
               }
             }
-
-            // this.setData({
-            //   menuItem:food
-            // })
           }
         })
       }
@@ -187,14 +194,17 @@ Page({
       })
     } else {
       this.setData({
-        eatreserveList: groupList
+        eatreserveList: groupList,
+        showGG: false
       })
     }
   },
   toDetail(e) {
     let info = e.currentTarget.dataset.item
+    delete info['detail']
+    console.log(info)
     wx.navigateTo({
-      url: '/pages/eatDetail/eatDetail?info=' + JSON.stringify(info),
+      url: '/pages/eatDetail/eatDetail?info='+JSON.stringify(info),
       success: function (res) {},
       fail: function (res) {},
       complete: function (res) {},
@@ -236,8 +246,9 @@ Page({
     })
     this.setData({
       showGG: true,
+      showTime: e.currentTarget.dataset.item.dateTime? e.currentTarget.dataset.item.dateTime:""
     })
-    console.log(this.data.specificationList)
+    // console.log(this.data.specificationList)
   },
   showCar() {
     this.setData({
@@ -255,12 +266,16 @@ Page({
     let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList
     let idx = e.currentTarget.dataset.idx
     let addid = e.currentTarget.dataset.id
+    let dateTime = e.currentTarget.dataset.item.dateTime
     let foodCount = e.currentTarget.dataset.limitCount
     if (foodCount == 0 || !foodCount) {
       groupList.forEach((good) => {
         if (good.coodVo && good.coodVo.length > 0) {
           good.coodVo.forEach((food) => {
             if (food.id == addid) {
+              if (this.data.activetab == 1) {
+                food.dateTime = dateTime
+              } 
               if (!food.num) {
                 food.num = 1
               } else {
@@ -307,6 +322,9 @@ Page({
           good.coodVo.forEach((food) => {
             if (food.id == addid) {
               food.num -= 1
+              this.setData({
+                menuItem: food
+              })
               if (food.specificationList) {
                 food.specificationList.forEach((item1, index) => {
                   if (item1.specificationList == iitem) {
@@ -314,9 +332,6 @@ Page({
                     return
                   }
                 });
-                this.setData({
-                  menuItem: food
-                })
               }
             }
           })
@@ -544,9 +559,30 @@ Page({
   getgroupList() {
     eatreserveList().then(res => {
       if (res.code == 200) {
+        let list = res.data
+        for (let i = 0; i < list.length; i++) {
 
+          let coodVo = list[i].coodVo
+          if (coodVo) {
+            for (let j = 0; j < coodVo.length; j++) {
+              if (coodVo[j].isSpecification == true && (coodVo[j].specificationDetail && coodVo[j].specificationDetail.length > 0)) {
+                coodVo[j].specificationDetail.forEach(item => {
+                  console.log(i, j)
+                  item.specificationListnew = item.specificationListnew ? item.specificationListnew : []
+                  item.specificationList.forEach(item1 => {
+                    let obj = {
+                      name: item1,
+                      show: false,
+                    }
+                    item.specificationListnew.push(obj)
+                  });
+                });
+              }
+            }
+          }
+        }
         this.setData({
-          eatreserveList: res.data
+          eatreserveList: list
         })
       } else {
         wx.showToast({
@@ -565,24 +601,23 @@ Page({
         let list = res.data
         for (let i = 0; i < list.length; i++) {
           let coodVo = list[i].coodVo
-          for (let j = 0; j < coodVo.length; j++) {
-
-
-            if (coodVo[j].type == 1 && (coodVo[j].specificationDetail && coodVo[j].specificationDetail.length > 0)) {
-              coodVo[j].specificationDetail.forEach(item => {
-                console.log(i, j)
-                item.specificationListnew = item.specificationListnew ? item.specificationListnew : []
-                item.specificationList.forEach(item1 => {
-                  let obj = {
-                    name: item1,
-                    show: false,
-                  }
-                  item.specificationListnew.push(obj)
+          if (coodVo) {
+            for (let j = 0; j < coodVo.length; j++) {
+              if (coodVo[j].isSpecification == true && (coodVo[j].specificationDetail && coodVo[j].specificationDetail.length > 0)) {
+                coodVo[j].specificationDetail.forEach(item => {
+                  console.log(i, j)
+                  item.specificationListnew = item.specificationListnew ? item.specificationListnew : []
+                  item.specificationList.forEach(item1 => {
+                    let obj = {
+                      name: item1,
+                      show: false,
+                    }
+                    item.specificationListnew.push(obj)
+                  });
                 });
-              });
+              }
             }
           }
-
         }
         this.setData({
           groupList: list

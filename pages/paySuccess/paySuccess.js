@@ -5,22 +5,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-    closeOrder:true, 
-    countDownNum:3,
-    timer:''
+    closeOrder: true,
+    countDownNum: 3,
+    timer: ''
   },
-// 倒计时效果
+  // 倒计时效果
   countDown: function () {
     let that = this;
     let countDownNum = that.data.countDownNum; //获取倒计时初始值 
     that.setData({
-      timer: setInterval(function () {  
-        countDownNum--; 
+      timer: setInterval(function () {
+        countDownNum--;
         that.setData({
           countDownNum: countDownNum
-        }) 
-        if (countDownNum == 0) { 
-          clearInterval(that.data.timer); 
+        })
+        if (countDownNum == 0) {
+          clearInterval(that.data.timer);
           wx.switchTab({
             url: '/pages/index/index',
           })
@@ -32,20 +32,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  console.log(options)
-    if (options.type==1){
+    if (options.type == 1) {
       this.setData({
-        closeOrder:false
+        closeOrder: false
       })
-    }
+    } 
     this.countDown()
   },
-  goBack(){
+  goBack() {
     wx.navigateTo({
       url: '/pages/index/index',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
+      success: function (res) {},
+      fail: function (res) {},
+      complete: function (res) {},
     })
   },
   /**
@@ -73,7 +72,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    clearInterval(this.data.timer); 
+    clearInterval(this.data.timer);
   },
 
   /**

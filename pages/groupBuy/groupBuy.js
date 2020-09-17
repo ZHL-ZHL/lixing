@@ -36,10 +36,7 @@ Page({
     x: 400,
     y: 550,
     scale: 2,
-    ylink: URL.imgURL,
-    banner1: [{
-      picture: "/images/banner/banner.png"
-    }],
+    ylink: URL.imgURL, 
     indicatorDots: false, //小点
     indicatorColor: "white",
     autoplay: true, //是否自动轮播

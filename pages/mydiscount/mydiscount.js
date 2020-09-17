@@ -1,24 +1,27 @@
 // pages/mydiscount/mydiscount.js
-import { myYe } from "../../api/discount.js"
+import {
+  myYe
+} from "../../api/discount.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    yeE:"",
-    cardNum:""
+    yeE: "",
+    cardNum: ""
   },
-  getYuE(e){
+  getYuE(e) {
     console.log(e)
-    let data={}
-    data.appId="wxc35575f7a176ae3c"
-    data.openId=wx.getStorageSync('openId')
-    myYe(data).then(res=>{
+    let data = {}
+    data.appId = "wxc35575f7a176ae3c"
+    data.openId = wx.getStorageSync('openId')
+    myYe(data).then(res => {
       if (res.code == 200) {
         this.setData({
-           yeE:res.data.balance,
-           cardNum:res.data.cardNum
+          yeE: res.data.balance,
+          cardNum: res.data.cardNum,
+          state: res.data.state //0不可用 1可用 2申请退款 3退款成功
         })
       } else {
         wx.showToast({
@@ -26,66 +29,70 @@ Page({
           icon: "none"
         })
       }
-    }).catch(res=>{
+    }).catch(res => {
 
     })
   },
-  selNav(e){
+  selNav(e) {
     console.log(e)
     let idx = e.currentTarget.dataset.idx
-     this.setData({
-       list:[],
-       current: idx
-     })
-     if(idx==0){
-       this.getAllList()
-     }else{
-       this.getMyList()
-     }
+    this.setData({
+      list: [],
+      current: idx
+    })
+    if (idx == 0) {
+      this.getAllList()
+    } else {
+      this.getMyList()
+    }
   },
-  getAllList(){
+  getAllList() {
     this.setData({
       queS: true
     })
-    discountAllList({ wechatUserId: this.data.wechatUserId}).then(res=>{
-       if(res.code==200){
-          if(res.data){
-            this.setData({
-              list: res.data
-            })
-          }else{
-            this.setData({
-              queS:false
-            })
-          }
-          
-       }else{
-         wx.showToast({
-           title: res.msg,
-           icon: "none"
-         })
-       }
-    }).catch(res=>{
+    discountAllList({
+      wechatUserId: this.data.wechatUserId
+    }).then(res => {
+      if (res.code == 200) {
+        if (res.data) {
+          this.setData({
+            list: res.data
+          })
+        } else {
+          this.setData({
+            queS: false
+          })
+        }
+
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: "none"
+        })
+      }
+    }).catch(res => {
       wx.showToast({
         title: res,
         icon: "none"
       })
     })
   },
-  getCard(e){
+  getCard(e) {
 
   },
   getMyList() {
     this.setData({
       queS: true
     })
-    discountMyList({ wechatUserId: this.data.wechatUserId }).then(res => {
+    discountMyList({
+      wechatUserId: this.data.wechatUserId
+    }).then(res => {
       if (res.code == 200) {
-        if(res.data){
+        if (res.data) {
           this.setData({
             list: res.data
           })
-        }else{
+        } else {
           this.setData({
             queS: false
           })
@@ -97,17 +104,21 @@ Page({
         })
       }
     }).catch(res => {
-       wx.showToast({
-         title: res,
-         icon:"none"
-       })
+      wx.showToast({
+        title: res,
+        icon: "none"
+      })
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   this.getYuE()
+    wx.setStorage({
+      data: '1298522833797799937',
+      key: 'shopId',
+    })
+
   },
 
   /**
@@ -121,7 +132,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getYuE()
   },
 
   /**

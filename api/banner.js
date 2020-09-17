@@ -5,10 +5,18 @@ import URL from "../utils/host.js"
 export function homeBanner(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/wechat_banner/home_page',
+    url: URL.host + '/blade-bms/wechatbanner/page?bannerType=1&current=1&size=5',
     params: data
   })
 } 
+// 活动页
+export function shopBanner(data) {
+  return http.fly.request({
+    method: 'get',
+    url: URL.host + '/blade-bms/wechatbanner/page?bannerType=3&current=1&size=5',
+    params: data
+  })
+}  
 
 
 

@@ -48,7 +48,7 @@
             </view>
 			</navigator>
 		</view>
-		<view class="weui-cell__bd" style="padding-left:10rpx">
+		<view wx:if="{{state==1}}" class="weui-cell__bd" style="padding-left:10rpx">
 			<navigator class="bgYellow"  style="margin-top:0" hover-class="none" url="/pages/mydiscountTk/mydiscountTk?cardNum={{cardNum}}&yuE={{yeE}}">
 				<view class="weui-cell__bd">
                 <view> <image class="icon" src="/images/kb/tk.png"></image></view>

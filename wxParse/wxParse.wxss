@@ -11,15 +11,15 @@
  */
 
 .wxParse{
-    margin: 0 5px;
+    font-size: 24rpx;
+    /* margin: 0 5px; */
     font-family: Helvetica,sans-serif;
-    font-size: 28rpx;
     color: #666;
     line-height: 1.8;
 }
-/* view{
+view{
     word-break:break-all; overflow:auto;
-} */
+}
 .wxParse-inline{
     display: inline;
     margin: 0;

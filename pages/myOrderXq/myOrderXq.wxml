@@ -53,6 +53,11 @@
 						<text wx:if="{{info.statu==3 && info.refundState == 3}}">退款异常</text>
 						<text wx:if="{{info.statu==3 && info.refundState == 4}}">退款中</text>
 						<text wx:if="{{info.statu==4}}">已取消</text>
+						<!-- //1.自取，2.配送，3预定 4堂食 -->
+						<text style="margin-left:10px;color:#FFAD00" wx:if="{{info.orderType==1}}">自取</text>
+						<text style="margin-left:10px;color:#FFAD00" wx:if="{{info.orderType==2}}">配送</text>
+						<text style="margin-left:10px;color:#FFAD00" wx:if="{{info.orderType==3}}">预定</text>
+						<text style="margin-left:10px;color:#FFAD00" wx:if="{{info.orderType==4}}">堂食</text>
 					</view>
 				</view>
 				<view class="">

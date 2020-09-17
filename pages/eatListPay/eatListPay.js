@@ -15,7 +15,7 @@ Page({
     index: 3,
     info: "",
     address: "",
-    orderType: 4, //1.自取，2.配送，3预定
+    orderType: 4, //1.自取，2.配送，3预定 4堂食
     orderTypeList: [{
       id: 1,
       dictName: "自取"

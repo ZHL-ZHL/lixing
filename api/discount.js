@@ -59,3 +59,13 @@ export function chargeactivity(data) {
     params: data
   })
 } 
+
+// 申请退款
+
+export function refundApply(data) {
+  return http.fly.request({
+    method: 'post',
+    url: URL.host + '/blade-bms/wechatmealcard/refund/apply',
+    body: data
+  })
+} 

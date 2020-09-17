@@ -3,7 +3,8 @@ import {
   xdLogin,
 } from "../../utils/login"
 import {
-  loginOut, getPhone
+  loginOut,
+  getPhone
 } from "../../api/my"
 Page({
 
@@ -59,19 +60,28 @@ Page({
       },
     ],
     userInfo: "",
-    tan:false
+    tan: false
+  },
+  getRoleEat() {
+    wx.requestSubscribeMessage({
+      tmplIds: ['bt9asUd8TPrd1mPclDlZt3fHaIO0uTENEMFwX9JntpI', 'NuVd8Y3QYpInAvE7aG54VpgWhNt4egxZd8bQ5wDXSVw', 'bgHsPQclIyOMleDxB13yL_LVS6VOgg0c0L_-kfi9spY'],
+      success: res => {},
+      fail: res => {
+        console.log(res)
+      }
+    })
   },
   GotUserInfo(e) {
     wx.showLoading({
       title: '登录中。。。',
-    }) 
-    xdLogin(e).then(res => { 
+    })
+    xdLogin(e).then(res => {
       this.setData({
         userInfo: wx.getStorageSync("userInfo")
       })
-      if(!res.phone || res.phone.length==0){
+      if (!res.phone || res.phone.length == 0) {
         this.setData({
-          tan:true
+          tan: true
         })
       }
       this.getRole()
@@ -79,15 +89,15 @@ Page({
       console.log(res)
     })
   },
-  getPhoneNumber(e) { 
-    let data={}
+  getPhoneNumber(e) {
+    let data = {}
     data.iv = e.detail.iv
     data.encryptedData = e.detail.encryptedData
-    getPhone(data).then(res=>{
+    getPhone(data).then(res => {
       console.log(res)
-      if(res.code==200){
-        let userInfo=wx.getStorageSync("userInfo")
-        userInfo.phone=res.data;
+      if (res.code == 200) {
+        let userInfo = wx.getStorageSync("userInfo")
+        userInfo.phone = res.data;
         this.setData({
           userInfo,
           tan: false
@@ -96,12 +106,12 @@ Page({
           key: 'userInfo',
           data: userInfo,
         })
-      }else{
+      } else {
         this.setData({
           tan: false
         })
       }
-    }).catch(res=>{
+    }).catch(res => {
       this.setData({
         tan: false
       })
@@ -110,9 +120,9 @@ Page({
   routeTo(e) {
     wx.navigateTo({
       url: e.currentTarget.dataset.url,
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
+      success: function (res) {},
+      fail: function (res) {},
+      complete: function (res) {},
     })
     // console.log(e)
     // let idx = e.currentTarget.dataset.index
@@ -160,7 +170,7 @@ Page({
     loginOut().then(res => {
       wx.clearStorage()
       this.setData({
-        userInfo:""
+        userInfo: ""
       })
     }).catch(res => {
       console.log(res)
@@ -173,7 +183,7 @@ Page({
       })
     } else {
       xdLogin(e).then(res => {
-        
+
         this.setData({
           userInfo: res
         })
@@ -210,21 +220,21 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
 
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
     let userInfo;
     wx.getStorageSync("userInfo") ? userInfo = wx.getStorageSync("userInfo") : userInfo = "";
@@ -234,7 +244,7 @@ Page({
     })
     this.getRole()
   },
-  getRole(){
+  getRole() {
     let role = wx.getStorageSync("role");
     let roleArray = role.split(",")
     if (roleArray.includes("7")) {
@@ -246,51 +256,51 @@ Page({
       let navList = this.data.navList;
       console.log(navList.includes(data))
       let json = JSON.stringify(navList)
-      let jsonData=JSON.stringify(data)
-      if (json.indexOf(jsonData)==-1){
+      let jsonData = JSON.stringify(data)
+      if (json.indexOf(jsonData) == -1) {
         navList.unshift(data)
         this.setData({
           navList: navList
         })
-      }else{
-        
+      } else {
+
       }
-      
+
       console.log(this.data.navList)
     }
   },
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

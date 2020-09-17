@@ -1,17 +1,16 @@
 // pages/find/find.js 
+
+import {
+  shopBanner
+} from "../../api/banner.js"
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    banner1: [{
-        picture: "/images/banner/banner.png"
-      },
-      {
-        picture: "/images/banner/banner.png"
-      }
-    ],
+    banner1: [],
     indicatorDots: true, //小点
     indicatorColor: "white",
     autoplay: true, //是否自动轮播
@@ -34,7 +33,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    shopBanner().then(res => {
+      if (res.code == 200) { 
+        this.setData({
+          banner1: res.data.records
+        })
+      }
+    }).catch(res => {
 
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

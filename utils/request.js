@@ -82,9 +82,9 @@ fly.interceptors.response.use(
         mask: true,
         success: function(res) {
           wx.clearStorage()
-          // wx.switchTab({
-          //   url: '/pages/my/my',
-          // })
+          wx.switchTab({
+            url: '/pages/my/my',
+          })
           wx.hideLoading();
 
         },

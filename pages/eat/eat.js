@@ -10,13 +10,14 @@ import {
   eatpingjiaList
 } from "../../api/eat.js"
 import URL from "../../utils/host.js"
-
+var util = require('../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    showBtnGoCar: false,
     showTime: "",
     listfoodName: "",
     specificationList: [],
@@ -81,6 +82,27 @@ Page({
     news: [],
     menuItem: ""
   },
+  compareTime(stime, etime) {
+    // 转换时间格式，并转换为时间戳
+    function tranDate(time) {
+      return new Date(time.replace(/-/g, '/')).getTime();
+    }
+    stime = util.getNowTime(new Date()) + ' ' + stime
+    etime = util.getNowTime(new Date()) + ' ' + etime
+    // 开始时间
+    let startTime = tranDate(stime);
+    // 结束时间
+    let endTime = tranDate(etime);
+    let thisDate = new Date();
+    // 获取当前时间，格式为 2018-9-10 20:08
+    let currentTime = thisDate.getFullYear() + '-' + (thisDate.getMonth() + 1) + '-' + thisDate.getDate() + ' ' + thisDate.getHours() + ':' + thisDate.getMinutes();
+    let nowTime = tranDate(currentTime);
+    // 如果当前时间处于时间段内，返回true，否则返回false
+    if (nowTime < startTime || nowTime > endTime) {
+      return false;
+    }
+    return true;
+  },
   onChange(e) {
     this.setData({
       current: 0,
@@ -102,7 +124,7 @@ Page({
     let index = e.currentTarget.dataset.time
     let menuItem = e.currentTarget.dataset.item
     menuItem.dateTime = index
-    this.setData({ 
+    this.setData({
       menuItem: menuItem,
       showTime: index,
     })
@@ -159,7 +181,7 @@ Page({
           if (food.id == item.id) {
             if (this.data.activetab == 1) {
               food.dateTime = dateTime
-            } 
+            }
             let tcArray = []
             let tc = []
             this.data.specificationList.forEach(item => {
@@ -204,7 +226,7 @@ Page({
     delete info['detail']
     console.log(info)
     wx.navigateTo({
-      url: '/pages/eatDetail/eatDetail?info='+JSON.stringify(info),
+      url: '/pages/eatDetail/eatDetail?info=' + JSON.stringify(info),
       success: function (res) {},
       fail: function (res) {},
       complete: function (res) {},
@@ -246,7 +268,7 @@ Page({
     })
     this.setData({
       showGG: true,
-      showTime: e.currentTarget.dataset.item.dateTime? e.currentTarget.dataset.item.dateTime:""
+      showTime: e.currentTarget.dataset.item.dateTime ? e.currentTarget.dataset.item.dateTime : ""
     })
     // console.log(this.data.specificationList)
   },
@@ -275,7 +297,7 @@ Page({
             if (food.id == addid) {
               if (this.data.activetab == 1) {
                 food.dateTime = dateTime
-              } 
+              }
               if (!food.num) {
                 food.num = 1
               } else {
@@ -671,6 +693,17 @@ Page({
         this.setData({
           shopInfoMsg: res.data
         })
+        if (!this.compareTime(this.data.shopInfoMsg.breakfastStartTime, this.data.shopInfoMsg.breakfastEndTime) &&
+          !this.compareTime(this.data.shopInfoMsg.lunchStartTime, this.data.shopInfoMsg.lunchEndTime) &&
+          !this.compareTime(this.data.shopInfoMsg.dinnerStartTime, this.data.shopInfoMsg.dinnerEndTime)) {
+          this.setData({
+            showBtnGoCar: false
+          })
+        } else {
+          this.setData({
+            showBtnGoCar: true
+          })
+        }
       } else {
         wx.showToast({
           title: res.msg,

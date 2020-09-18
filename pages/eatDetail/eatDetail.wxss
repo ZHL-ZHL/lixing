@@ -1,5 +1,6 @@
 /* pages/eatDetail/eatDetail.wxss */ 
 @import "/pages/eat/eat";
+@import"/wxParse/wxParse.wxss";
 .eatDetail-top image {
   width: 100%;
   height: 360rpx;

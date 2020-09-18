@@ -107,13 +107,13 @@
 										<view class="foodsales">
 											仅剩{{}}份
 										</view>
-										<view class="foodNum" wx:if="{{menuItem.isSpecification}}">
+										<view class="foodNum" wx:if="{{menuItem.isSpecification && showBtnGoCar}}">
 											<view class="chooseBtn" catchtap="showggBtn" data-item="{{menuItem}}">
 												选规格
 												<text class="numTop" wx:if="{{menuItem.num>0}}">{{menuItem.num}}</text>
 											</view>
 										</view>
-										<view class="foodNum" wx:if="{{!menuItem.isSpecification}}">
+										<view class="foodNum" wx:if="{{!menuItem.isSpecification && showBtnGoCar}}">
 											<image src="/images/eat/jian.png" class="footAdd" wx:if="{{menuItem.num>0}}" catchtap="goodsDel" data-idx="{{idx}}" data-num="{{menuItem.num}}" data-id="{{menuItem.id}}" data-item="{{menuItem}}"></image>
 											<view class="foodValue" wx:if="{{menuItem.num>0}}">
 												{{menuItem.num}}

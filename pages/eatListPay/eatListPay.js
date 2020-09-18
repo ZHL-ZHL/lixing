@@ -117,7 +117,8 @@ Page({
             num: item.num,
             showPice: item.showPice,
             price: item.price,
-            name: item.name,       
+            name: item.name,  
+            dateTime:item.dateTime,     
             specificationList:item.specificationList[0].specificationList
           }
           arr.push(obj)
@@ -125,6 +126,7 @@ Page({
           let obj = {
             id: item.id,
             num: item.num,
+            dateTime:item.dateTime,    
             showPice: item.showPice,
             price: item.price,
             name: item.name

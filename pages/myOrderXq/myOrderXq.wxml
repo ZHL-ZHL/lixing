@@ -34,15 +34,15 @@
 		<view class="list">
 			<view class="listItem">
 				<view class='weui-cell title'>
-					<view class='weui-cell__bd' wx:if="{{info.itemType == 1}}">
+					<navigator url="/pages/meetingRoom/meetingRoom" class="goodsInfo"  class='weui-cell__bd' wx:if="{{info.itemType == 1}}">
 						<image src="../../images/my/meet.png" class="icon-img"></image>
 						会议室租赁
 						<image src="/images/icon/r_jt.png" class="r_jt"></image>
-					</view>
-					<view class='weui-cell__bd' wx:if="{{info.itemType == 2}}">
+					</navigator>
+					<navigator url="/pages/eat/eat" class="goodsInfo" hover-class="none" class='weui-cell__bd' wx:if="{{info.itemType == 2}}">
 						<image src="../../images/my/food.png" class="icon-img"></image>
 						我要吃饭
-					</view>
+					</navigator>
 					<view class='weui-cell__ft status'>
 						<text  wx:if="{{info.statu==1}}">待付款</text>
 						<text  wx:if="{{info.statu==2}}">已付款</text>
@@ -61,7 +61,7 @@
 					</view>
 				</view>
 				<view class="">
-					<navigator url="/pages/meetingRoom/meetingRoom" class="goodsInfo" hover-class="none">
+					<view class="goodsInfo">
 						<view class="weui-cell" wx:for="{{info.productDetails}}">
 							<view class="weui-cell__hd">
 								<image class="thumb" src="{{item.showPice}}" />
@@ -79,7 +79,7 @@
 							</view>
 						</view>
 
-					</navigator>
+					</view>
 				</view>
 				<view class="weui-cell operationprice">
 					<view class="weui-cell__bd">

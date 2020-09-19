@@ -52,9 +52,8 @@
 					<view class='weui-cell__ft status'>
 						<text wx:if="{{item.statu == 1}}">待付款</text>
 						<text wx:if="{{item.statu==2}}">已付款</text>
-						<text wx:if="{{item.statu==3}}">退款订单</text>
-						<text wx:if="{{item.statu==4}}">已完成</text>
-						
+						<text wx:if="{{item.statu==3}}">退款订单</text> 
+						<text wx:if="{{item.statu==5}}">订单关闭</text>
 					</view>
 				</view>
 				<view class="">
@@ -109,18 +108,15 @@
 			<view class="radio-msg">订单取消后无法恢复，红包优惠券可退回，请注意在有效期内使用</view>
 			<view class="radio-content">
 				<van-radio-group value="{{ radio }}" bind:change="onradioChange">
-					<van-cell-group>
-						<van-cell title="请选择取消订单原因" clickable data-name="1" bind:click="onClick">
-							<van-radio slot="right-icon" name="1" checked-color="#ff4d6b" />
+					<van-cell-group> 
+						<van-cell title="我不想买了" clickable data-name="我不想买了" bind:click="onClick">
+							<van-radio slot="right-icon" name="我不想买了" checked-color="#ff4d6b" />
 						</van-cell>
-						<van-cell title="我不想买了" clickable data-name="2" bind:click="onClick">
-							<van-radio slot="right-icon" name="2" checked-color="#ff4d6b" />
+						<van-cell title="信息填写错误，重新购买" clickable data-name="信息填写错误，重新购买" bind:click="onClick">
+							<van-radio slot="right-icon" name="信息填写错误，重新购买" checked-color="#ff4d6b" />
 						</van-cell>
-						<van-cell title="信息填写错误，重新购买" clickable data-name="3" bind:click="onClick">
-							<van-radio slot="right-icon" name="3" checked-color="#ff4d6b" />
-						</van-cell>
-						<van-cell title="其他原因" clickable data-name="4" bind:click="onClick">
-							<van-radio slot="right-icon" name="4" checked-color="#ff4d6b" />
+						<van-cell title="其他原因" clickable data-name="其他原因" bind:click="onClick">
+							<van-radio slot="right-icon" name="其他原因" checked-color="#ff4d6b" />
 						</van-cell>
 					</van-cell-group>
 				</van-radio-group>
@@ -128,10 +124,10 @@
 			<view class="kong"></view>
 			<view class="footer weui-cell">
 				<view class="online">
-					<button class="btn cencel" name="Submit">暂不取消</button>
+					<button class="btn cencel" name="Submit" bindtap="cancleNum">暂不取消</button>
 				</view>
 				<view class="onlineCall">
-					<button class="btn save" name="Submit">确认取消</button>
+					<button class="btn save" name="Submit" bindtap="okNum">确认取消</button>
 				</view>
 			</view>
 		</van-popup>

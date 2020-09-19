@@ -1,12 +1,13 @@
 // pages/my_dingdan/my_dingdan.js
 import {
-  orderList
+  orderList,
+  clientCancle
 } from "../../api/order.js"
 import Url from "../../utils/host.js"
 
-import { 
+import {
   payMoneys
-  
+
 } from "../../api/carMang.js"
 Page({
 
@@ -14,7 +15,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    radio: '1',
+    radio: '我不想买了',
     showTop: false,
     showBottom: false,
     navBar: [{
@@ -41,22 +42,23 @@ Page({
     page: 1,
     online: Url.imghost,
     activetab: 0,
-    noContent: false
+    noContent: false,
+    orderNum: '',
   },
 
-  payMoney(e) { 
+  payMoney(e) {
     console.log(e)
     let orderType = ""
-    if(e.currentTarget.dataset.item.itemType == 1){
-      orderType="leaseOrder"
-    }else if(e.currentTarget.dataset.item.itemType == 2){
-      orderType="foodOrder"
+    if (e.currentTarget.dataset.item.itemType == 1) {
+      orderType = "leaseOrder"
+    } else if (e.currentTarget.dataset.item.itemType == 2) {
+      orderType = "foodOrder"
     }
     payMoneys({
       orderType: orderType,
       orderNum: e.currentTarget.dataset.item.orderNum
     }).then(res => {
-      let pay_info = JSON.parse(res.data.pay_info) 
+      let pay_info = JSON.parse(res.data.pay_info)
       wx.requestPayment({
         // 'appId': data,
         'timeStamp': pay_info.timeStamp,
@@ -129,13 +131,28 @@ Page({
   },
   showBottomBtn(e) {
     this.setData({
-      showBottom: true
+      showBottom: true,
+      orderNum: e.currentTarget.dataset.item.orderNum
     })
+
   },
   onradioChange(event) {
     this.setData({
       radio: event.detail,
     });
+  },
+  cancleNum() {
+    this.onClose()
+  },
+  okNum() {
+    clientCancle({
+      orderNum: this.data.orderNum,
+      cancleReason: this.data.radio
+    }).then(res => {
+      this.onClose()
+      this.getList()
+    })
+
   },
   onClose() {
     this.setData({
@@ -178,8 +195,8 @@ Page({
     if (status == 0) {
       status = null
     }
-    data.statu = this.data.currentIndex!=0 ? this.data.currentIndex : ""
-    data.itemType = this.data.indexId !=0 ? this.data.indexId : ""
+    data.statu = this.data.currentIndex != 0 ? this.data.currentIndex : ""
+    data.itemType = this.data.indexId != 0 ? this.data.indexId : ""
     if (this.data.itemType) {
 
     }
@@ -228,7 +245,7 @@ Page({
       })
     })
   },
- 
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

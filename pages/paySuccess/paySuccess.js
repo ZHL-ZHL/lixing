@@ -19,11 +19,18 @@ Page({
         that.setData({
           countDownNum: countDownNum
         })
-        if (countDownNum == 0) {
+        if (countDownNum == 0 && this.data.type==1) {
           clearInterval(that.data.timer);
-          wx.switchTab({
-            url: '/pages/index/index',
-          })
+          if(this.data.type==1){
+            wx.switchTab({
+              url: '/pages/index/index',
+            })
+          }
+          if(this.data.type==2){
+            wx.switchTab({
+              url: '/pages/mydiscount/mydiscount',
+            })
+          } 
         }
       }, 1000)
     })
@@ -32,6 +39,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      type:options.type
+    })
     if (options.type == 1) {
       this.setData({
         closeOrder: false

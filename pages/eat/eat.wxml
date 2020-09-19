@@ -7,8 +7,11 @@
 	<van-overlay show="{{ showTitle }}" />
 	<view>
 		<view class="top-cont">
-			<view class="top-name">{{shopInfoMsg.name}}</view>
+			<view class="top-name">{{shopInfoMsg.name}}</view> 
 			<image src="{{shopInfoMsg.iconPic}}" class="logo-shop"></image>
+			<view class="top-msg top-price" wx:if="{{!showBtnGoCar}}">
+           当前该餐厅不在营业时间，仅接受预定
+			</view>
 			<view class="top-msg">
 				<image src="../../images/eat/qx.png"></image>
 				<text>接受预定</text>
@@ -18,7 +21,7 @@
 				<text>绿色食品</text>
 				<image src="../../images/eat/jk.png"></image>
 				<text>干净卫生</text>
-			</view>
+			</view> 
 			<view class="top-msg top-price" wx:if="{{!showTitle}}">
 				<text>12减10</text>
 				<text>38减15</text>
@@ -436,8 +439,8 @@
 				</view>
 				<view class="weui-cell wrapper-showGG-text" wx:if="{{ activetab==1 }}">
 					<view class="mn {{showTime== shopInfoMsg.breakfastStartTime+'-'+shopInfoMsg.breakfastEndTime  ?'active':''}}" catchtap="changeTime" data-item="{{menuItem}}" data-time="{{shopInfoMsg.breakfastStartTime}}-{{shopInfoMsg.breakfastEndTime}}">{{shopInfoMsg.breakfastStartTime}}-{{shopInfoMsg.breakfastEndTime}}</view>
-					<view class="mn {{showTime==shopInfoMsg.lunchStartTime+'-'+shopInfoMsg.lunchEndTime?'active':''}}" catchtap="changeTime" data-time="{{shopInfoMsg.lunchStartTime}}-{{shopInfoMsg.lunchEndTime}}"  data-item="{{menuItem}}">{{shopInfoMsg.lunchStartTime}}-{{shopInfoMsg.lunchEndTime}}</view>
-					<view class="mn {{showTime==shopInfoMsg.dinnerStartTime+'-'+shopInfoMsg.dinnerEndTime?'active':''}}" catchtap="changeTime" data-time="{{shopInfoMsg.dinnerStartTime}}-{{shopInfoMsg.dinnerEndTime}}"   data-item="{{menuItem}}">{{shopInfoMsg.dinnerStartTime}}-{{shopInfoMsg.dinnerEndTime}}</view>
+					<view class="mn {{showTime==shopInfoMsg.lunchStartTime+'-'+shopInfoMsg.lunchEndTime?'active':''}}" catchtap="changeTime" data-time="{{shopInfoMsg.lunchStartTime}}-{{shopInfoMsg.lunchEndTime}}" data-item="{{menuItem}}">{{shopInfoMsg.lunchStartTime}}-{{shopInfoMsg.lunchEndTime}}</view>
+					<view class="mn {{showTime==shopInfoMsg.dinnerStartTime+'-'+shopInfoMsg.dinnerEndTime?'active':''}}" catchtap="changeTime" data-time="{{shopInfoMsg.dinnerStartTime}}-{{shopInfoMsg.dinnerEndTime}}" data-item="{{menuItem}}">{{shopInfoMsg.dinnerStartTime}}-{{shopInfoMsg.dinnerEndTime}}</view>
 				</view>
 				<view class="weui-cell" wx:if="{{menuItem.contorno}}">
 					配菜

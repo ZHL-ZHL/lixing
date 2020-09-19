@@ -699,17 +699,24 @@ Page({
         this.setData({
           shopInfoMsg: res.data
         })
-        if (!this.compareTime(this.data.shopInfoMsg.breakfastStartTime, this.data.shopInfoMsg.breakfastEndTime) &&
-          !this.compareTime(this.data.shopInfoMsg.lunchStartTime, this.data.shopInfoMsg.lunchEndTime) &&
-          !this.compareTime(this.data.shopInfoMsg.dinnerStartTime, this.data.shopInfoMsg.dinnerEndTime)) {
+        if (this.data.shopInfoMsg.isOpen) {
+          if (!this.compareTime(this.data.shopInfoMsg.breakfastStartTime, this.data.shopInfoMsg.breakfastEndTime) &&
+            !this.compareTime(this.data.shopInfoMsg.lunchStartTime, this.data.shopInfoMsg.lunchEndTime) &&
+            !this.compareTime(this.data.shopInfoMsg.dinnerStartTime, this.data.shopInfoMsg.dinnerEndTime)) {
+            this.setData({
+              showBtnGoCar: false
+            })
+          } else {
+            this.setData({
+              showBtnGoCar: true
+            })
+          }
+        } else {
           this.setData({
             showBtnGoCar: false
           })
-        } else {
-          this.setData({
-            showBtnGoCar: true
-          })
         }
+
       } else {
         wx.showToast({
           title: res.msg,

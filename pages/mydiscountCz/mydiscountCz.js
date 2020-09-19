@@ -71,7 +71,7 @@ Page({
             duration: 2000,
             success: function() {
               wx.navigateTo({
-                url: '/pages/paySuccess/paySuccess?type=1',
+                url: '/pages/paySuccess/paySuccess?type=2',
                 success: function(res) {},
                 fail: function(res) {},
                 complete: function(res) {},

@@ -32,3 +32,12 @@ export function userorderRefund(data) {
     params: data
   })
 }
+
+export function clientCancle(data) {
+  return http.fly.request({
+    method: 'post',
+    url: URL.host + '/blade-bms/rtorder/client/cancle',
+    body: data
+  })
+} 
+

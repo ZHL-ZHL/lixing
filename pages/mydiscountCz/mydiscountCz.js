@@ -15,9 +15,20 @@ Page({
        current:e.currentTarget.dataset.index
      })
   },
+  toDecimal(x) {
+    var val = Number(x)
+    if (!isNaN(parseFloat(val))) {
+      val = val.toFixed(2);
+    }
+    return val;
+  },
   getList(){
     chargeactivity({shopId:wx.getStorageSync('shopId')}).then(res=>{
        if(res.code==200){
+        //  console.log(res.data)
+         res.data.forEach(item => {
+           item.totalMoeny = this.toDecimal(Number(item.giveMoney)+Number(item.rechargeMoney))
+         });
          this.setData({
            list:res.data
          })

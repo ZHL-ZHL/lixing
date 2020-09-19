@@ -39,12 +39,24 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  toDecimal(x) {
+    var val = Number(x)
+    if (!isNaN(parseFloat(val))) {
+      val = val.toFixed(2);
+    }
+    return val;
+  },
   onLoad: function (options) {
-    console.log(JSON.parse(options.info))
+    let info = JSON.parse(options.info)
+    info.peiSf = info.peiSf ? Number(info.peiSf) : 0
+    info.bzTotalPrice = info.bzTotalPrice ? Number(info.bzTotalPrice) : 0
+    info.totalPriceDiscount = info.totalPriceDiscount ? Number(info.totalPriceDiscount) : 0
+    info.totalPrice = info.totalPrice ? Number(info.totalPrice) : 0
+    info.total = this.toDecimal(info.totalPriceDiscount + info.peiSf + info.bzTotalPrice) 
     this.setData({
-      info: JSON.parse(options.info),
-      index:JSON.parse(options.info).type==3?2:3,
-      orderType:JSON.parse(options.info).type==3?3:4
+      info: info,
+      index: info.type == 3 ? 2 : 3,
+      orderType: info.type == 3 ? 3 : 4
     })
   },
   /**
@@ -58,8 +70,7 @@ Page({
       orderType: 'foodOrder',
       orderNum: orderNum
     }).then(res => {
-      let pay_info = JSON.parse(res.data.pay_info)
-      console.log(pay_info, '2222222222')
+      let pay_info = JSON.parse(res.data.pay_info) 
       wx.requestPayment({
         // 'appId': data,
         'timeStamp': pay_info.timeStamp,
@@ -107,33 +118,33 @@ Page({
       orderData.packagePrice = this.data.info.bzTotalPrice ? this.data.info.bzTotalPrice : 0
       orderData.discountPrice = this.data.info.totalPriceDiscount
       orderData.deliverPrice = this.data.info.peiSf ? this.data.info.peiSf : 0
-      orderData.amountPayable = Number(orderData.deliverPrice) +  Number(orderData.discountPrice) +  Number(orderData.packagePrice)
+      orderData.amountPayable = Number(orderData.deliverPrice) + Number(orderData.discountPrice) + Number(orderData.packagePrice)
       let arr = []
       this.data.info.list.forEach(item => {
-        
-        if(item.type==1){
+
+        if (item.type == 1) {
           let obj = {
             id: item.id,
             num: item.num,
             showPice: item.showPice,
             price: item.price,
-            name: item.name,  
-            dateTime:item.dateTime,     
-            specificationList:item.specificationList[0].specificationList
+            name: item.name,
+            dateTime: item.dateTime,
+            specificationList: item.specificationList[0].specificationList
           }
           arr.push(obj)
-        }else{
+        } else {
           let obj = {
             id: item.id,
             num: item.num,
-            dateTime:item.dateTime,    
+            dateTime: item.dateTime,
             showPice: item.showPice,
             price: item.price,
             name: item.name
           }
           arr.push(obj)
         }
-        
+
       });
       orderData.orderInfo = JSON.stringify(arr)
       console.log(orderData)

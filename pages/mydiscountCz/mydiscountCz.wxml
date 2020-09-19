@@ -1,20 +1,10 @@
 <!--pages/mydiscountCz/mydiscountCz.wxml-->
 <view class="container">
-    <view class="weui-cell" wx:for="{{list}}" wx:key="index">
-      <view class="weui-cell__bd card {{index==current?'bgYellow':''}}" bindtap="sel" data-index="{{index}}">
-         <view>{{filters.toFix(item.rechargeMoney)+filters.toFix(item.giveMoney)}}元</view>
-         <view>售价{{item.rechargeMoney}}元（充￥{{item.giveMoney}}送）</view>
-      </view>
-    </view>
-    <view class="btnYellow" bindtap="toCz">确定并充值</view>
-</view>
-<wxs module="filters">
-  var filters = {
-    toFix: function (value) {
-      return parseFloat(value).toFixed(2)
-    }
-  }
-  module.exports = {
-    toFix: filters.toFix
-  }
-</wxs>
+	<view class="weui-cell" wx:for="{{list}}" wx:key="index">
+		<view class="weui-cell__bd card {{index==current?'bgYellow':''}}" bindtap="sel" data-index="{{index}}">
+			<view>{{item.totalMoeny}}元</view>
+			<view>售价{{item.rechargeMoney}}元（充￥{{item.giveMoney}}送）</view>
+		</view>
+	</view>
+	<view class="btnYellow" bindtap="toCz">确定并充值</view>
+</view> 

@@ -82,6 +82,12 @@ Page({
     news: [],
     menuItem: ""
   },
+
+  freeTell: function (e) {
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.item.phone,
+    })
+  },
   compareTime(stime, etime) {
     // 转换时间格式，并转换为时间戳
     function tranDate(time) {

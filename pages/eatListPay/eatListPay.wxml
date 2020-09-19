@@ -47,7 +47,7 @@
 <view class="list">
 
 
-	<view class="weui-cell">
+	<view class="weui-cell" wx:if="{{info.bzTotalPrice}}">
 		<view class="weui-cell__hd">
 			打包费：
 		</view>
@@ -57,7 +57,7 @@
 			￥{{info.bzTotalPrice}}
 		</view>
 	</view>
-	<view class="weui-cell">
+	<view class="weui-cell" wx:if="{{info.peiSf}}">
 		<view class="weui-cell__hd">
 			配送费：
 		</view>
@@ -74,7 +74,7 @@
 		<view class="weui-cell__bd">
 		</view>
 		<view class="weui-cell__ft">
-			已优惠：￥{{info.totalPrice - info.totalPriceDiscount}} 小计：￥{{info.totalPriceDiscount}}
+			已优惠：￥{{info.totalPrice - info.totalPriceDiscount}} 小计：￥{{info.total}}
 		</view>
 	</view>
 

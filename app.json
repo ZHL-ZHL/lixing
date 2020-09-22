@@ -49,7 +49,8 @@
     "pages/mydiscountTk/mydiscountTk",
     "pages/mydiscountZz/mydiscountZz",
     "pages/mydiscountZzS/mydiscountZzS",
-    "pages/mydiscountZzPay/mydiscountZzPay"
+    "pages/mydiscountZzPay/mydiscountZzPay", 
+    "pages/payChoose/payChoose"
   ],
   "window": {
     "backgroundTextStyle": "light",

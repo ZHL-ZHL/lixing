@@ -7,7 +7,8 @@ Page({
   data: {
     closeOrder: true,
     countDownNum: 3,
-    timer: ''
+    timer: '',
+    type:''
   },
   // 倒计时效果
   countDown: function () {
@@ -19,14 +20,14 @@ Page({
         that.setData({
           countDownNum: countDownNum
         })
-        if (countDownNum == 0 && this.data.type==1) {
+        if (countDownNum == 0 && that.data.type==1) {
           clearInterval(that.data.timer);
-          if(this.data.type==1){
+          if(that.data.type==1){
             wx.switchTab({
               url: '/pages/index/index',
             })
           }
-          if(this.data.type==2){
+          if(that.data.type==2){
             wx.switchTab({
               url: '/pages/mydiscount/mydiscount',
             })
@@ -39,6 +40,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     this.setData({
       type:options.type
     })

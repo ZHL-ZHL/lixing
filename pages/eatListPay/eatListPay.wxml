@@ -87,6 +87,6 @@
 </view>
 <view class="footer weui-cell">
 	<view class="allpayBtn">
-		<button class="btn save" bindtap="tjOrder">确定-支付</button>
+		<button class="btn save" bindtap="tjOrder">提交订单</button>
 	</view>
 </view>

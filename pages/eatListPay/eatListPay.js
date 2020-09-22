@@ -116,12 +116,11 @@ Page({
       orderData.orderType = this.data.orderTypeList[this.data.index].id
       orderData.originalPrice = this.data.info.totalPrice
       orderData.packagePrice = this.data.info.bzTotalPrice ? this.data.info.bzTotalPrice : 0
-      orderData.discountPrice = this.data.info.totalPriceDiscount
+      orderData.discountPrice = this.data.info.totalPrice - this.data.info.totalPriceDiscount
       orderData.deliverPrice = this.data.info.peiSf ? this.data.info.peiSf : 0
-      orderData.amountPayable = Number(orderData.deliverPrice) + Number(orderData.discountPrice) + Number(orderData.packagePrice)
+      orderData.amountPayable =this.data.info.total
       let arr = []
-      this.data.info.list.forEach(item => {
-
+      this.data.info.list.forEach(item => { 
         if (item.type == 1) {
           let obj = {
             id: item.id,
@@ -150,7 +149,10 @@ Page({
       console.log(orderData)
       paySave(orderData).then(res => {
         if (res.code == 200) {
-          this.payMoney(res.data)
+          // this.payMoney(res.data)
+          wx.navigateTo({
+            url: '/pages/payChoose/payChoose?orderNum='+res.data+'&orderMoney='+this.data.info.total+'&orderType=foodOrder',
+          })
           // wx.navigateBack({
           //   delta: 1,
           // })

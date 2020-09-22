@@ -282,4 +282,10 @@ export function sterilize(data) {
   })
 } 
 
-
+export function balancePay(data) {
+  return http.fly.request({
+    method: 'post',
+    url: URL.host + '/blade-bms/rtorder/client/balancePay',
+    body: data
+  })
+} 

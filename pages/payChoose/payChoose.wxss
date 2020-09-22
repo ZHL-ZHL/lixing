@@ -1,0 +1,25 @@
+/* pages/payChoose/payChoose.wxss */
+page {
+  height: 100%;
+  width: 100%;
+  background-color: #f7f7f7;
+}
+
+.moneyTotal {
+  font-size: 44rpx;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  padding: 100rpx 0rpx;
+}
+.pay-box{
+  width: calc(100% - 40rpx);
+  margin: 0 auto;
+  border-radius: 14rpx;
+  overflow: hidden;
+}
+.title{
+  font-weight: normal;
+  font-size:28rpx;
+  margin: 10rpx auto;
+}

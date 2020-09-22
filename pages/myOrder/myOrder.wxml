@@ -91,7 +91,7 @@
 				<view class="weui-cell operationprice">
 					<view class="weui-cell__bd"></view>
 					<view class="weui-cell__ft">
-						总价￥{{item.originalPrice}}，优惠￥{{item.originalPrice - item.discountPrice}} 需支付￥{{item.amountPayable}}
+						总价￥{{item.originalPrice}}，优惠￥{{item.discountPrice}} 需支付￥{{item.amountPayable}}
 					</view>
 				</view>
 				<view class="weui-cell operation">

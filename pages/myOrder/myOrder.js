@@ -51,40 +51,44 @@ Page({
     let orderType = ""
     if (e.currentTarget.dataset.item.itemType == 1) {
       orderType = "leaseOrder"
-    } else if (e.currentTarget.dataset.item.itemType == 2) {
-      orderType = "foodOrder"
-    }
-    payMoneys({
-      orderType: orderType,
-      orderNum: e.currentTarget.dataset.item.orderNum
-    }).then(res => {
-      let pay_info = JSON.parse(res.data.pay_info)
-      wx.requestPayment({
-        // 'appId': data,
-        'timeStamp': pay_info.timeStamp,
-        'nonceStr': pay_info.nonceStr,
-        'package': pay_info.package,
-        'signType': pay_info.signType,
-        'paySign': pay_info.paySign,
-        'success': function (res) {
-          console.log(res)
-          wx.showToast({
-            title: "支付成功",
-            icon: 'success',
-            duration: 2000,
-            success: function () {
-              wx.navigateTo({
-                url: '/pages/paySuccess/paySuccess?type=1',
-                success: function (res) {},
-                fail: function (res) {},
-                complete: function (res) {},
-              })
-            }
-          })
-        },
-        fail: function (res1) {}
+      payMoneys({
+        orderType: orderType,
+        orderNum: e.currentTarget.dataset.item.orderNum
+      }).then(res => {
+        let pay_info = JSON.parse(res.data.pay_info)
+        wx.requestPayment({
+          // 'appId': data,
+          'timeStamp': pay_info.timeStamp,
+          'nonceStr': pay_info.nonceStr,
+          'package': pay_info.package,
+          'signType': pay_info.signType,
+          'paySign': pay_info.paySign,
+          'success': function (res) {
+            console.log(res)
+            wx.showToast({
+              title: "支付成功",
+              icon: 'success',
+              duration: 2000,
+              success: function () {
+                wx.navigateTo({
+                  url: '/pages/paySuccess/paySuccess?type=1',
+                  success: function (res) {},
+                  fail: function (res) {},
+                  complete: function (res) {},
+                })
+              }
+            })
+          },
+          fail: function (res1) {}
+        })
       })
-    })
+    } else if (e.currentTarget.dataset.item.itemType == 2) {
+      orderType = "foodOrder" 
+      wx.navigateTo({
+        url: '/pages/payChoose/payChoose?orderNum='+e.currentTarget.dataset.item.orderNum+'&orderMoney='+e.currentTarget.dataset.item.amountPayable+'&orderType=foodOrder',
+      })
+    }
+    
 
   },
   showTap() {

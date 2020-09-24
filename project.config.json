@@ -1486,6 +1486,13 @@
 					"id": -1,
 					"name": "pages/payChoose/payChoose",
 					"pathName": "pages/payChoose/payChoose",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/eat/eat",
+					"pathName": "pages/eat/eat",
 					"scene": null
 				}
 			]

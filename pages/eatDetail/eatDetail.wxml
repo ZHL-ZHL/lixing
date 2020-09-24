@@ -17,13 +17,15 @@
 		<view class="weui-cell__hd colorprice">￥{{info.price}}{{info.units}}</view>
 		<view class="weui-cell__bd"></view>
 		<view class="weui-cell__ft">
-			<view wx:if="{{info.isSpecification && !info.contorno}}" data-item="{{info}}" class="chooseBtn" catchtap="showggBtn"> 选规格 <text class="numTop" wx:if="{{info.num>0}}">{{info.num}}</text> </view>
-			<view class="foodNum" wx:if="{{!info.isSpecification || info.contorno}}">
-				<image src="/images/eat/jian.png" class="footAdd" wx:if="{{info.num>0}}" catchtap="goodsDel" data-idx="{{idx}}" data-num="{{info.num}}" data-id="{{info.id}}" data-item="{{info}}"></image>
-				<view class="foodValue" wx:if="{{info.num>0}}">
-					{{info.num}}
+			<view wx:if="{{showBtnGoCar == true || type == 1}}">
+				<view wx:if="{{(info.isSpecification && !info.contorno) || type == 1}}" data-item="{{info}}" class="chooseBtn" catchtap="showggBtn"> 选规格 <text class="numTop" wx:if="{{info.num>0}}">{{info.num}}</text> </view>
+				<view class="foodNum" wx:if="{{(!info.isSpecification || info.contorno) && type == 0}}">
+					<image src="/images/eat/jian.png" class="footAdd" wx:if="{{info.num>0}}" catchtap="goodsDel" data-idx="{{idx}}" data-num="{{info.num}}" data-id="{{info.id}}" data-item="{{info}}"></image>
+					<view class="foodValue" wx:if="{{info.num>0}}">
+						{{info.num}}
+					</view>
+					<image src="/images/eat/jia.png" class="footAdd" catchtap="goodsAdd" data-idx="{{idx}}" data-num="{{info.num}}" data-id="{{info.id}}" data-item="{{info}}" data-foodcount="{{info.limitCount-info.foodResidueCount}}" style="margin-right:20px"></image>
 				</view>
-				<image src="/images/eat/jia.png" class="footAdd" catchtap="goodsAdd" data-idx="{{idx}}" data-num="{{info.num}}" data-id="{{info.id}}" data-item="{{info}}" data-foodcount="{{info.limitCount-info.foodResidueCount}}" style="margin-right:20px"></image>
 			</view>
 		</view>
 	</view>
@@ -70,6 +72,14 @@
 		<view class="wrapper-showGG">
 			<view class="block">
 				<view class="weui-cell wrapper-showGG-title">{{listfoodName}}</view>
+				<view class="weui-cell" wx:if="{{ type==1 }}">
+					取餐时间
+				</view>
+				<view class="weui-cell wrapper-showGG-text" wx:if="{{ type==1 }}">
+					<view class="mn {{showTime== shopInfoMsg.breakfastStartTime+'-'+shopInfoMsg.breakfastEndTime  ?'active':''}}" catchtap="changeTime" data-item="{{menuItem}}" data-time="{{shopInfoMsg.breakfastStartTime}}-{{shopInfoMsg.breakfastEndTime}}">{{shopInfoMsg.breakfastStartTime}}-{{shopInfoMsg.breakfastEndTime}}</view>
+					<view class="mn {{showTime==shopInfoMsg.lunchStartTime+'-'+shopInfoMsg.lunchEndTime?'active':''}}" catchtap="changeTime" data-time="{{shopInfoMsg.lunchStartTime}}-{{shopInfoMsg.lunchEndTime}}" data-item="{{menuItem}}">{{shopInfoMsg.lunchStartTime}}-{{shopInfoMsg.lunchEndTime}}</view>
+					<view class="mn {{showTime==shopInfoMsg.dinnerStartTime+'-'+shopInfoMsg.dinnerEndTime?'active':''}}" catchtap="changeTime" data-time="{{shopInfoMsg.dinnerStartTime}}-{{shopInfoMsg.dinnerEndTime}}" data-item="{{menuItem}}">{{shopInfoMsg.dinnerStartTime}}-{{shopInfoMsg.dinnerEndTime}}</view>
+				</view>
 				<view wx:for="{{specificationList}}" wx:key="index" wx:for-index="index">
 					<view class="weui-cell">
 						<view class="weui-cell__hd">
@@ -88,7 +98,14 @@
 					<view class="weui-cell__hd colorred"> ￥{{menuItem.price}}</view>
 					<view class="weui-cell__bd"></view>
 					<view class="weui-cell__ft  ">
-						<view class="goCar" bindtap="tocarradd">+ 加入购物车</view>
+						<view class="goCar" wx:if="{{info.isSpecification && !info.contorno}}" bindtap="tocarradd">+ 加入购物车</view>
+						<view class="foodNum" wx:if="{{!info.isSpecification || info.contorno}}">
+							<image src="/images/eat/jian.png" class="footAdd" wx:if="{{info.num>0}}" catchtap="goodsDel" data-idx="{{idx}}" data-num="{{info.num}}" data-id="{{info.id}}" data-item="{{info}}"></image>
+							<view class="foodValue" wx:if="{{info.num>0}}">
+								{{info.num}}
+							</view>
+							<image src="/images/eat/jia.png" class="footAdd" catchtap="goodsAdd" data-idx="{{idx}}" data-num="{{info.num}}" data-id="{{info.id}}" data-item="{{info}}" data-foodcount="{{info.limitCount-info.foodResidueCount}}" style="margin-right:20px"></image>
+						</view>
 						<!-- <view wx:if="{{menuItem.num>0}}">
 							<image src="/images/eat/jian.png" class="footAdd" wx:if="{{menuItem.num>0}}" bindtap="goodsDel" data-idx="{{idx}}" data-num="{{menuItem.num}}" data-id="{{menuItem.id}}" data-item="{{menuItem}}"></image>
 							<view class="foodValue" wx:if="{{menuItem.num>0}}">

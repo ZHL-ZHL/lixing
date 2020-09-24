@@ -259,7 +259,7 @@ Page({
                            tmplIds: ['bt9asUd8TPrd1mPclDlZt081erTxNeFTRKDLvZSKZtE',  'bt9asUd8TPrd1mPclDlZt3XbyJ050k6j6Gk0Iw36010', 'DhnivrzRuqHWq-vOO4wEiBu2Jk0_QC9565UqX9eDhPk'],
                            success: res => {
                               wx.navigateTo({
-                                url: '/pages/paySuccess/paySuccess',
+                                url: '/pages/paySuccess/paySuccess?type==1',
                                 success: function (res) { },
                                 fail: function (res) { },
                                 complete: function (res) { },

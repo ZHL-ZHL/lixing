@@ -28,7 +28,7 @@ Page({
             })
           }
           if(that.data.type==2){
-            wx.switchTab({
+            wx.navigateTo({
               url: '/pages/mydiscount/mydiscount',
             })
           } 

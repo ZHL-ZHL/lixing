@@ -530,6 +530,12 @@ movable-view {
 .banner {
   margin: 10px auto;
 }
+.bannertop{
+  margin: 0 auto;
+}
+.bannertop .slide-image {
+  width: 750rpx; 
+}
 
 .banner swiper {
   width: 750rpx;

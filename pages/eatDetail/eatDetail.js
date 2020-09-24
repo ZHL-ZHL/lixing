@@ -12,21 +12,51 @@ Page({
     showGG: false,
     info: {},
     eatList: [],
+    showTime: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;  
-    let info =  JSON.parse(options.info)
-    rtfoodDetail({id:info.id}).then(res=>{ 
+    console.log(options)
+    var that = this;
+    let info = JSON.parse(options.info)
+    this.setData({
+      type: options.type,
+      shopInfoMsg: JSON.parse(options.shopInfoMsg),
+      showBtnGoCar: options.showBtnGoCar
+    })
+    rtfoodDetail({
+      id: info.id
+    }).then(res => {
       info.detail = res.data.detail
       this.setData({
-        info:info
+        info: info
       })
       WxParse.wxParse('content', 'html', info.detail, that, 0);
-    })  
+    })
+  },
+  showggBtn(e) {
+    console.log(e)
+    this.setData({
+      listfoodName: e.currentTarget.dataset.item.name,
+      specificationList: e.currentTarget.dataset.item.specificationDetail,
+      menuItem: e.currentTarget.dataset.item
+    })
+    this.setData({
+      showGG: true,
+      showTime: e.currentTarget.dataset.item.dateTime ? e.currentTarget.dataset.item.dateTime : ""
+    })
+  },
+  changeTime(e) {
+    let index = e.currentTarget.dataset.time
+    let menuItem = e.currentTarget.dataset.item
+    menuItem.dateTime = index
+    this.setData({
+      info: menuItem,
+      showTime: index,
+    })
   },
   goodsDel(e) {
     if (this.data.info.num && this.data.info.num > 0) {
@@ -44,19 +74,13 @@ Page({
     } else {
       this.data.info.num = 1;
     }
+
+    if (this.data.type == 1) {
+      let dateTime = e.currentTarget.dataset.item.dateTime
+      this.data.info.dateTime = dateTime
+    }
     this.setData({
       info: this.data.info
-    })
-  },
-  showggBtn(e) {
-    console.log(e)
-    this.setData({
-      listfoodName: e.currentTarget.dataset.item.name,
-      specificationList: e.currentTarget.dataset.item.specificationDetail,
-      menuItem: e.currentTarget.dataset.item
-    })
-    this.setData({
-      showGG: true
     })
   },
   closeshowGG() {
@@ -96,10 +120,9 @@ Page({
       specificationList
     })
   },
-  tocarradd() { 
+  tocarradd() {
     let tcArray = []
     let tc = []
-    console.log(this.data.specificationList)
     this.data.specificationList.forEach(item => {
       item.specificationListnew.forEach(item1 => {
         if (item1.show) {
@@ -107,13 +130,10 @@ Page({
         }
       });
     });
-    console.log(tc)
     if (tc.length > 0) {
       tcArray.push({
         specificationList: tc.join(",")
       })
-      console.log(tcArray)
-      console.log(this.data.info)
       if (!this.data.info.num) {
         this.data.info.num = 1
         this.data.info.specificationList = tcArray
@@ -121,9 +141,10 @@ Page({
         this.data.info.num += 1
         this.data.info.specificationList = this.data.info.specificationList.concat(tcArray)
       }
-    } 
-    this.setData({ 
-      info:this.data.info,
+    }
+
+    this.setData({
+      info: this.data.info,
       showGG: false
     })
   },

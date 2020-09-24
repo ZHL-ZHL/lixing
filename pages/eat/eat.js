@@ -232,7 +232,7 @@ Page({
     delete info['detail']
     console.log(info)
     wx.navigateTo({
-      url: '/pages/eatDetail/eatDetail?info=' + JSON.stringify(info),
+      url: '/pages/eatDetail/eatDetail?info=' + JSON.stringify(info)+'&type='+this.data.activetab+'&shopInfoMsg='+JSON.stringify(this.data.shopInfoMsg)+'&showBtnGoCar='+this.data.showBtnGoCar,
       success: function (res) {},
       fail: function (res) {},
       complete: function (res) {},
@@ -696,6 +696,8 @@ Page({
   getInfo() {
     shopInfo().then(res => {
       if (res.code == 200) {
+        let showPicList = res.data.showPic.split(',');
+        res.data.showPicList = showPicList
         this.setData({
           shopInfoMsg: res.data
         })

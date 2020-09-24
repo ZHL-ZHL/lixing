@@ -52,7 +52,7 @@
 					<view class='weui-cell__ft status'>
 						<text wx:if="{{item.statu == 1}}">待付款</text>
 						<text wx:if="{{item.statu==2}}">已付款</text>
-						<text wx:if="{{item.statu==3}}">退款订单</text> 
+						<text wx:if="{{item.statu==3}}">退款订单</text>
 						<text wx:if="{{item.statu==5}}">订单关闭</text>
 					</view>
 				</view>
@@ -91,7 +91,8 @@
 				<view class="weui-cell operationprice">
 					<view class="weui-cell__bd"></view>
 					<view class="weui-cell__ft">
-						总价￥{{item.originalPrice}}，优惠￥{{item.discountPrice}} 需支付￥{{item.amountPayable}}
+						<!-- originalPrice -->
+						总价￥{{item.amountPayable}}，优惠￥{{item.discountPrice}} 需支付￥{{item.amountPayable}}
 					</view>
 				</view>
 				<view class="weui-cell operation">
@@ -108,7 +109,7 @@
 			<view class="radio-msg">订单取消后无法恢复，红包优惠券可退回，请注意在有效期内使用</view>
 			<view class="radio-content">
 				<van-radio-group value="{{ radio }}" bind:change="onradioChange">
-					<van-cell-group> 
+					<van-cell-group>
 						<van-cell title="我不想买了" clickable data-name="我不想买了" bind:click="onClick">
 							<van-radio slot="right-icon" name="我不想买了" checked-color="#ff4d6b" />
 						</van-cell>

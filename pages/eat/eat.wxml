@@ -1,16 +1,27 @@
 <!--pages/eat/eat.wxml-->
 
 <movable-area>
-	<view class="top-title">
-		<image src="{{shopInfoMsg.showPic}}"></image>
+	<view class="banner bannertop">
+		<swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
+			<block wx:for="{{shopInfoMsg.showPicList}}" wx:key="{{index}}">
+				<swiper-item>
+					<view data-item="{{item}}" hover-class="none">
+						<image src="{{item}}" class="slide-image" mode="aspectFill" />
+					</view>
+				</swiper-item>
+			</block>
+		</swiper>
 	</view>
+	<!-- <view class="top-title">
+		<image src="{{shopInfoMsg.showPic}}"></image>
+	</view> -->
 	<van-overlay show="{{ showTitle }}" />
 	<view>
 		<view class="top-cont">
-			<view class="top-name">{{shopInfoMsg.name}}</view> 
+			<view class="top-name">{{shopInfoMsg.name}}</view>
 			<image src="{{shopInfoMsg.iconPic}}" class="logo-shop"></image>
 			<view class="top-msg top-price" wx:if="{{!showBtnGoCar}}">
-           当前该餐厅不在营业时间，仅接受预定
+				当前该餐厅不在营业时间，仅接受预定
 			</view>
 			<view class="top-msg">
 				<image src="../../images/eat/qx.png"></image>
@@ -21,7 +32,7 @@
 				<text>绿色食品</text>
 				<image src="../../images/eat/jk.png"></image>
 				<text>干净卫生</text>
-			</view> 
+			</view>
 			<view class="top-msg top-price" wx:if="{{!showTitle}}">
 				<text>12减10</text>
 				<text>38减15</text>

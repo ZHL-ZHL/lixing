@@ -105,29 +105,29 @@
 									<view class="caption">
 										<view class="foodName">{{menuItem.name}}</view>
 										<view class="foodsalesccc">
-											今日售{{}}份 月售{{}}份
+											今日售{{menuItem.sellCount?menuItem.sellCount:0}}份 月售{{menuItem.monthSellCount?menuItem.monthSellCount:0}}份
 										</view>
-										<view class="foodsales" wx:if="{{menuItem.discount}}">
+										<view class="foodsales" wx:if="{{menuItem.discount && menuItem.discount!=0}}">
 											<text class="xianj">￥{{menuItem.discountPrice}}</text>
 											<text class="yuanj">￥{{menuItem.price}}</text>
 										</view>
-										<view class="foodsales" wx:if="{{!menuItem.discount}}">
+										<view class="foodsales" wx:if="{{!menuItem.discount || menuItem.discount==0}}">
 											<text class="xianj">￥{{menuItem.price}}</text>
 										</view>
 										<view class="foodsales">
-											<text wx:if="{{menuItem.discount}}">{{menuItem.discount*100}}折</text>
+											<text wx:if="{{menuItem.discount && menuItem.discount!=0}}">{{menuItem.discount*100}}折</text>
 											<text wx:if="{{menuItem.limitNum}}">限购{{menuItem.limitNum}}份/人</text>
 										</view>
-										<view class="foodsales">
-											仅剩{{}}份
+										<view class="foodsales" wx:if="{{menuItem.numberRemaining}}">
+											仅剩{{menuItem.numberRemaining}}份
 										</view>
-										<view class="foodNum" wx:if="{{menuItem.isSpecification && showBtnGoCar}}">
+										<view class="foodNum" wx:if="{{menuItem.isSpecification && showBtnGoCar && menuItem.numberRemaining!=0}}">
 											<view class="chooseBtn" catchtap="showggBtn" data-item="{{menuItem}}">
 												选规格
 												<text class="numTop" wx:if="{{menuItem.num>0}}">{{menuItem.num}}</text>
 											</view>
 										</view>
-										<view class="foodNum" wx:if="{{!menuItem.isSpecification && showBtnGoCar}}">
+										<view class="foodNum" wx:if="{{!menuItem.isSpecification && showBtnGoCar && menuItem.numberRemaining!=0}}">
 											<image src="/images/eat/jian.png" class="footAdd" wx:if="{{menuItem.num>0}}" catchtap="goodsDel" data-idx="{{idx}}" data-num="{{menuItem.num}}" data-id="{{menuItem.id}}" data-item="{{menuItem}}"></image>
 											<view class="foodValue" wx:if="{{menuItem.num>0}}">
 												{{menuItem.num}}
@@ -159,7 +159,7 @@
 									<view class="caption">
 										<view class="foodName">{{menuItem.name}}</view>
 										<view class="foodsalesccc">
-											今日售{{}}份 月售{{}}份
+											今日售{{menuItem.sellCount?menuItem.sellCount:0}}份 月售{{menuItem.monthSellCount?menuItem.monthSellCount:0}}份
 										</view>
 										<view class="foodsales" wx:if="{{menuItem.discount}}">
 											<text class="xianj">￥{{menuItem.discountPrice}}</text>
@@ -172,8 +172,8 @@
 											<text wx:if="{{menuItem.discount}}">{{menuItem.discount*100}}折</text>
 											<text wx:if="{{menuItem.limitNum}}">限购{{menuItem.limitNum}}份/人</text>
 										</view>
-										<view class="foodsales">
-											仅剩{{}}份
+										<view class="foodsales" wx:if="{{menuItem.numberRemaining}}">
+											仅剩{{menuItem.numberRemaining}}份
 										</view>
 										<!--  wx:if="{{menuItem.isSpecification}}" -->
 										<view class="foodNum">

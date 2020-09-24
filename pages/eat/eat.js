@@ -439,7 +439,7 @@ Page({
     let bzTotalPrice = 0
     this.data.cartList.forEach((food) => {
       total += food.num;
-      totalPriceDiscount += food.discount ? food.discount * food.num : food.price * food.num
+      totalPriceDiscount += food.discount && food.discount!=0 ? food.discount * food.num : food.price * food.num
       totalPrice += food.price * food.num
       bzTotalPrice += food.packagePrice * food.num
     })
@@ -447,7 +447,7 @@ Page({
       totalPrice: totalPrice.toFixed(2),
       totalNum: total,
       bzTotalPrice: bzTotalPrice.toFixed(2),
-      totalPriceDiscount: totalPriceDiscount
+      totalPriceDiscount: this.toDecimal(totalPriceDiscount)
     })
     if (this.data.totalNum == 0) {
       this.setData({
@@ -462,7 +462,7 @@ Page({
     let bzTotalPrice = 0
     this.data.reserveList.forEach((food) => {
       total += food.num;
-      totalPriceDiscount += food.discount ? food.discount * food.num : food.price * food.num
+      totalPriceDiscount += food.discount && food.discount!=0 ? food.discount * food.num : food.price * food.num
       totalPrice += food.price * food.num
       bzTotalPrice += food.packagePrice * food.num
     })
@@ -470,13 +470,20 @@ Page({
       totalPrice1: totalPrice.toFixed(2),
       totalNum1: total,
       bzTotalPrice1: bzTotalPrice.toFixed(2),
-      totalPriceDiscount1: totalPriceDiscount
+      totalPriceDiscount1: this.toDecimal(totalPriceDiscount)
     })
     if (this.data.totalNum1 == 0) {
       this.setData({
         show: false
       })
     }
+  },
+  toDecimal(x) {
+    var val = Number(x)
+    if (!isNaN(parseFloat(val))) {
+      val = val.toFixed(2);
+    }
+    return val;
   },
   getpingJia() {
     eatpingjiaList({

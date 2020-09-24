@@ -121,7 +121,7 @@ Page({
       orderData.amountPayable =this.data.info.total
       let arr = []
       this.data.info.list.forEach(item => { 
-        if (item.type == 1) {
+        if (item.type == 1 && item.specificationList) {
           let obj = {
             id: item.id,
             num: item.num,

@@ -229,8 +229,7 @@ Page({
   },
   toDetail(e) {
     let info = e.currentTarget.dataset.item
-    delete info['detail']
-    console.log(info)
+    delete info['detail'] 
     wx.navigateTo({
       url: '/pages/eatDetail/eatDetail?info=' + JSON.stringify(info)+'&type='+this.data.activetab+'&shopInfoMsg='+JSON.stringify(this.data.shopInfoMsg)+'&showBtnGoCar='+this.data.showBtnGoCar,
       success: function (res) {},

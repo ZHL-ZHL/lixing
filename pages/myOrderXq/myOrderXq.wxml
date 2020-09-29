@@ -102,13 +102,13 @@
 						{{info.packagePrice}}
 					</view>
 				</view>
-				<view class="weui-cell operationprice">
+				<!-- <view class="weui-cell operationprice">
 					<view class="weui-cell__bd">
 						优惠券抵扣</view>
 					<view class="weui-cell__ft">
 						￥{{info.originalPrice - info.discountPrice}}
 					</view>
-				</view>
+				</view> -->
 				<view class="weui-cell operationprice operationpriceline">
 					<view class="weui-cell__bd">
 						需付款</view>

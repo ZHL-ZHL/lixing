@@ -1493,6 +1493,27 @@
 					"id": -1,
 					"name": "pages/eat/eat",
 					"pathName": "pages/eat/eat",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/meetingRoom/meetingRoom",
+					"pathName": "pages/meetingRoom/meetingRoom",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/my",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/eat/eat",
+					"pathName": "pages/eat/eat",
 					"scene": null
 				}
 			]

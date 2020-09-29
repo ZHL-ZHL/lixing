@@ -7,7 +7,7 @@ import {
 import {
   leaseBanner
 } from "../../api/banner.js"; 
-import getDaysBetween from "../../utils/util";
+import util from "../../utils/util";
 import Url from "../../utils/host.js"
 Page({
 
@@ -44,7 +44,7 @@ Page({
       [1000, 1500],
       [1500, '以上']
     ],
-    dayNumber: 0,
+    dayNumber: 1,
     date: '',
     showdate: false,
     showTime: false,
@@ -181,7 +181,13 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (options) { 
+    this.setData({
+      startDate: new Date().format("yyyy年MM月dd日 EEE").substr(5),
+      endDate: new Date(util.getDateStr(new Date(),1)).format("yyyy年MM月dd日 EEE").substr(5),
+      startDate1: new Date().format("yyyy年MM月dd日"),
+      endDate1: new Date(util.getDateStr(new Date(),1)).format("yyyy年MM月dd日"),
+    })
     this.getList()
     this.getBanner()
     this.getleaseAdv()
@@ -260,7 +266,7 @@ Page({
       endDate: new Date(end).format("yyyy年MM月dd日 EEE").substr(5),
       startDate1: new Date(start).format("yyyy年MM月dd日"),
       endDate1: new Date(end).format("yyyy年MM月dd日"),
-      dayNumber: getDaysBetween.getDaysBetween(start, end)
+      dayNumber: util.getDaysBetween(start, end)
     });
   },
   ondateClose() {

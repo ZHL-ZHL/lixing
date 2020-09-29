@@ -12,6 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isStaff: wx.getStorageSync("isStaff"),
     index: 3,
     info: "",
     address: "",
@@ -35,6 +36,20 @@ Page({
     this.setData({
       index: e.detail.value
     })
+    // info.totalPriceDiscount + info.peiSf + info.bzTotalPrice
+    if (this.data.index == '0') {
+      this.data.info.total = this.toDecimal(this.data.info.totalPriceDiscount + this.data.info.bzTotalPrice)
+    } else if (this.data.index == '1') {
+      this.data.info.total = this.toDecimal(this.data.info.totalPriceDiscount + this.data.info.peiSf + this.data.info.bzTotalPrice)
+    } else if (this.data.index == '2') {
+      this.data.info.total = this.toDecimal(this.data.info.totalPriceDiscount + this.data.info.bzTotalPrice)
+    } else if (this.data.index == '3') {
+      this.data.info.total = this.toDecimal(this.data.info.totalPriceDiscount)
+    }
+    this.data.info.totalisStaff = this.toDecimal(this.data.info.total * 0.8)
+    this.setData({
+      info: this.data.info
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -52,7 +67,12 @@ Page({
     info.bzTotalPrice = info.bzTotalPrice ? Number(info.bzTotalPrice) : 0
     info.totalPriceDiscount = info.totalPriceDiscount ? Number(info.totalPriceDiscount) : 0
     info.totalPrice = info.totalPrice ? Number(info.totalPrice) : 0
-    info.total = this.toDecimal(info.totalPriceDiscount + info.peiSf + info.bzTotalPrice) 
+    if (info.type == 3) {
+      info.total = this.toDecimal(info.totalPriceDiscount + info.bzTotalPrice)
+    } else {
+      info.total = this.toDecimal(info.totalPriceDiscount)
+    }
+    info.totalisStaff = this.toDecimal(info.total * 0.8)
     this.setData({
       info: info,
       index: info.type == 3 ? 2 : 3,
@@ -70,7 +90,7 @@ Page({
       orderType: 'foodOrder',
       orderNum: orderNum
     }).then(res => {
-      let pay_info = JSON.parse(res.data.pay_info) 
+      let pay_info = JSON.parse(res.data.pay_info)
       wx.requestPayment({
         // 'appId': data,
         'timeStamp': pay_info.timeStamp,
@@ -118,9 +138,9 @@ Page({
       orderData.packagePrice = this.data.info.bzTotalPrice ? this.data.info.bzTotalPrice : 0
       orderData.discountPrice = this.data.info.totalPrice - this.data.info.totalPriceDiscount
       orderData.deliverPrice = this.data.info.peiSf ? this.data.info.peiSf : 0
-      orderData.amountPayable =this.data.info.total
+      orderData.amountPayable = this.data.isStaff ? this.data.info.totalisStaff : this.data.info.total;
       let arr = []
-      this.data.info.list.forEach(item => { 
+      this.data.info.list.forEach(item => {
         if (item.type == 1 && item.specificationList) {
           let obj = {
             id: item.id,
@@ -151,7 +171,7 @@ Page({
         if (res.code == 200) {
           // this.payMoney(res.data)
           wx.navigateTo({
-            url: '/pages/payChoose/payChoose?orderNum='+res.data+'&orderMoney='+this.data.info.total+'&orderType=foodOrder',
+            url: '/pages/payChoose/payChoose?orderNum=' + res.data + '&orderMoney=' + orderData.amountPayable + '&orderType=foodOrder',
           })
           // wx.navigateBack({
           //   delta: 1,

@@ -47,13 +47,13 @@ Date.prototype.format = function (format) {
     format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
   }
   var week = {
-    "0": "一",
-    "1": "二",
-    "2": "三",
-    "3": "四",
-    "4": "五",
-    "5": "六",
-    "6": "日"
+    "0": "日",
+    "1": "一",
+    "2": "二",
+    "3": "三",
+    "4": "四",
+    "5": "五",
+    "6": "六"
   };
   if (/(E+)/.test(format)) {
     format = format.replace(RegExp.$1, ((RegExp.$1.length > 1) ? (RegExp.$1.length > 2 ? "周" : "周") : "") + week[this.getDay() + ""]);

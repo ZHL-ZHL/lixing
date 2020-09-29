@@ -25,6 +25,10 @@ export function xdLogin(data) {
               key: 'token',
               data: res1.access_token,
             })
+            wx.setStorage({
+              key: 'isStaff',
+              data: res1.isStaff,
+            })
             let userInfonew =  wx.getStorageSync('userInfo') 
             userInfonew.phone = res1.phone 
             wx.setStorage({

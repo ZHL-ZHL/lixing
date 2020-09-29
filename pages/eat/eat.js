@@ -563,7 +563,7 @@ Page({
       type: e.currentTarget.id ? e.currentTarget.id : 0,
       list: this.data.activetab == 0 ? this.data.cartList : this.data.reserveList,
       bzTotalPrice: this.data.activetab == 0 ? this.data.bzTotalPrice : this.data.bzTotalPrice1,
-      peiSf: this.data.activetab == 0 ? this.data.peiSf : this.data.peiSf1,
+      peiSf: this.data.shopInfoMsg.deliveryPrice,
       totalPrice: this.data.activetab == 0 ? this.data.totalPrice : this.data.totalPrice1,
       totalPriceDiscount: this.data.activetab == 0 ? this.data.totalPriceDiscount : this.data.totalPriceDiscount1,
     }

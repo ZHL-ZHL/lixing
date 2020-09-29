@@ -24,9 +24,10 @@
 			</view>
 			<view class="weui-cell__ft">
 				<picker bindchange="bindPickerChange" value="{{orderTypeList[index].id}}" range-key="{{'dictName'}}" value="{{index}}" range="{{orderTypeList}}">
-					<view class="picker">
-						<input placeholder-class="placeholderClass" name="orderType" disabled="true" value="{{orderTypeList[index].dictName}}"></input>
+					<view class="picker" style="display:inline-block;vertical-align: middle;margin-right:20rpx">
+						<input placeholder-class="placeholderClass" name="orderType" disabled="true" value="{{orderTypeList[index].dictName}}"></input> 
 					</view>
+					<image src="/images/icon/r_jt.png" class="r_jt" style="display:inline-block;vertical-align: middle"/>
 				</picker>
 			</view>
 		</view>
@@ -47,7 +48,7 @@
 <view class="list">
 
 
-	<view class="weui-cell" wx:if="{{info.bzTotalPrice}}">
+	<view class="weui-cell" wx:if="{{info.bzTotalPrice && index!=3}}">
 		<view class="weui-cell__hd">
 			打包费：
 		</view>
@@ -57,7 +58,7 @@
 			￥{{info.bzTotalPrice}}
 		</view>
 	</view>
-	<view class="weui-cell" wx:if="{{info.peiSf}}">
+	<view class="weui-cell" wx:if="{{info.peiSf && index == 1}}">
 		<view class="weui-cell__hd">
 			配送费：
 		</view>
@@ -77,7 +78,16 @@
 			已优惠：￥{{info.totalPrice - info.totalPriceDiscount}} 小计：￥{{info.total}}
 		</view>
 	</view>
-
+	<view class="weui-cell" wx:if="{{isStaff}}">
+		<view class="weui-cell__hd">
+			员工折扣：
+		</view>
+		<view class="weui-cell__bd">
+		</view>
+		<view class="weui-cell__ft">
+			总计：￥{{info.totalisStaff}}
+		</view>
+	</view>
 	<view class="weui-cell">
 		<view class="weui-cell__bd">备注</view>
 	</view>

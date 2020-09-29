@@ -97,14 +97,14 @@ Page({
       console.log(res)
       if (res.code == 200) {
         let userInfo = wx.getStorageSync("userInfo")
-        userInfo.phone = res.data;
+        userInfo.phone = res.data.phone;
         this.setData({
           userInfo,
           tan: false
         })
         wx.setStorage({
-          key: 'userInfo',
-          data: userInfo,
+          key: 'isStaff',
+          data: res.data.isStaff,
         })
       } else {
         this.setData({

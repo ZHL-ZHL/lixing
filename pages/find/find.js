@@ -10,7 +10,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    banner1: [],
+    banner1: [{
+      picture: "/images/banner/banner.png"
+    },{
+      picture: "/images/banner/banner.png"
+    }],
     indicatorDots: true, //小点
     indicatorColor: "white",
     autoplay: true, //是否自动轮播

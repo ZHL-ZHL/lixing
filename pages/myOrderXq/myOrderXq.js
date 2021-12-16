@@ -1,10 +1,14 @@
 // pages/myOrderXq/myOrderXq.js
+import drawQrcode from 'weapp-qrcode'
 import {
   orderDetail,
   userorderRefund
 } from "../../api/order.js"
 import Url from "../../utils/host.js"
 
+import {
+  getTalkeCode
+} from "../../api/eat.js"
 import {
   payMoneys
 } from "../../api/carMang.js"
@@ -23,7 +27,22 @@ Page({
     // 总时间
     remainTime: 0,
     remainTimeNew: '',
+    showCode:false,
     // countDownNum:60,
+  },
+  getTalkeCode(){
+    getTalkeCode().then(res=>{ 
+      this.setData({
+        showCode:true
+      })
+      console.log(res.data)
+      drawQrcode({
+        canvasId: 'myQrcode', 
+        text:JSON.stringify(res.data),
+        width: 200,
+          height: 200,
+      })
+    })
   },
   getNoMoney() {
     this.setData({
@@ -55,63 +74,71 @@ Page({
       }
     })
   },
+  showBottomBtn(e) {
+    this.setData({
+      showBottom: true,
+      orderNum: e.currentTarget.dataset.item.orderNum
+    })
+
+  },
   payMoney(e) {
-    console.log(e)
     let orderType = ""
     if (e.currentTarget.dataset.item.itemType == 1) {
       orderType = "leaseOrder"
-      payMoneys({
-        orderType: orderType,
-        orderNum: this.data.orderNum
-      }).then(res => {
-        let pay_info = JSON.parse(res.data.pay_info)
-        wx.requestPayment({
-          // 'appId': data,
-          'timeStamp': pay_info.timeStamp,
-          'nonceStr': pay_info.nonceStr,
-          'package': pay_info.package,
-          'signType': pay_info.signType,
-          'paySign': pay_info.paySign,
-          'success': function (res) {
-            console.log(res)
-            wx.showToast({
-              title: "支付成功",
-              icon: 'success',
-              duration: 2000,
-              success: function () {
-                wx.navigateTo({
-                  url: '/pages/paySuccess/paySuccess?type=1',
-                  success: function (res) {},
-                  fail: function (res) {},
-                  complete: function (res) {},
-                })
-              }
-            })
-          },
-          fail: function (res1) {}
-        })
-      })
     } else if (e.currentTarget.dataset.item.itemType == 2) {
       orderType = "foodOrder"
-      wx.navigateTo({
-        url: '/pages/payChoose/payChoose?orderNum='+this.data.orderNum+'&orderMoney='+e.currentTarget.dataset.item.amountPayable+'&orderType=foodOrder',
-      })
+    } else if (e.currentTarget.dataset.item.itemType == 3) {
+      orderType = "shopOrder"
     }
-    
+
+    payMoneys({
+      orderType: orderType,
+      orderNum: this.data.orderNum
+    }).then(res => {
+
+      let pay_info = res.data.result.jsConfig
+      wx.requestPayment({
+        // 'appId': data,
+        'timeStamp': pay_info.timeStamp,
+        'nonceStr': pay_info.nonceStr,
+        'package': pay_info.package,
+        'signType': pay_info.signType,
+        'paySign': pay_info.paySign,
+        'success': function (res) {
+          console.log(res)
+          wx.showToast({
+            title: "支付成功",
+            icon: 'success',
+            duration: 2000,
+            success: function () {
+              wx.navigateTo({
+                url: '/pages/paySuccess/paySuccess?type=1',
+                success: function (res) {},
+                fail: function (res) {},
+                complete: function (res) {},
+              })
+            }
+          })
+        },
+        fail: function (res1) {}
+      })
+
+    })
 
   },
   freeTell: function (e) {
     wx.makePhoneCall({
-      phoneNumber: e.currentTarget.dataset.item.shopPhone,
+      phoneNumber:'0354-8668008',
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     this.setData({
       orderNum: options.orderNum,
-      orderType: options.itemType == 1 ? 'leaseOrder' : 'foodOrder'
+      orderType: options.itemType == 1 ? 'leaseOrder' : options.itemType == 3 ? 'shopOrder' : 'foodOrder'
     })
     // this.countDown()
     this.getDetail()
@@ -165,7 +192,10 @@ Page({
         this.setData({
           info: res.data,
           remainTime: Math.floor(res.data.remainingTime / 1000)
-        })
+        }) 
+        if(this.data.orderType = "foodOrder" && this.data.info.statu == 2){
+          this.getTalkeCode()
+        } 
         if (this.data.remainTime > 0) {
           this.startCountdown()
         }

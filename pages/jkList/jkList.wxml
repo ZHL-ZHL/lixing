@@ -1,0 +1,13 @@
+<!--pages/jkList/jkList.wxml-->
+<view class="nav">
+  <swiper bindchange="swiperChange">
+    <block>
+      <swiper-item> 
+        <view class="navItem" wx:for="{{nav}}" wx:key-item="item" data-url="{{item.url}}" data-idx="{{idx}}" data-name="{{item.name}}" bindtap="routerTo" wx:key="idx">
+          <image src="{{item.picture}}" class="iconimage" mode="aspectFill" />
+          <text class="iconName">- {{item.name}} -</text>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>

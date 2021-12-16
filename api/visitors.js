@@ -5,7 +5,7 @@ import URL from "../utils/host.js"
 export function addVisitors(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/blade-bms/appointment/save',
+    url: URL.host + '/appointment/save',
     body: data
   })
 }
@@ -13,14 +13,14 @@ export function addVisitors(data) {
 export function updVisitors(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/blade-bms/appointment/update',
+    url: URL.host + '/appointment/update',
     body: data
   })
 }
 export function removeVisitors(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/blade-bms/appointment/remove?ids='+data
+    url: URL.host + '/appointment/remove?ids='+data
   })
 }
 
@@ -29,22 +29,14 @@ export function visitorsList(data) {
   console.log(data)
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/blade-bms/appointment/page',
+    url: URL.host + '/appointment/page',
     params: data
   })
-}
-// 访客单详情
-export function visitorsDetail(data) {
-  return http.fly.request({
-    method: 'get',
-    url: URL.host + '/renren-fast/wechat_appointment/one/' + data.appointmentId
-  })
-}
-
+} 
 export function paymentQcode(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/blade-bms/appointment/page',
+    url: URL.host + '/appointment/page',
     params: data
   })
 }  

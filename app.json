@@ -14,29 +14,21 @@
     "pages/myInfo/myInfo",
     "pages/visitors/visitors",
     "pages/myvisitors/myvisitors",
-    "pages/myvisitorsDetail/myvisitorsDetail",
-    "pages/mydiscount/mydiscount",
+    "pages/myvisitorsDetail/myvisitorsDetail", 
     "pages/feedback/feedback",
-    "pages/opinion/opinion",
     "pages/investment/investment",
     "pages/onlineMerchants/onlineMerchants",
     "pages/eat/eat",
-    "pages/eatCar/eatCar",
     "pages/eatSubmit/eatSubmit",
     "pages/eatRemark/eatRemark",
     "pages/eatOrder/eatOrder",
     "pages/eatshop/eatshop",
-    "pages/management/management",
     "pages/eatAddress/eatAddress",
-    "pages/evaluate/evaluate",
     "pages/eatOrderDetail/eatOrderDetail",
     "pages/myshopmenu/myshopmenu",
     "pages/eatQueryState/eatQueryState",
-    "pages/myshop/myshop",
     "pages/shapAgree/shapAgree",
     "pages/paySuccess/paySuccess",
-    "pages/carNumber/carNumber",
-    "pages/announcement/announcement",
     "pages/visitorsList/visitorsList",
     "pages/myMeeting/myMeeting",
     "pages/meetingImage/meetingImage",
@@ -44,19 +36,21 @@
     "pages/eatQcode/eatQcode",
     "pages/eatDetail/eatDetail",
     "pages/groupBuy/groupBuy",
-    "pages/eatListPay/eatListPay",
-    "pages/mydiscountCz/mydiscountCz",
-    "pages/mydiscountTk/mydiscountTk",
-    "pages/mydiscountZz/mydiscountZz",
-    "pages/mydiscountZzS/mydiscountZzS",
-    "pages/mydiscountZzPay/mydiscountZzPay", 
-    "pages/payChoose/payChoose"
+    "pages/payChoose/payChoose",
+    "pages/contactUs/contactUs",
+    "pages/myCoupons/myCoupons",
+    "pages/myProperty/myProperty",
+    "pages/carIndex/carIndex",
+    "pages/goodsList/goodsList",
+    "pages/jkList/jkList",
+    "pages/investmenti/investmenti",
+    "pages/investments/investments"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "usingComponents": {
     "van-calendar": "@vant/weapp/calendar/index",
@@ -82,21 +76,23 @@
     "van-tag": "@vant/weapp/tag/index",
     "van-popup": "@vant/weapp/popup/index",
     "van-action-sheet": "@vant/weapp/action-sheet/index",
-    "van-overlay": "@vant/weapp/overlay/index"
+    "van-overlay": "@vant/weapp/overlay/index",
+    "van-sidebar": "@vant/weapp/sidebar/index",
+    "van-sidebar-item": "@vant/weapp/sidebar-item/index"
   },
   "tabBar": {
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "/images/tabbar/index_sel.png",
+        "iconPath": "/images/tabbar/index.png",
         "selectedIconPath": "/images/tabbar/index_sel.png"
       },
       {
-        "pagePath": "pages/find/find",
-        "text": "中鲁商城",
-        "iconPath": "/images/tabbar/shop_sel.png",
-        "selectedIconPath": "/images/tabbar/shop.png"
+        "pagePath": "pages/goodsList/goodsList",
+        "text": "好物优选",
+        "iconPath": "/images/tabbar/shop.png",
+        "selectedIconPath": "/images/tabbar/shop_sel.png"
       },
       {
         "pagePath": "pages/my/my",
@@ -105,9 +101,9 @@
         "selectedIconPath": "/images/tabbar/my_sel.png"
       }
     ],
-    "color": "#666",
-    "selectedColor": "#333",
-    "backgroundColor": "#fff"
+    "color": "#fff",
+    "selectedColor": "#fff",
+    "backgroundColor": "#000"
   },
   "permission": {
     "scope.userLocation": {

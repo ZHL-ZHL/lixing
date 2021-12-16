@@ -1,124 +1,48 @@
 <!--pages/groupBuy/groupBuy.wxml-->
-<!--pages/eat/eat.wxml-->
-
-<movable-area>
+<view>
 	<view class="top-title">
-		<image src="../../images/shop/title.png"></image>
+		<image src="{{detailData.image}}"></image>
 	</view>
-	<van-overlay show="{{ showTitle }}" />
-	<view>
-		<view class="top-cont">
-			<view class="top-name">牧羊人 · 酸奶</view>
-			<image src="../../images/shop/logo.png" class="logo-shop"></image>
-			<view class="top-msg">
-				<text>活动时间：</text>
-			</view>
-			<view class="top-msg">
-				<text>2020.10.01-2020.10.15</text>
-			</view>
-			<view class="top-msg">
-				<text>活动规则：</text>
-			</view>
-			<view class="top-msg show-msg" wx:if="{{!showTitle}}">
-				<text>全场产品2020.10.01日00:00开始抢购，部分商品限量秒杀</text>
-				<image src="../../images/my/bottom.png" bindtap="showTitleBtn"></image>
-			</view>
-			<view wx:if="{{showTitle}}" class="showTitleClass">
-				<view class="top-msg">
-					<text>全场产品2020.10.01日00:00开始抢购，部分商品限量秒杀</text>
-				</view>
-				<view class="top-msg">
-					<text>全场产品2020.10.01日00:00开始抢购，部分商品限量秒杀</text>
-				</view>
-				<view class="top-msg">
-					<text>全场产品2020.10.01日00:00开始抢购，部分商品限量秒杀</text>
-				</view>
-				<view class="top-msg">
-					<text>全场产品2020.10.01日00:00开始抢购，部分商品限量秒杀</text>
-				</view>
+	<view class="pricebox">
+		<!-- <image src="../../images/shop/tg.png"></image> -->
+		<text class="priceN">￥{{detailData.otPrice}} </text>
+		<text class="priceY">￥{{detailData.price}}</text>
+		<text class="pingt">销量/{{detailData.sales}}</text>
+	</view>
+	<view style="background:#fff;margin-bottom:20rpx">
+		<view class="titleName">
+			<view>{{detailData.storeName}}</view>
+		</view>
+		<view class="weui-cell vag-bq">
+			<van-tag plain color="#016AA1" round>品质保障</van-tag>
+			<!-- <van-tag plain color="#016AA1" round>每人限购1件</van-tag> -->
+		</view>
+		<!-- <view class="weui-cell vag-bq">
+			<van-tag color="#EEEEEE">【牧牛人】脱脂牛奶3...</van-tag>
+			<van-tag color="#EEEEEE">【牧牛人】脱脂牛奶6...</van-tag>
+			<van-tag color="#EEEEEE">两种包装</van-tag>
+		</view> -->
+	</view>
+	<view class="imagelist">
+		<image src="{{detailData.sliderImage}}"></image>
+	</view>
 
-				<view class="top-msg" style="margin-top:20rpx">提货地址</view>
-				<view class="paddding30">山西省太原市小店区</view>
-				<view class="top-msg" style="margin-top:20rpx">联系电话</view>
-				<view class="paddding30">18332541254</view>
-
-				<view class="paddding30" style="text-align:center;color:#ccc;margin:30px 0px;font-size: 38rpx">
-					<van-icon name="arrow-up" bindtap="showTitleBtn" />
-				</view>
-			</view>
-
+	<view class="kong"></view>
+	<view class="footer weui-cell">
+		<view class="kfBtn"  bindtap="callPhone">
+			<image src="../../images/shop/phone.png"></image>
+			<text>客服</text> 
+		</view>
+		<view class="online">
+			<button class="btn cencel" bindtap="addGoodsBtn">加入购物车</button>
+		</view>
+		<view class="onlineCall" catchtap='freeTell'>
+			<button class="btn save" bindtap="toSubmit">立即购买</button>
 		</view>
 	</view>
-	<view>
-		<view class="title-result">
-			<image src="../../images/shop/top.png"></image>
-			<text class="textLeft">售完为止，先到先得！</text>
-			<text class="textRight"> {{remainTime1}}</text>
-			<text class="textRight"> {{remainTime2}}</text>
-			<text class="textRight"> {{remainTime3}}</text>
-		</view>
+	<view class="cart">
+		<navigator hover-class="none" url="/pages/carIndex/carIndex">
+			<image src="/images/car.png"></image>
+		</navigator>
 	</view>
-	<view class="container">
-		<view class="menuList">
-			<view class="weui-cell menulistItem">
-				<view class="weui-cell__hd thumb">
-					<image src="../../images/shop/shop.png" class="thumb" mode="aspectFill"></image>
-				</view>
-				<view class="weui-cell__bd">
-					<view class="caption">
-						<view class="foodName"> 【产地航空直发】牧牛人浓缩软酸菌饮品原味6听装2 </view>
-						<view class="foodsales">
-							<text class="yuanj">剩余3件</text>
-						</view>
-						<view class="foodprice">
-							团购价：<text>￥86.00</text>
-						</view>
-						<view class="foodNum">
-							<image src="/images/eat/jian.png" class="footAdd" wx:if="{{menuItem.num>0}}" bindtap="goodsDel" data-idx="{{idx}}" data-num="{{menuItem.num}}" data-id="{{menuItem.id}}" data-item="{{menuItem}}"></image>
-							<view class="foodValue" wx:if="{{menuItem.num>0}}">
-								{{menuItem.num}}
-							</view>
-							<image src="/images/eat/jia.png" class="footAdd" bindtap="goodsAdd" data-idx="{{idx}}" data-num="{{menuItem.num}}" data-id="{{menuItem.id}}" data-item="{{menuItem}}" data-foodcount="{{menuItem.foodCount-menuItem.foodResidueCount}}"></image>
-						</view>
-					</view>
-				</view>
-			</view>
-			<view class="weui-cell menulistItem" wx:for="{{groupList[current].children}}" wx:for-index="idx" wx:for-item="menuItem" wx:key="idx">
-				<view class="weui-cell__hd thumb">
-					<image src="{{ylink+menuItem.foodPic}}" class="thumb" mode="aspectFill"></image>
-				</view>
-				<view class="weui-cell__bd">
-					<view class="caption">
-						<view class="foodName">{{menuItem.foodName}}</view>
-						<view class="foodsales">
-							菜品数量：{{menuItem.foodCount-menuItem.foodResidueCount}}
-						</view>
-						<view class="foodPrice">
-							<label>￥</label>{{menuItem.foodPrice}}
-						</view>
-						<view class="foodNum">
-							<image src="/images/del.png" class="footAdd" wx:if="{{menuItem.num>0}}" bindtap="goodsDel" data-idx="{{idx}}" data-num="{{menuItem.num}}" data-id="{{menuItem.id}}" data-item="{{menuItem}}"></image>
-							<view class="foodValue" wx:if="{{menuItem.num>0}}">
-								{{menuItem.num}}
-							</view>
-							<image src="/images/add.png" class="footAdd" bindtap="goodsAdd" data-idx="{{idx}}" data-num="{{menuItem.num}}" data-id="{{menuItem.id}}" data-item="{{menuItem}}" data-foodcount="{{menuItem.foodCount-menuItem.foodResidueCount}}"></image>
-						</view>
-					</view>
-				</view>
-			</view>
-			<view class="kong"></view>
-			<view class="footer weui-cell">
-				<view class="online">
-					<button class="btn cencel" formType="reset" name="Submit">客服</button>
-				</view>
-				<view class="onlineCall" catchtap='freeTell'>
-					<button class="btn save" form-type="submit" name="Submit">立即购买</button>
-				</view>
-			</view>
-		</view>
-	</view>
-  <view class="cart">
-  <view class="cart-num">2</view>
-	  <image src="/images/car.png"></image>
-	</view>
-</movable-area>
+</view>

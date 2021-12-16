@@ -48,10 +48,10 @@
 .add{
   width:100%;
   height:90rpx;
-  background:#FFE401; 
+  background:#000; 
   text-align: center;
   margin: 0 auto;
-  border: none; 
+  border: none;  
 }
 .add button{
   border-radius: 0rpx;
@@ -61,7 +61,7 @@
   height: 100%;
   font-size: 26rpx;
   box-sizing: border-box;
-  color: #333;
+  color: #fff;
 }
 .add button:after{
    border: none;

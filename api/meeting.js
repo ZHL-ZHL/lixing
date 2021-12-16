@@ -4,7 +4,7 @@ import URL from "../utils/host.js"
 export function meetingList(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/blade-bms/hzleasedetail/wechat/page',
+    url: URL.host + '/hzleasedetail/wechat/page',
     params: data
   })
 } 
@@ -12,7 +12,7 @@ export function meetingList(data) {
 export function hzleasemakeList(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/blade-bms/hzleasemake/page',
+    url: URL.host + '/hzleasemake/page',
     params: data
   })
 } 
@@ -20,7 +20,7 @@ export function hzleasemakeList(data) {
 export function meetingDetail(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/blade-bms/hzleasedetail/detail',
+    url: URL.host + '/hzleasedetail/detail',
     params: data
   })
 } 
@@ -30,7 +30,7 @@ export function selectByKeWord(data) {
   console.log(data)
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/blade-bms/hzleasedetail/selectByKeWord?keyWord='+data
+    url: URL.host + '/hzleasedetail/selectByKeWord?keyWord='+data
   })
 }  
 export function hotLease(data) {

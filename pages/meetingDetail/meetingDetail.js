@@ -16,7 +16,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showAccurateSearch:false,
+    showAccurateSearch: false,
     banner: [{
       content: "/images/timg.jpg"
     }, ],
@@ -31,7 +31,7 @@ Page({
     meetingDetail: "",
     onLine: Url.imghost,
     userInfo: "",
-    listIcon:[]
+    listIcon: []
   },
   toCall() {
     wx.showActionSheet({
@@ -52,7 +52,21 @@ Page({
       showAccurateSearch: false
     })
   },
-  toCollect() { 
+  callPhone: function (e) {
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.id,
+    })
+  },
+  openMap() {
+    // console.log(parseFloat(this.data.meetingDetail.leaseAddress.split('-')[0]))
+    wx.openLocation({
+      latitude: parseFloat(this.data.meetingDetail.leaseAddress.split('-')[1]),
+      longitude: parseFloat(this.data.meetingDetail.leaseAddress.split('-')[0]),
+      scale: 18,
+      name: this.data.meetingDetail.leaseAddressName
+    })
+  },
+  toCollect() {
     let data = {};
     data.wechatUserId = this.data.wechatUserId
     data.itemType = 1;
@@ -91,6 +105,7 @@ Page({
     this.getDetail()
   },
   getDetail() {
+    let that = this;
     meetingDetail({
       id: this.data.meetingId
     }).then(res => {
@@ -98,8 +113,9 @@ Page({
         this.setData({
           meetingDetail: res.data,
           isCollect: res.data.leaseImage,
-          listIcon:res.data.leaseFacilityList
-        })  
+          listIcon: res.data.leaseFacilityList
+        })
+        WxParse.wxParse('content', 'html', this.data.meetingDetail.leaseDetail, that, 0);
       } else {
         wx.showToast({
           title: res.msg,
@@ -116,7 +132,7 @@ Page({
   getImageList(e) {
     console.log()
     wx.navigateTo({
-      url: '/pages/meetingImage/meetingImage?imageList='+e.currentTarget.dataset.item,
+      url: '/pages/meetingImage/meetingImage?imageList=' + e.currentTarget.dataset.item,
       success: function (res) {},
       fail: function (res) {},
       complete: function (res) {},

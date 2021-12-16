@@ -1,6 +1,6 @@
 export default { 
-   host: 'http://192.168.0.127:8070',
-  //  host: 'http://192.168.0.113:8070',
-  // host: 'https://ysc.hzxxtech.com/api', 
-  // <---正式服务地址--->
+  //  host: 'http://192.168.0.116:8090',   
+  // <---正式服务地址---> 
+  // host: 'https://www.jinkunoffice.com/api' 
+  host: 'http://jk.ngrok2.xiaomiqiu.cn' 
 }

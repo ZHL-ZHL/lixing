@@ -127,10 +127,10 @@ page{
 .foot_btn .btn{
   width:100%;
   height:90rpx;
-  background:#FFE401; 
+  background:#000000; 
   text-align: center;
   line-height: 90rpx;
-  color: #333;
+  color: #fff;
   font-size: 26rpx;
   font-weight: bold;
   margin: 0 auto;

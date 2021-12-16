@@ -1,35 +1,37 @@
 <!--pages/meetingDetail/meetingDetail.wxml-->
-<import src="../wxParse/wxParse.wxml" />
+<import src="../../wxParse/wxParse.wxml" />
 <view class="container">
 	<view class="banner">
-		<image src="{{meetingDetail.leaseImage}}" class="slide-image" mode="aspectFill" bindtap="getImageList" data-item="{{meetingDetail.leaseContentImage}}"></image>
-		<view class="collect" bindtap="toCollect" wx:if="{{userInfo}}">
+		<image src="{{meetingDetail.leaseImage}}" class="slide-image" mode="aspectFill" bindtap="getImageList"
+			data-item="{{meetingDetail.leaseContentImage}}"></image>
+		<!-- <view class="collect" bindtap="toCollect" wx:if="{{userInfo}}">
 			<van-icon name="like" color="#FF0000" size="20px" wx:if="{{isCollect}}" />
 			<van-icon name="like-o" color="#fff" size="20px" wx:else />
-		</view>
+		</view> -->
 	</view>
 	<view class="cont-main-top">
 		<view class="weui-cell infoName">
 			<view class="weui-cell__bd">
 				<view class="name title-top">
 					{{meetingDetail.leaseName}}
-					<text>{{meetingDetail.leaseBq}}</text> 
-					<image src="../../images/meet/phone.png" class="icon-phone"></image>
+					<text>{{meetingDetail.leaseBq}}</text>
+					<image src="../../images/meet/phone.png" id="{{meetingDetail.leasePhone}}" bindtap="callPhone"
+						class="icon-phone"></image>
 				</view>
-				<view>
-				<van-rate readonly value="{{ meetingDetail.leaseStarlevel }}"/>
-				</view>
+				<!-- <view>
+					<van-rate readonly value="{{ meetingDetail.leaseStarlevel }}" />
+				</view> -->
 				<view class="adr">
 					<view style="width: 90%;display: inline-block;">
 						{{meetingDetail.leaseAddressName}}
 					</view>
-					<image src="../../images/meet/address.png" class="icon-adr"></image>
+					<image src="../../images/meet/address.png" class="icon-adr" id="{{meetingDetail.leaseAddressName}}" bindtap="openMap"></image>
 				</view>
-				<view class="adr">
+				<!-- <view class="adr">
 					<view style="color:#ccc;">
 						{{meetingDetail.leaseAddressName}}
 					</view>
-				</view>
+				</view> -->
 			</view>
 			<view class="weui-cell__ft">
 				<!-- <button class="share" open-type="share">
@@ -40,7 +42,7 @@
 		<view class="line"></view>
 		<view>
 			<view class="weui-cell">
-				<view class="weui-cell__bd title-top">会议厅信息</view>
+				<view class="weui-cell__bd title-top">信息</view>
 			</view>
 			<view class="info">
 				<view class="weui-cell">
@@ -57,9 +59,9 @@
 			</view>
 		</view>
 		<!-- <view class="line"></view> -->
-		<view class="weui-cell">
-			<view class="weui-cell__bd title-top">会议服务设备</view>
-		</view> 
+		<!-- <view class="weui-cell">
+			<view class="weui-cell__bd title-top">服务设备</view>
+		</view>  -->
 
 
 		<van-row class="serve-box">
@@ -75,7 +77,12 @@
 		<view class="weui-cell">
 			<view class="weui-cell__bd title-top">租赁必读</view>
 		</view>
-		<view>
+		<view class="info meetingInfo">
+			<view class="wxParse">
+				<template is="wxParse" data="{{wxParseData:content.nodes}}" />
+			</view>
+		</view>
+		<!-- <view>
 			<image src="../../images/meet/06.png" class="require-img"></image>
 			<text class="require-text">费用详情</text>
 		</view>
@@ -107,7 +114,7 @@
 					<view class="adr">免费提供早餐，不提供午餐、晚餐；园区有食堂，可在食堂自选自费就餐~</view>
 				</view>
 			</view>
-		</view>
+		</view> -->
 		<view>
 			<image src="../../images/meet/04.png" class="require-img"></image>
 			<text class="require-text">其他</text>
@@ -118,15 +125,12 @@
 					<view class="adr">禁止携带宠物，谢谢合作~</view>
 				</view>
 			</view>
-			<view class="adr" style="padding:50rpx 0px">
+			<!-- <view class="adr" style="padding:50rpx 0px">
 				<view style="width: 90%;display: inline-block;">
-					园区服务热线：0351-666 6868</view>
+					服务热线：0351-666 6868</view>
 				<image src="../../images/meet/phoneh.png" class="icon-adr"></image>
-			</view>
+			</view> -->
 		</view>
-		<!-- <view class="info meetingInfo">
-			<template is="wxParse" data="{{wxParseData:leaseDetail.nodes}}" />
-		</view> -->
 		<view class="kong"></view>
 		<view class="footer weui-cell">
 			<view class="online">
@@ -141,12 +145,13 @@
 	</view>
 
 
-	<van-action-sheet show="{{ showAccurateSearch }}" title="优惠券" bind:close="onClose" round="true" close-on-click-overlay="true">
+	<van-action-sheet show="{{ showAccurateSearch }}" title="优惠券" bind:close="onClose" round="true"
+		close-on-click-overlay="true">
 		<view class="searchBox">
 			<view>
+				<!-- <image class="yhqImage" src="../../images/meet/meet01.png"></image>
 				<image class="yhqImage" src="../../images/meet/meet01.png"></image>
-				<image class="yhqImage" src="../../images/meet/meet01.png"></image>
-				<image class="yhqImage" src="../../images/meet/meet01.png"></image>
+				<image class="yhqImage" src="../../images/meet/meet01.png"></image> -->
 			</view>
 			<view class="sheet-btn">立即使用</view>
 		</view>

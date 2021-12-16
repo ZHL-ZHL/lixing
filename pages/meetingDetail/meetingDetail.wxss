@@ -94,7 +94,7 @@
 }
 
 .price text {
-  color: #FF4D6B;
+  color: #CAAE43;
 }
 
 .price label {

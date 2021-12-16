@@ -102,7 +102,7 @@ input::-webkit-input-placeholder {
 .btn.cencel {
   margin: 0;
   background: none;
-  color: #333;
+  color: #fff;
   border: 0px;
   width: 100%;
   font-weight: normal;
@@ -116,19 +116,25 @@ input::-webkit-input-placeholder {
 
 .online {
   display: inline-block;
-  width: 40%;
+  width: 50%;
   height: 100rpx;
-  background: #ffe401;
-  color: #333;
+  background: #CAAE43;
+  color: #fff;
   font-size: 26rpx;
+  line-height: 100rpx;
 }
-
+.width30{
+  width:150rpx;
+  background-color: #fff;
+  color: #333;
+}
 .onlineCall {
   display: inline-block;
-  width: 60%;
+  width: 50%;
   height: 100rpx;
-  background: #ffad00;
-  color: #333;
+  line-height: 100rpx;
+  background: #000000;
+  color: #fff;
   font-size: 26rpx;
 }
 
@@ -136,8 +142,8 @@ input::-webkit-input-placeholder {
   display: inline-block;
   width: 100%;
   height: 100rpx;
-  background: #FFE400;
-  color: #333;
+  background: #000000;
+  color: #fff;
   font-size: 26rpx;
   font-weight: bold;
 }
@@ -194,8 +200,13 @@ input::-webkit-input-placeholder {
 }
 
 .card .btn.ok {
-  background: #ffe401;
+  background: #CAAE43;
+  color: #fff;
   border-bottom-right-radius: 8rpx;
+}
+.card .btn.cancle{
+  background: #000000;
+  color: #fff;
 }
 
 .card .weui-cell {
@@ -360,6 +371,15 @@ input::-webkit-input-placeholder {
   border-radius: 20rpx;
 }
 
+.scroll-view-item_H.demo-text-3 {
+  box-shadow: none;
+  height: 230rpx;
+  width: 420rpx;
+  border: 0px;
+}
+.scroll-view-item_H.demo-text-3  image{
+  border-radius: 10rpx;
+}
 .scroll-view-item_H.demo-text-2 .scroll-view-item_H-name {
   padding: 10rpx 30rpx 0rpx 30rpx;
 }

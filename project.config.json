@@ -1,1522 +1,1716 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"enhance": false,
-		"postcss": true,
-		"preloadBackgroundData": false,
-		"minified": true,
-		"newFeature": true,
-		"coverView": true,
-		"nodeModules": true,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"uglifyFileName": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"useIsolateContext": true,
-		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.11.0",
-	"appid": "wxc35575f7a176ae3c",
-	"projectname": "zhyq-user-c",
-	"cloudfunctionTemplateRoot": "",
-	"watchOptions": {
-		"ignore": []
-	},
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"scripts": {},
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"current": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": -1,
-			"list": [
-				{
-					"id": -1,
-					"name": "pages/tjMeeting/tjMeeting",
-					"pathName": "pages/tjMeeting/tjMeeting",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 2,
-					"name": "pages/myOrder/myOrder",
-					"pathName": "pages/myOrder/myOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myOrderXq/myOrderXq",
-					"pathName": "pages/myOrderXq/myOrderXq",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myAdr/myAdr",
-					"pathName": "pages/myAdr/myAdr",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myadrAdd/myadrAdd",
-					"pathName": "pages/myadrAdd/myadrAdd",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/repair/repair",
-					"pathName": "pages/repair/repair",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/car/car",
-					"pathName": "pages/car/car",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/repairDetail/repairDetail",
-					"pathName": "pages/repairDetail/repairDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/repairOrder/repairOrder",
-					"pathName": "pages/repairOrder/repairOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myCollect/myCollect",
-					"pathName": "pages/myCollect/myCollect",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myCollectList/myCollectList",
-					"pathName": "pages/myCollectList/myCollectList",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/find/find",
-					"pathName": "pages/find/find",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingRoom/meetingRoom",
-					"pathName": "pages/meetingRoom/meetingRoom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/my/my",
-					"pathName": "pages/my/my",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myInfo/myInfo",
-					"pathName": "pages/myInfo/myInfo",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/visitors/visitors",
-					"pathName": "pages/visitors/visitors",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myvisitors/myvisitors",
-					"pathName": "pages/myvisitors/myvisitors",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myvisitors/myvisitors",
-					"pathName": "pages/myvisitors/myvisitors",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myvisitorsDetail/myvisitorsDetail",
-					"pathName": "pages/myvisitorsDetail/myvisitorsDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myOrder/myOrder",
-					"pathName": "pages/myOrder/myOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/mydiscount/mydiscount",
-					"pathName": "pages/mydiscount/mydiscount",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/distributionOrder/distributionOrder",
-					"pathName": "pages/distributionOrder/distributionOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/mydiscount/mydiscount",
-					"pathName": "pages/mydiscount/mydiscount",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/feedback/feedback",
-					"pathName": "pages/feedback/feedback",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/mydiscount/mydiscount",
-					"pathName": "pages/mydiscount/mydiscount",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/contract/contract",
-					"pathName": "pages/contract/contract",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/contractLIst/contractLIst",
-					"pathName": "pages/contractLIst/contractLIst",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/approval/approval",
-					"pathName": "pages/approval/approval",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/approval/approval",
-					"pathName": "pages/approval/approval",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/approval/approval",
-					"pathName": "pages/approval/approval",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/approval/approval",
-					"pathName": "pages/approval/approval",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/passCard/passCard",
-					"pathName": "pages/passCard/passCard",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/passCard/passCard",
-					"pathName": "pages/passCard/passCard",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/passCard/passCard",
-					"pathName": "pages/passCard/passCard",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/passCard/passCard",
-					"pathName": "pages/passCard/passCard",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/outbreak/outbreak",
-					"pathName": "pages/outbreak/outbreak",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/health/health",
-					"pathName": "pages/health/health",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/health/health",
-					"pathName": "pages/health/health",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/vehicle/vehicle",
-					"pathName": "pages/vehicle/vehicle",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/approval/approval",
-					"pathName": "pages/approval/approval",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/health/health",
-					"pathName": "pages/health/health",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/personnel/personnel",
-					"pathName": "pages/personnel/personnel",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/vehicle/vehicle",
-					"pathName": "pages/vehicle/vehicle",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/approval/approval",
-					"pathName": "pages/approval/approval",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/approval/approval",
-					"pathName": "pages/approval/approval",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/approval/approval",
-					"pathName": "pages/approval/approval",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/approval/approval",
-					"pathName": "pages/approval/approval",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/approval/approval",
-					"pathName": "pages/approval/approval",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/passCard/passCard",
-					"pathName": "pages/passCard/passCard",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/approval/approval",
-					"pathName": "pages/approval/approval",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/health/health",
-					"pathName": "pages/health/health",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/approval/approval",
-					"pathName": "pages/approval/approval",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/healthReport/healthReport",
-					"pathName": "pages/healthReport/healthReport",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/healthReport/healthReport",
-					"pathName": "pages/healthReport/healthReport",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/healthReport/healthReport",
-					"pathName": "pages/healthReport/healthReport",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/healthReport/healthReport",
-					"pathName": "pages/healthReport/healthReport",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/health/health",
-					"pathName": "pages/health/health",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/vehicle/vehicle",
-					"pathName": "pages/vehicle/vehicle",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/vehicle/vehicle",
-					"pathName": "pages/vehicle/vehicle",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/approval/approval",
-					"pathName": "pages/approval/approval",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/approval/approval",
-					"pathName": "pages/approval/approval",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/approval/approval",
-					"pathName": "pages/approval/approval",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/my/my",
-					"pathName": "pages/my/my",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/report/report",
-					"pathName": "pages/report/report",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/report/report",
-					"pathName": "pages/report/report",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/registration/registration",
-					"pathName": "pages/registration/registration",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/report/report",
-					"pathName": "pages/report/report",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/report/report",
-					"pathName": "pages/report/report",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/report/report",
-					"pathName": "pages/report/report",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/report/report",
-					"pathName": "pages/report/report",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/passCard/passCard",
-					"pathName": "pages/passCard/passCard",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/report/report",
-					"pathName": "pages/report/report",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/report/report",
-					"pathName": "pages/report/report",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/health/health",
-					"pathName": "pages/health/health",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/investment/investment",
-					"pathName": "pages/investment/investment",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/onlineMerchants/onlineMerchants",
-					"pathName": "pages/onlineMerchants/onlineMerchants",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/onlineMerchants/onlineMerchants",
-					"pathName": "pages/onlineMerchants/onlineMerchants",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/registration/registration",
-					"pathName": "pages/registration/registration",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/investment/investment",
-					"pathName": "pages/investment/investment",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/investment/investment",
-					"pathName": "pages/investment/investment",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/onlineMerchants/onlineMerchants",
-					"pathName": "pages/onlineMerchants/onlineMerchants",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/registration/registration",
-					"pathName": "pages/registration/registration",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/onlineMerchants/onlineMerchants",
-					"pathName": "pages/onlineMerchants/onlineMerchants",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/investment/investment",
-					"pathName": "pages/investment/investment",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eat/eat",
-					"pathName": "pages/eat/eat",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/outbreak/outbreak",
-					"pathName": "pages/outbreak/outbreak",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eatSubmit/eatSubmit",
-					"pathName": "pages/eatSubmit/eatSubmit",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/carList/carList",
-					"pathName": "pages/carList/carList",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eatRemark/eatRemark",
-					"pathName": "pages/eatRemark/eatRemark",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/carList/carList",
-					"pathName": "pages/carList/carList",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eatOrder/eatOrder",
-					"pathName": "pages/eatOrder/eatOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eatOrder/eatOrder",
-					"pathName": "pages/eatOrder/eatOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/carApply/carApply",
-					"pathName": "pages/carApply/carApply",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/carList/carList",
-					"pathName": "pages/carList/carList",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/carApply/carApply",
-					"pathName": "pages/carApply/carApply",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/carDetail/carDetail",
-					"pathName": "pages/carDetail/carDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/management/management",
-					"pathName": "pages/management/management",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eatAddress/eatAddress",
-					"pathName": "pages/eatAddress/eatAddress",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/comCarRecord/comCarRecord",
-					"pathName": "pages/comCarRecord/comCarRecord",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eat/eat",
-					"pathName": "pages/eat/eat",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/comCarRecord/comCarRecord",
-					"pathName": "pages/comCarRecord/comCarRecord",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eatSubmit/eatSubmit",
-					"pathName": "pages/eatSubmit/eatSubmit",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myadrAdd/myadrAdd",
-					"pathName": "pages/myadrAdd/myadrAdd",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/comCarRecord/comCarRecord",
-					"pathName": "pages/comCarRecord/comCarRecord",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/management/management",
-					"pathName": "pages/management/management",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eatshop/eatshop",
-					"pathName": "pages/eatshop/eatshop",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/evaluate/evaluate",
-					"pathName": "pages/evaluate/evaluate",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/carPersonnel/carPersonnel",
-					"pathName": "pages/carPersonnel/carPersonnel",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/carIndex/carIndex",
-					"pathName": "pages/carIndex/carIndex",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eatOrderDetail/eatOrderDetail",
-					"pathName": "pages/eatOrderDetail/eatOrderDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/carPersonnel/carPersonnel",
-					"pathName": "pages/carPersonnel/carPersonnel",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/carPersonnel/carPersonnel",
-					"pathName": "pages/carPersonnel/carPersonnel",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eatshop/eatshop",
-					"pathName": "pages/eatshop/eatshop",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/healthReport/healthReport",
-					"pathName": "pages/healthReport/healthReport",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myshop/myshop",
-					"pathName": "pages/myshop/myshop",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eatOrder/eatOrder",
-					"pathName": "pages/eatOrder/eatOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myshop/myshop",
-					"pathName": "pages/myshop/myshop",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eatshop/eatshop",
-					"pathName": "pages/eatshop/eatshop",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/shapAgree/shapAgree",
-					"pathName": "pages/shapAgree/shapAgree",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/carPersonnel/carPersonnel",
-					"pathName": "pages/carPersonnel/carPersonnel",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/carIndex/carIndex",
-					"pathName": "pages/carIndex/carIndex",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/property/property",
-					"pathName": "pages/property/property",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/bus/bus",
-					"pathName": "pages/bus/bus",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/busDetail/busDetail",
-					"pathName": "pages/busDetail/busDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/approvalCar/approvalCar",
-					"pathName": "pages/approvalCar/approvalCar",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/my/my",
-					"pathName": "pages/my/my",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/busDriver/busDriver",
-					"pathName": "pages/busDriver/busDriver",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/bus/bus",
-					"pathName": "pages/bus/bus",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/carPersonnel/carPersonnel",
-					"pathName": "pages/carPersonnel/carPersonnel",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/carNumber/carNumber",
-					"pathName": "pages/carNumber/carNumber",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingRoom/meetingRoom",
-					"pathName": "pages/meetingRoom/meetingRoom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingRoom/meetingRoom",
-					"pathName": "pages/meetingRoom/meetingRoom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/investment/investment",
-					"pathName": "pages/investment/investment",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/onlineMerchants/onlineMerchants",
-					"pathName": "pages/onlineMerchants/onlineMerchants",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/onlineMerchants/onlineMerchants",
-					"pathName": "pages/onlineMerchants/onlineMerchants",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/carNumber/carNumber",
-					"pathName": "pages/carNumber/carNumber",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/carNumber/carNumber",
-					"pathName": "pages/carNumber/carNumber",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/visitors/visitors",
-					"pathName": "pages/visitors/visitors",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/carNumber/carNumber",
-					"pathName": "pages/carNumber/carNumber",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/visitorsList/visitorsList",
-					"pathName": "pages/visitorsList/visitorsList",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingRoom/meetingRoom",
-					"pathName": "pages/meetingRoom/meetingRoom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingDetail/meetingDetail",
-					"pathName": "pages/meetingDetail/meetingDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingRoom/meetingRoom",
-					"pathName": "pages/meetingRoom/meetingRoom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingRoom/meetingRoom",
-					"pathName": "pages/meetingRoom/meetingRoom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/my/my",
-					"pathName": "pages/my/my",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myMeeting/myMeeting",
-					"pathName": "pages/myMeeting/myMeeting",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/tjMeeting/tjMeeting",
-					"pathName": "pages/tjMeeting/tjMeeting",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingRoom/meetingRoom",
-					"pathName": "pages/meetingRoom/meetingRoom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myAdr/myAdr",
-					"pathName": "pages/myAdr/myAdr",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myadrAdd/myadrAdd",
-					"pathName": "pages/myadrAdd/myadrAdd",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myAdr/myAdr",
-					"pathName": "pages/myAdr/myAdr",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/tjMeeting/tjMeeting",
-					"pathName": "pages/tjMeeting/tjMeeting",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingImage/meetingImage",
-					"pathName": "pages/meetingImage/meetingImage",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingDetail/meetingDetail",
-					"pathName": "pages/meetingDetail/meetingDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingRoom/meetingRoom",
-					"pathName": "pages/meetingRoom/meetingRoom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/find/find",
-					"pathName": "pages/find/find",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingRoom/meetingRoom",
-					"pathName": "pages/meetingRoom/meetingRoom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingRoom/meetingRoom",
-					"pathName": "pages/meetingRoom/meetingRoom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingRoom/meetingRoom",
-					"pathName": "pages/meetingRoom/meetingRoom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/feedback/feedback",
-					"pathName": "pages/feedback/feedback",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/my/my",
-					"pathName": "pages/my/my",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/my/my",
-					"pathName": "pages/my/my",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingRoom/meetingRoom",
-					"pathName": "pages/meetingRoom/meetingRoom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingRoom/meetingRoom",
-					"pathName": "pages/meetingRoom/meetingRoom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingRoom/meetingRoom",
-					"pathName": "pages/meetingRoom/meetingRoom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetDetailList/meetDetailList",
-					"pathName": "pages/meetDetailList/meetDetailList",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingRoom/meetingRoom",
-					"pathName": "pages/meetingRoom/meetingRoom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingRoom/meetingRoom",
-					"pathName": "pages/meetingRoom/meetingRoom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myOrder/myOrder",
-					"pathName": "pages/myOrder/myOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myOrder/myOrder",
-					"pathName": "pages/myOrder/myOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myOrderXq/myOrderXq",
-					"pathName": "pages/myOrderXq/myOrderXq",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myOrder/myOrder",
-					"pathName": "pages/myOrder/myOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/paySuccess/paySuccess",
-					"pathName": "pages/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/paySuccess/paySuccess",
-					"pathName": "pages/paySuccess/paySuccess",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eat/eat",
-					"pathName": "pages/eat/eat",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eatDetail/eatDetail",
-					"pathName": "pages/eatDetail/eatDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eat/eat",
-					"pathName": "pages/eat/eat",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myOrder/myOrder",
-					"pathName": "pages/myOrder/myOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingRoom/meetingRoom",
-					"pathName": "pages/meetingRoom/meetingRoom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eat/eat",
-					"pathName": "pages/eat/eat",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/find/find",
-					"pathName": "pages/find/find",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/groupBuy/groupBuy",
-					"pathName": "pages/groupBuy/groupBuy",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eat/eat",
-					"pathName": "pages/eat/eat",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eatListPay/eatListPay",
-					"pathName": "pages/eat/eat",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eatListPay/eatListPay",
-					"pathName": "pages/eatListPay/eatListPay",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eat/eat",
-					"pathName": "pages/eat/eat",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myOrder/myOrder",
-					"pathName": "pages/myOrder/myOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myOrder/myOrder",
-					"pathName": "pages/myOrder/myOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myOrder/myOrder",
-					"pathName": "pages/myOrder/myOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eat/eat",
-					"pathName": "pages/eat/eat",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eat/eat",
-					"pathName": "pages/eat/eat",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/mydiscount/mydiscount",
-					"pathName": "pages/mydiscount/mydiscount",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/mydiscountCz/mydiscountCz",
-					"pathName": "pages/mydiscountCz/mydiscountCz",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/mydiscountTk/mydiscountTk",
-					"pathName": "pages/mydiscountTk/mydiscountTk",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/mydiscountZz/mydiscountZz",
-					"pathName": "pages/mydiscountZz/mydiscountZz",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/mydiscount/mydiscount",
-					"pathName": "pages/mydiscount/mydiscount",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eat/eat",
-					"pathName": "pages/eat/eat",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eat/eat",
-					"pathName": "pages/eat/eat",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myOrder/myOrder",
-					"pathName": "pages/myOrder/myOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/payChoose/payChoose",
-					"pathName": "pages/payChoose/payChoose",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eat/eat",
-					"pathName": "pages/eat/eat",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/meetingRoom/meetingRoom",
-					"pathName": "pages/meetingRoom/meetingRoom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/my/my",
-					"pathName": "pages/my/my",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/eat/eat",
-					"pathName": "pages/eat/eat",
-					"scene": null
-				}
-			]
-		}
-	}
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": true,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "bundle": false,
+    "useIsolateContext": true,
+    "useCompilerModule": false,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "useApiHostProcess": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.11.0",
+  "appid": "wx2ee980985f11541a",
+  "projectname": "zhyq-user-c",
+  "cloudfunctionTemplateRoot": "",
+  "watchOptions": {
+    "ignore": []
+  },
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "scripts": {},
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "pages/tjMeeting/tjMeeting",
+          "pathName": "pages/tjMeeting/tjMeeting",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 2,
+          "name": "pages/myOrder/myOrder",
+          "pathName": "pages/myOrder/myOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myOrderXq/myOrderXq",
+          "pathName": "pages/myOrderXq/myOrderXq",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myAdr/myAdr",
+          "pathName": "pages/myAdr/myAdr",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myadrAdd/myadrAdd",
+          "pathName": "pages/myadrAdd/myadrAdd",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/repair/repair",
+          "pathName": "pages/repair/repair",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/car/car",
+          "pathName": "pages/car/car",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/repairDetail/repairDetail",
+          "pathName": "pages/repairDetail/repairDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/repairOrder/repairOrder",
+          "pathName": "pages/repairOrder/repairOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myCollect/myCollect",
+          "pathName": "pages/myCollect/myCollect",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myCollectList/myCollectList",
+          "pathName": "pages/myCollectList/myCollectList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/find/find",
+          "pathName": "pages/find/find",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingRoom/meetingRoom",
+          "pathName": "pages/meetingRoom/meetingRoom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/my/my",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myInfo/myInfo",
+          "pathName": "pages/myInfo/myInfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/visitors/visitors",
+          "pathName": "pages/visitors/visitors",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myvisitors/myvisitors",
+          "pathName": "pages/myvisitors/myvisitors",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myvisitors/myvisitors",
+          "pathName": "pages/myvisitors/myvisitors",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myvisitorsDetail/myvisitorsDetail",
+          "pathName": "pages/myvisitorsDetail/myvisitorsDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myOrder/myOrder",
+          "pathName": "pages/myOrder/myOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/mydiscount/mydiscount",
+          "pathName": "pages/mydiscount/mydiscount",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/distributionOrder/distributionOrder",
+          "pathName": "pages/distributionOrder/distributionOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/mydiscount/mydiscount",
+          "pathName": "pages/mydiscount/mydiscount",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/feedback/feedback",
+          "pathName": "pages/feedback/feedback",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/mydiscount/mydiscount",
+          "pathName": "pages/mydiscount/mydiscount",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/contract/contract",
+          "pathName": "pages/contract/contract",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/contractLIst/contractLIst",
+          "pathName": "pages/contractLIst/contractLIst",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/approval/approval",
+          "pathName": "pages/approval/approval",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/approval/approval",
+          "pathName": "pages/approval/approval",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/approval/approval",
+          "pathName": "pages/approval/approval",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/approval/approval",
+          "pathName": "pages/approval/approval",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/passCard/passCard",
+          "pathName": "pages/passCard/passCard",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/passCard/passCard",
+          "pathName": "pages/passCard/passCard",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/passCard/passCard",
+          "pathName": "pages/passCard/passCard",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/passCard/passCard",
+          "pathName": "pages/passCard/passCard",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/outbreak/outbreak",
+          "pathName": "pages/outbreak/outbreak",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/health/health",
+          "pathName": "pages/health/health",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/health/health",
+          "pathName": "pages/health/health",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/vehicle/vehicle",
+          "pathName": "pages/vehicle/vehicle",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/approval/approval",
+          "pathName": "pages/approval/approval",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/health/health",
+          "pathName": "pages/health/health",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/personnel/personnel",
+          "pathName": "pages/personnel/personnel",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/vehicle/vehicle",
+          "pathName": "pages/vehicle/vehicle",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/approval/approval",
+          "pathName": "pages/approval/approval",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/approval/approval",
+          "pathName": "pages/approval/approval",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/approval/approval",
+          "pathName": "pages/approval/approval",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/approval/approval",
+          "pathName": "pages/approval/approval",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/approval/approval",
+          "pathName": "pages/approval/approval",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/passCard/passCard",
+          "pathName": "pages/passCard/passCard",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/approval/approval",
+          "pathName": "pages/approval/approval",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/health/health",
+          "pathName": "pages/health/health",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/approval/approval",
+          "pathName": "pages/approval/approval",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/healthReport/healthReport",
+          "pathName": "pages/healthReport/healthReport",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/healthReport/healthReport",
+          "pathName": "pages/healthReport/healthReport",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/healthReport/healthReport",
+          "pathName": "pages/healthReport/healthReport",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/healthReport/healthReport",
+          "pathName": "pages/healthReport/healthReport",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/health/health",
+          "pathName": "pages/health/health",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/vehicle/vehicle",
+          "pathName": "pages/vehicle/vehicle",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/vehicle/vehicle",
+          "pathName": "pages/vehicle/vehicle",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/approval/approval",
+          "pathName": "pages/approval/approval",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/approval/approval",
+          "pathName": "pages/approval/approval",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/approval/approval",
+          "pathName": "pages/approval/approval",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/my/my",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/report/report",
+          "pathName": "pages/report/report",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/report/report",
+          "pathName": "pages/report/report",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/registration/registration",
+          "pathName": "pages/registration/registration",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/report/report",
+          "pathName": "pages/report/report",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/report/report",
+          "pathName": "pages/report/report",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/report/report",
+          "pathName": "pages/report/report",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/report/report",
+          "pathName": "pages/report/report",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/passCard/passCard",
+          "pathName": "pages/passCard/passCard",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/report/report",
+          "pathName": "pages/report/report",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/report/report",
+          "pathName": "pages/report/report",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/health/health",
+          "pathName": "pages/health/health",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/investment/investment",
+          "pathName": "pages/investment/investment",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/onlineMerchants/onlineMerchants",
+          "pathName": "pages/onlineMerchants/onlineMerchants",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/onlineMerchants/onlineMerchants",
+          "pathName": "pages/onlineMerchants/onlineMerchants",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/registration/registration",
+          "pathName": "pages/registration/registration",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/investment/investment",
+          "pathName": "pages/investment/investment",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/investment/investment",
+          "pathName": "pages/investment/investment",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/onlineMerchants/onlineMerchants",
+          "pathName": "pages/onlineMerchants/onlineMerchants",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/registration/registration",
+          "pathName": "pages/registration/registration",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/onlineMerchants/onlineMerchants",
+          "pathName": "pages/onlineMerchants/onlineMerchants",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/investment/investment",
+          "pathName": "pages/investment/investment",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eat/eat",
+          "pathName": "pages/eat/eat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/outbreak/outbreak",
+          "pathName": "pages/outbreak/outbreak",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eatSubmit/eatSubmit",
+          "pathName": "pages/eatSubmit/eatSubmit",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/carList/carList",
+          "pathName": "pages/carList/carList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eatRemark/eatRemark",
+          "pathName": "pages/eatRemark/eatRemark",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/carList/carList",
+          "pathName": "pages/carList/carList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eatOrder/eatOrder",
+          "pathName": "pages/eatOrder/eatOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eatOrder/eatOrder",
+          "pathName": "pages/eatOrder/eatOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/carApply/carApply",
+          "pathName": "pages/carApply/carApply",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/carList/carList",
+          "pathName": "pages/carList/carList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/carApply/carApply",
+          "pathName": "pages/carApply/carApply",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/carDetail/carDetail",
+          "pathName": "pages/carDetail/carDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/management/management",
+          "pathName": "pages/management/management",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eatAddress/eatAddress",
+          "pathName": "pages/eatAddress/eatAddress",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/comCarRecord/comCarRecord",
+          "pathName": "pages/comCarRecord/comCarRecord",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eat/eat",
+          "pathName": "pages/eat/eat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/comCarRecord/comCarRecord",
+          "pathName": "pages/comCarRecord/comCarRecord",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eatSubmit/eatSubmit",
+          "pathName": "pages/eatSubmit/eatSubmit",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myadrAdd/myadrAdd",
+          "pathName": "pages/myadrAdd/myadrAdd",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/comCarRecord/comCarRecord",
+          "pathName": "pages/comCarRecord/comCarRecord",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/management/management",
+          "pathName": "pages/management/management",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eatshop/eatshop",
+          "pathName": "pages/eatshop/eatshop",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/evaluate/evaluate",
+          "pathName": "pages/evaluate/evaluate",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/carPersonnel/carPersonnel",
+          "pathName": "pages/carPersonnel/carPersonnel",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/carIndex/carIndex",
+          "pathName": "pages/carIndex/carIndex",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eatOrderDetail/eatOrderDetail",
+          "pathName": "pages/eatOrderDetail/eatOrderDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/carPersonnel/carPersonnel",
+          "pathName": "pages/carPersonnel/carPersonnel",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/carPersonnel/carPersonnel",
+          "pathName": "pages/carPersonnel/carPersonnel",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eatshop/eatshop",
+          "pathName": "pages/eatshop/eatshop",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/healthReport/healthReport",
+          "pathName": "pages/healthReport/healthReport",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myshop/myshop",
+          "pathName": "pages/myshop/myshop",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eatOrder/eatOrder",
+          "pathName": "pages/eatOrder/eatOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myshop/myshop",
+          "pathName": "pages/myshop/myshop",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eatshop/eatshop",
+          "pathName": "pages/eatshop/eatshop",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/shapAgree/shapAgree",
+          "pathName": "pages/shapAgree/shapAgree",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/carPersonnel/carPersonnel",
+          "pathName": "pages/carPersonnel/carPersonnel",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/carIndex/carIndex",
+          "pathName": "pages/carIndex/carIndex",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/property/property",
+          "pathName": "pages/property/property",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/bus/bus",
+          "pathName": "pages/bus/bus",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/busDetail/busDetail",
+          "pathName": "pages/busDetail/busDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/approvalCar/approvalCar",
+          "pathName": "pages/approvalCar/approvalCar",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/my/my",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/busDriver/busDriver",
+          "pathName": "pages/busDriver/busDriver",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/bus/bus",
+          "pathName": "pages/bus/bus",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/carPersonnel/carPersonnel",
+          "pathName": "pages/carPersonnel/carPersonnel",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/carNumber/carNumber",
+          "pathName": "pages/carNumber/carNumber",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingRoom/meetingRoom",
+          "pathName": "pages/meetingRoom/meetingRoom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingRoom/meetingRoom",
+          "pathName": "pages/meetingRoom/meetingRoom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/investment/investment",
+          "pathName": "pages/investment/investment",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/onlineMerchants/onlineMerchants",
+          "pathName": "pages/onlineMerchants/onlineMerchants",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/onlineMerchants/onlineMerchants",
+          "pathName": "pages/onlineMerchants/onlineMerchants",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/carNumber/carNumber",
+          "pathName": "pages/carNumber/carNumber",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/carNumber/carNumber",
+          "pathName": "pages/carNumber/carNumber",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/visitors/visitors",
+          "pathName": "pages/visitors/visitors",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/carNumber/carNumber",
+          "pathName": "pages/carNumber/carNumber",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/visitorsList/visitorsList",
+          "pathName": "pages/visitorsList/visitorsList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingRoom/meetingRoom",
+          "pathName": "pages/meetingRoom/meetingRoom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingDetail/meetingDetail",
+          "pathName": "pages/meetingDetail/meetingDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingRoom/meetingRoom",
+          "pathName": "pages/meetingRoom/meetingRoom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingRoom/meetingRoom",
+          "pathName": "pages/meetingRoom/meetingRoom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/my/my",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myMeeting/myMeeting",
+          "pathName": "pages/myMeeting/myMeeting",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/tjMeeting/tjMeeting",
+          "pathName": "pages/tjMeeting/tjMeeting",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingRoom/meetingRoom",
+          "pathName": "pages/meetingRoom/meetingRoom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myAdr/myAdr",
+          "pathName": "pages/myAdr/myAdr",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myadrAdd/myadrAdd",
+          "pathName": "pages/myadrAdd/myadrAdd",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myAdr/myAdr",
+          "pathName": "pages/myAdr/myAdr",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/tjMeeting/tjMeeting",
+          "pathName": "pages/tjMeeting/tjMeeting",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingImage/meetingImage",
+          "pathName": "pages/meetingImage/meetingImage",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingDetail/meetingDetail",
+          "pathName": "pages/meetingDetail/meetingDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingRoom/meetingRoom",
+          "pathName": "pages/meetingRoom/meetingRoom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/find/find",
+          "pathName": "pages/find/find",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingRoom/meetingRoom",
+          "pathName": "pages/meetingRoom/meetingRoom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingRoom/meetingRoom",
+          "pathName": "pages/meetingRoom/meetingRoom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingRoom/meetingRoom",
+          "pathName": "pages/meetingRoom/meetingRoom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/feedback/feedback",
+          "pathName": "pages/feedback/feedback",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/my/my",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/my/my",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingRoom/meetingRoom",
+          "pathName": "pages/meetingRoom/meetingRoom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingRoom/meetingRoom",
+          "pathName": "pages/meetingRoom/meetingRoom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingRoom/meetingRoom",
+          "pathName": "pages/meetingRoom/meetingRoom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetDetailList/meetDetailList",
+          "pathName": "pages/meetDetailList/meetDetailList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingRoom/meetingRoom",
+          "pathName": "pages/meetingRoom/meetingRoom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingRoom/meetingRoom",
+          "pathName": "pages/meetingRoom/meetingRoom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myOrder/myOrder",
+          "pathName": "pages/myOrder/myOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myOrder/myOrder",
+          "pathName": "pages/myOrder/myOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myOrderXq/myOrderXq",
+          "pathName": "pages/myOrderXq/myOrderXq",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myOrder/myOrder",
+          "pathName": "pages/myOrder/myOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/paySuccess/paySuccess",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/paySuccess/paySuccess",
+          "pathName": "pages/paySuccess/paySuccess",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eat/eat",
+          "pathName": "pages/eat/eat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eatDetail/eatDetail",
+          "pathName": "pages/eatDetail/eatDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eat/eat",
+          "pathName": "pages/eat/eat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myOrder/myOrder",
+          "pathName": "pages/myOrder/myOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingRoom/meetingRoom",
+          "pathName": "pages/meetingRoom/meetingRoom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eat/eat",
+          "pathName": "pages/eat/eat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/find/find",
+          "pathName": "pages/find/find",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/groupBuy/groupBuy",
+          "pathName": "pages/groupBuy/groupBuy",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eat/eat",
+          "pathName": "pages/eat/eat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eatListPay/eatListPay",
+          "pathName": "pages/eat/eat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eatListPay/eatListPay",
+          "pathName": "pages/eatListPay/eatListPay",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eat/eat",
+          "pathName": "pages/eat/eat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myOrder/myOrder",
+          "pathName": "pages/myOrder/myOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myOrder/myOrder",
+          "pathName": "pages/myOrder/myOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myOrder/myOrder",
+          "pathName": "pages/myOrder/myOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eat/eat",
+          "pathName": "pages/eat/eat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eat/eat",
+          "pathName": "pages/eat/eat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/mydiscount/mydiscount",
+          "pathName": "pages/mydiscount/mydiscount",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/mydiscountCz/mydiscountCz",
+          "pathName": "pages/mydiscountCz/mydiscountCz",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/mydiscountTk/mydiscountTk",
+          "pathName": "pages/mydiscountTk/mydiscountTk",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/mydiscountZz/mydiscountZz",
+          "pathName": "pages/mydiscountZz/mydiscountZz",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/mydiscount/mydiscount",
+          "pathName": "pages/mydiscount/mydiscount",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eat/eat",
+          "pathName": "pages/eat/eat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eat/eat",
+          "pathName": "pages/eat/eat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myOrder/myOrder",
+          "pathName": "pages/myOrder/myOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/payChoose/payChoose",
+          "pathName": "pages/payChoose/payChoose",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eat/eat",
+          "pathName": "pages/eat/eat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/meetingRoom/meetingRoom",
+          "pathName": "pages/meetingRoom/meetingRoom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/my/my",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/eat/eat",
+          "pathName": "pages/eat/eat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/my/my",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/meetingRoom/meetingRoom",
+          "pathName": "pages/meetingRoom/meetingRoom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/my/my",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/contactUs/contactUs",
+          "pathName": "pages/contactUs/contactUs",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myCoupons/myCoupons",
+          "pathName": "pages/myCoupons/myCoupons",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myProperty/myProperty",
+          "pathName": "pages/myProperty/myProperty",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/visitorsList/visitorsList",
+          "pathName": "pages/visitorsList/visitorsList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/carIndex/carIndex",
+          "pathName": "pages/carIndex/carIndex",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/goodsList/goodsList",
+          "pathName": "pages/goodsList/goodsList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/jkList/jkList",
+          "pathName": "pages/jkList/jkList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/investment/investment",
+          "pathName": "pages/investment/investment",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/investmenti/investmenti",
+          "pathName": "pages/investmenti/investmenti",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/investments/investments",
+          "pathName": "pages/investments/investments",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/visitorsList/visitorsList",
+          "pathName": "pages/visitorsList/visitorsList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myOrder/myOrder",
+          "pathName": "pages/myOrder/myOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/goodsList/goodsList",
+          "pathName": "pages/goodsList/goodsList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/goodsList/goodsList",
+          "pathName": "pages/goodsList/goodsList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/groupBuy/groupBuy",
+          "pathName": "pages/groupBuy/groupBuy",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myCoupons/myCoupons",
+          "pathName": "pages/myCoupons/myCoupons",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/goodsList/goodsList",
+          "pathName": "pages/goodsList/goodsList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/carIndex/carIndex",
+          "pathName": "pages/carIndex/carIndex",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/groupBuy/groupBuy",
+          "pathName": "pages/groupBuy/groupBuy",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/carIndex/carIndex",
+          "pathName": "pages/carIndex/carIndex",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/goodsList/goodsList",
+          "pathName": "pages/goodsList/goodsList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/goodsList/goodsList",
+          "pathName": "pages/goodsList/goodsList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/visitorsList/visitorsList",
+          "pathName": "pages/visitorsList/visitorsList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/investmenti/investmenti",
+          "pathName": "pages/investmenti/investmenti",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/investments/investments",
+          "pathName": "pages/investments/investments",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/visitorsList/visitorsList",
+          "pathName": "pages/visitorsList/visitorsList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myOrder/myOrder",
+          "pathName": "pages/myOrder/myOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myProperty/myProperty",
+          "pathName": "pages/myProperty/myProperty",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/carIndex/carIndex",
+          "pathName": "pages/carIndex/carIndex",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/meetingRoom/meetingRoom",
+          "pathName": "pages/meetingRoom/meetingRoom",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

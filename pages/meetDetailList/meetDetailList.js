@@ -22,13 +22,7 @@ Page({
   getList(options) {
     meetingList({
       current: 1,
-      size: 1000,
-      startDate:options.startDate!='undefined'?options.startDate:'',
-      endDate:options.endDate!='undefined'?options.endDate:'',
-      keyword:options.keyword!='undefined'?options.keyword:'',
-      allSearchCount:options.allSearchCount!='undefined'?options.allSearchCount:'',
-      startTime:options.startTime!='undefined'?options.startTime:'',
-      endTime:options.endTime!='undefined'?options.endTime:'',
+      size: 1000
     }).then(res => {
       if (res.code == 200) {
         this.setData({

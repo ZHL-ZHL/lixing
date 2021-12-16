@@ -109,10 +109,25 @@ const dayTime = date => {
 }
 
 export function getDaysBetween(dateString1, dateString2) {
-  var startDate = Date.parse(dateString1);
-  var endDate = Date.parse(dateString2);
-  var days = (endDate - startDate) / (1 * 24 * 60 * 60 * 1000);
-  return days;
+  var  startDate = Date.parse(dateString1);
+    var  endDate = Date.parse(dateString2);
+    if (startDate>endDate){
+        return 0;
+    }
+    if (startDate==endDate){
+        return 1;
+    }
+    var days=(endDate - startDate)/(1*24*60*60*1000)+1;
+    return  days;
+}
+
+export function getHourBetween(s1, s2) {
+  var reDate = /\d{4}-\d{1,2}-\d{1,2} /;
+  s1 = new Date((reDate.test(s1) ? s1 : '2018-1-1 ' + s1).replace(/-/g, '/'));
+  s2 = new Date((reDate.test(s2) ? s2 : '2018-1-1 ' + s2).replace(/-/g, '/'));
+  var ms = s2.getTime() - s1.getTime();
+  if (ms < 0) return 0;
+  return Math.floor(ms / 1000 / 60 / 60);  //小时
 }
 /**
  * 将小程序的API封装成支持Promise的API
@@ -142,4 +157,5 @@ export default {
   formatDuring,
   wxPromisify,
   getDaysBetween, 
+  getHourBetween
 }

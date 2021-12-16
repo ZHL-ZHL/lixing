@@ -1,5 +1,4 @@
-@import "../visitors/visitors.wxss";
-
+@import "../visitors/visitors.wxss"; 
 page {
   height: 100%;
   background: #f8f8f8;
@@ -8,6 +7,9 @@ page {
 .form-box {
   height: 100%;
   overflow-y: auto;
+}
+.boldSize{
+  font-weight: bold;
 }
 
 .nav {
@@ -51,7 +53,7 @@ page {
   margin: auto;
   width: 140rpx;
   height: 1px;
-  background: #FFE400;
+  background: #CAAE43;
   bottom: -5px;
 }
 
@@ -137,4 +139,51 @@ page {
 
 .weui-cell__bd {
   font-size: 26rpx;
+}
+
+.van-checkbox-group-item {
+  float: left; 
+  width:30%;
+  padding: 10rpx;
+  text-align: center;
+  box-sizing: border-box;
+  border: 1px solid #cccccc;
+  margin-right: 20rpx;
+  height: 100rpx; 
+  margin-bottom: 20rpx;
+}
+
+.van-radio-group-item {
+  float: left;
+  width: 50%;
+}
+
+.van-checkbox-group-item .van-checkbox__icon--checked,.van-checkbox-group-item .van-checkbox__icon-wrap {
+  /* background-color: #FFAD00; */
+  /* border-color: #FFAD00; */
+  display: none;
+} 
+
+.activeC{
+  border: 1px solid #FFAD00; 
+}
+.activeC .van-checkbox__label{
+   color: #FFAD00;
+}
+.van-checkbox__label {
+  margin: 0 auto!important;
+  line-height: 70rpx!important;
+}
+
+.weui-cell__bd.navItem{
+  font-size:26rpx;
+}
+.cont-box .weui-cell__bd{
+  padding-left: 10px;
+}
+.phoneImage{
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+  margin-top:30rpx
 }

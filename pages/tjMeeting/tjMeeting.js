@@ -5,10 +5,13 @@ import {
 var dateTimePicker = require('../../utils/datapicker.js');
 import Url from "../../utils/host.js"
 import getNowTime from "../../utils/util";
+// getHourBetween
 import {
   tjCar
 } from "../../api/repair.js"
-
+import {
+  couponuserList
+} from "../../api/my.js"
 import { 
   payMoneys
 } from "../../api/carMang.js"
@@ -18,6 +21,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    totalPrice:0,
+    totalPriceCount: 0,
+    showActiveP: 0,
+    showActiveT: '',
+    showActive: '',
+    couponuserList: [],
+    showAccurateSearch: false,
     info: "",
     address: "",
     date: '',
@@ -31,13 +41,55 @@ Page({
     date2: "",
     rentType: "",
     time: "00:00",
-    time2: "00:00",
+    time2: "01:00",
     isCart: "",
     dateTimeArray: null,
     dateTime: null,
 
   },
 
+  showAc(e) { 
+    this.setData({
+      showActive: e.currentTarget.id,
+      showActiveP: e.currentTarget.dataset.item.couponPrice,
+      showActiveT: e.currentTarget.dataset.item.couponType
+    })
+    if (this.data.showActiveP) {
+      this.data.totalPriceCount = this.data.showActiveT == 0 ? this.data.totalPrice - this.data.showActiveP : this.data.totalPrice * this.data.showActiveP / 10
+      this.setData({
+        totalPriceCount: this.toDecimal(this.data.totalPriceCount)
+      })
+    }
+  }, 
+  subcoupon() {
+    this.setData({
+      showAccurateSearch: false
+    })
+  },
+  onClose() {
+    this.setData({
+      showAccurateSearch: false
+    })
+  },
+  openBottom() {
+    this.setData({
+      showAccurateSearch: true,
+    })
+    couponuserList({
+      type:1
+    }).then(res => {
+      this.setData({
+        couponuserList: res.data
+      })
+    })
+  }, 
+  toDecimal(x) {
+    var val = Number(x)
+    if (!isNaN(parseFloat(val))) {
+      val = val.toFixed(2);
+    }
+    return val;
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -56,10 +108,14 @@ Page({
       orderType: options.orderType,
       wechatUserId: wx.getStorageSync("userInfo").wechatUserId,
       rentType: options.rentType,
-      isCart: options.isCart
-    })
-    console.log(this.data)
+      isCart: options.isCart,
+      
+    }) 
     this.getDaday()
+    console.log(options.rentType)
+    this.setData({
+      totalPrice:options.rentType==2?this.data.info.leasePriceDay:this.data.info.leasePriceHours
+    })
   },
   getDaday() {
     let taday = getNowTime.getNowTime();
@@ -71,40 +127,65 @@ Page({
       today: taday
     })
   },
-  bindDateChange2(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+  bindDateChange2(e) { 
     this.setData({
       date2: e.detail.value
-    })
+    }) 
   },
 
-  bindDateChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+  bindDateChange: function (e) { 
     this.setData({
       date: e.detail.value
     })
+    let days = getNowTime.getDaysBetween(this.data.date,this.data.date1);
+    this.setData({
+      totalPrice:this.data.info.leasePriceDay*days,
+      showActiveP:0,
+      showActive:"",
+      totalPriceCount:0
+    })
   },
-  bindDateChange1(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+  bindDateChange1(e) { 
     this.setData({
       date1: e.detail.value
+    })
+    let days = getNowTime.getDaysBetween(this.data.date,this.data.date1);
+    this.setData({
+      totalPrice:this.data.info.leasePriceDay*days,
+      showActiveP:0,
+      showActive:"",
+      totalPriceCount:0
     })
   },
   bindTimeChange2(e) {
     this.setData({
       time2: e.detail.value
     })
+    let hours = getNowTime.getHourBetween(this.data.time,this.data.time2);
+    this.setData({
+      totalPrice:this.data.info.leasePriceHours*hours,
+      showActiveP:0,
+      showActive:"",
+      totalPriceCount:0
+    })
   },
   bindTimeChange(e) {
     this.setData({
       time: e.detail.value
     })
+    let hours = getNowTime.getHourBetween(this.data.time,this.data.time2);
+    console.log(hours)
+    this.setData({
+      totalPrice:this.data.info.leasePriceHours*hours,
+      showActiveP:0,
+      showActive:"",
+      totalPriceCount:0
+    })
   },
   changeDateTime(e) {
     this.setData({
       dateTime: e.detail.value
-    });
-
+    }); 
   },
   changeDateTimeColumn(e) {
     var arr = this.data.dateTime,
@@ -116,7 +197,6 @@ Page({
     this.setData({
       dateTimeArray: dateArr,
       dateTime: arr
-
     });
   },
   /**
@@ -130,7 +210,7 @@ Page({
       orderType:'leaseOrder',
       orderNum:orderNum
     }).then(res => {
-      let pay_info = JSON.parse(res.data.pay_info)
+      let pay_info = res.data.result.jsConfig
       console.log(pay_info,'2222222222')
       wx.requestPayment({
         // 'appId': data,
@@ -155,7 +235,11 @@ Page({
             }
           })
         },
-        fail: function(res1) {}
+        fail: function(res1) {
+          wx.reLaunch({
+            url: '/pages/myOrder/myOrder',
+          })
+        }
       })
     })
 
@@ -166,48 +250,36 @@ Page({
         title: '请选择联系人',
         icon: "none"
       })
-    } else {
-      console.log(this.data)
-      let orderData = {};
-      let dateTimeArray = this.data.dateTimeArray
-      let dateTime = this.data.dateTime
-
-      let dateTimeArray1 = this.data.dateTimeArray1
-      let dateTime1 = this.data.dateTime1
-
-      console.log(this.data.dateTimeArray, this.data.dateTime)
+    } else { 
+      let orderData = {};  
       orderData.itemType = this.data.orderType
-
       orderData.orderName = this.data.address.name
       orderData.orderPhone = this.data.address.phone
       orderData.startTime = this.data.date + " 00:00:00"
       if (this.data.orderType == 1) {
         if (this.data.rentType == 1) {
-          orderData.startTime = this.data.date + " " + this.data.time + ":00"
-          orderData.endTime = this.data.date + " " + this.data.time2 + ":00"
+          orderData.startTime = this.data.date2 + " " + this.data.time + ":00"
+          orderData.endTime = this.data.date2 + " " + this.data.time2 + ":00"
         } else {
           orderData.startTime = this.data.date + " 00:00:00"
           orderData.endTime = this.data.date1 + " 23:59:59"
-        }
-
+        } 
         orderData.itemId = this.data.info.id
         orderData.rentType = this.data.rentType
       } else if (this.data.orderType == 2) {
         orderData.orderAddress = this.data.address.provinces + this.data.address.address
         orderData.itemId = this.data.info.maintenanceId
-      }
-      // console.log(123)
-
+      } 
       orderData.remark = this.data.remark
       orderData.wechatUserId = this.data.wechatUserId
       orderData.orderType = "leaseOrder"
+      orderData.originalPrice = this.data.totalPrice
+      orderData.amountPayable = this.data.totalPriceCount > 0 ? this.data.totalPriceCount : this.data.totalPrice;
+      orderData.userCouponId =  this.data.showActive ? this.data.showActive : ''
       console.log(orderData)
       orderTj(orderData).then(res => {
         if (res.code == 200) {
           this.payMoney(res.data)
-          // wx.navigateBack({
-          //   delta: 1,
-          // })
         } else {
           wx.showToast({
             title: res.msg,

@@ -1,0 +1,219 @@
+<!--pages/investments/investments.wxml-->
+<view class="container">
+  <view class="weui-cell nav">
+    <view wx:for="{{nav}}" wx:key="index" class="weui-cell__bd navItem {{index==currentindex?'active':''}}"
+      bindtap="selNav" data-idx="{{item.dictKey}}">
+      {{item.dictValue}}
+    </view>
+  </view>
+  <view class="list" wx:for="{{list}}">
+    <view class="list-item  weui-cell">
+      <view class="weui-cell__bd">{{item.post}} - {{item.sname}}</view>
+      <view class="weui-cell__ft">{{item.phone}}</view>
+    </view>
+    <view class="list-item">{{item.remark}}</view>
+    <view class="phoneBox" id="{{item.phone}}" bindtap="callPhone">
+      <image class="phone" src="../../images/online/phonew.png"></image>
+    </view>
+  </view> 
+  <!-- <view wx:if="{{currentindex==0}}">
+    <view class="list">
+      <view class="list-item  weui-cell">
+        <view class="weui-cell__bd">室内保洁</view>
+        <view class="weui-cell__ft">杨眉</view>
+      </view>
+      <view class="list-item">联系方式：152 3443 5388</view>
+      <view class="phoneBox" id="15234435388" bindtap="callPhone">
+        <image class="phone" src="../../images/online/phonew.png"></image>
+      </view>
+    </view>
+    <view class="list">
+      <view class="list-item  weui-cell">
+        <view class="weui-cell__bd">送水</view>
+        <view class="weui-cell__ft">张先生</view>
+      </view>
+      <view class="list-item">联系方式：155 3499 2456</view>
+      <view class="phoneBox" id="15534992456" bindtap="callPhone">
+        <image class="phone" src="../../images/online/phonew.png"></image>
+      </view>
+    </view>
+    <view class="list">
+      <view class="list-item  weui-cell">
+        <view class="weui-cell__bd">收废纸</view>
+        <view class="weui-cell__ft">冯师傅</view>
+      </view>
+      <view class="list-item">联系方式：159 3546 3287</view>
+      <view class="phoneBox" id="15935463287" bindtap="callPhone">
+        <image class="phone" src="../../images/online/phonew.png"></image>
+      </view>
+    </view>
+    <view class="list">
+      <view class="list-item  weui-cell">
+        <view class="weui-cell__bd">修电脑，打印机</view>
+        <view class="weui-cell__ft">樊小亮</view>
+      </view>
+      <view class="list-item">联系方式：153 4344 4144</view>
+      <view class="phoneBox" id="15343444144" bindtap="callPhone">
+        <image class="phone" src="../../images/online/phonew.png"></image>
+      </view>
+    </view>
+    <view class="list">
+      <view class="list-item  weui-cell">
+        <view class="weui-cell__bd">修锁、换锁、配钥匙</view>
+        <view class="weui-cell__ft">183 3544 1114</view>
+      </view>
+      <view class="list-item">备用电话：188 0344 8287</view>
+      <view class="phoneBox" id="18335441114" bindtap="callPhone">
+        <image class="phone" src="../../images/online/phonew.png"></image>
+      </view>
+    </view>
+    <view class="list">
+      <view class="list-item  weui-cell">
+        <view class="weui-cell__bd">擦玻璃</view>
+        <view class="weui-cell__ft"> </view>
+      </view>
+      <view class="list-item">联系方式：180 3542 5262</view>
+      <view class="phoneBox" id="18035425262" bindtap="callPhone">
+        <image class="phone" src="../../images/online/phonew.png"></image>
+      </view>
+    </view>
+    <view class="list">
+      <view class="list-item  weui-cell">
+        <view class="weui-cell__bd">顺丰</view>
+        <view class="weui-cell__ft"> </view>
+      </view>
+      <view class="list-item">联系方式：188 3540 5129</view>
+      <view class="phoneBox" id="18835405129" bindtap="callPhone">
+        <image class="phone" src="../../images/online/phonew.png"></image>
+      </view>
+    </view>
+    <view class="list">
+      <view class="list-item  weui-cell">
+        <view class="weui-cell__bd">安家具、修家具</view>
+        <view class="weui-cell__ft">张师傅</view>
+      </view>
+      <view class="list-item">联系方式：131 0018 1763</view>
+      <view class="phoneBox" id="18835405129" bindtap="callPhone">
+        <image class="phone" src="../../images/online/phonew.png"></image>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{currentindex==1}}">
+    <view class="list">
+      <view class="list-item  weui-cell">
+        <view class="weui-cell__bd">联通宽带</view>
+        <view class="weui-cell__ft"> </view>
+      </view>
+      <view class="list-item">联系方式：186 3505 4063</view>
+      <view class="phoneBox" id="18635054063" bindtap="callPhone">
+        <image class="phone" src="../../images/online/phonew.png"></image>
+      </view>
+    </view>
+    <view class="list">
+      <view class="list-item  weui-cell">
+        <view class="weui-cell__bd">电信宽带</view>
+        <view class="weui-cell__ft">13327541733</view>
+      </view>
+      <view class="list-item">备用电话：0354-3931058</view>
+      <view class="phoneBox" id="13327541733" bindtap="callPhone">
+        <image class="phone" src="../../images/online/phonew.png"></image>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{currentindex==2}}">
+    <view class="list">
+      <view class="list-item  weui-cell">
+        <view class="weui-cell__bd">王先生</view>
+        <view class="weui-cell__ft">13593073355</view>
+      </view>
+      <view class="list-item">备注：金坤租户享受30天免费投放</view>
+      <view class="phoneBox" id="13593073355" bindtap="callPhone">
+        <image class="phone" src="../../images/online/phonew.png"></image>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{currentindex==3}}">
+    <view class="list">
+      <view class="list-item  weui-cell">
+        <view class="weui-cell__bd">捣墙</view>
+        <view class="weui-cell__ft"> </view>
+      </view>
+      <view class="list-item">联系方式：132 3303 2685</view>
+      <view class="phoneBox" id="13233032685" bindtap="callPhone">
+        <image class="phone" src="../../images/online/phonew.png"></image>
+      </view>
+    </view>
+    <view class="list">
+      <view class="list-item  weui-cell">
+        <view class="weui-cell__bd">捣墙/拆隔断</view>
+        <view class="weui-cell__ft">刘先生</view>
+      </view>
+      <view class="list-item">联系方式：159 3442 1982</view>
+      <view class="phoneBox" id="15934421982" bindtap="callPhone">
+        <image class="phone" src="../../images/online/phonew.png"></image>
+      </view>
+    </view>
+    <view class="list">
+      <view class="list-item  weui-cell">
+        <view class="weui-cell__bd">吊顶</view>
+        <view class="weui-cell__ft"></view>
+      </view>
+      <view class="list-item">联系方式：186 3543 2506</view>
+      <view class="phoneBox" id="18635432506" bindtap="callPhone">
+        <image class="phone" src="../../images/online/phonew.png"></image>
+      </view>
+    </view>
+    <view class="list">
+      <view class="list-item  weui-cell">
+        <view class="weui-cell__bd">刮墙</view>
+        <view class="weui-cell__ft">侯师傅</view>
+      </view>
+      <view class="list-item">备用电话：152 3544 6689</view>
+      <view class="phoneBox" id="15235446689" bindtap="callPhone">
+        <image class="phone" src="../../images/online/phonew.png"></image>
+      </view>
+    </view>
+    <view class="list">
+      <view class="list-item  weui-cell">
+        <view class="weui-cell__bd">木工</view>
+        <view class="weui-cell__ft">13327541733</view>
+      </view>
+      <view class="list-item">联系方式：134 5325 3849</view>
+      <view class="phoneBox" id="13453253849" bindtap="callPhone">
+        <image class="phone" src="../../images/online/phonew.png"></image>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{currentindex==4}}">
+    <view class="list">
+      <view class="list-item  weui-cell">
+        <view class="weui-cell__bd">课外，楼外广告</view>
+        <view class="weui-cell__ft">要新宇</view>
+      </view>
+      <view class="list-item">联系方式：</view>
+      <view class="phoneBox" id="" bindtap="callPhone">
+        <image class="phone" src="../../images/online/phonew.png"></image>
+      </view>
+    </view>
+    <view class="list">
+      <view class="list-item  weui-cell">
+        <view class="weui-cell__bd">小程序</view>
+        <view class="weui-cell__ft">李星</view>
+      </view>
+      <view class="list-item">联系方式：</view>
+      <view class="phoneBox" id="" bindtap="callPhone">
+        <image class="phone" src="../../images/online/phonew.png"></image>
+      </view>
+    </view>
+    <view class="list">
+      <view class="list-item  weui-cell">
+        <view class="weui-cell__bd">旅行</view>
+        <view class="weui-cell__ft">茶室姐</view>
+      </view>
+      <view class="list-item">联系方式：</view>
+      <view class="phoneBox" id="" bindtap="callPhone">
+        <image class="phone" src="../../images/online/phonew.png"></image>
+      </view>
+    </view>
+  </view> -->
+</view>

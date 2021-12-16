@@ -1,58 +1,23 @@
 // pages/meetingRoom/meetingRoom.js
 import {
-  meetingList,
-  hotLease,
-  selectByKeWord
+  meetingList, 
 } from "../../api/meeting.js"; 
 import {
   leaseBanner
 } from "../../api/banner.js"; 
 import util from "../../utils/util";
-import Url from "../../utils/host.js"
+import Url from "../../utils/host.js" 
 Page({
 
   /**
    * 页面的初始数据
    */
-  data: {
-    currentDate: '12:00',
-    currentDate2: '12:00',
-    filter(type, options) {
-      if (type === 'minute') {
-        return options.filter((option) => option % 5 === 0);
-      }
-
-      return options;
-    },
-    priceList: [
-      [0, 2000],
-      [2000, 4000],
-      [4000, 6000],
-      [6000, 8000],
-      [8000, 10000],
-      [10000, '以上']
-    ],
-    areaList: [
-      [0, 100],
-      [100, 500],
-      [500, 1000],
-      [1000, '以上']
-    ],
-    perpleList: [
-      [0, 500],
-      [500, 1000],
-      [1000, 1500],
-      [1500, '以上']
-    ],
-    dayNumber: 1,
-    date: '',
-    showdate: false,
-    showTime: false,
-    showTime2: false,
-    searchvalue: "",
-    showMain: true,
-    showAccurateSearch: false,
-    hot: [],
+  data: { 
+    nav: ['会议室','茶室','办公家居'],
+    currentindex: 0,
+    current: 1,  
+    date: '', 
+    list: [],
     meetingRoom: [],
     indicatorDots: true, //小点
     indicatorColor: "white",
@@ -63,121 +28,26 @@ Page({
     onLine: Url.imghost,
     pageNum: 1,
     load: false,
-    banner: [],
-    low: 0,
-    heigh: 0,
-    lowHeigh: "",
-    low1: 0,
-    heigh1: 0,
-    lowHeigh1: "",
-    low2: 0,
-    heigh2: 0,
-    lowHeigh2: "",
-    keywordList: [],
-    keyword: "",
-    allSearchCount: ""
+    banner: [{
+      picture:"/images/meet/banner.jpg",
+      titleimg1:"/images/meet/btitle1.png",
+      titleimg2:"/images/meet/btitle2.png"
+    }], 
   },
-  changePrice(e) { 
+  selNav: function (e) {
+    let index = e.target.dataset.idx;
     this.setData({
-      low:e.currentTarget.dataset.item[0],
-      heigh:e.currentTarget.dataset.item[1],
-      lowHeigh:e.currentTarget.dataset.item[0]+'-'+e.currentTarget.dataset.item[1]
+      currentindex: index,
+      current: 1,
+      list: []
     }) 
-    this.selectComponent("#zy-slider")._propertyLeftValueChange()
-    this.selectComponent("#zy-slider")._propertyRightValueChange()
+    this.getleaseAdv()
   },
-  changeArea(e) {
-    console.log(e.currentTarget.dataset.item)
-    this.setData({
-      low1:e.currentTarget.dataset.item[0],
-      heigh1:e.currentTarget.dataset.item[1],
-      lowHeigh1:e.currentTarget.dataset.item[0]+'-'+e.currentTarget.dataset.item[1]
-    })
-    this.selectComponent("#zy-slider1")._propertyLeftValueChange()
-    this.selectComponent("#zy-slider1")._propertyRightValueChange()
-  },
-  changePeople(e) {
-    console.log(e.currentTarget.dataset.item)
-    this.setData({
-      low2:e.currentTarget.dataset.item[0],
-      heigh2:e.currentTarget.dataset.item[1],
-      lowHeigh2:e.currentTarget.dataset.item[0]+'-'+e.currentTarget.dataset.item[1]
-    })
-    this.selectComponent("#zy-slider2")._propertyLeftValueChange()
-    this.selectComponent("#zy-slider2")._propertyRightValueChange()
-  },
-  clearallSearchCount() {
-    this.setData({
-      allSearchCount: ""
-    })
-  },
-  clearKeyword() {
-    this.setData({
-      keyword: ""
-    })
-  },
-  clearEndTime() {
-    this.setData({
-      endTime: ""
-    })
-  },
-  clearStartTime() {
-    this.setData({
-      startTime: ""
-    })
-  },
-
-  lowValueChangeAction: function (e) {
-    this.setData({
-      low: e.detail.lowValue
-    })
-    this.setData({
-      lowHeigh: this.data.low + '-' + this.data.heigh
+  goBack() {
+    wx.navigateBack({
+      delta: 1,
     })
   }, 
-  heighValueChangeAction: function (e) {
-    this.setData({
-      heigh: e.detail.heighValue
-    })
-    this.setData({
-      lowHeigh: this.data.low + '-' + this.data.heigh
-    })
-  },
-
-  lowValueChangeAction1: function (e) {
-    this.setData({
-      low1: e.detail.lowValue
-    })
-    this.setData({
-      lowHeigh1: this.data.low1 + '-' + this.data.heigh1
-    })
-  },
-
-  heighValueChangeAction1: function (e) {
-    this.setData({
-      heigh1: e.detail.heighValue
-    })
-    this.setData({
-      lowHeigh1: this.data.low1 + '-' + this.data.heigh1
-    })
-  },
-  lowValueChangeAction2: function (e) {
-    this.setData({
-      low2: e.detail.lowValue
-    })
-    this.setData({
-      lowHeigh2: this.data.low2 + '-' + this.data.heigh2
-    })
-  },
-
-  heighValueChangeAction2: function (e) {
-    this.setData({
-      heigh2: e.detail.heighValue
-    })
-    this.setData({
-      lowHeigh2: this.data.low2 + '-' + this.data.heigh2
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -188,153 +58,19 @@ Page({
       startDate1: new Date().format("yyyy年MM月dd日"),
       endDate1: new Date(util.getDateStr(new Date(),1)).format("yyyy年MM月dd日"),
     })
-    this.getList()
-    this.getBanner()
+    // this.getList()
+    // this.getBanner()
     this.getleaseAdv()
-  },
-  closeAccurateSearch() {
-    this.setData({
-      showAccurateSearch: false
-    })
-  },
-  stopAccurateSearch(e) {
-    // e.stopPropagation()
-  },
-  subAccurateSearch() {
-    this.setData({
-      showAccurateSearch: false,
-      allSearchCount: this.data.low + '-' + this.data.heigh + '/' + this.data.low1 + '-' + this.data.heigh1 + '/' + this.data.low2 + '-' + this.data.heigh2
-    })
-  },
-  showAccurateSearchBtn() {
-    this.setData({
-      showAccurateSearch: true,
-      lowHeigh: this.data.low + '-' + this.data.heigh,
-      lowHeigh1: this.data.low1 + '-' + this.data.heigh1,
-      lowHeigh2: this.data.low2 + '-' + this.data.heigh2,
-    })
-  },
-  showdateBtn() {
-    this.setData({
-      showdate: true
-    });
-  },
-  onInput(event) {
-    this.setData({
-      currentDate: event.detail,
-    });
-  },
-  onInput2(event) {
-    this.setData({
-      currentDate2: event.detail,
-    });
-  },
-  getTime1(event) {
-    console.log(this.data.currentDate)
-    this.setData({
-      showTime: false,
-      startTime: this.data.currentDate
-    });
-  },
-  getTime2(event) {
-    console.log(this.data.currentDate2)
-    this.setData({
-      showTime2: false,
-      endTime: this.data.currentDate2
-    });
-  },
-  showTimeBtn() {
-    this.setData({
-      showTime: true
-    });
-  },
-  showTimeBtn2() {
-    this.setData({
-      showTime2: true
-    });
-  },
-  formatDate(date) {
-    date = new Date(date);
-    return `${date.getMonth() + 1}/${date.getDate()}`;
-  },
-  onConfirm(event) {
-    const [start, end] = event.detail;
-    this.setData({
-      showdate: false,
-      date: `${this.formatDate(start)} - ${this.formatDate(end)}`,
-      startDate: new Date(start).format("yyyy年MM月dd日 EEE").substr(5),
-      endDate: new Date(end).format("yyyy年MM月dd日 EEE").substr(5),
-      startDate1: new Date(start).format("yyyy年MM月dd日"),
-      endDate1: new Date(end).format("yyyy年MM月dd日"),
-      dayNumber: util.getDaysBetween(start, end)
-    });
-  },
-  ondateClose() {
-    this.setData({
-      showdate: false
-    });
-  },
-  ondateClose1() {
-    this.setData({
-      showTime: false
-    });
-  },
-  ondateClose2() {
-    this.setData({
-      showTime2: false
-    });
-  },
-  onClickShow() {
-    hotLease().then(res => {
-      if (res.code == 200) {
-        this.setData({
-          keywordList: res.data
-        })
-      }
-    })
-    this.setData({
-      showMain: false,
-      searchvalue: ""
-    });
-  },
-  keywordBtn(e) {
-    this.setData({
-      keyword: e.currentTarget.id,
-      showMain: true
-    });
-  },
-  onChange(e) {
-    this.setData({
-      searchvalue: e.detail,
-    });
-  },
-  onSearch() {
-    selectByKeWord(this.data.searchvalue).then(res => {
-      this.setData({
-        showMain: true,
-        keyword: this.data.searchvalue
-      });
-    })
-  },
-  onCancel() {
-    this.setData({
-      showMain: true,
-    });
-  },
-  onClose() {
-    this.setData({
-      showAccurateSearch: false
-    })
-  },
+  },  
   getleaseAdv() {
-    meetingList({
-      referrals: 0,
+    meetingList({ 
       current: 1,
-      size: 5
+      size: 10,
+      type:this.data.currentindex+1
     }).then(res => {
       if (res.code == 200) {
         this.setData({
-          hot: res.data.records
+          list: res.data.records
         })
       }
     }).catch(res => {
@@ -353,9 +89,9 @@ Page({
       notBanner: 0
     }).then(res => {
       if (res.code == 200) {
-        this.setData({
-          banner: res.data.records
-        })
+        // this.setData({
+        //   banner: res.data.records
+        // })
       }
     }).catch(res => {
       wx.showToast({

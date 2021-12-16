@@ -1,0 +1,46 @@
+<!--pages/goodsList/goodsList.wxml-->
+<view class="banner">
+  <swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}"
+    indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}"
+    duration="{{duration}}" circular="true">
+    <block wx:for="{{banner1}}" wx:key="{{index}}">
+      <swiper-item>
+        <view data-item="{{item}}" hover-class="none">
+          <image src="{{item.picture}}" class="slide-image" mode="aspectFill" />
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view>
+  <van-sidebar active-key="{{ activeKey }}" class="van-grid-side" bind:change="onChange">
+    <van-sidebar-item title="全部" />
+    <van-sidebar-item title="{{item.name}}" wx:for="{{nav}}" />
+  </van-sidebar>
+  <view class="side-content">
+    <view>
+      <navigator url="/pages/groupBuy/groupBuy?id={{item.id}}" wx:for="{{list}}" hover-class="none" class="moreItem">
+        <view class="weui-cell operationlist">
+          <view class="weui-cell__hd">
+            <image class="thumb" src="{{item.image}}" />
+          </view>
+          <view class="weui-cell__bd caption">
+            <view class="goodsName">{{item.storeName}}</view>
+            <view class="zhekou">
+              ￥{{item.price}}
+            </view>
+            <view class="yuanjia">
+              <text class="yuangjiatext">￥{{item.otPrice}} </text> <text class="xiaoliang">月销{{item.sales}}件</text>
+            </view>
+          </view>
+        </view>
+      </navigator>
+
+    </view>
+  </view>
+  <view class="cart">
+		<navigator hover-class="none" url="/pages/carIndex/carIndex">
+			<image src="/images/car.png"></image>
+		</navigator>
+	</view>
+</view>

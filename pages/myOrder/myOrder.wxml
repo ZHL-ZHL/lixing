@@ -1,3 +1,40 @@
+<!-- <view class='container'>
+	<view class="weui-cell nav">
+		<view wx:for="{{nav}}" wx:key="index" class="weui-cell__bd navItem {{index==currentindex?'active':''}}"
+			bindtap="selNav" data-idx="{{index}}">
+			{{item}}
+		</view>
+	</view>
+	<view>
+		<view class="weui-cell operationlist">
+			<view class="weui-cell__hd">
+				<image class="thumb" src="../../images/my/image1.jpg" />
+			</view>
+			<view class="weui-cell__bd caption">
+				<view class="goodsName">现代轻奢电动功能沙发电动真皮头层牛皮现代轻奢电动功能发电动真皮头层牛...</view> 
+				<view class='textccc'> 【标准版】860X冰川蓝1+3+妃;右妃；头层；材质；... </view>
+			</view>
+			<view class="weui-cell__ft">
+				<view class="paystatus">交易成功</view>
+				<view class="price">￥6662.00</view>
+				<view class='textccc'>X1</view>
+			</view>
+		</view>
+		<view class="weui-cell operation" style="margin-bottom:20rpx">
+			<view class="weui-cell__bd"></view>
+			<view class="weui-cell__ft" style="color:#333"> 
+				 <text>共1件商品 </text> 实付款￥6662.00
+			</view>
+		</view>
+		<view class="weui-cell operation">
+			<view class="weui-cell__bd">▪▪▪</view>
+			<view class="weui-cell__ft"> 
+				<view class="btn colorCS">订单详情</view>
+			</view>
+		</view>
+	</view>
+	
+</view> -->
 <view class='container'>
 	<view wx:if="{{showTop}}" class="showTopBox" bindtap="oncloseTop">
 		<view class="showTopLi" wx:for="{{type}}" wx:key="{{index}}">
@@ -19,13 +56,15 @@
 			</view>
 			<view class="{{1 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='1'>
 				<view class="title-nav">待付款
-					<image src="../../images/my/bottom.png" catchtap="showTap" id="1" style="margin-left:100rpx" class="top-icon"></image>
+					<image src="../../images/my/bottom.png" catchtap="showTap" id="1" style="margin-left:100rpx" class="top-icon">
+					</image>
 				</view>
 				<hr class="line-style" />
 			</view>
 			<view class="{{2 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='2'>
 				<view class="title-nav">已付款
-					<image src="../../images/my/bottom.png" catchtap="showTap" id="2" style="margin-left:100rpx" class="top-icon"></image>
+					<image src="../../images/my/bottom.png" catchtap="showTap" id="2" style="margin-left:100rpx" class="top-icon">
+					</image>
 				</view>
 				<hr class="line-style" />
 			</view>
@@ -38,14 +77,22 @@
 					<view class='weui-cell__bd' wx:if="{{item.itemType == 1}}">
 						<navigator url="/pages/meetingRoom/meetingRoom" hover-class="none">
 							<image src="../../images/my/meet.png" class="icon-img"></image>
-							会议室租赁
+							租赁服务
 							<image src="/images/icon/r_jt.png" class="r_jt"></image>
 						</navigator>
 					</view>
 					<view class='weui-cell__bd' wx:if="{{item.itemType == 2}}">
-						<navigator url="/pages/eat/eat" hover-class="none">
+						<navigator hover-class="none">
+							<!--  url="/pages/eat/eat" -->
 							<image src="../../images/my/food.png" class="icon-img"></image>
 							我要吃饭
+							<image src="/images/icon/r_jt.png" class="r_jt"></image>
+						</navigator>
+					</view>
+					<view class='weui-cell__bd' wx:if="{{item.itemType == 3}}">
+						<navigator url="/pages/goodsList/goodsList" hover-class="none">
+							<image src="../../images/my/meet.png" class="icon-img"></image>
+							好物优选
 							<image src="/images/icon/r_jt.png" class="r_jt"></image>
 						</navigator>
 					</view>
@@ -57,7 +104,8 @@
 					</view>
 				</view>
 				<view class="">
-					<navigator url="/pages/myOrderXq/myOrderXq?orderNum={{item.orderNum}}&itemType={{item.itemType}}" class="goodsInfo" hover-class="none">
+					<navigator url="/pages/myOrderXq/myOrderXq?orderNum={{item.orderNum}}&itemType={{item.itemType}}"
+						class="goodsInfo" hover-class="none">
 						<view wx:if="{{item.itemType == 1}}" class="weui-cell">
 							<view class="weui-cell__hd">
 								<image class="thumb" src="{{item.orderInfoObj.leaseImage}}" />
@@ -65,16 +113,18 @@
 							<view class="weui-cell__bd caption">
 								<view class="goodsName">{{item.orderInfoObj.leaseName}}</view>
 								<view class='time' wx:if="{{item.itemType==1}}">
-									{{item.orderInfoObj.leaseAddressName}}
+									{{item.orderInfoObj.leaseAddressName?item.orderInfoObj.leaseAddressName:""}}
 								</view>
-								<view class='textccc'>{{item.orderInfoObj.leaseArea}}m² 最多容纳{{item.orderInfoObj.leaseGalleryful}}人</view>
+								<view class='textccc'>{{item.orderInfoObj.leaseArea}}m² 最多容纳{{item.orderInfoObj.leaseGalleryful}}人
+								</view>
 							</view>
 							<view class="weui-cell__ft">
 								<view>￥{{item.originalPrice}}</view>
 								<view class='textccc'>{{item.orderInfoObj.serviceTime}}</view>
 							</view>
 						</view>
-						<view wx:if="{{item.itemType == 2}}" class="weui-cell" wx:for="{{item.orderInfoObj}}" wx:for-item="item1" wx:key="idx">
+						<view wx:if="{{item.itemType == 2 || item.itemType == 3}}" class="weui-cell" wx:for="{{item.orderInfoObj}}"
+							wx:for-item="item1" wx:key="idx">
 							<view class="weui-cell__hd">
 								<image class="thumb" src="{{item1.showPice}}" />
 							</view>
@@ -91,15 +141,16 @@
 				<view class="weui-cell operationprice">
 					<view class="weui-cell__bd"></view>
 					<view class="weui-cell__ft">
-						<!-- originalPrice -->
-						总价￥{{item.amountPayable}}，优惠￥{{item.discountPrice}} 需支付￥{{item.amountPayable}}
+						<!-- originalPrice优惠￥{{item.originalPrice - item.amountPayable}}  -->
+						总价￥{{item.originalPrice}}，需支付￥{{item.amountPayable}}
 					</view>
 				</view>
 				<view class="weui-cell operation">
 					<view class="weui-cell__bd"></view>
 					<view class="weui-cell__ft">
-						<view class="btn" bindtap="showBottomBtn" data-item="{{item}}" wx:if="{{item.statu==1}}">取消订单</view>
+						<view class="btn" bindtap="showBottomBtn" data-item="{{item}}" wx:if="{{item.statu==1 && item.itemType==2}}">取消订单</view>
 						<view class="btn colorCS" data-item="{{item}}" bindtap="payMoney" wx:if="{{item.statu==1}}">付款</view>
+						<view class="btn colorCS" data-item="{{item}}" bindtap="showCodeBtn" wx:if="{{item.statu==2}}">取餐码</view>
 					</view>
 				</view>
 			</view>
@@ -137,3 +188,13 @@
 		</view>
 	</view>
 </view>
+
+<van-overlay show="{{ showCode }}" bind:click="onClickHide">
+	<view class="wrapper">
+		<view class="inner-box">
+			<canvas canvas-id="myQrcode" class="qcode-img"
+				style="display: block;width:200px; height: 200px;margin:10px"></canvas>
+		</view>
+
+	</view>
+</van-overlay>

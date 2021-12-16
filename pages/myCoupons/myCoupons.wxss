@@ -1,0 +1,45 @@
+/* pages/myCoupons/myCoupons.wxss */
+@import "../visitorsList/visitorsList.wxss";
+
+.weui-cell-bg {
+  height: 180rpx;
+  padding:8px 15px;
+  color: #fff;
+}
+
+.weui-cellR {
+  text-align: center;
+  width: 30%;
+  color: #fff; 
+  font-size: 50rpx;
+  font-style: oblique;
+  position: relative;
+  z-index: 3;
+}
+
+.weui-cellL {
+  text-align: center;
+  width: 70%; 
+  position: relative;
+  z-index: 3
+}
+.list-bg{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 0;
+  width: 700rpx;
+  height:  180rpx;
+}
+.checkImg{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto; 
+  display: block;
+  width: 20px;
+  height: 20px;
+  right: 30%;
+  z-index: 1;
+}

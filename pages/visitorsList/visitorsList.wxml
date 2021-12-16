@@ -1,207 +1,224 @@
+<wxs module="conT">
+	function indexOf(arr, value) {
+		return arr.indexOf(value);
+	}
+	module.exports.indexOf = indexOf;
+</wxs>
 <view class="container">
 	<view class="weui-cell nav">
-		<view wx:for="{{nav}}" wx:key="index" class="weui-cell__bd navItem {{index==currentindex?'active':''}}" bindtap="selNav" data-idx="{{index}}">
+		<view wx:for="{{nav}}" wx:key="index" class="weui-cell__bd navItem {{index==currentindex?'active':''}}"
+			bindtap="selNav" data-idx="{{index}}">
 			{{item}}
 		</view>
 	</view>
 	<view class="cont-box">
 		<view wx:if="{{currentindex==0}}">
 			<view class="form-box">
-				<form bindsubmit="formSubmit" bindreset="formReset">
+				<form bindsubmit="formSubmit">
 					<view class="list">
-					
+						<view class="weui-cell">
+							<view class="weui-cell__hd boldSize">基础信息</view>
+						</view>
 						<view class="weui-cell">
 							<view class="weui-cell__hd">姓名</view>
 							<view class="weui-cell__bd">
-								<input placeholder-class="placeholderClass" placeholder="输入来访人姓名" name="visitorName"></input>
+								<input placeholder-class="placeholderClass" placeholder="输入姓名" name="name"></input>
 							</view>
 						</view>
 						<view class="weui-cell">
 							<view class="weui-cell__hd">电话</view>
 							<view class="weui-cell__bd">
-								<input placeholder-class="placeholderClass" placeholder="输入来访人手机号" name="visitorPhone"></input>
+								<input placeholder-class="placeholderClass" placeholder="输入手机号" name="phone"></input>
 							</view>
 						</view>
 						<view class="weui-cell">
-							<view class="weui-cell__hd">身份证号</view>
+							<view class="weui-cell__hd">上门地址</view>
 							<view class="weui-cell__bd">
-								<input placeholder-class="placeholderClass" placeholder="输入来访人身份证号" name="visitorIdentity"></input>
+								<input placeholder-class="placeholderClass" placeholder="输入治房间号" name="address"></input>
 							</view>
 						</view>
 						<view class="weui-cell">
-							<view class="weui-cell__hd">单位</view>
+							<view class="weui-cell__hd boldSize">报修信息</view>
 							<view class="weui-cell__bd">
-								<input placeholder-class="placeholderClass" placeholder="输入来访人单位" name="visitorCompany"></input>
+							</view>
+							<!-- <view class="weui-cell__ft" style="font-size:20px">
+								<van-icon name="add-o" />
+							</view> -->
+						</view>
+						<view class="weui-cell">
+							<view class="weui-cell__hd" style="width:320rpx">报修内容</view>
+						</view>
+						<view class="weui-cell">
+							<view class="weui-cell__bd">
+								<van-checkbox-group value="{{ result }}">
+									<van-checkbox id="门锁" bindtap="onChange"
+										class="van-checkbox-group-item  {{conT.indexOf(result,'门锁') == -1? '':'activeC' }}">门锁
+									</van-checkbox>
+									<van-checkbox id="空调问题" bindtap="onChange"
+										class="van-checkbox-group-item  {{conT.indexOf(result,'空调问题') == -1 ? '':'activeC' }}">空调问题
+									</van-checkbox>
+									<van-checkbox id="卫生间小便池" bindtap="onChange"
+										class="van-checkbox-group-item  {{conT.indexOf(result,'卫生间小便池') == -1? '':'activeC' }}">卫生间小便池
+									</van-checkbox>
+									<van-checkbox id="卫生间异味" bindtap="onChange"
+										class="van-checkbox-group-item  {{conT.indexOf(result,'卫生间异味') == -1? '':'activeC' }}">卫生间异味
+									</van-checkbox>
+									<van-checkbox id="卫生间漏水" bindtap="onChange"
+										class="van-checkbox-group-item  {{conT.indexOf(result,'卫生间漏水') == -1? '':'activeC' }}">卫生间漏水
+									</van-checkbox>
+									<van-checkbox id="窗户维修" bindtap="onChange"
+										class="van-checkbox-group-item  {{conT.indexOf(result,'窗户维修') == -1? '':'activeC' }}">窗户维修
+									</van-checkbox>
+									<van-checkbox id="水电卡故障" bindtap="onChange"
+										class="van-checkbox-group-item  {{conT.indexOf(result,'水电卡故障') == -1? '':'activeC' }}">水电卡故障
+									</van-checkbox>
+									<van-checkbox id="灯维修" bindtap="onChange"
+										class="van-checkbox-group-item  {{conT.indexOf(result,'灯维修') == -1? '':'activeC' }}">灯维修
+									</van-checkbox>
+									<van-checkbox id="其他问题" bindtap="onChange"
+										class="van-checkbox-group-item  {{conT.indexOf(result,'其他问题') == -1? '':'activeC' }}">其他问题
+									</van-checkbox>
+								</van-checkbox-group>
 							</view>
 						</view>
 						<view class="weui-cell">
-							<view class="weui-cell__hd">车牌号</view>
+							<view class="weui-cell__hd">问题说明</view>
 							<view class="weui-cell__bd">
-								<input placeholder-class="placeholderClass" placeholder="输入车牌号" name="visitorLicense"></input>
-							</view>
-						</view>
-						<view class="weui-cell">
-							<view class="weui-cell__bd">同行人员</view>
-							<view class="weui-cell__ft">
-								<view class="btn addBtn" bindtap="addperson">增加</view>
-							</view>
-						</view>
-						<view class="peerList">
-							<view class="weui-cell" wx:for="{{peerList}}" wx:key="index">
-								<view class="weui-cell__hd">{{item.companionName}}</view>
-								<view class="weui-cell__bd">{{item.companionIdentity}}</view>
-								<view class="weui-cell__ft"></view>
-							</view>
-						</view>
-						<view class="weui-cell">
-							<view class="weui-cell__hd">被访人员</view>
-							<view class="weui-cell__bd">
-								<input placeholder-class="placeholderClass" placeholder="输入被访人姓名" name="intervieweeName"></input>
-							</view>
-						</view>
-						<view class="weui-cell">
-							<view class="weui-cell__hd">被访人电话</view>
-							<view class="weui-cell__bd">
-								<input placeholder-class="placeholderClass" placeholder="输入被访人电话" name="intervieweePhone" type="number"></input>
-							</view>
-						</view>
-						<!-- <view class="weui-cell">
-							<view class="weui-cell__hd">访问地点</view>
-							<view class="weui-cell__bd">
-								<input placeholder-class="placeholderClass" placeholder="被访人地址" name="address"></input>
-							</view>
-						</view> -->
-						<view class="weui-cell">
-							<view class="weui-cell__hd">访问时间(始)</view>
-							<view class="weui-cell__bd">
-								<picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" range="{{dateTimeArray}}">
-									<view class="tui-picker-detail">
-										<input placeholder-class="placeholderClass" value="{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}" name="beginTime"></input>
-									</view>
-								</picker>
-								<!-- <input placeholder-class="placeholderClass" placeholder="选择日期" name="beginTime" disabled></input> -->
-							</view>
-						</view>
-						<view class="weui-cell">
-							<view class="weui-cell__hd">访问时间(止)</view>
-							<view class="weui-cell__bd">
-								<picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" range="{{dateTimeArray1}}">
-									<view class="tui-picker-detail">
-										<input placeholder-class="placeholderClass" value="{{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}" name="endTime"></input>
-									</view>
-								</picker>
-								<!-- <input placeholder-class="placeholderClass" placeholder="选择日期" name="beginTime" disabled></input> -->
-							</view>
-						</view>
-
-						<view class="weui-cell">
-							<view class="weui-cell__hd">访客目的</view>
-							<view class="weui-cell__bd">
-								<input placeholder-class="placeholderClass" placeholder="输入访客目的" name="remark"></input>
+								<input placeholder-class="placeholderClass" placeholder="问题说明" name="otherProblem"></input>
 							</view>
 						</view>
 					</view>
 					<view class="kong"></view>
 					<view class="footer weui-cell">
-						<view class="online">
-							<button class="btn cencel" formType="reset" name="Submit">重新填写</button>
+						<view class="online width30">
+							<button class="btn cencel" name="Submit" catchtap="freeTell" style="color:#333">
+								<image src="/images/shop/phone.png" class="phoneImage"></image>
+							</button>
 						</view>
-						<view class="onlineCall" catchtap='freeTell'>
-							<button class="btn save" form-type="submit" name="Submit">提 交</button>
+						<view class="online">
+							<button class="btn cencel" name="Submit" bindtap="addperson">留言板</button>
+						</view>
+						<view class="onlineCall">
+							<button class="btn save" form-type="submit" name="Submit">提交申请</button>
 						</view>
 					</view>
 				</form>
-				<view class="mark" hidden="{{show}}">
-					<view class="card">
-						<view class="card-title">添加 - 同行人员</view>
-						<view class="card-content">
-							<view>同行人姓名</view>
-							<view>
-								<input placeholder-class="placeholderClass" placeholder="输入姓名" bindinput="nameInput" value="{{name}}"></input>
-							</view>
-							<view>身份证号</view>
-							<view>
-								<input placeholder-class="placeholderClass" placeholder="输入身份证号" bindinput="sfnumInput" value="{{idcode}}"></input>
-							</view>
-						</view>
-						<view class="weui-cell ">
-							<view class="weui-cell__bd ">
-								<view class="btn cancle" bindtap="cencelAdd">取消</view>
-							</view>
-							<view class="weui-cell__bd ">
-								<view class="btn ok" bindtap="okAdd">确定</view>
-							</view>
-						</view>
-					</view>
-				</view>
+
 			</view>
 		</view>
-		<view wx:if="{{currentindex==1}}">
-			<!-- 删除 -->
-			<view class="mark" hidden="{{deleteshow}}">
-				<view class="card">
-					<view class="card-content" style="text-align:center">
-						确定要删除此次预约记录？
-					</view>
-					<view class="weui-cell ">
-						<view class="weui-cell__bd ">
-							<view class="btn cancle" bindtap="canceldelete">取消</view>
+		<view wx:if="{{currentindex!=0}}">
+			<view class="form-box">
+				<form bindsubmit="formSubmit1">
+					<view class="list">
+						<view class="weui-cell">
+							<view class="weui-cell__hd" style="width:320rpx" wx:if="{{currentindex==1}}">加班申请时间段选择</view>
+							<view class="weui-cell__hd" style="width:320rpx" wx:if="{{currentindex==2}}">搬家/上下货时间段选择</view>
+							<view class="weui-cell__hd" style="width:320rpx" wx:if="{{currentindex==3}}">施工申请时间段选择</view>
 						</view>
-						<view class="weui-cell__bd ">
-							<view class="btn ok" bindtap="okdelete">确定</view>
-						</view>
-					</view>
-				</view>
-			</view>
-			<view wx:if="{{list.length==0}}">
-				<image src="../../images/sheng/no_list.png" class="no-content"></image>
-			</view>
-			<view wx:if="{{list.length>0}}" class="kang" wx:for="{{list}}" wx:key="index">
-				<view bindtap="toDetail" class="toDetail" data-item="{{item}}">
-					<view class="weui-cell">
-						<view class="weui-cell__bd">
-							<view>
-								申 请 人 ：{{item.visitorName}}
-							</view>
-							<view>
-								申请时间：{{item.createTime}}
+						<view class="weui-cell">
+							<view class="weui-cell__bd">
+								<van-checkbox-group value="{{ result1 }}">
+									<van-checkbox id="{{item.times}}" data-item="{{item}}" bindtap="onChange1" wx:for="{{timesList}}"
+										class="van-checkbox-group-item  {{active == item.times? 'activeC':'' }}">{{item.times}}
+									</van-checkbox>
+								</van-checkbox-group>
 							</view>
 						</view>
-						<view class="weui-cell__ft" style="height:27rpx;">
-							<van-tag plain color="#FFAE00" size="medium" bindtap="openDetail" data-item="{{item}}">查看详情</van-tag>
-							<van-tag plain color="#FFAE00" size="medium" bindtap="openDelete" id="{{item.id}}">删除</van-tag>
+						<view class="weui-cell">
+							<view class="weui-cell__hd">姓名</view>
+							<view class="weui-cell__bd">
+								<input placeholder-class="placeholderClass" placeholder="输入姓名" name="name"></input>
+							</view>
+						</view>
+						<view class="weui-cell">
+							<view class="weui-cell__hd">电话</view>
+							<view class="weui-cell__bd">
+								<input placeholder-class="placeholderClass" placeholder="输入手机号" name="phone"></input>
+							</view>
+						</view>
+						<view class="weui-cell">
+							<view class="weui-cell__hd boldSize">负责人</view>
+							<view class="weui-cell__bd">
+							</view>
+							<view class="weui-cell__ft">
+								{{managerList.managerName}}
+							</view>
+						</view>
+						<view class="weui-cell">
+							<view class="weui-cell__hd boldSize">联系电话</view>
+							<view class="weui-cell__bd">
+							</view>
+							<view class="weui-cell__ft">
+								{{managerList.managerPhone}}
+							</view>
+						</view>
+						<view class="weui-cell" wx:if="{{currentindex == 1}}">
+							<view class="weui-cell__hd boldSize" style="align-self: baseline;">注意事项</view>
+							<view class="weui-cell__bd">
+								<text>每日22点，保安师傅巡楼，如有短暂加班，请提交加班申请，师傅可为大家暂留北大厅出入门。\n
+									若无特殊告知，22点以后，北面大厅锁门，请使用南面电梯下楼，全季酒店大厅出入【南面电梯停靠楼层4,20,21】</text>
+							</view>
+						</view>
+						<view class="weui-cell" wx:if="{{currentindex == 2}}">
+							<view class="weui-cell__hd boldSize" style="align-self: baseline;">注意事项</view>
+							<view class="weui-cell__bd">
+								电梯保护 轻拿轻放 避免电梯划痕 如有违反罚款200元。 使用电梯后处理遗漏垃圾，清洁电梯。
+							</view>
+						</view>
+						<view class="weui-cell" wx:if="{{currentindex == 3}}">
+							<view class="weui-cell__hd boldSize" style="align-self: baseline;">注意事项</view>
+							<view class="weui-cell__bd">
+								物品轻拿轻放 避免地板划痕 如有违反罚款200元。 施工后处理装修垃圾，清洁室内卫生。
+							</view>
 						</view>
 					</view>
-					<view class="kangItem">
-						<view>被 访 人 ：{{item.intervieweeName}}</view>
-						<view>被访人电话：{{item.intervieweePhone}}</view>
-						<view>被访时间 ：{{item.beginTime}} </view>
+					<view class="kong"></view>
+					<view class="footer weui-cell">
+						<view class="online width30">
+							<button class="btn cencel" name="Submit" catchtap="freeTell" style="color:#333">
+								<image src="/images/shop/phone.png" class="phoneImage"></image>
+							</button>
+						</view>
+						<view class="online">
+							<button class="btn cencel" name="Submit" bindtap="addperson">留言板</button>
+						</view>
+						<view class="onlineCall">
+							<button class="btn save" form-type="submit" name="Submit">提交申请</button>
+						</view>
 					</view>
-				</view>
+				</form>
+
 			</view>
 		</view>
-		<view wx:if="{{currentindex==2}}">
-			<view class="card-box">
-				<view class="weui-cell">
-					<view class="weui-cell__hd">
-						<image src="{{userInfo.avatarUrl}}" class="user-img"></image>
-					</view>
-					<view class="weui-cell__bd">
-						<view class="identity">{{userInfo.nickName}}</view>
-						<view class="nickname">外来访客</view>
-					</view>
+
+	</view>
+	<view class="mark" hidden="{{show}}">
+		<view class="card">
+			<view class="card-title">留言板</view>
+			<view class="card-content">
+				<view>姓名</view>
+				<view>
+					<input placeholder-class="placeholderClass" placeholder="输入姓名" bindinput="nameInput" value="{{name}}"></input>
 				</view>
-				<view class="weui-cell">
-					<view>
-						<canvas style="width:500rpx; height: 500rpx;" canvas-id="myQrcode" class="qcode-img"></canvas>
-					</view>
+				<view>电话</view>
+				<view>
+					<input placeholder-class="placeholderClass" type="number" placeholder="输入电话" bindinput="sfnumInput"
+						value="{{idPhone}}"></input>
 				</view>
-				<view class="time-bottom" wx:if="{{showCode}}">请将二维码对准门禁扫描口进行扫描</view>
-				<view class="time-bottom" wx:if="{{!showCode}}">二维码已经过期，请重新申请</view>
+				<view>留言</view>
+				<view>
+					<input style="height:60px" placeholder-class="placeholderClass" placeholder="输入留言" bindinput="msgInput"
+						value="{{messageL}}"></input>
+				</view>
 			</view>
-			<view class="time-bottom" wx:if="{{showCode}}">二维码有效期：{{beginTime}} - {{endTime}}</view>
+			<view class="weui-cell ">
+				<view class="weui-cell__bd ">
+					<view class="btn cancle" bindtap="cencelAdd">取消</view>
+				</view>
+				<view class="weui-cell__bd ">
+					<view class="btn ok" bindtap="submitMessage">确定</view>
+				</view>
+			</view>
 		</view>
 	</view>
-
-
 </view>

@@ -1,6 +1,6 @@
 <!--pages/tjMeeting/tjMeeting.wxml-->
 <view class="container">
-	<view class="adr weui-cell mainColor " wx:if="{{address}}">
+	<navigator wx:if="{{address}}" class="adr weui-cell mainColor " url="/pages/myAdr/myAdr?type=2">
 		<view class="weui-cell__bd" wx:if="{{orderType==1}}">
 			<view class="name">{{address.name}}
 				<text style="color:#ccc"> {{address.phone}}</text>
@@ -16,14 +16,12 @@
 		<view class="weui-cell__ft">
 			<image src="/images/icon/r_jt.png" class="r_jt" />
 		</view>
-	</view>
+	</navigator>
+
 	<navigator wx:else class="plus" url="/pages/myAdr/myAdr?type=2">
-		<!-- <image src="/images/add.png" class="add"></image> -->
 		<view class="nav-add-address">+ 添加信息</view>
 		<view class="nav-ccc-address">请添加您的个人信息以便我们能尽快联系您~</view>
 	</navigator>
-	<!-- <image src="/images/zs.png" class="zs"></image> -->
-	<!--  wx:if="{{orderType==1}}" -->
 	<view class="weui-cell goodsInfo">
 		<view class="weui-cell__hd">
 			<image src="{{info.leaseImage}}" class="thumb"></image>
@@ -45,13 +43,15 @@
   <view class="line"></view> -->
 	<view class="list">
 		<view wx:if="{{orderType==1}}">
+			<!-- leasePriceDay -->
 			<view wx:if="{{rentType==2}}">
 				<view class="weui-cell">
 					<view class="weui-cell__hd">
 						<text wx:if="{{orderType==1}}">开始时间：</text>
 						<text wx:if="{{orderType==2}}">预约时间：</text>
 					</view>
-					<picker class="weui-cell__bd" mode="date" value="{{date}}" start="{{today}}" end="{{date1}}" bindchange="bindDateChange">
+					<picker class="weui-cell__bd" mode="date" value="{{date}}" start="{{today}}" end="{{date1}}"
+						bindchange="bindDateChange">
 						<view class="picker">
 							{{date}}
 						</view>
@@ -72,6 +72,7 @@
 					</view>
 				</view>
 			</view>
+			<!-- leasePriceHours -->
 			<view wx:if="{{rentType==1}}">
 				<view class="weui-cell">
 					<view class="weui-cell__hd">
@@ -120,15 +121,39 @@
 			<view class="weui-cell">
 				<view class="weui-cell__hd">预约时间：</view>
 				<view class="weui-cell__bd">
-					<picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+					<picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime"
+						bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
 						<view class="tui-picker-detail">
-							<input placeholder-class="placeholderClass" value="{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}" disabled name="beginTime"></input>
+							<input placeholder-class="placeholderClass"
+								value="{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}"
+								disabled name="beginTime"></input>
 						</view>
 					</picker>
 					<!-- <input placeholder-class="placeholderClass" placeholder="选择日期" name="beginTime" disabled></input> -->
 				</view>
 			</view>
 		</view>
+		<view class="weui-cell">
+			<view class="weui-cell__hd">
+				需付款：
+			</view>
+			<view class="weui-cell__bd">
+			</view>
+			<view class="weui-cell__ft">
+				小计：￥{{totalPrice}}
+			</view> 
+		</view>
+		<!-- <view class="weui-cell" bindtap="openBottom">
+			<view class="weui-cell__hd">
+				<text>优惠券</text>
+			</view>
+			<view class="weui-cell__bd">
+			</view>
+			<view class="weui-cell__ft">
+				<image src="/images/icon/r_jt.png" class="r_jt" wx:if="{{showActiveP===0}}"></image>
+				<text wx:if="{{showActiveP!==0}}">￥{{totalPriceCount}}</text>
+			</view>
+		</view> -->
 		<view class="weui-cell">
 			<view class="weui-cell__bd">备注</view>
 		</view>
@@ -146,3 +171,46 @@
 	</view>
 
 </view>
+
+
+<van-action-sheet show="{{ showAccurateSearch }}" title="优惠券" bind:close="onClose" round="true"
+	close-on-click-overlay="true">
+	<view class="searchBox">
+		<view wx:for="{{couponuserList}}">
+			<!-- style="background:url('/images/my/yhqbg.png') no-repeat;background-size:700rpx 180rpx;background-position:center "-->
+			<view wx:if="{{item.useMinPrice <= totalPrice}}" class="weui-cell weui-cell-bg" bindtap="showAc" data-item="{{item}}" id="{{item.id}}"
+				>
+				<image src="/images/my/yhqbg.png" class="bottom-bg"></image>
+				<image src="/images/my/check.png" class="checkImg" wx:if="{{showActive == item.id}}"></image>
+				<view class="weui-cell__bd weui-cellL">
+					<view wx:if="{{item.type==1}}">
+						租赁服务全场优惠券(满{{item.useMinPrice}}可用)
+					</view>
+					<view wx:if="{{item.type==2}}">
+						我要吃饭全场优惠券(满{{item.useMinPrice}}可用)
+					</view>
+					<view wx:if="{{item.type==3}}">
+						好物优选全场优惠券(满{{item.useMinPrice}}可用)
+					</view>
+					<view>
+						有效期：{{item.endTime}}
+					</view>
+				</view>
+				<view class="weui-cell__hd"></view>
+				<view class="weui-cell__ft weui-cellR" wx:if="{{item.couponType==0}}">
+					￥{{item.couponPrice}}
+				</view>
+				<view class="weui-cell__ft weui-cellR" wx:if="{{item.couponType==1}}">
+					{{item.couponPrice}}折
+				</view>
+			</view> 
+		</view>
+		<!-- 底部 -->
+		<view class="kong"></view>
+			<view class="footer weui-cell">
+				<view class="onlineCall" bindtap="subcoupon" style="width:100%" wx:if="{{showActive}}">
+					立即使用
+				</view>
+			</view>
+	</view>
+</van-action-sheet>

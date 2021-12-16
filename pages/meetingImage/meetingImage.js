@@ -4,7 +4,8 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {
+  data: { 
+    showImage: false,
     nav: ['全部'],
     // nav: ['全部', '会议室', '茶歇', '园区', '周边'],
     currentindex: 0,
@@ -12,7 +13,21 @@ Page({
     size: 1000,
     load: false,
   },
-
+  showBigImage(e) { 
+    wx.previewImage({
+      urls: [e.currentTarget.id],
+      current: [e.currentTarget.id]
+    })
+    // this.setData({
+    //   showImage: true,
+    //   imageItem: e.currentTarget.id
+    // })
+  },
+  onClickHide() {
+    this.setData({
+      showImage: false
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -4,36 +4,28 @@ import {
   clientCancle
 } from "../../api/order.js"
 import Url from "../../utils/host.js"
-
+import drawQrcode from 'weapp-qrcode'
 import {
   payMoneys
 
 } from "../../api/carMang.js"
+import {
+  getTalkeCode
+} from "../../api/eat.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    showCode: false,
+    isStaff: wx.getStorageSync("isStaff"),
     radio: '我不想买了',
     showTop: false,
     showBottom: false,
-    navBar: [{
-        name: '全部',
-        id: null
-      },
-      {
-        name: '待收货',
-        id: 1
-      },
-      {
-        name: '历史订单',
-        id: 2
-      }
-    ],
     currentIndex: 0,
     indexId: 0,
-    type: ['全部', '会议室租赁', '我要吃饭', '智慧停车'],
+    type: ['全部', '租赁订单', '吃饭订单', '团购订单'],
     typeIdx: "",
     orderList: [],
     wechatUserId: "",
@@ -45,50 +37,77 @@ Page({
     noContent: false,
     orderNum: '',
   },
+  showCodeBtn() {
+    this.setData({
+      showCode: true
+    })
+    this.getTalkeCode()
+  },
 
+  onClickHide() {
+    this.setData({
+      showCode: false
+    })
+  },
+  getTalkeCode() {
+    getTalkeCode().then(res => {
+      this.setData({
+        showCode: true
+      })
+      console.log(res.data)
+      drawQrcode({
+        canvasId: 'myQrcode',
+        text: JSON.stringify(res.data),
+        width: 200,
+        height: 200,
+      })
+    })
+  },
   payMoney(e) {
     console.log(e)
     let orderType = ""
     if (e.currentTarget.dataset.item.itemType == 1) {
       orderType = "leaseOrder"
-      payMoneys({
-        orderType: orderType,
-        orderNum: e.currentTarget.dataset.item.orderNum
-      }).then(res => {
-        let pay_info = JSON.parse(res.data.pay_info)
-        wx.requestPayment({
-          // 'appId': data,
-          'timeStamp': pay_info.timeStamp,
-          'nonceStr': pay_info.nonceStr,
-          'package': pay_info.package,
-          'signType': pay_info.signType,
-          'paySign': pay_info.paySign,
-          'success': function (res) {
-            console.log(res)
-            wx.showToast({
-              title: "支付成功",
-              icon: 'success',
-              duration: 2000,
-              success: function () {
-                wx.navigateTo({
-                  url: '/pages/paySuccess/paySuccess?type=1',
-                  success: function (res) {},
-                  fail: function (res) {},
-                  complete: function (res) {},
-                })
-              }
-            })
-          },
-          fail: function (res1) {}
-        })
-      })
     } else if (e.currentTarget.dataset.item.itemType == 2) {
-      orderType = "foodOrder" 
-      wx.navigateTo({
-        url: '/pages/payChoose/payChoose?orderNum='+e.currentTarget.dataset.item.orderNum+'&orderMoney='+e.currentTarget.dataset.item.amountPayable+'&orderType=foodOrder',
-      })
+      orderType = "foodOrder"
+    } else if (e.currentTarget.dataset.item.itemType == 3) {
+      orderType = "shopOrder"
     }
-    
+    payMoneys({
+      orderType: orderType,
+      orderNum: e.currentTarget.dataset.item.orderNum
+    }).then(res => {
+      let pay_info = res.data.result.jsConfig
+      console.log(pay_info, '2222222222')
+      wx.requestPayment({
+        // 'appId': data,
+        'timeStamp': pay_info.timeStamp,
+        'nonceStr': pay_info.nonceStr,
+        'package': pay_info.package,
+        'signType': pay_info.signType,
+        'paySign': pay_info.paySign,
+        'success': function (res) {
+          console.log(res)
+          wx.showToast({
+            title: "支付成功",
+            icon: 'success',
+            duration: 2000,
+            success: function () {
+              wx.navigateTo({
+                url: '/pages/paySuccess/paySuccess?type=1',
+                success: function (res) {},
+                fail: function (res) {},
+                complete: function (res) {},
+              })
+            }
+          })
+        },
+        fail: function (res1) {
+          
+        }
+      })
+
+    })
 
   },
   showTap() {

@@ -5,7 +5,7 @@ import URL from "../utils/host.js"
 export function homeBanner(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/blade-bms/wechatbanner/page?bannerType=1&current=1&size=5',
+    url: URL.host + '/wechatbanner/page?current=1&size=5'+'&bannerType='+data,
     params: data
   })
 } 
@@ -13,7 +13,7 @@ export function homeBanner(data) {
 export function shopBanner(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/blade-bms/wechatbanner/page?bannerType=3&current=1&size=5',
+    url: URL.host + '/wechatbanner/page?bannerType=3&current=1&size=5',
     params: data
   })
 }  
@@ -27,26 +27,34 @@ export function discoveryBanner(data) {
     params: data
   })
 } 
-
-export function discoveryPage() {
-  return http.fly.request({
-    method: 'get',
-    url: URL.host + '/renren-fast/wechat_ad/discovery_page'
-  })
-}
-
+ 
 export function leaseBanner(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/blade-bms/wechatbanner/page',
+    url: URL.host + '/wechatbanner/page',
+    params: data
+  })
+}  
+
+export function listForMiniapp(data) {
+  return http.fly.request({
+    method: 'get',
+    url: URL.host + '/blade-system/roleminiappmenu/listForMiniapp',
     params: data
   })
 } 
 
-export function maintenanceBanner(data) {
+export function couponList(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/renren-fast/wechat_banner/maintenance_page',
+    url: URL.host + '/coupon/client/list?current=1&size=1000',
     params: data
+  })
+} 
+export function couponuserGain(data) {
+  return http.fly.request({
+    method: 'post',
+    url: URL.host + '/couponuser/gain',
+    body: data
   })
 } 

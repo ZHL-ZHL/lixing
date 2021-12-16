@@ -1,124 +1,140 @@
 <!--pages/investment/investment.wxml-->
 <view>
-  <video id="myVideo" src="http://39.100.156.89:9000/video/0bf2iiaaaaaap4abvtbbtvpfaqwdabbaaaaa.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=PB44H9HTXD9ZZD9YNSW0%2F20200902%2F%2Fs3%2Faws4_request&X-Amz-Date=20200902T034748Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3c38008238ac6902de8061be2e2c3a1fec03e32cc4fb4d0872dcd165aca173ea"
-    binderror="videoErrorCallback" object-fit="cover" show-center-play-btn='{{false}}' show-play-btn="{{true}}" controls ></video>
-  <!-- <view class="line"></view> -->
-  <view class="weui-cell">园区简介</view>
-  <view class="ads">
-    <view class="fontCont">中鲁全智是中鲁集团旗下供应链服务子公司，位于中鲁现代物流城内，公司专注于为家居生产销售企业提供物流配送服务，秉承“服务一座城”的理念，已形成长三角至晋、津、冀、闽、湘等省市的大型大仓、以及大型门店的配送业务。
-    </view>
+  <image src="{{listImage[0].picture}}" class="banner-image"></image>
+  <view class="title">商圈集中</view>
+  <view class="titlec">紧邻万达，奥莱，大学城。</view>
+  <view>
     <view class="fontCont">
-      <image src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/7844ca653405c8496730c3103424e196.jpg" mode="aspectFill"></image>
+      <view class="weui-cell-img" wx:for="{{listImage1}}">
+        <image src="{{item.picture}}"></image>
+        <text>{{item.name}}</text>
+      </view> 
     </view>
-    <view class="fontCont">在技术上使用自主研发的智慧供应链平台，突破了传统仓到端的平台架构，增加了面向于B端客户和C端客户的服务入口，实现了家居供应链生态的闭环。在模式上以供应链大数据为基础，突破传统的B2C模式，形成了B2B2C的模式。并通过云SAAS的平台技术，将标准化流程和管理制度集成线上化，实现快速以城市为单位的复制模式。
-    </view>
-    <view class="fontCont">
-      <view class="bannertop">
-        <swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
-          <block wx:for="{{banner}}" wx:key="{{index}}">
-            <swiper-item>
-              <view data-item="{{item}}" hover-class="none">
-                <image src="{{item.picture}}" class="slide-image" mode="aspectFill" />
-              </view>
-            </swiper-item>
-          </block>
-        </swiper>
-      </view>
-    </view>
+  </view>
 
+  <view class="inner-img">
+    <image src="../../images/online/icon-(3).jpg" class="banner-image"></image>
+    <view class="title inner-img-text">交通方便</view>
+    <view class="titlec inner-img-text inner-img-text1">北邻龙湖大街，通南通北交通便利。</view>
   </view>
-  <!-- <view class="line"></view> -->
-  <view class="weui-cell">园区优势</view>
-  <view class="ads">
-    <view class="weui-cell-title">·区位优势</view>
-    <view class="fontCont" style="padding:0px 60rpx">
-      <image src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/a81f7437bb4c345a24016a37d53245fb.jpg"></image>
-    </view>
+
+
+  <view class="title">环境配套</view>
+  <view>
     <view class="fontCont">
       <view class="weui-cell-img">
-        <image src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/0da738d20bd6ffa0f414686aa3170657.jpg"></image>
-        <text>太原火车站</text>
-      </view>
-      <view class="weui-cell-img">
-        <image src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/966068b09c1026c591c50db861ec94a4.jpg"></image>
-        <text>太原武宿机场</text>
-      </view>
-      <view class="weui-cell-img">
-        <image src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/5b381092e9460b4c06d6a64e8495d8bb.jpg"></image>
-        <text>铜锣湾商圈</text>
-      </view>
-      <view class="weui-cell-img">
-        <image src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/ce85e52c6faf5d264459a588b176f36b.jpg"></image>
-        <text>柳巷商圈</text>
-      </view>
-    </view>
-    <view class="weui-cell-title">·产业优势</view>
-    <view class="fontCont">
-      将园区建设与产业发展相结合，与华为、伊利等十余家大型集团以及中通快递、百发物流等全国性物流网络企业达成战略合作，业务涉及家居、医药、电商、快消品等行业。
-    </view>
-    <view class="weui-cell-title">·规模优势 </view>
-    <view class="fontCont">
-      依托集团资金和资源优势，正逐步在全省布局9大物流中心，开发98个县域物流项目，业务范围将覆盖河北、山东、陕西、河南、内蒙古五大省市自治区。
-      <view class="ads">
-        <view class="banner">
-          <swiper indicator-dots="{{indicatorDots1}}" indicator-color="{{indicatorColor1}}" indicator-active-color="{{indicatorActiveColor1}}" autoplay="{{autoplay1}}" interval="{{interval1}}" duration="{{duration1}}" circular="true">
-            <block wx:for="{{banner1}}" wx:key="{{index}}">
-              <swiper-item>
-                <view data-item="{{item}}" hover-class="none">
-                  <image src="{{item.picture}}" class="slide-image" mode="aspectFill" />
-                </view>
-              </swiper-item>
-            </block>
-          </swiper>
+        <view class="weui-cell-list">
+          <view class="weui-cell-title">
+            住宿
+          </view>
+          <view class="weui-cell-text">
+            <view style="margin-top:90rpx">
+              全季酒店
+            </view>
+          </view>
         </view>
       </view>
-    </view>
-    <view class="weui-cell-title">·配套优势</view>
-    <view class="fontCont">
-      园区交通便捷，配套设施齐备完整。可以为客户提供工商、运政、税务、住宿、餐饮、商超等一系列增值服务，为客户打造舒适、便捷、安全的办公环境。
-      <view class="ads">
-        <view class="banner">
-          <swiper indicator-dots="{{indicatorDots3}}" indicator-color="{{indicatorColor3}}" indicator-active-color="{{indicatorActiveColor3}}" autoplay="{{autoplay3}}" interval="{{interval3}}" duration="{{duration3}}" circular="true">
-            <block wx:for="{{banner3}}" wx:key="{{index}}">
-              <swiper-item>
-                <view data-item="{{item}}" hover-class="none">
-                  <image src="{{item.picture}}" class="slide-image" mode="aspectFill" />
-                </view>
-              </swiper-item>
-            </block>
-          </swiper>
+      <view class="weui-cell-img">
+        <view class="weui-cell-list">
+          <view class="weui-cell-title">
+            住宿
+          </view>
+          <view class="weui-cell-text" style="margin-top:10rpx">
+            <view>区公安局</view>
+            <view>市法院</view>
+            <view>市民之家</view>
+            <view>教育培训</view>
+            <view>保险等</view>
+          </view>
         </view>
       </view>
-    </view>
-    <view class="weui-cell-title">·团队优势</view>
-    <view class="fontCont">
-      管理团队高效专业、对标一流、兼收并蓄，以优质服务持续满足顾客需求。运作团队规范有序，精通物流专业操作技能，坚持“以客户为中心”，用心做事，获得了诸多客户的长期信赖。
-    </view>
-    <view class="fontCont">
-      <view class="fontCont-image1">
-        <image src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/4e8080826a5134a828fb157417505d1d.jpg"></image>
-      </view>
-      <view class="fontCont-image2">
-        <view class="fontCont-image2-item">
-          <image style="margin-bottom:5rpx" src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/e3fade09cd005d36b7e61723a765a13a.jpg"></image>
-        </view>
-        <view class="fontCont-image2-item">
-          <image style="margin-top:5rpx" src="http://aipark.zhongluwuliu.com/api/renren-fast/zlxcx/profile/16a40e1a90806fd446abed798d852b4e.jpg"></image>
+      <view class="weui-cell-img">
+        <view class="weui-cell-list">
+          <view class="weui-cell-title">
+            住宿
+          </view>
+          <view class="weui-cell-text" style="margin-top:40rpx">
+            <view>长治银行</view>
+            <view>建设银行</view>
+            <view>兴业银行</view>
+          </view>
         </view>
       </view>
     </view>
   </view>
-  <view class="kong"></view>
+
+  <view class="title">数字化运营</view>
+  <view class="titlec"> 独立金坤智能管家小程序助力金坤
+    物业提供更丰富的基础环境服务，更便捷的办公精益运营服务，更多样的企业商业增值服务，最终形成基于办公空间的良性社群环境。</view>
+
+  <view class="title">餐食配套</view>
+  <view class="titlec">恒温餐柜提供每日新鲜、美味、温热的早餐和中餐服务。</view>
+  <view>
+    <view class="fontCont">
+      <view class="weui-cell-img" wx:for="{{listImage2}}">
+        <image src="{{item.picture}}" style="width:208rpx"></image>
+      </view> 
+    </view>
+  </view>
+
+  <view class="title">特色商业配套</view>
+  <view class="titlec">共享茶室、共享会议室、接待室、活动室全天候为您提供所需的商业服务；提供高品质、低价格的办公家具租、售服务。</view>
+
+  <view class="title">特殊商务接待服务</view>
+  <view class="titlec">参观体验写字楼样板间，并有神秘伴手礼</view>
+
+
+  <view class="title">共享办公空间</view>
+  <view class="titlec">支持多人分区域办公，以工位形式进行短租和长租服务。配套公共休闲区、洽谈区、饮水区、办公家具、水电暖全包、高速网络覆盖。拎包入住</view>
+
+
+  <view>
+    <image src="../../images/online/icon-(8).jpg" class="banner-image"></image>
+  </view>
+
+  <view class="title">商业对接服务</view>
+  <view class="titlec">金坤物业积极对接金坤商务楼宇内、外的商业资源，提供最大能力的商业对接支持。</view>
+  <view class="title">贴心物业</view>
+  <view class="titlec">每天定期保洁，及时维修，泊车服务，加班服务，沟通顺畅。</view>
+  <view class="title">车位</view>
+  <view class="titlec">前院开放车位，后院机械车位，车位充足。</view>
+
+  <view class="kong"></view> 
   <view class="footer weui-cell">
-    <view class="online">
-      <navigator url="/pages/onlineMerchants/onlineMerchants" hover-class="none">
-        <view style="height:50rpx;line-height:80rpx;">
-          <van-icon name="chat-o" size="1.3rem" />
-        </view> 在线咨询
-      </navigator>
+    <view class="online" catchtap='freeTell'>
+      联系我们
     </view>
-    <view class="onlineCall" catchtap='freeTell'>
-      <view>186-3439-3815</view>
-      招商热线</view>
+    <view class="onlineCall"  bindtap="addperson">
+      留言板
+    </view>
   </view>
+  <view class="mark" hidden="{{show}}">
+		<view class="card">
+			<view class="card-title">留言板</view>
+			<view class="card-content">
+				<view>姓名</view>
+				<view>
+					<input placeholder-class="placeholderClass" placeholder="输入姓名" bindinput="nameInput" value="{{name}}"></input>
+				</view>
+				<view>电话</view>
+				<view>
+					<input placeholder-class="placeholderClass" type="number" placeholder="输入电话" bindinput="sfnumInput"
+						value="{{idPhone}}"></input>
+				</view>
+				<view>留言</view>
+				<view>
+					<input style="height:60px" placeholder-class="placeholderClass" placeholder="输入留言" bindinput="msgInput"
+						value="{{messageL}}"></input>
+				</view>
+			</view>
+			<view class="weui-cell ">
+				<view class="weui-cell__bd ">
+					<view class="btn cancle" bindtap="cencelAdd">取消</view>
+				</view>
+				<view class="weui-cell__bd ">
+					<view class="btn ok" bindtap="submitMessage">确定</view>
+				</view>
+			</view>
+		</view>
+	</view>
 </view>

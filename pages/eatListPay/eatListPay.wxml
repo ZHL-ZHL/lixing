@@ -1,6 +1,6 @@
 <!--pages/eatListPay/eatListPay.wxml-->
 <view class="container">
-	<view class="adr weui-cell mainColor " wx:if="{{address}}">
+	<navigator class="adr weui-cell mainColor " url="/pages/myAdr/myAdr?type=2" wx:if="{{address}}">
 		<view class="weui-cell__bd">
 			<view class="name">{{address.name}}
 				<text style="color:#ccc"> {{address.phone}}</text>
@@ -10,29 +10,24 @@
 		<view class="weui-cell__ft">
 			<image src="/images/icon/r_jt.png" class="r_jt" />
 		</view>
-	</view>
+	</navigator>
 	<navigator wx:else class="plus" url="/pages/myAdr/myAdr?type=2">
 		<view class="nav-add-address">+ 添加信息</view>
 		<view class="nav-ccc-address">请添加您的个人信息以便我们能尽快联系您~</view>
 	</navigator>
-	<view>
-		<view class="weui-cell">
-			<view class="weui-cell__hd">
-				订单方式：
-			</view>
-			<view class="weui-cell__bd">
-			</view>
-			<view class="weui-cell__ft">
-				<picker bindchange="bindPickerChange" value="{{orderTypeList[index].id}}" range-key="{{'dictName'}}" value="{{index}}" range="{{orderTypeList}}">
-					<view class="picker" style="display:inline-block;vertical-align: middle;margin-right:20rpx">
-						<input placeholder-class="placeholderClass" name="orderType" disabled="true" value="{{orderTypeList[index].dictName}}"></input> 
-					</view>
-					<image src="/images/icon/r_jt.png" class="r_jt" style="display:inline-block;vertical-align: middle"/>
-				</picker>
-			</view>
+	<view class="weui-cell goodsInfo" wx:if="{{orderlistType}}" wx:for="{{infoGoods.list}}">
+		<view class="weui-cell__hd">
+			<image src="{{item.image}}" class="thumb"></image>
+		</view>
+		<view class="weui-cell__bd">
+			<view class="name">{{item.storeName}} </view>
+		</view>
+		<view class="weui-cell__ft">
+			<view class="name">￥{{item.price}}</view>
+			<view class="info">x{{item.cartNum}}</view>
 		</view>
 	</view>
-	<view class="weui-cell goodsInfo" wx:for="{{info.list}}">
+	<view class="weui-cell goodsInfo" wx:if="{{!orderlistType}}" wx:for="{{info.list}}">
 		<view class="weui-cell__hd">
 			<image src="{{item.showPice}}" class="thumb"></image>
 		</view>
@@ -40,32 +35,20 @@
 			<view class="name">{{item.name}} </view>
 		</view>
 		<view class="weui-cell__ft">
-			<view class="name">￥{{item.discountPrice}}</view>
+			<view class="name">￥{{item.price}}</view>
 			<view class="info">x{{item.num}}</view>
 		</view>
 	</view>
 </view>
 <view class="list">
-
-
-	<view class="weui-cell" wx:if="{{info.bzTotalPrice && index!=3}}">
+	<view class="weui-cell" wx:if="{{!orderlistType}}">
 		<view class="weui-cell__hd">
-			打包费：
+			订单方式：
 		</view>
 		<view class="weui-cell__bd">
 		</view>
 		<view class="weui-cell__ft">
-			￥{{info.bzTotalPrice}}
-		</view>
-	</view>
-	<view class="weui-cell" wx:if="{{info.peiSf && index == 1}}">
-		<view class="weui-cell__hd">
-			配送费：
-		</view>
-		<view class="weui-cell__bd">
-		</view>
-		<view class="weui-cell__ft">
-			￥{{info.peiSf}}
+			大厅自取
 		</view>
 	</view>
 	<view class="weui-cell">
@@ -74,20 +57,24 @@
 		</view>
 		<view class="weui-cell__bd">
 		</view>
-		<view class="weui-cell__ft">
-			已优惠：￥{{info.totalPrice - info.totalPriceDiscount}} 小计：￥{{info.total}}
+		<view class="weui-cell__ft" wx:if="{{!orderlistType}}">
+			小计：￥{{info.total}}
+		</view>
+		<view class="weui-cell__ft" wx:if="{{orderlistType}}">
+			小计：￥{{infoGoods.totalPrice}}
 		</view>
 	</view>
-	<view class="weui-cell" wx:if="{{isStaff}}">
+	<!-- <view class="weui-cell" bindtap="openBottom">
 		<view class="weui-cell__hd">
-			员工折扣：
+			<text>优惠券</text>
 		</view>
 		<view class="weui-cell__bd">
 		</view>
-		<view class="weui-cell__ft">
-			总计：￥{{info.totalisStaff}}
+		<view class="weui-cell__ft" >
+			<image src="/images/icon/r_jt.png" class="r_jt" wx:if="{{showActiveP===0}}"></image>
+			<text wx:if="{{showActiveP!==0}}" >￥{{totalPriceCount}}</text> 
 		</view>
-	</view>
+	</view> -->
 	<view class="weui-cell">
 		<view class="weui-cell__bd">备注</view>
 	</view>
@@ -100,3 +87,45 @@
 		<button class="btn save" bindtap="tjOrder">提交订单</button>
 	</view>
 </view>
+
+<van-action-sheet show="{{ showAccurateSearch }}" title="优惠券" bind:close="onClose" round="true"
+	close-on-click-overlay="true">
+	<view class="searchBox">
+		<view wx:for="{{couponuserList}}">
+			<!-- style="background:url('/images/my/yhqbg.png') no-repeat;background-size:700rpx 180rpx;background-position:center "-->
+			<view wx:if="{{item.useMinPrice <= info.total || item.useMinPrice <= infoGoods.totalPrice }}" class="weui-cell weui-cell-bg" bindtap="showAc" data-item="{{item}}" id="{{item.id}}"
+				>
+				<image src="/images/my/yhqbg.png" class="bottom-bg"></image>
+				<image src="/images/my/check.png" class="checkImg" wx:if="{{showActive == item.id}}"></image>
+				<view class="weui-cell__bd weui-cellL">
+					<view wx:if="{{item.type==1}}">
+						租赁服务全场优惠券(满{{item.useMinPrice}}可用)
+					</view>
+					<view wx:if="{{item.type==2}}">
+						我要吃饭全场优惠券(满{{item.useMinPrice}}可用)
+					</view>
+					<view wx:if="{{item.type==3}}">
+						好物优选全场优惠券(满{{item.useMinPrice}}可用)
+					</view>
+					<view>
+						有效期：{{item.endTime}}
+					</view>
+				</view>
+				<view class="weui-cell__hd"></view>
+				<view class="weui-cell__ft weui-cellR" wx:if="{{item.couponType==0}}">
+					￥{{item.couponPrice}}
+				</view>
+				<view class="weui-cell__ft weui-cellR" wx:if="{{item.couponType==1}}">
+					{{item.couponPrice}}折
+				</view>
+			</view> 
+		</view>
+		<!-- 底部 -->
+		<view class="kong"></view>
+			<view class="footer weui-cell">
+				<view class="onlineCall" bindtap="subcoupon" style="width:100%" wx:if="{{showActive}}">
+					立即使用
+				</view>
+			</view>
+	</view>
+</van-action-sheet>

@@ -3,10 +3,7 @@
 	<view class="moneyTotal">
 		<view class="well-cell">
 			￥{{orderMoney}}
-		</view>
-		<!-- <view class="well-cell title" >
-			三个大叔
-		</view> -->
+		</view> 
 	</view>
 </view>
 <view class="pay-box">

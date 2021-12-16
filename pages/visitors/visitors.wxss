@@ -6,12 +6,8 @@
 .line {
   border: 5rpx solid #f4f4f5;
 }
-
-.list .weui-cell__bd {
-  /* padding-left: 10px; */
-}
-
-.list .weui-cell__hd {
+ 
+.listwidth .weui-cell__hd {
   width: 150rpx;
 }
 

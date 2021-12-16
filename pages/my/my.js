@@ -1,4 +1,5 @@
 // pages/my/my.js
+const app = getApp()
 import {
   xdLogin,
 } from "../../utils/login"
@@ -12,6 +13,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    Custom: app.globalData.Custom,
     orderList: [{
         name: "待付款",
         icon: "/images/my/a-1.png",
@@ -26,37 +30,37 @@ Page({
         name: "退货/退款",
         icon: "/images/my/a-3.png",
         id: 4
+      },
+      {
+        name: "售后",
+        icon: "/images/my/a-4.png",
+        id: 5
       }
     ],
     navList: [{
-        name: "我的饭卡",
-        icon: "/images/my/a-4.png",
-        url: "/pages/mydiscount/mydiscount"
-      },
-      // {
-      //   name: "访客记录",
-      //   icon: "/images/my/a-8.png",
-      //   url: "/pages/myvisitors/myvisitors"
-      // },
+        name: "账号信息",
+        icon: "/images/my/icon1.png",
+        url: "/pages/myInfo/myInfo"
+      }, 
       {
-        name: "我的预约",
-        icon: "/images/my/a-8.png",
-        url: "/pages/myMeeting/myMeeting"
-      },
-      // {
-      //   name: "我的收藏",
-      //   icon: "/images/my/a-9.png",
-      //   url: "/pages/myCollect/myCollect"
-      // },
+        name: "我的物业",
+        icon: "/images/my/icon2.png",
+        url: "/pages/myProperty/myProperty"
+      }, 
       {
-        name: "帮助反馈",
-        icon: "/images/my/a-10.png",
-        url: "/pages/feedback/feedback"
+        name: "我的优惠券",
+        icon: "/images/my/icon3.png",
+        url: "/pages/myCoupons/myCoupons"
       },
       {
-        name: "客服电话",
-        icon: "/images/my/a-11.png",
-        url: ""
+        name: "联系我们",
+        icon: "/images/my/icon4.png",
+        url: "/pages/contactUs/contactUs"
+      },
+      {
+        name: "我的地址",
+        icon: "/images/address.png",
+        url: "/pages/myAdr/myAdr?type=2"
       },
     ],
     userInfo: "",
@@ -167,14 +171,15 @@ Page({
     })
   },
   loginOutBtn() {
-    loginOut().then(res => {
-      wx.clearStorage()
-      this.setData({
-        userInfo: ""
-      })
-    }).catch(res => {
-      console.log(res)
+    wx.clearStorage()
+    this.setData({
+      userInfo: ""
     })
+    // loginOut().then(res => {
+     
+    // }).catch(res => {
+    //   console.log(res)
+    // })
   },
   toAllOrder(e) {
     if (this.data.userInfo) {

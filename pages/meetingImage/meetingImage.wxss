@@ -43,3 +43,13 @@ page{
 .cont-mian image:nth-child(3n){
   margin-right: 0;
 }
+.imageItem{
+  display: block;
+  width: 80%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}

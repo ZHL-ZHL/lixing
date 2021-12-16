@@ -42,9 +42,9 @@
         <view class="weui-cell__hd">用途:</view>
         <view class="weui-cell__bd"> 
           <van-checkbox-group value="{{ result }}" name="purpose">
-            <van-checkbox id="仓储" bindtap="onChange" class="van-checkbox-group-item  {{active1? 'active':'' }}">仓储</van-checkbox>
-            <van-checkbox id="办公" bindtap="onChange" class="van-checkbox-group-item  {{active2? 'active':'' }}">办公</van-checkbox>
-            <van-checkbox id="配送" bindtap="onChange" class="van-checkbox-group-item  {{active3?'active':'' }}">配送</van-checkbox>
+            <van-checkbox id="仓储" bindtap="onChange" class="van-checkbox-group-item  {{active1? 'activeC':'' }}">仓储</van-checkbox>
+            <van-checkbox id="办公" bindtap="onChange" class="van-checkbox-group-item  {{active2? 'activeC':'' }}">办公</van-checkbox>
+            <van-checkbox id="配送" bindtap="onChange" class="van-checkbox-group-item  {{active3?'activeC':'' }}">配送</van-checkbox>
           </van-checkbox-group>
         </view>
       </view>

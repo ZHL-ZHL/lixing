@@ -2,275 +2,67 @@
 
 <movable-area>
 	<view class="banner bannertop">
-		<swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
-			<block wx:for="{{shopInfoMsg.showPicList}}" wx:key="{{index}}">
+		<swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}"
+			indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}"
+			duration="{{duration}}" circular="true">
+			<block wx:for="{{bannerimage}}" wx:key="{{index}}">
 				<swiper-item>
 					<view data-item="{{item}}" hover-class="none">
-						<image src="{{item}}" class="slide-image" mode="aspectFill" />
+						<image src="{{item.picture}}" class="slide-image" mode="aspectFill" />
 					</view>
 				</swiper-item>
 			</block>
 		</swiper>
 	</view>
-	<!-- <view class="top-title">
-		<image src="{{shopInfoMsg.showPic}}"></image>
-	</view> -->
-	<van-overlay show="{{ showTitle }}" />
-	<view>
-		<view class="top-cont">
-			<view class="top-name">{{shopInfoMsg.name}}</view>
-			<image src="{{shopInfoMsg.iconPic}}" class="logo-shop"></image>
-			<view class="top-msg top-price" wx:if="{{!showBtnGoCar}}">
-				当前该餐厅不在营业时间，仅接受预定
-			</view>
-			<view class="top-msg">
-				<image src="../../images/eat/qx.png"></image>
-				<text>接受预定</text>
-				<image src="../../images/eat/kb.png"></image>
-				<text>口碑好</text>
-				<image src="../../images/eat/ws.png"></image>
-				<text>绿色食品</text>
-				<image src="../../images/eat/jk.png"></image>
-				<text>干净卫生</text>
-			</view>
-			<view class="top-msg top-price" wx:if="{{!showTitle}}">
-				<text>12减10</text>
-				<text>38减15</text>
-				<text>50减18</text>
-				<text>68减28</text>
-				<text>100减30</text>
-				<image src="../../images/my/bottom.png" bindtap="showTitleBtn"></image>
-			</view>
-			<view class="show-msg" wx:if="{{!showTitle}}">
-				公告：本店营业时间为：早餐:{{shopInfoMsg.breakfastStartTime}}-{{shopInfoMsg.breakfastEndTime}} 午餐:{{shopInfoMsg.lunchStartTime}}-{{shopInfoMsg.lunchEndTime}} 晚餐:{{shopInfoMsg.dinnerStartTime}}-{{shopInfoMsg.dinnerEndTime}}
-			</view>
-			<view wx:if="{{showTitle}}" class="showTitleClass">
-				<view class="top-name">优惠</view>
-				<view class="paddding30">
-					<van-tag color="#FFAD00">减</van-tag>
-					满12减10；满38减15；满50减18；满68减28；满100减38
+	<view class="container"> 
+		<view>
+			<view class="menuBox">
+				<view class="menuNavBox">
+					<view class="menuNav">
+						<view class="menuItem {{current==idx?'active':''}}" wx:for="{{groupList}}" wx:for-index="idx" wx:key="idx"
+							data-idx="{{idx}}" data-id="{{item.id}}" bindtap="selNav">
+							{{item.leftGroupName}}
+						</view>
+					</view>
 				</view>
-				<view class="paddding30">
-					<van-tag color="#FFAD00">折</van-tag>
-					会员商品&折扣商品2.9折起
-				</view>
-				<view class="paddding30">
-					<van-tag color="#FFAD00">送</van-tag>
-					满30送精致小饮品
-				</view>
-				<view class="paddding30">
-					<van-tag color="#FF4D6B">首</van-tag>
-					新人下单立减12元(此优惠与会员首单优惠活动不可同享)
-				</view>
-				<view class="top-name" style="margin-top:60rpx">公告</view>
-				<view class="paddding30">1:本店营业时间为</view>
-				<view class="paddding30">早餐:{{shopInfoMsg.breakfastStartTime}}-{{shopInfoMsg.breakfastEndTime}} 午餐:{{shopInfoMsg.lunchStartTime}}-{{shopInfoMsg.lunchEndTime}} 晚餐:{{shopInfoMsg.dinnerStartTime}}-{{shopInfoMsg.dinnerEndTime}}</view>
-				<view class="paddding30">2:本店餐具均消毒处理，可放心使用</view>
-				<view class="paddding30" style="text-align:center;color:#ccc;margin:30px 0px;font-size: 38rpx">
-					<van-icon name="arrow-up" bindtap="showTitleBtn" />
+				<view class="menuList">
+					<view class="weui-cell menulistItem" wx:for="{{groupList[current].coodVo}}" wx:for-index="idx"
+						wx:for-item="menuItem" wx:key="idx" catchtap="toDetail" data-item="{{menuItem}}">
+						<view class="weui-cell__hd thumb">
+							<image src="{{menuItem.showPice}}" class="thumb" mode="aspectFill"></image>
+						</view>
+						<view class="weui-cell__bd">
+							<view class="caption">
+								<view class="foodName">{{menuItem.name}}</view>
+								<view class="foodsalesccc">
+									今日售{{menuItem.sellCount>0?menuItem.sellCount:0}}份
+									月售{{menuItem.monthSellCount>0?menuItem.monthSellCount:0}}份
+								</view>
+								<view class="foodsales" wx:if="{{menuItem.discount && menuItem.discount!=0}}">
+									<text class="xianj">￥{{menuItem.discountPrice}}/{{menuItem.units}}</text>
+									<text class="yuanj">￥{{menuItem.price}}</text>
+								</view>
+								<view class="foodsales" wx:if="{{!menuItem.discount || menuItem.discount==0}}">
+									<text class="xianj">￥{{menuItem.price}}/{{menuItem.units}}</text>
+								</view> 
+								<view class="foodNum" wx:if="{{menuItem.residueCount>0}}">
+									<image src="/images/eat/jian.png" class="footAdd" wx:if="{{menuItem.num>0}}" catchtap="goodsDel"
+										data-idx="{{idx}}" data-num="{{menuItem.num}}" data-id="{{menuItem.id}}" data-item="{{menuItem}}">
+									</image>
+									<view class="foodValue" wx:if="{{menuItem.num>0}}">
+										{{menuItem.num}}
+									</view>
+									<image src="/images/eat/jia.png" class="footAdd" catchtap="goodsAdd" data-idx="{{idx}}"
+										data-num="{{menuItem.num}}" data-id="{{menuItem.id}}" data-item="{{menuItem}}"
+										data-foodcount="{{menuItem.residueCount}}"></image>
+								</view>
+							</view>
+						</view>
+					</view>
+					<view class="kong"></view>
 				</view>
 			</view>
-
 		</view>
-	</view>
-	<view class="container">
-		<van-tabs wx:if="{{ !showTitle }}" active="{{activetab}}" bind:change="onChange" sticky bind:scroll="onScroll">
-			<van-tab wx:for="{{navBar}}" wx:key="index" title="{{item.name}}">
-				<view class="banner">
-					<swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" bindchange="bindchange">
-						<block wx:for="{{banner1}}" wx:key="{{index}}">
-							<swiper-item>
-								<view data-item="{{item}}" hover-class="none" bindtap="toAdv">
-									<image src="{{item.picture}}" class="slide-image" mode="aspectFill" />
-								</view>
-							</swiper-item>
-						</block>
-					</swiper>
-				</view>
-				<view wx:if="{{index==0}}">
-					<view class="menuBox">
-						<view class="menuNavBox">
-							<view class="menuNav">
-								<view class="menuItem {{current==idx?'active':''}}" wx:for="{{groupList}}" wx:for-index="idx" wx:key="idx" data-idx="{{idx}}" data-id="{{item.id}}" bindtap="selNav">
-									{{item.leftGroupName}}
-								</view>
-							</view>
-						</view>
-						<view class="menuList">
-							<view class="weui-cell menulistItem" wx:for="{{groupList[current].coodVo}}" wx:for-index="idx" wx:for-item="menuItem" wx:key="idx" catchtap="toDetail" data-item="{{menuItem}}">
-								<view class="weui-cell__hd thumb">
-									<image src="{{menuItem.showPice}}" class="thumb" mode="aspectFill"></image>
-								</view>
-								<view class="weui-cell__bd">
-									<view class="caption">
-										<view class="foodName">{{menuItem.name}}</view>
-										<view class="foodsalesccc">
-											今日售{{menuItem.sellCount?menuItem.sellCount:0}}份 月售{{menuItem.monthSellCount?menuItem.monthSellCount:0}}份
-										</view>
-										<view class="foodsales" wx:if="{{menuItem.discount && menuItem.discount!=0}}">
-											<text class="xianj">￥{{menuItem.discountPrice}}</text>
-											<text class="yuanj">￥{{menuItem.price}}</text>
-										</view>
-										<view class="foodsales" wx:if="{{!menuItem.discount || menuItem.discount==0}}">
-											<text class="xianj">￥{{menuItem.price}}</text>
-										</view>
-										<view class="foodsales">
-											<text wx:if="{{menuItem.discount && menuItem.discount!=0}}">{{menuItem.discount*100}}折</text>
-											<text wx:if="{{menuItem.limitNum}}">限购{{menuItem.limitNum}}份/人</text>
-										</view>
-										<view class="foodsales" wx:if="{{menuItem.numberRemaining}}">
-											仅剩{{menuItem.numberRemaining}}份
-										</view>
-										<view class="foodNum" wx:if="{{menuItem.isSpecification && showBtnGoCar && menuItem.numberRemaining!=0}}">
-											<view class="chooseBtn" catchtap="showggBtn" data-item="{{menuItem}}">
-												选规格
-												<text class="numTop" wx:if="{{menuItem.num>0}}">{{menuItem.num}}</text>
-											</view>
-										</view>
-										<view class="foodNum" wx:if="{{!menuItem.isSpecification && showBtnGoCar && menuItem.numberRemaining!=0}}">
-											<image src="/images/eat/jian.png" class="footAdd" wx:if="{{menuItem.num>0}}" catchtap="goodsDel" data-idx="{{idx}}" data-num="{{menuItem.num}}" data-id="{{menuItem.id}}" data-item="{{menuItem}}"></image>
-											<view class="foodValue" wx:if="{{menuItem.num>0}}">
-												{{menuItem.num}}
-											</view>
-											<image src="/images/eat/jia.png" class="footAdd" catchtap="goodsAdd" data-idx="{{idx}}" data-num="{{menuItem.num}}" data-id="{{menuItem.id}}" data-item="{{menuItem}}" data-foodcount="{{menuItem.limitCount-menuItem.foodResidueCount}}"></image>
-										</view>
-									</view>
-								</view>
-							</view>
-							<view class="kong"></view>
-						</view>
-					</view>
-				</view>
-				<view wx:if="{{index==1}}">
-					<view class="menuBox">
-						<view class="menuNavBox">
-							<view class="menuNav">
-								<view class="menuItem {{current==idx?'active':''}}" wx:for="{{eatreserveList}}" wx:for-index="idx" wx:key="idx" data-idx="{{idx}}" data-id="{{item.id}}" bindtap="selNav">
-									{{item.leftGroupName}}
-								</view>
-							</view>
-						</view>
-						<view class="menuList">
-							<view class="weui-cell menulistItem" wx:for="{{eatreserveList[current].coodVo}}" wx:for-index="idx" wx:for-item="menuItem" wx:key="idx" catchtap="toDetail" data-item="{{menuItem}}">
-								<view class="weui-cell__hd thumb">
-									<image src="{{menuItem.showPice}}" class="thumb" mode="aspectFill"></image>
-								</view>
-								<view class="weui-cell__bd">
-									<view class="caption">
-										<view class="foodName">{{menuItem.name}}</view>
-										<view class="foodsalesccc">
-											今日售{{menuItem.sellCount?menuItem.sellCount:0}}份 月售{{menuItem.monthSellCount?menuItem.monthSellCount:0}}份
-										</view>
-										<view class="foodsales" wx:if="{{menuItem.discount}}">
-											<text class="xianj">￥{{menuItem.discountPrice}}</text>
-											<text class="yuanj">￥{{menuItem.price}}</text>
-										</view>
-										<view class="foodsales" wx:if="{{!menuItem.discount}}">
-											<text class="xianj">￥{{menuItem.price}}</text>
-										</view>
-										<view class="foodsales">
-											<text wx:if="{{menuItem.discount}}">{{menuItem.discount*100}}折</text>
-											<text wx:if="{{menuItem.limitNum}}">限购{{menuItem.limitNum}}份/人</text>
-										</view>
-										<view class="foodsales" wx:if="{{menuItem.numberRemaining}}">
-											仅剩{{menuItem.numberRemaining}}份
-										</view>
-										<!--  wx:if="{{menuItem.isSpecification}}" -->
-										<view class="foodNum">
-											<view class="chooseBtn" catchtap="showggBtn" data-item="{{menuItem}}">
-												选规格
-												<text class="numTop" wx:if="{{menuItem.num>0}}">{{menuItem.num}}</text>
-											</view>
-										</view>
-										<!-- <view class="foodNum" wx:if="{{!menuItem.isSpecification}}">
-											<image src="/images/eat/jian.png" class="footAdd" wx:if="{{menuItem.num>0}}" catchtap="goodsDel" data-idx="{{idx}}" data-num="{{menuItem.num}}" data-id="{{menuItem.id}}" data-item="{{menuItem}}"></image>
-											<view class="foodValue" wx:if="{{menuItem.num>0}}">
-												{{menuItem.num}}
-											</view>
-											<image src="/images/eat/jia.png" class="footAdd" catchtap="goodsAdd" data-idx="{{idx}}" data-num="{{menuItem.num}}" data-id="{{menuItem.id}}" data-item="{{menuItem}}" data-foodcount="{{menuItem.limitCount-menuItem.foodResidueCount}}"></image>
-										</view> -->
-									</view>
-								</view>
-							</view>
-							<view class="kong"></view>
-						</view>
-					</view>
-				</view>
-
-				<view wx:if="{{index==2}}" class="index3box">
-					<view class="weui-cell">
-						<view class="weui-cell__hd">
-							<image src="../../images/eat/dw.png"></image>
-						</view>
-						<view class="weui-cell__bd">
-							{{shopInfoMsg.address}}
-						</view>
-						<view class="weui-cell__ft" bindtap='freeTell' data-item="{{shopInfoMsg}}">
-							<image src="../../images/meet/phoneh.png"></image>
-						</view>
-					</view>
-					<!-- <view class="weui-cell">
-						<view class="weui-cell__hd">
-							<image src="../../images/eat/aq.png"></image>
-						</view>
-						<view class="weui-cell__bd">
-							查看食品安全资质
-						</view>
-						<view class="weui-cell__ft">
-							<van-icon name="arrow" />
-						</view>
-					</view> -->
-					<view class="weui-cell">
-						<view class="weui-cell__hd">
-							<image src="../../images/eat/wm.png"></image>
-						</view>
-						<view class="weui-cell__bd">
-							夏季配送时间：{{shopInfoMsg.sdStartTime}} - {{shopInfoMsg.sdEndTime}}
-						</view>
-						<view class="weui-cell__ft">
-						</view>
-					</view>
-					<view class="weui-cell">
-						<view class="weui-cell__hd">
-							<image src="../../images/eat/wm.png"></image>
-						</view>
-						<view class="weui-cell__bd">
-							冬季配送时间：{{shopInfoMsg.wdStartTime}} - {{shopInfoMsg.wdEndTime}}
-						</view>
-						<view class="weui-cell__ft">
-						</view>
-					</view>
-					<view class="weui-cell">
-						<view class="weui-cell__hd">
-							<image src="../../images/eat/fw.png"></image>
-						</view>
-						<view class="weui-cell__bd">
-							商家服务：送餐 到店自取 堂食
-						</view>
-						<view class="weui-cell__ft">
-						</view>
-					</view>
-					<view style="margin-top:20px">
-						<view class="paddding30">
-							<van-tag color="#FFAD00">减</van-tag>
-							满12减10；满38减15；满50减18；满68减28；满100减38
-						</view>
-						<view class="paddding30">
-							<van-tag color="#FFAD00">折</van-tag>
-							会员商品&折扣商品2.9折起
-						</view>
-						<view class="paddding30">
-							<van-tag color="#FFAD00">送</van-tag>
-							满30送精致小饮品
-						</view>
-						<view class="paddding30">
-							<van-tag color="#FF4D6B">首</van-tag>
-							新人下单立减12元（此优惠与会员首单优惠活动不可同享）
-						</view>
-					</view>
-				</view>
-			</van-tab>
-		</van-tabs>
 
 		<view class="fixCar weui-cell {{totalPrice!=0?'fixCaractive':''}}" wx:if="{{activetab==0 && !showTitle}}">
 			<view class="weui-cell__hd ">
@@ -291,48 +83,23 @@
 				</view>
 				<view class="peiSp" wx:if="{{totalPrice!=0}}">
 					<label wx:if="{{peiSf}}">配送费{{peiSf}}元</label>
-					<label wx:if="{{bzTotalPrice}}">包装费{{bzTotalPrice}}元</label>
+					<!-- <label wx:if="{{bzTotalPrice}}">包装费{{bzTotalPrice}}元</label> -->
 				</view>
 			</view>
 			<view class="weui-cell__hd">
 				<view class="jsBtn {{totalPrice!=0?'jsBtnactive':''}}" bindtap="toSubmit">结算</view>
 			</view>
-		</view>
-		<view class="fixCar weui-cell {{totalPrice1!=0?'fixCaractive':''}}" wx:if="{{ activetab==1 && !showTitle}}">
-			<view class="weui-cell__hd ">
-				<view class="kf" wx:if="{{totalNum1>0}}">
-					<image src="../../images/eat/car.png" class="carIcon" bindtap="showCar"></image>
-					<view class="carNum" wx:if="{{totalNum1!=0}}">
-						{{totalNum1}}
-					</view>
-				</view>
-				<view class="kf" wx:else>
-					<image src="../../images/eat/car2.png" class="carIcon"></image>
-				</view>
-			</view>
-			<view class="weui-cell__bd" style="margin-left:80px">
-				<view class="totalP" wx:if="{{totalPrice1!=0}}">
-					<text>￥{{totalPriceDiscount1}}</text>
-					<text class="yuanj" style="font-size:24rpx;margin-left:10rpx">￥{{totalPrice1}}</text>
-				</view>
-				<view class="peiSp" wx:if="{{totalPrice1!=0}}">
-					<label wx:if="{{peiSf}}">配送费{{peiSf1}}元</label>
-					<label wx:if="{{bzTotalPrice}}">包装费{{bzTotalPrice1}}元</label>
-				</view>
-			</view>
-			<view class="weui-cell__hd">
-				<view class="jsBtn {{totalPrice1!=0?'jsBtnactive':''}}" id="3" bindtap="toSubmit">结算</view>
-			</view>
-		</view>
+		</view> 
 		<view class="mark" wx:if="{{show}}" bindtap="hideCar"></view>
 		<view class="cartList" wx:if="{{show}}">
 			<view class="carlist-tilte">已享满12减10，再买1.6元可享满28减15</view>
 			<view class="weui-cell">
-				<view class="weui-cell__hd" wx:if="{{activetab == 0}}">包装费 <text style="color:#FF4D6B">￥{{bzTotalPrice}}</text></view>
-				<view class="weui-cell__hd" wx:if="{{activetab == 1}}">包装费 <text style="color:#FF4D6B">￥{{bzTotalPrice1}}</text></view>
+				<view class="weui-cell__hd" wx:if="{{activetab == 0}}">包装费 <text style="color:#FF4D6B">￥{{bzTotalPrice}}</text>
+				</view> 
 				<view class="weui-cell__bd"></view>
 				<view class="weui-cell__ft">
-					<van-icon class="deleteIcon" name="delete" />清空购物车</view>
+					<!-- <van-icon class="deleteIcon" name="delete" />清空购物车 -->
+				</view>
 			</view>
 			<scroll-view scroll-y="true" style="height:380rpx;" wx:if="{{activetab == 0}}">
 				<view wx:for="{{cartList}}" wx:key="index">
@@ -350,15 +117,19 @@
 						</view>
 						<view class="weui-cell__ft">
 							<view class="">
-								<image src="/images/eat/jian.png" class="footAdd" wx:if="{{item.num>0}}" bindtap="goodsDel" data-idx="{{idx}}" data-num="{{item.num}}" data-id="{{item.id}}" data-item="{{item}}"></image>
+								<image src="/images/eat/jian.png" class="footAdd" wx:if="{{item.num>0}}" bindtap="goodsDel"
+									data-idx="{{idx}}" data-num="{{item.num}}" data-id="{{item.id}}" data-item="{{item}}"></image>
 								<view class="foodValue" wx:if="{{item.num>0}}">
 									{{item.num}}
 								</view>
-								<image src="/images/eat/jia.png" class="footAdd" bindtap="goodsAdd" data-idx="{{idx}}" data-num="{{item.num}}" data-foodcount="{{item.foodCount-item.foodResidueCount}}" data-id="{{item.id}}" data-item="{{item}}"></image>
+								<image src="/images/eat/jia.png" class="footAdd" bindtap="goodsAdd" data-idx="{{idx}}"
+									data-num="{{item.num}}" data-foodcount="{{item.residueCount}}"
+									data-id="{{item.id}}" data-item="{{item}}"></image>
 							</view>
 						</view>
 					</view>
-					<view class="weui-cell" wx:if="{{item.specificationList.length>0}}" wx:for="{{item.specificationList}}" wx:for-item="menuItem" wx:key="idx">
+					<view class="weui-cell" wx:if="{{item.specificationList.length>0}}" wx:for="{{item.specificationList}}"
+						wx:for-item="menuItem" wx:key="idx">
 						<view class="weui-cell__hd">
 							<image src="{{item.showPice}}" class="thumb"></image>
 						</view>
@@ -375,7 +146,9 @@
 						</view>
 						<view class="weui-cell__ft">
 							<view class="">
-								<image src="/images/eat/jian.png" class="footAdd" wx:if="{{item.num>0}}" bindtap="goodsDel" data-idx="{{idx}}" data-num="{{item.num}}" data-mitem="{{menuItem.specificationList}}" data-id="{{item.id}}" data-item="{{item}}"></image>
+								<image src="/images/eat/jian.png" class="footAdd" wx:if="{{item.num>0}}" bindtap="goodsDel"
+									data-idx="{{idx}}" data-num="{{item.num}}" data-mitem="{{menuItem.specificationList}}"
+									data-id="{{item.id}}" data-item="{{item}}"></image>
 								<view class="foodValue" wx:if="{{item.num>0}}">
 									1
 								</view>
@@ -384,113 +157,9 @@
 					</view>
 				</view>
 
-			</scroll-view>
-			<scroll-view scroll-y="true" style="height:380rpx;" wx:if="{{activetab == 1}}">
-				<view wx:for="{{reserveList}}" wx:key="index">
-					<view class="weui-cell" wx:if="{{!item.specificationList}}">
-						<view class="weui-cell__hd">
-							<image src="{{item.showPice}}" class="thumb"></image>
-						</view>
-						<view class="weui-cell__bd">
-							<view>
-								{{item.name}}
-							</view>
-							<view class="foodPrice1">
-								<label>￥</label>{{item.price}}
-							</view>
-						</view>
-						<view class="weui-cell__ft">
-							<view class="">
-								<image src="/images/eat/jian.png" class="footAdd" wx:if="{{item.num>0}}" bindtap="goodsDel" data-idx="{{idx}}" data-num="{{item.num}}" data-id="{{item.id}}" data-item="{{item}}"></image>
-								<view class="foodValue" wx:if="{{item.num>0}}">
-									{{item.num}}
-								</view>
-								<image src="/images/eat/jia.png" class="footAdd" bindtap="goodsAdd" data-idx="{{idx}}" data-num="{{item.num}}" data-foodcount="{{item.foodCount-item.foodResidueCount}}" data-id="{{item.id}}" data-item="{{item}}"></image>
-							</view>
-						</view>
-					</view>
-					<view class="weui-cell" wx:if="{{item.specificationList.length>0}}" wx:for="{{item.specificationList}}" wx:for-item="menuItem" wx:key="idx">
-						<view class="weui-cell__hd">
-							<image src="{{item.showPice}}" class="thumb"></image>
-						</view>
-						<view class="weui-cell__bd">
-							<view>
-								{{item.name}}
-							</view>
-							<view style="font-size:24rpx;color:#ccc">
-								{{menuItem.specificationList}}
-							</view>
-							<view class="foodPrice1">
-								<label>￥</label>{{item.price}}
-							</view>
-						</view>
-						<view class="weui-cell__ft">
-							<view class="">
-								<image src="/images/eat/jian.png" class="footAdd" wx:if="{{item.num>0}}" bindtap="goodsDel" data-idx="{{idx}}" data-num="{{item.num}}" data-mitem="{{menuItem.specificationList}}" data-id="{{item.id}}" data-item="{{item}}"></image>
-								<view class="foodValue" wx:if="{{item.num>0}}">
-									1
-								</view>
-							</view>
-						</view>
-					</view>
-				</view>
-			</scroll-view>
+			</scroll-view> 
 		</view>
 	</view>
 	<movable-view x="{{x}}" y="{{y}}" direction="all" bindtap="gotocart">
 	</movable-view>
-</movable-area>
-<view>
-	<van-overlay show="{{ showGG }}" class="index50">
-		<view class="wrapper-showGG">
-			<view class="block">
-				<view class="weui-cell wrapper-showGG-title">{{listfoodName}}</view>
-				<view class="weui-cell" wx:if="{{ activetab==1 }}">
-					取餐时间
-				</view>
-				<view class="weui-cell wrapper-showGG-text" wx:if="{{ activetab==1 }}">
-					<view class="mn {{showTime== shopInfoMsg.breakfastStartTime+'-'+shopInfoMsg.breakfastEndTime  ?'active':''}}" catchtap="changeTime" data-item="{{menuItem}}" data-time="{{shopInfoMsg.breakfastStartTime}}-{{shopInfoMsg.breakfastEndTime}}">{{shopInfoMsg.breakfastStartTime}}-{{shopInfoMsg.breakfastEndTime}}</view>
-					<view class="mn {{showTime==shopInfoMsg.lunchStartTime+'-'+shopInfoMsg.lunchEndTime?'active':''}}" catchtap="changeTime" data-time="{{shopInfoMsg.lunchStartTime}}-{{shopInfoMsg.lunchEndTime}}" data-item="{{menuItem}}">{{shopInfoMsg.lunchStartTime}}-{{shopInfoMsg.lunchEndTime}}</view>
-					<view class="mn {{showTime==shopInfoMsg.dinnerStartTime+'-'+shopInfoMsg.dinnerEndTime?'active':''}}" catchtap="changeTime" data-time="{{shopInfoMsg.dinnerStartTime}}-{{shopInfoMsg.dinnerEndTime}}" data-item="{{menuItem}}">{{shopInfoMsg.dinnerStartTime}}-{{shopInfoMsg.dinnerEndTime}}</view>
-				</view>
-				<view class="weui-cell" wx:if="{{menuItem.contorno}}">
-					配菜
-				</view>
-				<view class="weui-cell wrapper-showGG-text" wx:if="{{menuItem.contorno}}">
-					{{menuItem.contorno}}
-				</view>
-				<view wx:for="{{specificationList}}" wx:key="index" wx:for-index="index">
-					<view class="weui-cell">
-						<view class="weui-cell__hd">
-							{{item.categoryName}}菜
-						</view>
-						<view class="weui-cell__bd color-999"> 请选择{{item.num}}份{{item.categoryName}}菜</view>
-						<view class="weui-cell__ft">
-							<van-icon name="arrow-down" />
-						</view>
-					</view>
-					<view class="wrapper-showGG-text">
-						<view wx:for="{{item.specificationListnew}}" wx:for-item="newItem" class="mn {{newItem.show?'active':''}}" data-item="{{newItem}}" catchtap="changeColor" data-pidx="{{index}}" data-idx="{{idx}}" wx:for-index="idx">{{newItem.name}}</view>
-					</view>
-				</view>
-				<view class="weui-cell">
-					<view class="weui-cell__hd colorred"> ￥{{menuItem.price}}</view>
-					<view class="weui-cell__bd"></view>
-					<view class="weui-cell__ft" wx:if="{{!menuItem.contorno && menuItem.isSpecification}}">
-						<view class="goCar" bindtap="tocarradd" data-item="{{menuItem}}">+ 加入购物车</view>
-					</view>
-					<view wx:if="{{menuItem.contorno || !menuItem.isSpecification}}">
-						<image src="/images/eat/jian.png" class="footAdd" wx:if="{{menuItem.num>0}}" bindtap="goodsDel" data-idx="{{idx}}" data-num="{{menuItem.num}}" data-id="{{menuItem.id}}" data-item="{{menuItem}}"></image>
-						<view class="foodValue" wx:if="{{menuItem.num>0}}">
-							{{menuItem.num}}
-						</view>
-						<image src="/images/eat/jia.png" class="footAdd" bindtap="goodsAdd" data-idx="{{idx}}" data-num="{{menuItem.num}}" data-foodcount="{{menuItem.foodCount-item.foodResidueCount}}" data-id="{{menuItem.id}}" data-item="{{menuItem}}"></image>
-					</view>
-				</view>
-			</view>
-		</view>
-		<view class="closeIcon">
-			<van-icon name="close" bindtap="closeshowGG" />
-		</view>
-	</van-overlay>
-</view>
+</movable-area> 

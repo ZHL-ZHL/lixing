@@ -1,204 +1,51 @@
 <!--pages/meetingRoom/meetingRoom.wxml-->
 <view class="container">
 	<view class="banner">
-		<swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
+		<view>
+			<van-icon name="arrow-left" bindtap="goBack" class="gobackbtn" />
+		</view>
+		<swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}"
+			indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}"
+			duration="{{duration}}" circular="true">
 			<block wx:for="{{banner}}" wx:key="{{index}}">
 				<swiper-item>
-					<view data-item="{{item}}" hover-class="none" bindtap="toAdvDeatil">
+					<view data-item="{{item}}" hover-class="none" bindtap="toAdvDeatil" class="imgbannerP">
 						<image src="{{item.picture}}" class="slide-image" mode="aspectFill" />
+						<view class="titleimage1">
+							<image src="{{item.titleimg1}}"></image>
+						</view>
+						<view class="titleimage2">
+							<image src="{{item.titleimg2}}"></image> | <text>金坤严格优选</text>
+						</view>
 					</view>
 				</swiper-item>
 			</block>
 		</swiper>
-	</view>
-	<view class="search-box list">
-		<view class="weui-cell" bindtap="showdateBtn">
-			<view class="weui-cell-title">
-				<text>开始日期</text>
-				<view>{{startDate}}</view>
-			</view>
-			<view class="weui-cell-title">
-				<text>结束日期</text>
-				<view>{{endDate}}</view>
-			</view>
-			<view class="weui-cell-title" style="text-align:right">
-				<text>共{{dayNumber}}天</text>
-			</view>
-			<view class="weui-cell__ft">
-				<image src="/images/icon/r_jt.png" class="r_jt"></image>
-			</view>
-		</view>
 
-		<view class="weui-cell" bindtap="showTimeBtn">
-			<view class="weui-cell__hd">
-				<text>开始时间</text>
-			</view>
-			<view class="weui-cell__bd">
-				<input placeholder-class="placeholderClass" readonly placeholder="请选择开始时间" value="{{startTime}}"></input>
-			</view>
-			<view class="weui-cell__ft">
-				<van-icon name="cross" wx:if="{{startTime}}" style="margin-right:16rpx" catchtap="clearStartTime" />
-				<image src="/images/icon/r_jt.png" class="r_jt"></image>
+		<view class="weui-cell nav">
+			<view wx:for="{{nav}}" wx:key="index" class="weui-cell__bd navItem {{index==currentindex?'active':''}}"
+				bindtap="selNav" data-idx="{{index}}">
+				{{item}}
 			</view>
 		</view>
-		<view class="weui-cell" bindtap="showTimeBtn2">
-			<view class="weui-cell__hd">
-				<text>结束时间</text>
-			</view>
-			<view class="weui-cell__bd">
-				<input placeholder-class="placeholderClass" readonly placeholder="请选择结束时间" value="{{endTime}}"></input>
-			</view>
-			<view class="weui-cell__ft">
-				<van-icon name="cross" wx:if="{{endTime}}" style="margin-right:16rpx" catchtap="clearEndTime" />
-				<image src="/images/icon/r_jt.png" class="r_jt"></image>
-			</view>
-		</view>
-		<view class="weui-cell" bindtap="onClickShow">
-			<view class="weui-cell__hd">
-				<text>我的附近</text>
-			</view>
-			<view class="weui-cell__bd">
-				<input placeholder-class="placeholderClass" readonly placeholder="搜索会议室名称/关键词" value="{{keyword}}"></input>
-			</view>
-			<view class="weui-cell__ft">
-				<van-icon name="cross" wx:if="{{keyword}}" style="margin-right:16rpx" catchtap="clearKeyword" />
-				<image src="/images/icon/r_jt.png" class="r_jt"></image>
-			</view>
-		</view>
-		<view class="weui-cell" bindtap="showAccurateSearchBtn">
-			<view class="weui-cell__hd">
-				<text>精准查找</text>
-			</view>
-			<view class="weui-cell__bd">
-				<input placeholder-class="placeholderClass" readonly value="{{allSearchCount}}" placeholder="设置我需要的人数/面积/价格"></input>
-			</view>
-			<view class="weui-cell__ft">
-				<van-icon name="cross" wx:if="{{allSearchCount}}" style="margin-right:16rpx" catchtap="clearallSearchCount" />
-				<image src="/images/icon/r_jt.png" class="r_jt"></image>
-			</view>
-		</view>
-		<view class="btnSearch" bindtap="goDetail">查 找</view>
-	</view>
-	<view class="divider-title">
-		<view class="divider-title-bold">热门推荐</view>
-		<view class="divider-title-sml">精选会议厅，尽享优质环境</view>
-	</view>
-	<view class="divider-content">
-		<scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%;">
-			<navigator id="demo1" class="scroll-view-item_H demo-text-1" wx:for="{{hot}}" wx:key="index" hover-class="none" url="/pages/meetingDetail/meetingDetail?id={{item.id}}">
-				<image src="{{item.leaseImage}}" mode="aspectFill"></image>
-				<view class="scroll-view-item_H-name">{{item.leaseName}} {{item.leaseArea}}㎡</view>
-				<view class="scroll-view-item_H-address">{{item.leaseAddressName}}</view>
-				<view class="scroll-view-item_H-price"><text class="scroll-view-item_H-colorred">￥{{item.leasePriceHours}}</text>/时 <text class="scroll-view-item_H-colorred">￥{{item.leasePriceDay}}</text>/天</view>
-			</navigator>
-		</scroll-view>
 	</view>
 
-	<view class="divider-title">
-		<view class="divider-title-bold">会议厅品牌馆</view>
-		<view class="divider-title-sml">每一套会议厅都是为您精挑细选</view>
-	</view>
-	<view class="divider-content">
-		<scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%;">
-			<navigator id="demo2" class="scroll-view-item_H demo-text-2" wx:for="{{meetingRoom}}" wx:key="index" hover-class="none" url="/pages/meetingDetail/meetingDetail?id={{item.id}}">
-				<image src="{{item.leaseImage}}" mode="aspectFill"></image>
-				<view class="scroll-view-item_H-name">{{item.leaseName}}</view>
-				<view class="scroll-view-item_H-address">{{item.leaseAddressName}}</view>
-			</navigator>
-		</scroll-view>
-	</view>
-	<!-- 精准查找 -->
-	<view wx:if="{{ showAccurateSearch }}" bindtap="closeAccurateSearch" title="精准查找" class="showAccurateSearch">
-		<view class="searchBox" catchtap="stopAccurateSearch">
-			<view class="sheet-content">
-				<view class="sheet-title">价 格 <text>￥{{lowHeigh}}</text></view>
-				<view>
-					<view class="zy-slider">
-						<zy-slider id="zy-slider" backgroundColor="#EEEEEE" selectedColor="#FFAE00" minValue="{{low}}" maxValue="{{heigh}}" min="0" max="10000" bind:lowValueChange="lowValueChangeAction" bind:heighValueChange="heighValueChangeAction" />
+
+	<view class="container">
+		<navigator id="demo1" wx:for="{{list}}" wx:key="index" hover-class="none"
+			url="/pages/meetingDetail/meetingDetail?id={{item.id}}">
+			<view class="weui-cell busList" hover-class="none">
+				<view class="weui-cell__hd">
+					<view class="busImgBox">
+						<image src="{{item.leaseImage}}" class="busImg"></image>
 					</view>
 				</view>
-				<view class="sheet-ititle">￥0 <text>￥10000以上</text></view>
-				<view style="padding-left:1%">
-					<view class="sheet-item-list" catchtap="changePrice" data-item="{{item}}" wx:for="{{priceList}}" wx:key="index">￥{{item[0]}}-{{item[1]}}</view>
+				<view class="weui-cell__bd">
+					<view><text class="list-title">{{item.leaseName}}</text> {{item.leaseBq}}</view>
+					<view style="margin:10rpx 0rpx">{{item.leaseAddressName}}</view>
+					<view class="list-ccc">{{item.leaseArea}}㎡ 最多容纳{{item.leaseGalleryful}}人</view>
 				</view>
 			</view>
-
-			<view class="sheet-content">
-				<view class="sheet-title">面 积<text>{{lowHeigh1}}m²</text></view>
-				<view class="sheet-ititle">0 <text>1000以上</text></view>
-				<view>
-					<view class="zy-slider">
-						<zy-slider id="zy-slider1" minValue="{{low1}}" maxValue="{{heigh1}}" min="0" max="1000" backgroundColor="#EEEEEE" selectedColor="#FFAE00" bind:lowValueChange="lowValueChangeAction1" bind:heighValueChange="heighValueChangeAction1" />
-					</view>
-				</view>
-				<view style="padding-left:1%">
-					<view class="sheet-item-list" catchtap="changeArea" data-item="{{item}}" wx:for="{{areaList}}" wx:key="index">{{item[0]}}-{{item[1]}}</view>
-				</view>
-			</view>
-
-			<view class="sheet-content">
-				<view class="sheet-title">参会人数<text>{{lowHeigh2}}人</text></view>
-				<view class="sheet-ititle">0 <text>1000人以上</text></view>
-				<view>
-					<view class="zy-slider">
-						<zy-slider id="zy-slider2" minValue="{{low2}}" maxValue="{{heigh2}}" min="0" max="1500" backgroundColor="#EEEEEE" selectedColor="#FFAE00" bind:lowValueChange="lowValueChangeAction2" bind:heighValueChange="heighValueChangeAction2" />
-					</view>
-				</view>
-				<view style="padding-left:1%">
-					<view class="sheet-item-list" catchtap="changePeople" data-item="{{item}}" wx:for="{{perpleList}}" wx:key="index">{{item[0]}}-{{item[1]}}</view>
-				</view>
-			</view>
-
-			<view class="sheet-btn" catchtap="subAccurateSearch">完成</view>
-		</view>
-	</view>
-	<!-- 搜索关键词 -->
-	<view class="show-main" hidden="{{showMain}}">
-		<van-search value="{{ searchvalue }}" placeholder="请输入搜索关键词" bind:change="onChange" show-action bind:search="onSearch" bind:cancel="onCancel" />
-		<view class="show-mian-box">
-			<view class="show-main-title">
-				<image src="../../images/icon1/nav1.png"></image>
-				大家都在搜
-			</view>
-			<view class="show-main-cont">
-				<text wx:for="{{keywordList}}" wx:key="index" bindtap="keywordBtn" id="{{item}}">{{item}}</text>
-			</view>
-		</view>
-		<!-- <view class="show-mian-box">
-			<view class="show-main-title">
-				<image src="../../images/icon1/nav1.png"></image>
-				品牌会议室
-			</view>
-			<view class="show-main-cont">
-				<text>中鲁会议室</text>
-				<text>中鲁会议室</text>
-				<text>中鲁会议室</text>
-				<text>中鲁会议室</text>
-			</view>
-		</view> -->
-	</view>
-
-	<!-- 日期查找 -->
-	<van-action-sheet show="{{ showdate }}" title="选择日期" bind:close="ondateClose" round="true" close-on-click-overlay="true">
-		<view class="searchBox">
-			<view>
-				<van-calendar show="{{ showdate }}" type="range" bind:close="ondateClose" bind:confirm="onConfirm" />
-			</view>
-		</view>
-	</van-action-sheet>
-	<!--时间查找  -->
-	<van-action-sheet class="height300" show="{{ showTime }}" title="选择时间" bind:close="ondateClose1" round="true" close-on-click-overlay="true">
-		<view class="searchBox1">
-			<view>
-				<van-datetime-picker type="time" bind:input="onInput" bind:confirm="getTime1" value="{{ currentDate }}" />
-			</view>
-		</view>
-	</van-action-sheet>
-	<van-action-sheet class="height300" show="{{ showTime2 }}" title="选择时间" bind:close="ondateClose2" round="true" close-on-click-overlay="true">
-		<view class="searchBox1">
-			<view>
-				<van-datetime-picker bind:input="onInput2" type="time" bind:confirm="getTime2" value="{{ currentDate2 }}" />
-			</view>
-		</view>
-	</van-action-sheet>
+		</navigator>
+	</view>  
 </view>

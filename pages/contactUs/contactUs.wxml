@@ -1,0 +1,48 @@
+<!--pages/contactUs/contactUs.wxml-->
+<view class="container">
+  <view>
+    <van-icon name="arrow-left" bindtap="goBack" class="gobackbtn" />
+  </view>
+  <image src="/images/my/conUs.png" class="topImg"></image>
+  <view>
+
+    <view class="form-box">
+      <form bindsubmit="formSubmit" bindreset="formReset">
+        <view class="list"> 
+          <view class="weui-cell"> 
+            留言板
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd">姓 名</view>
+            <view class="weui-cell__bd">
+              <input placeholder-class="placeholderClass" placeholder="输入姓名" name="name"></input>
+            </view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd">电 话</view>
+            <view class="weui-cell__bd">
+              <input placeholder-class="placeholderClass" placeholder="输入手机号" name="phone"></input>
+            </view>
+          </view> 
+          <view class="weui-cell">
+            <view class="weui-cell__hd">留 言</view>
+            <view class="weui-cell__bd">
+              <input  placeholder-class="placeholderClass" placeholder="输入内容" name="message"></input>
+            </view>
+          </view>
+        </view>
+        <!-- 底部 -->
+        <view class="kong"></view>
+        <view class="footer weui-cell"> 
+          <view class="online" catchtap='freeTell'>
+            <image src="/images/my/phone.png" class="phoneImg"></image> 联系客服
+          </view>
+          <view class="onlineCall">
+            <button class="btn save" form-type="submit" name="Submit">提交</button>
+          </view>
+        </view>
+      </form>
+    </view>
+  </view>
+
+</view>

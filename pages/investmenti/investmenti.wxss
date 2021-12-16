@@ -1,0 +1,39 @@
+/* pages/investmenti/investmenti.wxss */
+.list {
+  width: calc(100% - 60rpx);
+  margin: 30rpx auto;
+  background: #fff;
+  box-shadow: 0px 0px 5px #cccccc;
+  box-sizing: border-box;
+  padding-left: 30rpx;
+  border-radius: 8rpx;
+}
+
+.list-item {
+  border-bottom: 1rpx solid #eee;
+  min-height: 100rpx;
+  line-height: 60rpx;
+  color: #999999;
+  font-size: 24rpx;
+}
+.title{
+  font-size: 26rpx;
+  font-weight: bold;
+  color:#000;
+  line-height: 100rpx;
+}
+.weui-cell.list-item{
+  padding:0px;
+  color:#333
+}
+.phone{
+  display: inline-block;
+  vertical-align: middle;
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 30rpx; 
+}
+.list-item-bottom{
+  padding:20rpx 0 0 0;
+  box-sizing: border-box;
+}

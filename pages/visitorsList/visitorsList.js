@@ -1,135 +1,146 @@
 // pages/visitorsList/visitorsList.js
-
-var dateTimePicker = require('../../utils/datapicker.js');
-import drawQrcode from 'weapp-qrcode'
 import {
-  addVisitors,
-  paymentQcode,
-  visitorsList,
-  removeVisitors,
-} from "../../api/visitors.js"
+  feedback
+} from "../../api/my"
+var dateTimePicker = require('../../utils/datapicker.js');
+import {
+  applySave,
+  timesList,
+  managerList,
+  repairreportSave
+} from "../../api/property.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    date: '',
-    time: '',
-    showCode: false,
-    dateTimeArray: null,
-    dateTime: null,
-    dateTimeArray1: null,
-    dateTime1: null,
-    startYear: 2020,
-    endYear: 2050,
     show: true,
-    name: "",
-    idCode: "",
-    peerList: [],
-    nav: ['新增预约', '预约记录', '我的二维码'],
+    result: [],
+    result1: [],
+    active: '',
+    showCode: false,
+    nav: ['报修工单', '加班申请', '搬家&上下货', '施工申请'],
     currentindex: 0,
-    current: 1,
-    size: 10,
     load: false,
-    list: [],
+    timesList: [],
+    managerList: {},
     type: '',
-    deleteshow: true,
     noContent: true,
-    userInfo: {}
+    name: '',
+    idPhone: "",
+    messageL: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      userInfo: wx.getStorageSync("userInfo")
+
+  },
+  freeTell: function () {
+    wx.makePhoneCall({
+      phoneNumber: '0354-8668008',
     })
-    var obj = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
-    var obj1 = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
-    // 精确到分的处理，将数组的秒去掉
-    var lastArray = obj.dateTimeArray.pop();
-    var lastTime = obj.dateTime.pop();
-    var lastArray1 = obj1.dateTimeArray.pop();
-    var lastTime1 = obj1.dateTime.pop();
-
-    this.setData({
-      dateTime: obj.dateTime,
-      dateTimeArray: obj.dateTimeArray,
-      dateTimeArray1: obj1.dateTimeArray,
-      dateTime1: obj1.dateTime
-    });
   },
-  changeDateTime(e) {
-    const that = this;
+  onChange(event) {
+    if (this.data.result.indexOf(event.currentTarget.id) == -1) {
+      this.data.result.push(event.currentTarget.id)
+    } else {
+      this.data.result.splice(this.data.result.indexOf(event.currentTarget.id), 1)
+    }
     this.setData({
-      dateTime: e.detail.value
-    });
-    var aaa1 = that.data.dateTime[0];
-    var aaa2 = that.data.dateTime[1];
-    var aaa3 = that.data.dateTime[2];
-    var aaa4 = that.data.dateTime[3];
-    var aaa5 = that.data.dateTime[4];
-    var time1 = that.data.dateTimeArray[0][aaa1];
-    var time2 = that.data.dateTimeArray[1][aaa2];
-    var time3 = that.data.dateTimeArray[2][aaa3];
-    var time4 = that.data.dateTimeArray[3][aaa4];
-    var time5 = that.data.dateTimeArray[4][aaa5];
-    var time = time1 + '-' + time2 + '-' + time3 + ' ' + time4 + ':' + time5;
-
+      result: this.data.result
+    })
   },
-  changeDateTime1(e) {
-    const that = this;
+  submitMessage() {
+    if (this.data.name.length == 0) {
+      wx.showToast({
+        title: '请输入姓名',
+        icon: "none"
+      })
+      return false
+    } else if (this.data.idPhone.length != 11) {
+      wx.showToast({
+        title: '请输入正确的联系方式',
+        icon: "none"
+      })
+      return false
+    } else if (this.data.messageL.length == 0) {
+      wx.showToast({
+        title: '请输入问题或意见',
+        icon: "none"
+      })
+      return false
+    } else {
+      let that = this
+      feedback({
+        type: 2,
+        name: this.data.name,
+        phone: this.data.idPhone,
+        message: this.data.messageL
+      }).then(res => {
+        if (res.code == 200) {
+          wx.showToast({
+            title: '提交成功',
+            success: function () {
+              that.setData({
+                show: true
+              })
+            }
+          })
+        } else {
+          wx.showToast({
+            title: res.msg,
+            icon: "none"
+          })
+        }
+      }).catch(res => {
+        wx.showToast({
+          title: res,
+          icon: "none"
+        })
+      })
+    }
+  },
+  onChange1(event) {
+    this.data.result1 = [event.currentTarget.id]
     this.setData({
-      dateTime1: e.detail.value
-    });
-    var aaa1 = that.data.dateTime1[0];
-    var aaa2 = that.data.dateTime1[1];
-    var aaa3 = that.data.dateTime1[2];
-    var aaa4 = that.data.dateTime1[3];
-    var aaa5 = that.data.dateTime1[4];
-    var time1 = that.data.dateTimeArray1[0][aaa1];
-    var time2 = that.data.dateTimeArray1[1][aaa2];
-    var time3 = that.data.dateTimeArray1[2][aaa3];
-    var time4 = that.data.dateTimeArray1[3][aaa4];
-    var time5 = that.data.dateTimeArray1[4][aaa5];
-    var time = time1 + '-' + time2 + '-' + time3 + ' ' + time4 + ':' + time5;
-
+      active: event.currentTarget.id,
+      result1: this.data.result1
+    })
   },
   formReset: function () {
     console.log('form发生了reset事件')
   },
   formSubmit(e) {
-
     let value = e.detail.value
-    console.log(value)
-    value.appointmentCompanionList = this.data.peerList;
-    if (value.visitorName.length == 0) {
+    if (value.name.length == 0) {
       wx.showToast({
         title: '请填写名字',
         icon: "none"
       })
-    } else if (value.visitorPhone.length == 0 || value.visitorPhone.length != 11) {
+    } else if (value.phone.length == 0 || value.phone.length != 11) {
       wx.showToast({
-        title: '请填写电话',
+        title: '联系方式格式错误',
         icon: "none"
       })
-    } else if (value.intervieweePhone.length > 0 && value.intervieweePhone.length != 11) {
+    } else if (value.address.length == 0) {
       wx.showToast({
-        title: '被访人手机号不正确',
+        title: '请填写上门地址',
         icon: "none"
       })
-    } else if (value.intervieweeName.length == 0) {
+    } else if (this.data.result.length == 0) {
       wx.showToast({
-        title: '请填写被访人姓名',
+        title: '请选择报修内容',
         icon: "none"
       })
     } else {
-      addVisitors(value).then(res => {
+      value.repairType = this.data.result.join(',')
+      repairreportSave(value).then(res => {
         if (res.code == 200) {
           wx.showToast({
-            title: '预约成功',
+            title: '申请成功',
             success: res => {
               wx.navigateBack({
                 delta: 1,
@@ -151,95 +162,66 @@ Page({
     }
 
   },
-  addperson() {
-    this.setData({
-      show: false
-    })
-  },
-  cencelAdd() {
-    this.setData({
-      show: true
-    })
-  },
-  canceldelete() {
-    this.setData({
-      deleteshow: true
-    })
-  },
-  okdelete() {
-    removeVisitors(this.data.ids).then(res => {
-      if (res.code == 200) {
-        wx.showToast({
-          title: '删除成功',
-          success: res => {
-            this.getvisitorsList()
-          }
-        })
-      }
-    })
-    this.setData({
-      deleteshow: true
-    })
-  },
-  openDelete(e) {
-    this.setData({
-      ids: e.currentTarget.id,
-      deleteshow: false
-    })
-  },
-  openDetail(e) {
-    wx.navigateTo({
-      url: '/pages/visitors/visitors?info=' + JSON.stringify(e.currentTarget.dataset.item),
-      success: function (res) {},
-      fail: function (res) {},
-      complete: function (res) {},
-    })
-  },
-  nameInput(e) {
-    this.setData({
-      name: e.detail.value
-    })
-  },
-  sfnumInput(e) {
-    this.setData({
-      idCode: e.detail.value
-    })
-  },
-  okAdd() {
-    if (this.data.name.length == 0) {
+  formSubmit1(e) {
+    let value = e.detail.value
+    if (value.name.length == 0) {
       wx.showToast({
-        title: '请输入姓名',
+        title: '请填写名字',
+        icon: "none"
+      })
+    } else if (value.phone.length == 0 || value.phone.length != 11) {
+      wx.showToast({
+        title: '联系方式格式错误',
+        icon: "none"
+      })
+    } else if (this.data.result1.length == 0) {
+      wx.showToast({
+        title: '请选择时间段',
         icon: "none"
       })
     } else {
-      let peer = {}
-      peer.companionName = this.data.name;
-      if (this.data.idCode.length != 0) {
-        peer.companionIdentity = this.data.idCode;
-      }
-
-      let peerList = this.data.peerList
-      peerList.push(peer)
-      this.setData({
-        peerList: peerList,
-        show: true,
-        name: "",
-        idCode: ""
+      value.applyType = this.data.currentindex
+      value.applyTime = this.data.result1.join(',')
+      value.chargeName = this.data.managerList.managerName
+      value.chargePhone = this.data.managerList.managerPhone
+      applySave(value).then(res => {
+        if (res.code == 200) {
+          wx.showToast({
+            title: '申请成功',
+            success: res => {
+              wx.navigateBack({
+                delta: 1,
+              })
+            }
+          })
+        } else {
+          wx.showToast({
+            title: res.desc,
+            icon: "none"
+          })
+        }
+      }).catch(res => {
+        wx.showToast({
+          title: res,
+          icon: "none"
+        })
       })
-      console.log(this.data.peerList)
     }
-  },
-  toDetail() {
 
   },
-  getvisitorsList() {
-    visitorsList({
-      current: 1,
-      size: 10000,
-      user: true
+  gettimesList(type) {
+    timesList({
+      type: type
     }).then(res => {
       this.setData({
-        list: res.data.records
+        timesList: res.data
+      })
+    })
+    managerList({
+      type: type
+    }).then(res => {
+      this.setData({
+        managerList: res.data
       })
     })
   },
@@ -247,34 +229,38 @@ Page({
     let index = e.target.dataset.idx;
     this.setData({
       currentindex: index,
-      current: 1,
-      // list: []
     })
-    if (this.data.currentindex == 0) {
-
-    } else if (this.data.currentindex == 1) {
-      this.getvisitorsList()
-    } else {
-      paymentQcode({
-        user: true,
-        exists: true
-      }).then(res => {
-        if (res.code == 200 && res.data.records.length > 0) {
-          drawQrcode({
-            canvasId: 'myQrcode',
-            text: res.data.records[0].payment
-          })
-          this.setData({
-            showCode: true,
-            beginTime: res.data.records[0].beginTime,
-            endTime: res.data.records[0].endTime
-          })
-        }
-      })
+    if (this.data.currentindex != 0) {
+      this.gettimesList(e.target.dataset.idx)
     }
-    // this.getList()
   },
 
+  addperson() {
+    this.setData({
+      show: false
+    })
+  },
+
+  nameInput(e) {
+    this.setData({
+      name: e.detail.value
+    })
+  },
+  sfnumInput(e) {
+    this.setData({
+      idPhone: e.detail.value
+    })
+  },
+  msgInput(e) {
+    this.setData({
+      messageL: e.detail.value
+    })
+  },
+  cencelAdd() {
+    this.setData({
+      show: true
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -286,9 +272,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (this.data.currentindex == 1) {
-      this.getvisitorsList()
-    }
+
   },
 
   /**

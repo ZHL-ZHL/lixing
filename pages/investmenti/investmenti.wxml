@@ -1,0 +1,63 @@
+<!--pages/investmenti/investmenti.wxml-->
+<view>
+  <view class="list" wx:for="{{list}}"> 
+    <view class="list-item title">{{item.company}}</view>
+    <view class="list-item  weui-cell">
+      <view class="weui-cell__bd">{{item.yname}}</view>
+      <view class="weui-cell__ft" id="{{item.phone}}" bindtap="callPhone">{{item.phone}}
+        <image class="phone" src="../../images/online/phone.png"></image>
+      </view>
+    </view>
+    <view class="list-item list-item-bottom">{{item.remark}}</view>
+  </view>
+  <!-- <view class="list">
+    <view class="list-item title">瓜子二手车晋中分公司</view>
+    <view class="list-item  weui-cell">
+      <view class="weui-cell__bd">城市经理 : 乔刚</view>
+      <view class="weui-cell__ft" id="17735428068" bindtap="callPhone">177 3542 8068
+        <image class="phone" src="../../images/online/phone.png"></image>
+      </view>
+    </view>
+    <view class="list-item list-item-bottom">瓜子二手车全国购，因为专业！所以选择！</view>
+  </view>
+  <view class="list">
+    <view class="list-item title">中国人民人寿保险股份有限公司晋中市中心支公司</view>
+    <view class="list-item  weui-cell">
+      <view class="weui-cell__bd">综合管理部</view>
+      <view class="weui-cell__ft" id="0354-3077263" bindtap="callPhone">0354-3077263
+        <image class="phone" src="../../images/online/phone.png"></image>
+      </view>
+    </view>
+    <view class="list-item">人寿保险，健康保险和意外伤害保险保险业务在中国保险监督管理委员会批准的范围内，代理中国人民财产保险股份有限公司和中国人民健康保险股份有限公司的保险业务</view>
+  </view>
+  <view class="list">
+    <view class="list-item title">酷动格斗健身训练馆</view>
+    <view class="list-item  weui-cell">
+      <view class="weui-cell__bd">石新华</view>
+      <view class="weui-cell__ft" id="17696005983" bindtap="callPhone">176 9600 5983
+        <image class="phone" src="../../images/online/phone.png"></image>
+      </view>
+    </view>
+    <view class="list-item list-item-bottom">开设课程有语言表演、中国舞、美术、琵琶古筝，让孩子的童年不同样。</view>
+  </view>
+  <view class="list">
+    <view class="list-item title">黄河少儿艺术晓羽分校</view>
+    <view class="list-item  weui-cell">
+      <view class="weui-cell__bd">郝腾宇</view>
+      <view class="weui-cell__ft" id="18503542115" bindtap="callPhone">185 0354 2115
+        <image class="phone" src="../../images/online/phone.png"></image>
+      </view>
+    </view>
+    <view class="list-item list-item-bottom">开设课程有语言表演、中国舞、美术、琵琶古筝，让孩子的童年不同样。</view>
+  </view>
+  <view class="list">
+    <view class="list-item title">昱嫚嘉生命养护中心</view>
+    <view class="list-item  weui-cell">
+      <view class="weui-cell__bd">安英</view>
+      <view class="weui-cell__ft" id="3026999" bindtap="callPhone">302 6999
+        <image class="phone" src="../../images/online/phone.png"></image>
+      </view>
+    </view>
+    <view class="list-item list-item-bottom">经营中医外治 、皮肤管理 、养生保健 、康复理疗为一体的一站式中医健康养生服务平台 </view>
+  </view> -->
+</view>

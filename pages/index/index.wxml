@@ -5,18 +5,19 @@
 			<view class="content" style="top:{{StatusBar}}px">
 				<view class="weui-cell " style="height:{{CustomBar-StatusBar}}px">
 					<view class="weui-cell__hd address">{{cityName}}</view>
-					<view class="weui-cell__bd">
-						<input placeholder-class="placeholderClass" placeholder="请输入..."></input>
-					</view>
-					<view class="weui-cell__ft">
-						<image src="/images/news.png" class="news"></image>
+					<view class="weui-cell__bd searchBox">
+						<image src="/images/banner/search.png" class="news searchIcon"></image>
+						<input placeholder-class="placeholderClass" placeholder="请输入..." class="searchInput"></input>
+						<image src="/images/banner/ht.png" class="news yyIcon"></image>
 					</view>
 				</view>
 			</view>
 		</view>
 	</view>
 	<view class="banner">
-		<swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
+		<swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}"
+			indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}"
+			duration="{{duration}}" circular="true">
 			<block wx:for="{{banner1}}" wx:key="{{index}}">
 				<swiper-item>
 					<view data-item="{{item}}" hover-class="none">
@@ -28,49 +29,108 @@
 	</view>
 	<view class="nav">
 		<block wx:for="{{nav}}" wx:key-item="item" wx:key="idx">
-			<view class="navItem" data-url="{{item.url}}" data-idx="{{idx}}" data-name="{{item.name}}" bindtap="routerTo" wx:if="{{item.show}}">
+			<view class="navItem" data-url="{{item.path}}" data-idx="{{idx}}" data-name="{{item.name}}" bindtap="routerTo"
+				wx:if="{{item.remark=='true'}}">
 				<image src="{{item.icon}}" class="iconimage" mode="aspectFill" />
 				<text class="iconName">{{item.name}}</text>
 			</view>
 		</block>
 	</view>
+	<!-- 红包领取 -->
+	<!-- <view>
+		<view class="hongbao">
+			<view class="hongbaoTitle">
+				<text class="hongbaoTitle1">福利多多</text>
+				<text class="hongbaoTitle2">专享红包免费领</text>
+			</view>
+			<image src="../../images/banner/bg.png"></image>
+			<view class="hongbaoItem">
+				<scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%;padding:0">
+					<view class="hongbaoItemD" wx:for="{{couponList}}">
+						<view class="hongbaoItemI" bindtap="getCoupon" id="{{item.id}}">
+							<view class="hongbaoItemI1" wx:if="{{item.couponType ==0}}">￥<text>{{item.coupon}}</text></view>
+							<view class="hongbaoItemI1" wx:if="{{item.couponType ==1}}"><text>{{item.coupon}}</text>折</view>
+							<view class="hongbaoItemI2">
+								<view wx:if="{{item.type ==1}}">租赁</view>
+								<view wx:if="{{item.type ==2}}">吃饭</view>
+								<view wx:if="{{item.type ==3}}">团购</view>
+							</view>
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+		</view>
+	</view> -->
 	<view>
 		<view class="show-main-title">
-			<text class="first-title">商城活动</text>
+			<text class="first-title">活动专区</text>
 			<image src="../../images/icon/fire.png"></image>
-			<text>回馈新老用户</text>
+			<text>特色商家 双节回馈</text>
 		</view>
 	</view>
 	<view class="banner banner1">
-		<swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
+		<swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}"
+			indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}"
+			duration="{{duration}}" circular="true">
 			<block wx:for="{{banner}}" wx:key="{{index}}">
 				<swiper-item>
-					<view data-item="{{item}}" hover-class="none" bindtap="toAdv">
+					<view data-item="{{item}}" hover-class="none">
 						<image src="{{item.picture}}" class="slide-image1" mode="aspectFill" />
 					</view>
 				</swiper-item>
 			</block>
 		</swiper>
 	</view>
+	<!-- 活动专区 -->
+	<view>
+		<view class="divider-content">
+			<scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%;">
+				<navigator id="demo" class="scroll-view-item_H demo-text-3" wx:for="{{shopList}}" wx:key="index"
+					hover-class="none" url="/pages/goodsList/goodsList">
+					<image src="{{item.picture}}" bindtap="showBigImage" id="{{item.picture}}"  mode="aspectFill"></image>
+				</navigator>
+			</scroll-view>
+		</view>
+	</view>
+	<view>
+		<view class="show-main-title">
+			<text class="first-title">租赁服务</text>
+			<image src="../../images/icon/fire.png"></image>
+			<text>金坤特别推荐</text>
+			<navigator url="/pages/meetingRoom/meetingRoom" hover-class="none" class="moreItem">更多租赁 ></navigator>
+		</view>
+		<view class="divider-content">
+			<scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%;">
+				<navigator id="demo2" class="scroll-view-item_H demo-text-2" wx:for="{{meetingList}}" wx:key="index"
+					hover-class="none" url="/pages/meetingRoom/meetingRoom">
+					<image src="{{item.leaseImage}}" mode="aspectFill"></image>
+					<view class="scroll-view-item_H-name">{{item.leaseName}}</view>
+				</navigator>
+			</scroll-view>
+		</view>
+	</view>
 	<view>
 		<view class="show-main-title">
 			<text class="first-title">美食新主意</text>
 			<image src="../../images/icon/fire.png"></image>
-			<text>吃货推荐</text><text></text> 
+			<text>吃货推荐</text>
+			<navigator url="/pages/eat/eat" class="moreItem" hover-class="none">更多美食 ></navigator>
 		</view>
 		<view class="divider-content">
 			<scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%;">
-				<navigator id="demo2" class="scroll-view-item_H demo-text-2" wx:for="{{eatList}}" wx:key="index" hover-class="none" url="/pages/eat/eat">
+				<navigator id="demo2" class="scroll-view-item_H demo-text-2" wx:for="{{eatList}}" wx:key="index"
+					hover-class="none" url="/pages/eat/eat">
 					<image src="{{item.showPice}}" mode="aspectFill"></image>
 					<view class="scroll-view-item_H-name">{{item.name}}</view>
 				</navigator>
 			</scroll-view>
 		</view>
 	</view>
-	<navigator url="/pages/eat/eat" class="see-more" hover-class="none">查看更多美食</navigator>
 
-	<!-- <image src="/images/bottom.png" style="width:{{imgWidth}}rpx;height:{{imgHeight}}rpx"></image> -->
-	<view class="cart">
-		<image src="/images/car.png"></image>
-	</view>
 </view>
+
+<van-overlay show="{{ showImage }}" bind:click="onClickHide">
+  <view class="wrapper">
+	<image src="{{imageItem}}" class="imageItem"></image>
+  </view>
+</van-overlay>

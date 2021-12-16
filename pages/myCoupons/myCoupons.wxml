@@ -1,0 +1,43 @@
+<!--pages/myCoupons/myCoupons.wxml-->
+<view>
+  <view class="weui-cell nav">
+    <view wx:for="{{nav}}" wx:key="index" class="weui-cell__bd navItem {{index==currentindex?'active':''}}"
+      bindtap="selNav" data-idx="{{index}}">
+      {{item}}
+    </view>
+  </view>
+  <!-- style="background:url('/images/my/yhqbg.png') no-repeat;background-size:700rpx 180rpx;background-position:center" -->
+  <view class="weui-cell weui-cell-bg" wx:for="{{list}}"
+    bindtap="showAc" id="{{item.id}}">
+    <image src="/images/my/yhqbg.png" class="list-bg"></image>
+    <image src="/images/my/check.png" class="checkImg" wx:if="{{showActive == item.id}}"></image>
+    <view class="weui-cell__bd weui-cellL">
+      <view wx:if="{{item.type==1}}">
+        租赁服务全场优惠券(满{{item.useMinPrice}}可用)
+      </view>
+      <view wx:if="{{item.type==2}}">
+        我要吃饭全场优惠券(满{{item.useMinPrice}}可用)
+      </view>
+      <view wx:if="{{item.type==3}}">
+        好物优选全场优惠券(满{{item.useMinPrice}}可用)
+      </view>
+      <view>
+        有效期：{{item.endTime}}
+      </view>
+    </view>
+    <view class="weui-cell__hd"></view>
+    <view class="weui-cell__ft weui-cellR" wx:if="{{item.couponType==0}}">
+      ￥{{item.couponPrice}}
+    </view>
+    <view class="weui-cell__ft weui-cellR" wx:if="{{item.couponType==1}}">
+      {{item.couponPrice}}折
+    </view>
+  </view> 
+  <!-- 底部 -->
+  <view class="kong"></view>
+  <view class="footer weui-cell"> 
+    <view class="onlineCall" bindtap="onlineCall" style="width:100%" wx:if="{{showActive}}">
+      立即使用
+    </view>
+  </view>
+</view>

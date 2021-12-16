@@ -6,10 +6,12 @@ import {
   eatCar,
   eatCarList,
   eatgroupList,
-  eatreserveList,
   eatpingjiaList
 } from "../../api/eat.js"
 import URL from "../../utils/host.js"
+import {
+  homeBanner
+} from "../../api/banner.js"
 var util = require('../../utils/util.js');
 Page({
 
@@ -23,17 +25,14 @@ Page({
     specificationList: [],
     detailObj: {},
     shopInfoMsg: {},
+    bannerimage: [],
     eatList: [],
     showTitle: false,
-    showGG: false,
     activetab: 0,
     x: 400,
     y: 550,
     scale: 2,
     ylink: URL.imgURL,
-    banner1: [{
-      picture: "/images/eat/img1.png"
-    }],
     indicatorDots: false, //小点
     indicatorColor: "white",
     autoplay: true, //是否自动轮播
@@ -41,19 +40,6 @@ Page({
     duration: 500, //滑动时间
     indicatorActiveColor: "#FFE400",
     swiperIndex: 0,
-    navBar: [{
-        name: '点菜',
-        id: 0
-      },
-      {
-        name: '预定',
-        id: 1
-      },
-      {
-        name: '商家',
-        id: 2
-      },
-    ],
     menNav: [],
     isFixed: false,
     cartList: [],
@@ -63,14 +49,14 @@ Page({
     totalNum: 0,
     totalPrice1: 0,
     totalPriceDiscount1: 0,
-    bzTotalPrice1: 0,
+    // bzTotalPrice1: 0,
     totalNum1: 0,
     menuList: [],
     current: 0,
     rtShop: "",
     page: 1,
     foodGroupId: "",
-    bzTotalPrice: "",
+    // bzTotalPrice: "",
     peiSf: "",
     pingjiaList: [],
     addid: "",
@@ -109,137 +95,19 @@ Page({
     }
     return true;
   },
-  onChange(e) {
-    this.setData({
-      current: 0,
-      activetab: e.detail.index
-    })
-    if (e.detail.index == 1) {
-      this.setData({
-        page: 1
-      })
-      // this.getpingJia()
-    }
-  },
   showTitleBtn() {
     this.setData({
       showTitle: !this.data.showTitle
     })
-  },
-  changeTime(e) {
-    let index = e.currentTarget.dataset.time
-    let menuItem = e.currentTarget.dataset.item
-    menuItem.dateTime = index
-    this.setData({
-      menuItem: menuItem,
-      showTime: index,
-    })
-  },
-  addEatList() {
-
-  },
-  changeColor(e) {
-    console.log(this.data.eatList)
-    let pidx = e.currentTarget.dataset.pidx
-    let idx = e.currentTarget.dataset.idx
-    let specificationList = this.data.specificationList
-    let list = specificationList[pidx].specificationListnew
-
-    let selNum = list.filter(function (v) {
-      if (v.show) {
-        return true;
-      } else {
-        return false;
-      }
-    })
-    for (let i = 0; i < list.length; i++) {
-      const item = list[i];
-      if (item.name == e.currentTarget.dataset.item.name) {
-        console.log(selNum.length)
-        console.log(specificationList.num)
-        console.log(selNum.length == specificationList[pidx].num)
-        console.log(selNum.length == !item.show)
-        if (!item.show && (selNum.length == specificationList[pidx].num)) {
-          wx.showToast({
-            title: '选' + specificationList[pidx].num + '个' + specificationList[pidx].categoryName + '菜',
-            icon: "none"
-          })
-        } else {
-          item.show = !e.currentTarget.dataset.item.show
-          break
-        }
-
-      }
-    }
-    specificationList[pidx].specificationListnew = list
-    this.setData({
-      specificationList
-    })
-  },
-
-  tocarradd(e) {
-    let item = this.data.menuItem
-    let dateTime = e.currentTarget.dataset.item.dateTime
-    let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList
-    groupList.forEach((good) => {
-      if (good.coodVo && good.coodVo.length > 0) {
-        good.coodVo.forEach((food) => {
-          if (food.id == item.id) {
-            if (this.data.activetab == 1) {
-              food.dateTime = dateTime
-            }
-            let tcArray = []
-            let tc = []
-            this.data.specificationList.forEach(item => {
-              item.specificationListnew.forEach(item1 => {
-                if (item1.show) {
-                  tc.push(item1.name)
-                }
-              });
-            });
-            if (tc.length > 0) {
-              tcArray.push({
-                specificationList: tc.join(",")
-              })
-              if (!food.num) {
-                food.num = 1
-                food.specificationList = tcArray
-              } else {
-                food.num += 1
-                food.specificationList = food.specificationList.concat(tcArray)
-              }
-            }
-          }
-        })
-      }
-    })
-    this.selectFoods(item)
-    // 优化体验，异步传递当前点击文档节点
-    if (this.data.activetab == 0) {
-      this.setData({
-        groupList: groupList,
-        showGG: false
-      })
-    } else {
-      this.setData({
-        eatreserveList: groupList,
-        showGG: false
-      })
-    }
-  },
+  }, 
   toDetail(e) {
     let info = e.currentTarget.dataset.item
     delete info['detail'] 
     wx.navigateTo({
-      url: '/pages/eatDetail/eatDetail?info=' + JSON.stringify(info)+'&type='+this.data.activetab+'&shopInfoMsg='+JSON.stringify(this.data.shopInfoMsg)+'&showBtnGoCar='+this.data.showBtnGoCar,
+      url: '/pages/eatDetail/eatDetail?info=' + JSON.stringify(info) + '&type=' + this.data.activetab + '&shopInfoMsg=' + JSON.stringify(this.data.shopInfoMsg) + '&showBtnGoCar=' + this.data.showBtnGoCar,
       success: function (res) {},
       fail: function (res) {},
       complete: function (res) {},
-    })
-  },
-  closeshowGG() {
-    this.setData({
-      showGG: false
     })
   },
   selNav(e) {
@@ -264,19 +132,6 @@ Page({
       isFixed: e.detail.isFixed
     })
   },
-  showggBtn(e) {
-    console.log(e)
-    this.setData({
-      listfoodName: e.currentTarget.dataset.item.name,
-      specificationList: e.currentTarget.dataset.item.specificationDetail,
-      menuItem: e.currentTarget.dataset.item
-    })
-    this.setData({
-      showGG: true,
-      showTime: e.currentTarget.dataset.item.dateTime ? e.currentTarget.dataset.item.dateTime : ""
-    })
-    // console.log(this.data.specificationList)
-  },
   showCar() {
     this.setData({
       show: true
@@ -290,28 +145,24 @@ Page({
   goodsAdd(e) {
     console.log(e)
     let item = e.currentTarget.dataset.item;
-    let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList
-    let idx = e.currentTarget.dataset.idx
+    let groupList = this.data.groupList
     let addid = e.currentTarget.dataset.id
-    let dateTime = e.currentTarget.dataset.item.dateTime
-    let foodCount = e.currentTarget.dataset.limitCount
-    if (foodCount == 0 || !foodCount) {
+    let foodCount = e.currentTarget.dataset.foodcount 
+    if (foodCount > 0) {
       groupList.forEach((good) => {
         if (good.coodVo && good.coodVo.length > 0) {
           good.coodVo.forEach((food) => {
             if (food.id == addid) {
-              if (this.data.activetab == 1) {
-                food.dateTime = dateTime
-              }
               if (!food.num) {
                 food.num = 1
               } else {
-                if (!foodCount || foodCount > food.num) {
+                if (food.residueCount > food.num) {
                   food.num += 1
                 } else {
                   wx.showToast({
                     title: '菜品不足！',
                   })
+                  return false
                 }
               }
               this.setData({
@@ -322,26 +173,21 @@ Page({
         }
       })
     } else {
-
+      wx.showToast({
+        title: '菜品不足！',
+      })
+      return false
     }
     this.selectFoods(item)
     // 优化体验，异步传递当前点击文档节点
-    if (this.data.activetab == 0) {
-      this.setData({
-        groupList: groupList
-      })
-    } else {
-      this.setData({
-        eatreserveList: groupList
-      })
-    }
+    this.setData({
+      groupList: groupList
+    })
   },
   goodsDel(e) {
     console.log(e)
-    let item = e.currentTarget.dataset.item;
-    let iitem = e.currentTarget.dataset.mitem
-    let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList
-    let idx = e.currentTarget.dataset.idx
+    let item = e.currentTarget.dataset.item; 
+    let groupList = this.data.groupList 
     let addid = e.currentTarget.dataset.id
     groupList.forEach((good) => {
       if (good.coodVo && good.coodVo.length > 0) {
@@ -351,15 +197,7 @@ Page({
               food.num -= 1
               this.setData({
                 menuItem: food
-              })
-              if (food.specificationList) {
-                food.specificationList.forEach((item1, index) => {
-                  if (item1.specificationList == iitem) {
-                    food.specificationList.splice(index, 1)
-                    return
-                  }
-                });
-              }
+              }) 
             }
           })
         }
@@ -367,23 +205,17 @@ Page({
     })
     this.selectFoods(item)
     // 优化体验，异步传递当前点击文档节点
-    if (this.data.activetab == 0) {
-      this.setData({
-        groupList: groupList
-      })
-    } else {
-      this.setData({
-        eatreserveList: groupList
-      })
-    }
+    this.setData({
+      groupList: groupList
+    })
 
   },
   selectFoods(item) {
     let num = 0;
-    let cartList = this.data.activetab == 0 ? this.data.cartList : this.data.reserveList;
-    let ids = this.data.activetab == 0 ? this.data.ids : this.data.ids1;
+    let cartList = this.data.cartList
+    let ids = this.data.ids
     let josnCartList = JSON.stringify(cartList)
-    let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList
+    let groupList = this.data.groupList
     let foods = []
     // console.log(cartList)
     groupList.forEach((good) => {
@@ -417,35 +249,27 @@ Page({
         ids.splice(index, 1)
       }
     });
-    if (this.data.activetab == 0) {
-      this.setData({
-        cartList: cartList,
-        ids: ids
-      })
-      this.totalCount()
-    } else {
-      this.setData({
-        reserveList: cartList,
-        ids1: ids
-      })
-      this.totalCount1()
-    }
+    this.setData({
+      cartList: cartList,
+      ids: ids
+    })
+    this.totalCount()
   },
   totalCount() {
     let total = 0
     let totalPrice = 0;
     let totalPriceDiscount = 0;
-    let bzTotalPrice = 0
+    // let bzTotalPrice = 0
     this.data.cartList.forEach((food) => {
       total += food.num;
-      totalPriceDiscount += food.discount && food.discount!=0 ? food.discount * food.num : food.price * food.num
+      totalPriceDiscount += food.discount && food.discount != 0 ? food.discount * food.num : food.price * food.num
       totalPrice += food.price * food.num
-      bzTotalPrice += food.packagePrice * food.num
+      // bzTotalPrice += food.packagePrice * food.num
     })
     this.setData({
       totalPrice: totalPrice.toFixed(2),
       totalNum: total,
-      bzTotalPrice: bzTotalPrice.toFixed(2),
+      // bzTotalPrice: bzTotalPrice.toFixed(2),
       totalPriceDiscount: this.toDecimal(totalPriceDiscount)
     })
     if (this.data.totalNum == 0) {
@@ -458,17 +282,17 @@ Page({
     let total = 0
     let totalPrice = 0;
     let totalPriceDiscount = 0;
-    let bzTotalPrice = 0
+    // let bzTotalPrice = 0
     this.data.reserveList.forEach((food) => {
       total += food.num;
-      totalPriceDiscount += food.discount && food.discount!=0 ? food.discount * food.num : food.price * food.num
+      totalPriceDiscount += food.discount && food.discount != 0 ? food.discount * food.num : food.price * food.num
       totalPrice += food.price * food.num
-      bzTotalPrice += food.packagePrice * food.num
+      // bzTotalPrice += food.packagePrice * food.num
     })
     this.setData({
       totalPrice1: totalPrice.toFixed(2),
       totalNum1: total,
-      bzTotalPrice1: bzTotalPrice.toFixed(2),
+      // bzTotalPrice1: bzTotalPrice.toFixed(2),
       totalPriceDiscount1: this.toDecimal(totalPriceDiscount)
     })
     if (this.data.totalNum1 == 0) {
@@ -554,18 +378,21 @@ Page({
     this.setData({ // 最后赋值到data中渲染到页面
       totalPrice: total.toFixed(2),
       totalNum: totalNum,
-      bzTotalPrice: bzTotal.toFixed(2)
+      // bzTotalPrice: bzTotal.toFixed(2)
     });
   },
   toSubmit(e) {
-    console.log(e.currentTarget.id)
+    console.log(this.data.cartList)
+    this.data.cartList.forEach(item => {
+      delete item["detail"]
+    });
     let info = {
       type: e.currentTarget.id ? e.currentTarget.id : 0,
-      list: this.data.activetab == 0 ? this.data.cartList : this.data.reserveList,
-      bzTotalPrice: this.data.activetab == 0 ? this.data.bzTotalPrice : this.data.bzTotalPrice1,
+      list: this.data.cartList,
+      // bzTotalPrice: this.data.activetab == 0 ? this.data.bzTotalPrice : this.data.bzTotalPrice1,
       peiSf: this.data.shopInfoMsg.deliveryPrice,
-      totalPrice: this.data.activetab == 0 ? this.data.totalPrice : this.data.totalPrice1,
-      totalPriceDiscount: this.data.activetab == 0 ? this.data.totalPriceDiscount : this.data.totalPriceDiscount1,
+      totalPrice: this.data.totalPrice,
+      totalPriceDiscount: this.data.totalPriceDiscount,
     }
     wx.navigateTo({
       url: '/pages/eatListPay/eatListPay?info=' + JSON.stringify(info),
@@ -584,6 +411,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    homeBanner(4).then(res => {
+      this.setData({
+        bannerimage: res.data.records
+      })
+    })
     this.getInfo()
     // this.getcarLists()
     this.getgroupList()
@@ -591,45 +423,6 @@ Page({
 
   },
   getgroupList() {
-    eatreserveList().then(res => {
-      if (res.code == 200) {
-        let list = res.data
-        for (let i = 0; i < list.length; i++) {
-
-          let coodVo = list[i].coodVo
-          if (coodVo) {
-            for (let j = 0; j < coodVo.length; j++) {
-              if (coodVo[j].isSpecification == true && (coodVo[j].specificationDetail && coodVo[j].specificationDetail.length > 0)) {
-                coodVo[j].specificationDetail.forEach(item => {
-                  console.log(i, j)
-                  item.specificationListnew = item.specificationListnew ? item.specificationListnew : []
-                  item.specificationList.forEach(item1 => {
-                    let obj = {
-                      name: item1,
-                      show: false,
-                    }
-                    item.specificationListnew.push(obj)
-                  });
-                });
-              }
-            }
-          }
-        }
-        this.setData({
-          eatreserveList: list
-        })
-      } else {
-        wx.showToast({
-          title: res.msg,
-          icon: "none"
-        })
-      }
-    }).catch(res => {
-      wx.showToast({
-        title: res.msg,
-        icon: "none"
-      })
-    })
     eatgroupList().then(res => {
       if (res.code == 200) {
         let list = res.data
@@ -781,9 +574,9 @@ Page({
   onShow: function () {
     console.log(this.data.detailObj)
     if (this.data.detailObj.id) {
-      let groupList = this.data.activetab == 0 ? this.data.groupList : this.data.eatreserveList
-      let cartList = this.data.activetab == 0 ? this.data.cartList : this.data.reserveList
-      let ids = this.data.activetab == 0 ? this.data.ids : this.data.ids1
+      let groupList = this.data.groupList
+      let cartList = this.data.cartList
+      let ids = this.data.ids
       groupList.forEach(item => {
         if (item.coodVo && item.coodVo.length > 0) {
           item.coodVo.forEach(item1 => {
@@ -813,36 +606,15 @@ Page({
         }
 
       });
-      console.log(groupList)
-      if (this.data.activetab == 0) {
-        this.setData({
-          groupList: groupList
-        })
-      } else {
-        this.setData({
-          eatreserveList: groupList
-        })
-      }
+      this.setData({
+        groupList: groupList
+      })
 
-
-
-
-
-
-
-      if (this.data.activetab == 0) {
-        this.setData({
-          cartList: cartList,
-          ids: ids
-        })
-        this.totalCount()
-      } else {
-        this.setData({
-          reserveList: cartList,
-          ids1: ids
-        })
-        this.totalCount1()
-      }
+      this.setData({
+        cartList: cartList,
+        ids: ids
+      })
+      this.totalCount()
     }
   },
 

@@ -1,34 +1,13 @@
 import http from "../utils/request.js"
 import URL from "../utils/host.js"
 // console.log(http)
-// 首页
-export function discountAllList(data) {
-  return http.fly.request({
-    method: 'get',
-    url: URL.host + '/renren-fast/wechat_discount/all/'+data.wechatUserId,
-    params: data
-  })
-} 
-
-export function discountMyList(data) {
-  return http.fly.request({
-    method: 'get',
-    url: URL.host + '/renren-fast/wechat_discount/list/' + data.wechatUserId,
-    params: data
-  })
-} 
-export function getCard(data) {
-  return http.fly.request({
-    method: 'post',
-    url: URL.host + '/renren-fast/wechat_discount/one/' + data.wechatUserId + '/' + data.discountId,
-    body: data
-  })
-} 
+ 
+ 
 // 余额
 export function myYe(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/blade-bms/wechatmealcard/detail',
+    url: URL.host + '/wechatmealcard/detail',
     params: data
   })
 } 
@@ -37,7 +16,7 @@ export function myYe(data) {
 export function topay(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/blade-bms/wechatmealcard/toPay',
+    url: URL.host + '/wechatmealcard/toPay',
     body: data
   })
 } 
@@ -45,7 +24,7 @@ export function topay(data) {
 export function totransfer(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/blade-bms/wechatmealcard/transfer',
+    url: URL.host + '/wechatmealcard/transfer',
     body: data
   })
 } 
@@ -55,7 +34,7 @@ export function totransfer(data) {
 export function chargeactivity(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/blade-bms/rtrechargeactivity/list',
+    url: URL.host + '/rtrechargeactivity/list',
     params: data
   })
 } 
@@ -65,7 +44,7 @@ export function chargeactivity(data) {
 export function refundApply(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/blade-bms/wechatmealcard/refund/apply',
+    url: URL.host + '/wechatmealcard/refund/apply',
     body: data
   })
 } 

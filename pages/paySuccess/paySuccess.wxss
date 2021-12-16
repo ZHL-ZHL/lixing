@@ -5,8 +5,8 @@
   height: 100rpx;
   line-height: 100rpx;
   text-align: center;
-  background-color:#FFE401 ;
-  color: #333;
+  background-color:#000000 ;
+  color: #fff;
   width: 100%;
 }
 .num{

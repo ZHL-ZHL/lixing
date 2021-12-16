@@ -108,10 +108,10 @@ textarea {
   top:32rpx;
   font-size: 24rpx; 
 } 
- .active{
+ .activeC{
    border: 1px solid #FFAD00; 
  }
- .active .van-checkbox__label{
+ .activeC .van-checkbox__label{
     color: #FFAD00;
  }
  .van-checkbox__label {

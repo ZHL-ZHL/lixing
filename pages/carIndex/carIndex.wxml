@@ -1,0 +1,130 @@
+<!--pages/carIndex/carIndex.wxml-->
+<view class="container">
+  <view wx:if="{{!lengthList}}">
+    <view class="emptyBox">
+      <image src="../../images/car/kb.png" class="kbImg"></image>
+      <view class="kbTitle">抱歉，您的购物车空空如也~</view>
+      <view class="btn-box">
+        <text class="btn-text">逛逛团购</text>
+        <text class="btn-text">看看关注</text>
+      </view>
+    </view>
+    <view>
+      <view class="titlebox">
+        <view class="titlename">- 为你推荐 -</view>
+        <image src="../../images/car/titlebg.png"></image>
+      </view>
+    </view>
+    <view class="infoList">
+      <view class="weui-cell">
+        <view class='weui-cell__bd infoListItem infoListIteml'>
+          <image src="../../images/car/image1.png"></image>
+          <view class="weui-cell weui-cellp">
+            <view class='weui-cell__bd'>
+              <view class="infoName">中式-檀木-屏风桌</view>
+              <view class="infoPrice">￥1250</view>
+            </view>
+            <view class='weui-cell__ft'>
+              <image src="../../images/car/car.png" class="carImg"></image>
+            </view>
+          </view>
+        </view>
+        <view class='weui-cell__bd infoListItem'>
+          <image src="../../images/car/image2.png"></image>
+          <view class="weui-cell weui-cellp">
+            <view class='weui-cell__bd'>
+              <view class="infoName">中式-檀木-屏风桌</view>
+              <view class="infoPrice">￥1250</view>
+            </view>
+            <view class='weui-cell__ft'>
+              <image src="../../images/car/car.png" class="carImg"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{lengthList}}">
+    <!-- <view class="weui-cell nav">
+      <view wx:for="{{nav}}" wx:key="index" class="weui-cell__bd navItem {{index==currentindex?'active':''}}"
+        bindtap="selNav" data-idx="{{index}}">
+        {{item}}
+      </view>
+    </view> -->
+    <view class="cont-box">
+      <view class="list">
+        <view class="listItem" wx:for="{{orderList}}" wx:key="{{index}}">
+          <view class='weui-cell title'>
+            <view class='weui-cell__bd' style="padding-bottom:10px">
+              <van-checkbox value="{{ item.checkItem }}" data-item="{{item}}" data-index="{{index}}"
+                checked-color="#EBD272" bind:change="onChangeitem"></van-checkbox>
+              {{item.name}}
+              <image src="/images/icon/r_jt.png" class="r_jt"></image>
+            </view>
+          </view>
+          <view>
+            <view class="goodsInfo" wx:for="{{item.products}}" wx:for-index="idx" wx:for-item="menuItem" wx:key="idx">
+              <!-- <van-checkbox-group value="{{ menuItem.chooseIdList }}" bind:change="onChangeItem"> -->
+              <view class="weui-cell">
+                <view class="weui-cell__hd">
+                  <van-checkbox value="{{ menuItem.checked }}" checked-color="#EBD272" data-item="{{menuItem}}"
+                    data-index="{{idx}}" data-indexall="{{index}}" bind:change="onChangeitemin"></van-checkbox>
+                  <image class="thumb" src="{{menuItem.productInfo.image}}" />
+                </view>
+                <view class="weui-cell__bd">
+                  <view class="goodsName">{{menuItem.productInfo.storeName}}</view>
+                  <!-- <view class='textccc'>{{item.orderInfoObj.leaseArea}}</view> -->
+                  <!-- <view class="tagBox">
+                      <van-tag plain color="#016AA1">每人限购1件</van-tag>
+                      <van-tag plain color="#016AA1">库存紧张</van-tag>
+                    </view> -->
+                  <view style="margin-top:5px">
+                    <text class="textPrice">￥{{menuItem.productInfo.price}}</text>
+                    <text class="textNum">x {{menuItem.cartNum}}</text>
+                  </view>
+                </view>
+              </view>
+              <!-- </van-checkbox-group> -->
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="kong"></view>
+    <!-- <view class="footer weui-cell">
+      <view class="online online2">
+        <view class="weui-cell" style="padding:0px 0rpx 0px 15px">
+          <view class="weui-cell__hd" style="margin-top:-40rpx">
+            <van-checkbox value="{{ checkedAll }}" checked-color="#EBD272" bind:change="onChangeall"></van-checkbox>全选
+          </view>
+          <view class="weui-cell__bd"></view>
+          <view class="weui-cell__ft" style="width:35%">
+            <view class="online online1">
+              <button class="btn cencel" name="Submit" bindtap="openBottom">优惠券</button>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="onlineCall" catchtap='freeTell'>
+        <button class="btn save" form-type="submit" name="Submit">删除</button>
+      </view>
+    </view> -->
+    <view class="footer weui-cell">
+      <view class="online online2">
+        <view class="weui-cell" style="padding:0px 30rpx">
+          <view class="weui-cell__hd">
+            <van-checkbox value="{{ checkedAll }}" checked-color="#EBD272" bind:change="onChangeall"></van-checkbox>全选
+          </view>
+          <view class="weui-cell__bd"></view>
+          <view class="weui-cell__ft" style="line-height:2">
+            <view style="height:20px">合计<text style="color:#CAAE43">￥{{totalPrice}}</text></view>
+            <!-- <view style="height:20px"><text class='textccc'>优惠券已优惠</text><text style="color:#CAAE43">￥150</text></view> -->
+          </view>
+        </view>
+      </view>
+      <view class="onlineCall" catchtap='freeTell'>
+        <button class="btn save" form-type="submit" name="Submit" bindtap="toSubmit">去结算</button>
+      </view>
+    </view>
+  </view>
+</view>

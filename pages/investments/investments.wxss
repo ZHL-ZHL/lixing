@@ -1,0 +1,38 @@
+/* pages/investments/investments.wxss */
+@import "../visitorsList/visitorsList.wxss";
+@import "../investmenti/investmenti.wxss";
+
+.nav .weui-cell__bd.navItem {
+  font-size: 26rpx;
+  padding: 0px 12rpx;
+  /* height: 80rpx;  */
+}
+
+.phoneBox {
+  background-color: #EBD272;
+  width:120rpx;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: inline-block;
+  border-top-right-radius: 8rpx;
+  border-bottom-right-radius: 8rpx;
+}
+.list{
+  position: relative;
+}
+.list-item .weui-cell__ft{
+  padding-right: 140rpx;
+}
+.phoneBox image{
+  width: 50rpx;
+  height: 50rpx;
+  margin:auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.list-item{ line-height: 100rpx;}

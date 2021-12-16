@@ -3,12 +3,8 @@ import URL from "../utils/host.js"
 // console.log(http)
 export function login(data) {
   return http.fly.request({
-    method: 'post',
-    // header: {
-    //   "Authorization": "Basic d2VjaGF0OndlY2hhdF9zZWNyZXQ=",
-    //   "Content-Type": "application/x-www-form-urlencoded"
-    // },
-    url: URL.host + '/blade-auth/oauth/token',
+    method: 'post', 
+    url: URL.host + '/blade-auth/token',
     body: data
   })
 }
@@ -23,48 +19,14 @@ export function wechatuserInfo(data) {
 export function loginOut(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/blade-auth/oauth/logout'
+    url: URL.host + '/oauth/logout'
   })
-}
-
-// 
-export function onLogin(data) {
-  return http.fly.request({
-    method: 'post',
-    url: URL.host + '/renren-fast/wechat_user/one',
-    body: data
-  })
-}
-// 已经登录
-export function hasLogin(data) {
-  return http.fly.request({
-    method: 'post',
-    url: URL.host + '/renren-fast/wechat_user/one/' + data.id,
-    body: data
-  })
-}
-// 查询用户信息
-export function userInfo(data) {
-  return http.fly.request({
-    method: 'get',
-    url: URL.host + '/renren-fast/wechat_user/one/' + data.id,
-    params: data
-  })
-}
-// 修改用户信息
-
-export function xgUserInfo(data) {
-  return http.fly.request({
-    method: 'put',
-    url: URL.host + '/renren-fast/wechat_user/one/',
-    body: data
-  })
-}
+}   
 // 新增地址
 export function addressAdd(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/blade-bms/wechatuseraddress/save',
+    url: URL.host + '/wechatuseraddress/save',
     body: data
   })
 }
@@ -73,7 +35,7 @@ export function addressAdd(data) {
 export function addressList(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/blade-bms/wechatuseraddress/page'
+    url: URL.host + '/wechatuseraddress/page'
   })
 }
 
@@ -81,7 +43,7 @@ export function addressList(data) {
 export function addressEdit(data) {
   return http.fly.request({
     method: 'put',
-    url: URL.host + '/blade-bms/wechatuseraddress/update',
+    url: URL.host + '/wechatuseraddress/update',
     body: data
   })
 }
@@ -91,24 +53,32 @@ export function addressEdit(data) {
 export function addressDel(data) {
   return http.fly.request({
     method: 'post',
-    url: URL.host + '/blade-bms/wechatuseraddress/remove?ids=' + data.id
+    url: URL.host + '/wechatuseraddress/remove?ids=' + data.id
   })
-}
-// 反馈意见
-export function feedback(data) {
-  return http.fly.request({
-    method: 'post',
-    url: URL.host + '/blade-bms/advise/save',
-    body: data
-  })
-}
+} 
 
 // 获取手机哈
 // /wechat/phone  GET请求
 export function getPhone(data) {
   return http.fly.request({
     method: 'get',
-    url: URL.host + '/blade-user/wechatuser/phone?appid=wxc35575f7a176ae3c',
+    url: URL.host + '/blade-user/wechatuser/phone?appid=wx2ee980985f11541a',
     params: data
   })
 }
+
+export function couponuserList(data) {
+  return http.fly.request({
+    method: 'get',
+    url: URL.host + '/couponuser/client/list',
+    params: data
+  })
+}
+export function feedback(data) {
+  return http.fly.request({
+    method: 'post',
+    url: URL.host + '/message/client/save',
+    body: data
+  })
+}
+

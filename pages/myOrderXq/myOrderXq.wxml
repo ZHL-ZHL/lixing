@@ -1,150 +1,146 @@
+<view>
+	<view class="title-img" wx:if="{{info.statu==2}}">
+		<view class="title-result">交易成功！</view>
+		<image src="../../images/my/title.png"></image>
+	</view>
+	<view class="title-img" wx:if="{{info.statu==1}}">
+		<!-- <view class="title-result">等待买家付款</view> -->
+		<!-- <view class="title-result"> {{countDownNum}}</view> -->
+		<view class="title-result">
+			{{remainTimeNew}}
+		</view>
+		<image src="../../images/my/title.png"></image>
+	</view>
+	<view class='weui-cell top-todo' wx:if="{{userOrder.statu==2}}">
+		<view class='weui-cell__bd'>
+			<image src="../../images/my/time.png" class="time-img"></image> 交易时间
+		</view>
+		<view class='weui-cell__ft'>
+			<view>{{info.updateTime}}</view>
+			<view style="color:#ccc">(以实际交易时间为准)</view>
+		</view>
+	</view>
+	<view class='weui-cell top-todo'>
+		<view class='weui-cell__hd'>
+			<image src="../../images/my/time.png" class="time-img"></image>
+		</view>
+		<view class='weui-cell__bd'>
+			<view>收货人： {{info.orderName}} {{info.orderPhone}}</view>
+			<view wx:if="{{info.orderAddress}}">地 址： {{info.orderAddress}}</view>
+		</view>
+	</view>
 	<view>
-		<view class="title-img" wx:if="{{info.statu==2}}">
-			<view class="title-result">交易成功！</view>
-			<image src="../../images/my/title.png"></image>
-		</view>
-		<view class="title-img" wx:if="{{info.statu==1}}">
-			<!-- <view class="title-result">等待买家付款</view> -->
-			<!-- <view class="title-result"> {{countDownNum}}</view> -->
-			<view class="title-result">
-				{{remainTimeNew}}
-			</view>
-			<image src="../../images/my/title.png"></image>
-		</view>
-		<view class='weui-cell top-todo' wx:if="{{userOrder.statu==2}}">
-			<view class='weui-cell__bd'>
-				<image src="../../images/my/time.png" class="time-img"></image> 交易时间
-			</view>
-			<view class='weui-cell__ft'>
-				<view>{{info.updateTime}}</view>
-				<view style="color:#ccc">(以实际交易时间为准)</view>
-			</view>
-		</view>
-		<view class='weui-cell top-todo'>
-			<view class='weui-cell__hd'>
-				<image src="../../images/my/time.png" class="time-img"></image>
-			</view>
-			<view class='weui-cell__bd'>
-				<view>收货人： {{info.orderName}} {{info.orderPhone}}</view>
-				<view wx:if="{{info.orderAddress}}">地 址： {{info.orderAddress}}</view>
-			</view>
-		</view>
-		<view>
-		</view>
-		<view class="list">
-			<view class="listItem">
-				<view class='weui-cell title'>
-					<navigator url="/pages/meetingRoom/meetingRoom" class="goodsInfo" class='weui-cell__bd' wx:if="{{info.itemType == 1}}">
-						<image src="../../images/my/meet.png" class="icon-img"></image>
-						会议室租赁
-						<image src="/images/icon/r_jt.png" class="r_jt"></image>
-					</navigator>
-					<navigator url="/pages/eat/eat" class="goodsInfo" hover-class="none" class='weui-cell__bd' wx:if="{{info.itemType == 2}}">
-						<image src="../../images/my/food.png" class="icon-img"></image>
-						我要吃饭
-					</navigator>
-					<view class='weui-cell__ft status'>
-						<text  wx:if="{{info.statu==1}}">待付款</text>
-						<text  wx:if="{{info.statu==2}}">已付款</text>
-						<text  wx:if="{{info.statu==2 && item.orderState == 2}}">已出餐</text>
-						<text  wx:if="{{info.statu==2 && item.orderState == 3}}">订单完成</text>
-						<text wx:if="{{info.statu==3 && info.refundState == 1}}" style="color:#11B500">退款成功</text>
-						<text wx:if="{{info.statu==3 && info.refundState == 2}}">拒绝退款</text>
-						<text wx:if="{{info.statu==3 && info.refundState == 3}}">退款异常</text>
-						<text wx:if="{{info.statu==3 && info.refundState == 4}}">退款中</text> 
-						<text wx:if="{{info.statu==5}}">订单关闭</text> 
-						<!-- //1.自取，2.配送，3预定 4堂食 -->
-						<text style="margin-left:10px;color:#FFAD00" wx:if="{{info.orderType==1}}">自取</text>
-						<text style="margin-left:10px;color:#FFAD00" wx:if="{{info.orderType==2}}">配送</text>
-						<text style="margin-left:10px;color:#FFAD00" wx:if="{{info.orderType==3}}">预定</text>
-						<text style="margin-left:10px;color:#FFAD00" wx:if="{{info.orderType==4}}">堂食</text>
-					</view>
+	</view>
+	<view class="list">
+		<view class="listItem">
+			<view class='weui-cell title'>
+				<navigator url="/pages/meetingRoom/meetingRoom" class="goodsInfo" class='weui-cell__bd'
+					wx:if="{{info.itemType == 1}}">
+					<image src="../../images/my/meet.png" class="icon-img"></image>
+					会议室租赁
+					<image src="/images/icon/r_jt.png" class="r_jt"></image>
+				</navigator>
+				<navigator url="/pages/eat/eat" class="goodsInfo" hover-class="none" class='weui-cell__bd'
+					wx:if="{{info.itemType == 2}}">
+					<image src="../../images/my/food.png" class="icon-img"></image>
+					我要吃饭
+				</navigator>
+				<navigator url="/pages/goodsList/goodsList" class="goodsInfo" hover-class="none" class='weui-cell__bd'
+					wx:if="{{info.itemType == 3}}">
+					<image src="../../images/my/meet.png" class="icon-img"></image>
+					好物优选
+				</navigator>
+				<view class='weui-cell__ft status'>
+					<text wx:if="{{info.statu==1}}">待付款</text>
+					<text wx:if="{{info.statu==2}}">已付款</text>
+					<text wx:if="{{info.statu==2 && item.orderState == 2}}">已出餐</text>
+					<text wx:if="{{info.statu==2 && item.orderState == 3}}">订单完成</text>
+					<text wx:if="{{info.statu==3 && info.refundState == 1}}" style="color:#11B500">退款成功</text>
+					<text wx:if="{{info.statu==3 && info.refundState == 2}}">拒绝退款</text>
+					<text wx:if="{{info.statu==3 && info.refundState == 3}}">退款异常</text>
+					<text wx:if="{{info.statu==3 && info.refundState == 4}}">退款中</text>
+					<text wx:if="{{info.statu==5}}">订单关闭</text>
+					<!-- //1.自取，2.配送，3预定 4堂食 -->
+					<text style="margin-left:10px;color:#FFAD00" wx:if="{{info.orderType==4}}">大厅自取</text>
 				</view>
-				<view class="">
-					<view class="goodsInfo">
-						<view class="weui-cell" wx:for="{{info.productDetails}}">
-							<view class="weui-cell__hd">
-								<image class="thumb" src="{{item.showPice}}" />
-							</view>
-							<view class="weui-cell__bd caption">
-								<view class="goodsName">{{item.name}}</view>
-								<view class='time' wx-if="{{item.leaseAddressName}}">
-									{{item.leaseAddressName}}
-								</view>
-								<view class='textccc' wx:if="{{item.leaseArea}}"> {{item.leaseArea}} 最多容纳{{item.leaseGalleryful}}人</view>
-							</view>
-							<view class="weui-cell__ft">
-								<view>￥{{item.price}}</view>
-								<view class='textccc'>x{{item.num}}</view>
-							</view>
+			</view>
+			<view class="">
+				<view class="goodsInfo">
+					<view class="weui-cell" wx:for="{{info.productDetails}}">
+						<view class="weui-cell__hd">
+							<image class="thumb" src="{{item.showPice}}" />
 						</view>
+						<view class="weui-cell__bd caption">
+							<view class="goodsName">{{item.name}}</view>
+							<view class='time' wx-if="{{item.leaseAddressName}}">
+								{{item.leaseAddressName}}
+							</view>
+							<view class='textccc' wx:if="{{item.leaseArea}}"> {{item.leaseArea}} 最多容纳{{item.leaseGalleryful}}人</view>
+						</view>
+						<view class="weui-cell__ft">
+							<view>￥{{item.price}}</view>
+							<view class='textccc'>x{{item.num}}</view>
+						</view>
+					</view>
 
-					</view>
-				</view>
-				<view class="weui-cell operationprice">
-					<view class="weui-cell__bd">
-						商品总价</view>
-					<view class="weui-cell__ft">
-						￥{{info.originalPrice}}
-					</view>
-				</view>
-				<view class="weui-cell operationprice" wx:if="{{info.deliverPrice}}">
-					<view class="weui-cell__bd">
-						配送费/快递</view>
-					<view class="weui-cell__ft">
-						{{info.deliverPrice}}
-					</view>
-				</view>
-				<view class="weui-cell operationprice" wx:if="{{info.packagePrice}}">
-					<view class="weui-cell__bd">
-						包装费</view>
-					<view class="weui-cell__ft">
-						{{info.packagePrice}}
-					</view>
-				</view>
-				<!-- <view class="weui-cell operationprice">
-					<view class="weui-cell__bd">
-						优惠券抵扣</view>
-					<view class="weui-cell__ft">
-						￥{{info.originalPrice - info.discountPrice}}
-					</view>
-				</view> -->
-				<view class="weui-cell operationprice operationpriceline">
-					<view class="weui-cell__bd">
-						需付款</view>
-					<view class="weui-cell__ft">
-						￥{{info.amountPayable}}
-					</view>
-				</view>
-				<view class="weui-cell operationprice operationpricepad">
-					<view class="weui-cell__bd">
-						联系客服</view>
-					<view class="weui-cell__ft">
-						<image src="../../images/meet/phoneh.png" class="phone-img"></image>
-					</view>
 				</view>
 			</view>
-		</view>
-		<view class="kong" style="height:140rpx"> </view>
-		<view class="weui-cell operation operationfixed">
-			<view class="weui-cell__bd"></view>
-			<view class="weui-cell__ft">
-				<view class="btn" data-item="{{info}}" wx:if="{{info.statu==1}}">取消订单</view>
-				<view class="btn colorCS" wx:if="{{info.statu==1}}" bindtap="payMoney" data-item="{{info}}">付款</view>
-				<view class="btn colorCS" wx:if="{{info.orderState == 1}}" data-item="{{info}}" bindtap="getNoMoney">申请退款</view>
-				<view class="btn colorCS" data-item="{{info}}" bindtap='freeTell'>联系商户</view>
-				<view class="btn colorCS" wx:if="{{info.itemType==2 && info.statu==2 && info.orderState == 2}}">
-					<navigator url="/pages/eatQcode/eatQcode?orderNum={{orderNum}}" hover-class="none">二维码</navigator>
+			<view class="weui-cell operationprice">
+				<view class="weui-cell__bd">
+					商品总价</view>
+				<view class="weui-cell__ft">
+					￥{{info.originalPrice}}
 				</view>
+			</view>
+			<!-- <view class="weui-cell operationprice">
+				<view class="weui-cell__bd">
+					优惠金额</view>
+				<view class="weui-cell__ft">
+					￥{{info.discountPrice}}
+				</view>
+			</view>  -->
+			<view class="weui-cell operationprice operationpriceline">
+				<view class="weui-cell__bd">
+					需付款</view>
+				<view class="weui-cell__ft">
+					￥{{info.amountPayable}}
+				</view>
+			</view>
+			<!-- <view class="weui-cell operationprice operationpricepad">
+				<view class="weui-cell__bd">
+					联系客服</view>
+				<view class="weui-cell__ft">
+					<image src="../../images/meet/phoneh.png" class="phone-img"></image>
+				</view>
+			</view> -->
+			<view wx:if="{{showCode}}" class="well-cell" style="width: 500rpx;margin: 0 auto;padding: 16rpx;font-size: 26rpx;">
+				<canvas canvas-id="myQrcode" class="qcode-img"
+						style="display: block;width:200px; height: 200px;margin:10px auto"></canvas>
 			</view>
 		</view>
 	</view>
-
-
-	<van-dialog use-slot title="申请退款" show="{{ showNoMoney }}" bind:confirm="saveNoMoney" class="putDownfood" show-cancel-button>
-		<view class="weui-cell">
-			<view style="margin: 0 auto;width: 90%;">
-				<textarea type="textarea" placeholder-class="placeholderClass" value="{{reason}}" placeholder="输入退款理由" bindinput="changeReason"></textarea>
+	<view class="kong" style="height:140rpx"> </view>
+	<view class="weui-cell operation operationfixed">
+		<view class="weui-cell__bd"></view>
+		<view class="weui-cell__ft">
+			<!-- <view class="btn" bindtap="showBottomBtn" data-item="{{item}}" wx:if="{{item.statu==1 && item.itemType==2}}">取消订单</view> -->
+			<view class="btn colorCS" wx:if="{{info.statu==1}}" bindtap="payMoney" data-item="{{info}}">付款</view>
+			<!-- <view class="btn colorCS" wx:if="{{info.orderState == 1}}" data-item="{{info}}" bindtap="getNoMoney">申请退款</view> -->
+			<view class="btn colorCS" data-item="{{info}}" bindtap='freeTell'>联系商户</view>
+			<view class="btn colorCS" wx:if="{{info.itemType==2 && info.statu==2 && info.orderState == 2}}">
+				<navigator url="/pages/eatQcode/eatQcode?orderNum={{orderNum}}" hover-class="none">二维码</navigator>
 			</view>
 		</view>
-	</van-dialog>
+	</view>
+</view>
+
+
+<van-dialog use-slot title="申请退款" show="{{ showNoMoney }}" bind:confirm="saveNoMoney" class="putDownfood"
+	show-cancel-button>
+	<view class="weui-cell">
+		<view style="margin: 0 auto;width: 90%;">
+			<textarea type="textarea" placeholder-class="placeholderClass" value="{{reason}}" placeholder="输入退款理由"
+				bindinput="changeReason"></textarea>
+		</view>
+	</view>
+</van-dialog>

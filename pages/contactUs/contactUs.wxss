@@ -1,0 +1,26 @@
+/* pages/contactUs/contactUs.wxss */
+@import "../visitorsList/visitorsList.wxss";
+page{
+  height: 100%;
+  width: 100%;
+}
+.topImg{
+  display: block;
+  width: 100%;
+  height:220px ;
+}
+.gobackbtn {
+  position: absolute;
+  z-index: 99;
+  left:15px;
+  font-size: 46rpx;
+  top: 64rpx;
+  color:#000;
+}
+.phoneImg{
+  display: inline-block;
+  vertical-align:middle;
+  width: 16px;
+  height: 16px;
+  margin-right: 2px;
+}

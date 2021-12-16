@@ -1,104 +1,24 @@
 /* pages/groupBuy/groupBuy.wxss */
-@import "/pages/eat/eat";
-
-.yuanj {
-  text-decoration: none
-}
-
-.top-msg {
-  padding: 4rpx 30rpx;
-}
-
-.top-msg text {
-  margin: 0px;
-  width: 95%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.top-msg image {
-  width: 26rpx;
-  height: 16rpx;
-}
-
-.container {
-  min-height: auto;
-}
-
-.title-result {
+.top-title image {
   width: 100%;
-  box-sizing: border-box;
-  height: 50px;
-  text-align: right;
-  line-height: 50px;
-  position: relative;
-}
-
-.title-result image {
-  position: absolute;
-  width: 100%;
-  height: 50px;
-  right: 0;
-  z-index: -1;
-}
-
-.title-result text.textRight {
-  display: inline-block;
-  vertical-align: middle;
-  background-color: #FFFFFF;
-  color: #FF4D6B;
-  width: 50rpx;
-  height: 50rpx;
-  line-height: 50rpx;
-  margin-right: 10px;
-  border-radius: 8rpx;
-  text-align: center;
-  font-size: 26rpx;
-  font-weight: bold;
-}
-
-.title-result text.textLeft {
-  float: left;
-  font-size: 26rpx;
-  color: #FF4D6C;
-  margin-left: 10px;
-}
-
-.thumb {
-  width: 220rpx;
-  height: 220rpx;
-}
-
-.foodprice {
-  font-size: 24rpx;
-  color: #FF4D6B;
-  bottom: 0px;
-  position: absolute;
-}
-.foodprice text{
-  font-size: 26rpx;
-}
-.cart{
-  width:100rpx;
-  height:100rpx;
-  box-shadow:2rpx 3rpx 15rpx 0px rgba(0, 0, 0, 0.1);
-  border-radius:50%;
-  position: fixed;
-  bottom:120rpx;
-  right: 42rpx;
-  border: 10rpx solid #fff;
-  background:linear-gradient(180deg,rgba(255,231,30,1),rgba(255,210,0,1));
-  align-items: center;
-}
-.cart image{
-  width: 60rpx;
-  height: 60rpx;
   display: block;
-  margin: 0 auto;
-  margin-top: 20rpx;
+  height: 700rpx;
+  margin: 0;
+  padding: 0;
 }
-.cart-num{
+
+.cart image {
+  width: 140rpx;
+  height: 140rpx;
+  position: fixed;
+  bottom: 45rpx;
+  right: 20rpx;
+  align-items: center;
+  display: block;
+  z-index: 99;
+}
+
+.cart-num {
   position: absolute;
   width: 50rpx;
   height: 50rpx;
@@ -107,9 +27,94 @@
   text-align: center;
   background: #FF4D6B;
   color: #fff;
-  right: -30rpx; 
-  top:-20rpx;
+  right: -30rpx;
+  top: -20rpx;
   font-size: 24rpx;
   line-height: 50rpx;
   font-weight: bold;
+}
+
+.pricebox {
+  width: 100%;
+  height: 120rpx;
+  background-color: #EBD272;
+  margin-top: -2px;
+  font-size: 24rpx;
+  color: #555;
+  line-height: 120rpx;
+}
+
+.pricebox image {
+  display: inline-block;
+  width: 60rpx;
+  height: 70rpx;
+  margin-left: 40rpx;
+  float: left;
+  margin-top: 20rpx;
+}
+
+.priceN {
+  font-size: 40rpx;
+  font-weight: 400;
+  margin-left: 20rpx;
+  color: #333;
+}
+
+.priceY {
+  margin-left: 10rpx;
+  text-decoration: line-through;
+}
+
+.pingt {
+  float: right;
+  margin-right: 40rpx;
+  margin-top: 2px;
+}
+
+.titleName {
+  width: calc(100% - 50rpx);
+  margin: 0 auto;
+  font-size: 26rpx;
+  color: #333;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.vag-bq {
+  font-size: 26rpx;
+  padding: 30rpx 30rpx 0rpx 30rpx;
+}
+ 
+.vag-bq .van-tag {
+  font-size: 24rpx;
+  margin-right: 20rpx;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 180rpx;
+  display: inline-block;
+}
+.imagelist image{
+  display: block;
+  width: 100%;
+  height: 300rpx;
+}
+.kfBtn{
+  width: 120rpx;
+  background: #fff;
+  color: #333;
+  height: 100rpx;
+  font-size: 24rpx;
+}
+.kfBtn image{
+  display: block;
+  width: 30rpx;
+  height:30rpx;
+  margin:20rpx auto 0;
 }

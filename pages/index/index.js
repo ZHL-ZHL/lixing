@@ -2,84 +2,31 @@
 //获取应用实例
 const app = getApp()
 import {
-  homeBanner
+  homeBanner,
+  listForMiniapp,
+  couponList,
+  couponuserGain
 } from "../../api/banner.js"
 import {
   eatgroupList
 } from "../../api/eat.js"
-
+import {
+  meetingList,
+} from "../../api/meeting.js";
 // import imageUrl from "../../utils/host.js"
 var bmap = require('../../utils/bmap-wx.min.js')
 Page({
   data: {
+    imageItem: '',
+    showImage: false,
+    couponList: [],
+    meetingList: [],
+    shopList: [],
     eatList: [],
-    banner: [{
-      picture: "/images/banner/huodong.png"
-    }],
+    banner: [],
     banner1: [],
     cityName: "",
-    nav: [{
-        icon: "/images/icon1/nav8.png",
-        name: "智慧停车",
-        url: "/pages/carNumber/carNumber",
-        show: true
-      },
-      {
-        icon: "/images/icon1/nav6.png",
-        name: "我要吃饭",
-        url: "/pages/eat/eat",
-        show: true
-      },
-      {
-        icon: "/images/icon1/nav7.png",
-        name: "会议室租赁",
-        url: "/pages/meetingRoom/meetingRoom",
-        show: true
-      },
-      {
-        icon: "/images/icon1/nav10.png",
-        name: "访客预约",
-        url: "/pages/visitorsList/visitorsList",
-        show: true
-      },
-      {
-        icon: "/images/icon1/nav9.png",
-        name: "在线招商",
-        url: "/pages/investment/investment",
-        show: true
-      },
-
-      {
-        icon: "/images/icon1/nav5.png",
-        name: "运单查询",
-        url: "/pages/bus/bus?type=1",
-        show: true
-      },
-      {
-        icon: "/images/icon1/nav1.png",
-        name: "配送订单",
-        url: "/pages/distributionOrder/distributionOrder",
-        show: true
-      },
-      {
-        icon: "/images/icon1/nav2.png",
-        name: "维修服务",
-        url: "/pages/repair/repair",
-        show: true
-      },
-      {
-        icon: "/images/icon1/nav4.png",
-        name: "企业服务",
-        url: "",
-        show: true
-      },
-      {
-        icon: "/images/icon1/nav3.png",
-        name: "更多内容",
-        url: "",
-        show: true
-      },
-    ],
+    nav: [],
     indicatorDots: true, //小点
     indicatorColor: "white",
     autoplay: true, //是否自动轮播
@@ -115,11 +62,40 @@ Page({
 
     })
   },
+  getCoupon(e) {
+    couponuserGain({
+      couponId: e.currentTarget.id
+    }).then(res => {
+      if (res.code == 200) {
+        wx.showToast({
+          title: "领取成功",
+          icon: 'success',
+        })
+        // this.couponListGet()
+      }
+    }).catch(res => {
+      console.log(res)
+      wx.showToast({
+        title: res,
+        icon: "none"
+      })
+    })
+  },
+  couponListGet() {
+    couponList().then(res => {
+      if (res.code == 200) {
+        this.setData({
+          couponList: res.data.records
+        })
+      }
+
+    })
+  },
   onLoad: function () {
-   
-    let that = this;
-    homeBanner().then(res => {
-      if (res.code == 200) { 
+    console.log(app.globalData.CustomBar)
+    this.couponListGet()
+    homeBanner(1).then(res => {
+      if (res.code == 200) {
         this.setData({
           banner1: res.data.records
         })
@@ -127,13 +103,24 @@ Page({
     }).catch(res => {
 
     })
-    // let query = wx.createSelectorQuery()
-    // console.log(query)
-    // indexAdv().then(res=>{
+    homeBanner(5).then(res => {
+      if (res.code == 200) {
+        this.setData({
+          banner: res.data.records
+        })
+      }
+    }).catch(res => {
 
-    // }).catch(res=>{
+    })
+    homeBanner(6).then(res => {
+      if (res.code == 200) {
+        this.setData({
+          shopList: res.data.records
+        })
+      }
+    }).catch(res => {
 
-    // })
+    })
     wx.getImageInfo({
       src: '/images/bottom.png',
       success: res => {
@@ -146,14 +133,22 @@ Page({
     })
 
   },
-  toAdv(e) {
-    let item = JSON.stringify(e.currentTarget.dataset.item)
-    wx.navigateTo({
-      url: '/pages/groupBuy/groupBuy',
-      success: function (res) {},
-      fail: function (res) {},
-      complete: function (res) {},
+  showBigImage(e) { 
+    wx.previewImage({
+      urls: [e.currentTarget.id],
+      current: [e.currentTarget.id]
     })
+  },
+  // showBigImage(e) { 
+  //   this.setData({
+  //     showImage: true,
+  //     imageItem: e.currentTarget.id
+  //   })
+  // },
+  onClickHide() {
+    this.setData({
+      showImage: false
+    });
   },
   toPark() {
     wx.navigateToMiniProgram({
@@ -167,49 +162,9 @@ Page({
     })
   },
   routerTo(e) {
-    // if (e.currentTarget.dataset.name == "智慧停车") {
-    //   companyList().then(res => { 
-    //     if(res.code == 200){
-    //       this.toPark()
-    //     }
-    //   }) 
-    // } else 
-    if (e.currentTarget.dataset.name == "配送订单") {
-      if (wx.getStorageSync("userInfo").phone) {
-        wx.navigateTo({
-          url: e.currentTarget.dataset.url,
-          success: function (res) {},
-          fail: function (res) {},
-          complete: function (res) {},
-        })
-      } else {
-        wx.showToast({
-          title: '您还没有绑定手机号，请先绑定手机号！',
-          icon: 'none',
-          image: '',
-          mask: true,
-          success: function (res) {},
-          fail: function (res) {},
-          complete: function (res) {},
-        })
-      }
-
-    } else if (e.currentTarget.dataset.name == "金融服务") {
-      wx.showToast({
-        title: '功能待开发，敬请期待！',
-        icon: 'none',
-      })
-    } else if (e.currentTarget.dataset.name == "水电租赁") {
-      wx.showToast({
-        title: '功能待开发，敬请期待！',
-        icon: 'none',
-      })
-    } else if (e.currentTarget.dataset.name == "企业培训") {
-
-      wx.showToast({
-        title: '功能待开发，敬请期待！',
-        icon: 'none',
-        image: '',
+    if (e.currentTarget.dataset.name == "好物优选") {
+      wx.switchTab({
+        url: '/pages/goodsList/goodsList',
       })
     } else {
       wx.navigateTo({
@@ -238,7 +193,7 @@ Page({
     console.log()
     if (res.from === 'button') {}
     return {
-      title: ' 中鲁智慧园区',
+      title: '金坤智慧管家',
       path: '/pages/index/index',
       success: function (res) {
 
@@ -246,10 +201,45 @@ Page({
     }
   },
   onShow() {
-    eatgroupList().then(res => {
+    listForMiniapp().then(res => {
       if (res.code == 200) {
         this.setData({
-          eatList:res.data[0].coodVo
+          nav: res.data
+        })
+      }
+    }).catch(res => {
+      wx.showToast({
+        title: '未登录，请登录',
+        icon: 'none',
+        image: '',
+        mask: true,
+        success: function (res) {
+          wx.clearStorage()
+          wx.switchTab({
+            url: '/pages/my/my',
+          })
+          wx.hideLoading();
+
+        },
+        fail: function (res) {},
+        complete: function (res) {},
+      })
+      return
+    })
+    eatgroupList().then(res => {
+      if (res.code == 200 && res.data.length > 0) {
+        this.setData({
+          eatList: res.data[0].coodVo
+        })
+      }
+    })
+    meetingList({
+      current: 1,
+      size: 5
+    }).then(res => {
+      if (res.code == 200) {
+        this.setData({
+          meetingList: res.data.records
         })
       }
     })

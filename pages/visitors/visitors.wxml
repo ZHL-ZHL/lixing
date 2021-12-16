@@ -1,7 +1,7 @@
 <!--pages/visitors/visitors.wxml-->
 <view class="container">
 	<form bindsubmit="formSubmit" bindreset="formReset">
-		<view class="list">
+		<view class="list listwidth">
 			<view class="weui-cell">
 				<view class="weui-cell__hd">被访人员</view>
 				<view class="weui-cell__bd">

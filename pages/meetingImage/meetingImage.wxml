@@ -8,7 +8,7 @@
 	<view class="contant-box" wx:if="{{currentindex == 0 || currentindex ==1}}">
 		<view class="cont-title">会议室(5)</view>
 		<view class="cont-mian">
-			<image src="{{item}}" wx:for="{{imageList}}" wx:key=""></image> 
+			<image src="{{item}}" wx:for="{{imageList}}"  bindtap="showBigImage" id="{{item}}"  wx:key=""></image> 
 		</view>
 	</view>
   <!-- <view class="contant-box" wx:if="{{currentindex == 0 || currentindex ==2}}">
@@ -42,3 +42,8 @@
 		</view>
 	</view> -->
 </view>
+<van-overlay show="{{ showImage }}" bind:click="onClickHide">
+  <view class="wrapper">
+	<image src="{{imageItem}}" class="imageItem"></image>
+  </view>
+</van-overlay>

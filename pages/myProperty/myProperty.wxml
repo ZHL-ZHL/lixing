@@ -1,0 +1,73 @@
+<!--pages/myProperty/myProperty.wxml-->
+<view>
+  <view wx:if="{{showTop}}" class="showTopBox" bindtap="oncloseTop">
+    <view class="showTopLi" wx:for="{{type}}" wx:key="{{index}}">
+      <view id="{{index}}" catchtap="onClickTop">
+        <view>{{item}}</view>
+        <view class="showtopblur" wx:if="{{index == indexId}}">
+          <image src="../../images/my/makesure.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view>
+    <view class='title1'>
+      <view class="{{0 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='0'>
+        <view class="title-nav">待处理
+          <image src="../../images/my/bottom.png" catchtap="showTap" id="0" style="margin-left:100rpx" class="top-icon">
+          </image>
+        </view>
+        <hr class="line-style" />
+      </view>
+      <view class="{{1 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='1'>
+        <view class="title-nav">处理中
+          <image src="../../images/my/bottom.png" catchtap="showTap" id="1" style="margin-left:100rpx" class="top-icon">
+          </image>
+        </view>
+        <hr class="line-style" />
+      </view>
+      <view class="{{2 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='2'>
+        <view class="title-nav">已完成
+          <image src="../../images/my/bottom.png" catchtap="showTap" id="2" style="margin-left:100rpx" class="top-icon">
+          </image>
+        </view>
+        <hr class="line-style" />
+      </view>
+    </view>
+  </view>
+  <!-- list -->
+  <view class="list">
+    <view class="listItem" wx:for="{{list}}">
+      <view class="weui-cell">
+        <view class="weui-cell__hd" wx:if="{{item.applyType==0}}">
+          <image src="/images/my/wy1.png" class="wyImg"></image>
+        </view> 
+        <view class="weui-cell__hd" wx:if="{{item.applyType==1}}">
+          <image src="/images/my/wy2.png" class="wyImg" style="height:41px"></image>
+        </view> 
+        <view class="weui-cell__hd"  wx:if="{{item.applyType==2}}">
+          <image src="/images/my/wy3.png" class="wyImg" style="height:40px"></image>
+        </view> 
+        <view class="weui-cell__hd"  wx:if="{{item.applyType==3}}">
+          <image src="/images/my/wy4.png" class="wyImg"></image>
+        </view> 
+        <view class="weui-cell__bd">
+          <view  wx:if="{{item.applyType==0}}">报修工单</view>
+          <view  wx:if="{{item.applyType==1}}">加班申请</view>
+          <view  wx:if="{{item.applyType==2}}">搬家&上下货</view>
+          <view  wx:if="{{item.applyType==3}}">施工申请</view> 
+          <view style="color:#333333;font-size:24rpx">申请人：{{item.name}}</view>
+          <view style="color:#333333;font-size:24rpx">手机号：{{item.phone}}</view>
+          <view style="color:#333333;font-size:24rpx">申请时间：{{item.createTime}}</view>
+          <view style="color:#333333;font-size:24rpx" wx:if="{{item.applyTime!=0}}">时间段：{{item.applyTime}}</view>
+          <view style="color:#333333;font-size:24rpx" wx:if="{{item.applyTime==0}}">上门地址：{{item.address}}</view>
+          <view style="color:#333333;font-size:24rpx" wx:if="{{item.applyTime==0}}">维修内容：{{item.repairType}}</view>
+          <view style="color:#333333;font-size:24rpx" wx:if="{{item.applyTime==0}}">问题说明：{{item.otherProblem}}</view>
+        </view>
+        <view class="weui-cell__ft">
+          <!-- <van-icon name="arrow" /> -->
+        </view>
+      </view>
+    </view> 
+  </view>
+</view>

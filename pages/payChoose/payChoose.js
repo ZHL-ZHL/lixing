@@ -24,7 +24,7 @@ Page({
   },
   getYuE() {
     let data = {}
-    data.appId = "wxc35575f7a176ae3c"
+    data.appId = "wx2ee980985f11541a"
     data.openId = wx.getStorageSync('openId')
     myYe(data).then(res => {
       if (res.code == 200) {
